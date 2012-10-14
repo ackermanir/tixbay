@@ -16,3 +16,15 @@ Scenario: recommended lists
 	Then I should see "Recommended for you"
 	And I should see "recently viewed"
 	And I should see "starred"
+
+Scenario: favorited shows
+	Given I have a show called "The CS169 Show"
+	And I have starred "The CS169 Show"
+	And I am on the home page
+	Then I should see "The CS169 Show"
+
+Scenario: recently viewed
+	Given I have a show called "The CS169 Show"
+	And I am the listing for "The CS169 Show"
+	And I am on the home page
+	Then I should see "The CS169 Show"
