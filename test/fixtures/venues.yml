@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  image_url: MyString
+  geocode_longitude: 9.99
+  geocode_latitude: 9.99
+  link: MyString
+  postal_code: 1
+  country_name: MyString
+  street_address: MyString
+  region: MyString
+  locality: MyString
+  name: MyString
+  capacity: 1
+
+two:
+  image_url: MyString
+  geocode_longitude: 9.99
+  geocode_latitude: 9.99
+  link: MyString
+  postal_code: 1
+  country_name: MyString
+  street_address: MyString
+  region: MyString
+  locality: MyString
+  name: MyString
+  capacity: 1
