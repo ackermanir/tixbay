@@ -11,6 +11,51 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 0) do
+ActiveRecord::Schema.define(:version => 20121014073209) do
+
+  create_table "categories", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "date_and_times", :force => true do |t|
+    t.integer  "event_id"
+    t.datetime "date_time"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "shows", :force => true do |t|
+    t.string   "title"
+    t.integer  "event_id"
+    t.string   "headline"
+    t.text     "summary"
+    t.string   "link"
+    t.integer  "our_price_range_low"
+    t.integer  "our_price_range_high"
+    t.integer  "full_price_range_low"
+    t.integer  "full_price_range_high"
+    t.boolean  "sold_out"
+    t.string   "image_url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "venues", :force => true do |t|
+    t.string   "name"
+    t.string   "link"
+    t.integer  "postal_code"
+    t.string   "country_name"
+    t.string   "street_address"
+    t.string   "region"
+    t.string   "locality"
+    t.integer  "capacity"
+    t.decimal  "geocode_longitude"
+    t.decimal  "geocode_latitude"
+    t.string   "image_url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end
