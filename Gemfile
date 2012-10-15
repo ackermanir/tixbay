@@ -8,7 +8,7 @@ gem 'rails', '3.1.0'
 # for Heroku deployment
 group :development, :test do
   gem 'sqlite3'
-  gem 'ruby-debug19', :require => 'ruby-debug'
+  gem 'debugger'
   gem 'database_cleaner'
   gem 'capybara'
   gem 'launchy'
@@ -19,7 +19,7 @@ group :test do
   gem "rspec-rails", "~> 2.0"
 end
 group :production do
-# gem 'pg'
+  gem 'pg'
 end
 
 
