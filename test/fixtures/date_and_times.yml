@@ -1,9 +1,0 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
-
-one:
-  event_id: 1
-  date_time: 2012-10-14 00:32:09
-
-two:
-  event_id: 1
-  date_time: 2012-10-14 00:32:09
