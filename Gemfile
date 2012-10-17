@@ -1,6 +1,8 @@
 source 'http://rubygems.org'
 
 gem 'rails', '3.1.0'
+gem 'hpricot' #used to parse XML
+gem 'rb-readline' #needed for Ian's machine
 
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
