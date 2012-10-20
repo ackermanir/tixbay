@@ -31,6 +31,29 @@ module WithinHelpers
 end
 World(WithinHelpers)
 
+Given /the information in the table Show/ do |show_table|
+  movies_table.hashes.each do |show|
+    Show.create!(show)
+  end
+end
+
+Given /the information in the table Category/ do |category_table|
+  movies_table.hashes.each do |category|
+    Category.create!(category)
+  end
+end
+
+Given /the information in the table Venue/ do |venue_table|
+  movies_table.hashes.each do |venue|
+    Show.create!(venue)
+  end
+end
+
+Given /the information in the table Showtime/ do |showtime_table|
+  movies_table.hashes.each do |showtime|
+    Show.create!(showtime)
+  end
+end
 # Single-line step scoper
 When /^(.*) within (.*[^:])$/ do |step, parent|
   with_scope(parent) { When step }

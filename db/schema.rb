@@ -11,13 +11,20 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121017070536) do
+ActiveRecord::Schema.define(:version => 20121020015311) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "categories_shows", :id => false, :force => true do |t|
+    t.integer "category_id"
+    t.integer "show_id"
+  end
+
+  add_index "categories_shows", ["category_id", "show_id"], :name => "index_categories_shows_on_category_id_and_show_id"
 
   create_table "shows", :force => true do |t|
     t.string   "title"
@@ -31,11 +38,13 @@ ActiveRecord::Schema.define(:version => 20121017070536) do
     t.integer  "full_price_range_high"
     t.boolean  "sold_out"
     t.string   "image_url"
+    t.integer  "venue_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "showtimes", :force => true do |t|
+    t.integer  "show_id"
     t.integer  "date_id"
     t.datetime "date_time"
     t.datetime "created_at"
