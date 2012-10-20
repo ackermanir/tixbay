@@ -1,6 +1,6 @@
 class TixbayController < ApplicationController
   def index
-	redirect_to "theater"
+	redirect_to :action => :theater
   end
   def theater 
 	@title = "Theater"

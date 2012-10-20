@@ -1,9 +1,11 @@
 Tixbay::Application.routes.draw do
   # The priority is based upon order of creation:
   # first created -> highest priority.
-  root :to => 'tixbay#index'
+  root :to => 'tixbay#theater'
   match ':controller/:action/'
-
+  resources :tixbay
+  #match 'tixbay/' => 'tixbay/theater'
+  
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
   # Keep in mind you can assign values other than :controller and :action
