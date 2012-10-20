@@ -1,4 +1,4 @@
 class Showtime < ActiveRecord::Base
   belongs_to :shows 
-  validates :date_id, :pressence => true
+#  validates :date_id, :pressence => true
 end
