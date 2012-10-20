@@ -1,0 +1,25 @@
+<% color_map = {'Theater'=> '#FFFFFF', 'Music'=> '#FFFFFF','Films'=> '#FFFFFF','All Cultures'=>'#FFFFFF'} %>
+<% color_map.each do |key, value| %>
+<% if key == @title %>
+<% color_map[key] = '#000000' %>
+<% end %>
+<% end %>
+ 
+      <div class="row-fluid" id="navbar">
+          <table width="100%" border="0" cellpadding="0" cellspacing="8" bordercolor="#FFFFFF" bgcolor="#C5000E">
+            <tr>
+              <td width="29%" bordercolor="#C00000" bgcolor="<%= color_map['Theater'] %>"><div align="center" class="buttons_on">
+              <%= link_to "theater & dance", :action=>"theater" %>
+              </div></td>
+              <td width="21%" bordercolor="#C00000" bgcolor="<%= color_map['Music'] %>"><div align="center" class="buttons">
+              <%= link_to "music", :action=>"music" %>
+              </div></td>
+              <td width="21%" bordercolor="#C00000" bgcolor="<%= color_map['Films'] %>"><div align="center" class="buttons">
+              <%= link_to "film", :action=>"film" %>
+              </div></td>
+              <td width="29%" bordercolor="#C00000" bgcolor="<%= color_map['All Cultures'] %>"><div align="center" class="buttons">
+			        <%= link_to "all culture", :action=>"all_culture" %>
+              </div></td>
+              </tr>
+          </table>
+		</div>
