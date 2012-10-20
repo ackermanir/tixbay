@@ -1,3 +1,4 @@
+#/spec/db_assoc_spec.rb
 require 'spec_helper'
 
 describe Show do
