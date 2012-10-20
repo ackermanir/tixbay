@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(:version => 20121020015429) do
     t.integer  "full_price_range_high"
     t.boolean  "sold_out"
     t.string   "image_url"
+    t.integer  "venue_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -48,13 +49,6 @@ ActiveRecord::Schema.define(:version => 20121020015429) do
   end
 
   add_index "shows_showtimes", ["show_id", "showtime_id"], :name => "index_shows_showtimes_on_show_id_and_showtime_id"
-
-  create_table "shows_venues", :id => false, :force => true do |t|
-    t.integer "show_id"
-    t.integer "venue_id"
-  end
-
-  add_index "shows_venues", ["show_id", "venue_id"], :name => "index_shows_venues_on_show_id_and_venue_id"
 
   create_table "showtimes", :force => true do |t|
     t.integer  "show_id"

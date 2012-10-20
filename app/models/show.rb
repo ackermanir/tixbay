@@ -4,14 +4,14 @@ require 'open-uri'
 
 class Show < ActiveRecord::Base
   has_and_belongs_to_many :categories
-  has_and_belongs_to_many :venues  
+  belongs_to :venue  
   has_many :showtimes, :dependent => :destroy
 
-  validates :venues, :length => { :minimum => 1 }
+#  validates :venue, :length => { :minimum => 1 }
 
 
   #Method to call to parse all xml listings and add to database
-  def parse_xml
+  def fill_from_web
     raw = open("http://www.tixbayarea.com/xml/listings.xml")
     xml_doc = Hpricot::XML(raw)
     xml_doc.search(:event).each do |event|
