@@ -68,6 +68,8 @@ GEM
     erubis (2.7.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
+    factory_girl (2.6.4)
+      activesupport (>= 2.3.9)
     ffi (1.1.5)
     gherkin (2.11.4)
       json (>= 1.4.6)
@@ -185,6 +187,7 @@ DEPENDENCIES
   cucumber-rails
   cucumber-rails-training-wheels
   database_cleaner
+  factory_girl (~> 2.2)
   haml
   hpricot
   jquery-rails
