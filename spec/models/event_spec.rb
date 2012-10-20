@@ -5,6 +5,8 @@ require 'rspec-rails'
 describe Event do
   it "sets event when initialized"
   describe "process_event" do
-    it "doesn't create_show if has previous_show"
+    it "works" do
+      
+    end
   end
 end

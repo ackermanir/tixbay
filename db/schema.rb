@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121020015429) do
+ActiveRecord::Schema.define(:version => 20121020015311) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -42,13 +42,6 @@ ActiveRecord::Schema.define(:version => 20121020015429) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  create_table "shows_showtimes", :id => false, :force => true do |t|
-    t.integer "show_id"
-    t.integer "showtime_id"
-  end
-
-  add_index "shows_showtimes", ["show_id", "showtime_id"], :name => "index_shows_showtimes_on_show_id_and_showtime_id"
 
   create_table "showtimes", :force => true do |t|
     t.integer  "show_id"

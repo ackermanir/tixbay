@@ -10,7 +10,6 @@ class Event
   
   #Main logic of proccessing an event in the xml feed
   def process_event
-    puts "processing an event"
     previous_record_show
     
     if @show
@@ -18,9 +17,7 @@ class Event
       update_stored_prices
     else
       create_show_record
-      puts "done record"
       create_venue_record
-      puts "done venue"
       create_showtime_records
       create_category_records
       @show.save
@@ -36,11 +33,9 @@ class Event
     syms.each do |field|
       field_str = field.to_s
       #strip off the _as_text if in symbol name
-      puts field_str
       matchData = field_str.match(/(.*)_as_text/)
       if (matchData)
         field_str = matchData[1]
-        puts field_str
       end
       hash[field_str.to_sym] = xml.at(field).inner_html
     end
