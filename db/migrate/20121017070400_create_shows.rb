@@ -12,6 +12,7 @@ class CreateShows < ActiveRecord::Migration
       t.integer :full_price_range_high
       t.boolean :sold_out
       t.string :image_url
+      t.references :venue
 
       t.timestamps
     end
