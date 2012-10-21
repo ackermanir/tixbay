@@ -10,8 +10,10 @@
 
 <% @shows.each do |s| %>
 <hr/>
+<div class="show">
 <h2><%= s.title %></h2>
 <%= image_tag s.image_url, "width"=>"30%" %>
 <p><%= s.summary %>
 <p><a class="buytickets btn btn-primary" href="<%= s.link %>">Purchase Tickets</a>
+</div>
 <% end %>
