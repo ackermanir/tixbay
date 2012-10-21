@@ -20,7 +20,8 @@ group :test do
   gem 'cucumber-rails', :require => false
   gem 'cucumber-rails-training-wheels'
   gem "rspec-rails", "~> 2.0"
-end
+  gem 'simplecov'
+  end
 group :production do
   gem 'pg'
 end
