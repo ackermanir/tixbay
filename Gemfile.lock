@@ -33,7 +33,6 @@ GEM
     addressable (2.3.2)
     arel (2.2.3)
     bcrypt-ruby (3.0.1)
-    builder (3.0.3)
     builder (3.0.4)
     capybara (1.1.2)
       mime-types (>= 1.16)
@@ -42,7 +41,11 @@ GEM
       rack-test (>= 0.5.4)
       selenium-webdriver (~> 2.0)
       xpath (~> 0.1.4)
+<<<<<<< HEAD
+    childprocess (0.3.6)
+=======
     childprocess (0.3.5)
+>>>>>>> 1d6c8ef6d2b465ae362f29397f4d4023d472f948
       ffi (~> 1.0, >= 1.0.6)
     childprocess (0.3.6)
     coffee-rails (3.1.1)
@@ -65,6 +68,15 @@ GEM
     cucumber-rails-training-wheels (1.0.0)
       cucumber-rails (>= 1.1.1)
     database_cleaner (0.9.1)
+<<<<<<< HEAD
+    debugger (1.2.1)
+      columnize (>= 0.3.1)
+      debugger-linecache (~> 1.1.1)
+      debugger-ruby_core_source (~> 1.1.4)
+    debugger-linecache (1.1.2)
+      debugger-ruby_core_source (>= 1.1.1)
+    debugger-ruby_core_source (1.1.4)
+=======
     debugger (1.2.0)
       columnize (>= 0.3.1)
       debugger-linecache (~> 1.1.1)
@@ -78,7 +90,11 @@ GEM
     debugger-linecache (1.1.2)
       debugger-ruby_core_source (>= 1.1.1)
     debugger-ruby_core_source (1.1.3)
+<<<<<<< HEAD
     debugger-ruby_core_source (1.1.4)
+=======
+>>>>>>> 1d6c8ef6d2b465ae362f29397f4d4023d472f948
+>>>>>>> 93c236782efe56f8d2ce6323539d19f5a7642f1b
     diff-lcs (1.1.3)
     erubis (2.7.0)
     execjs (1.4.0)
@@ -86,7 +102,11 @@ GEM
     factory_girl (2.6.4)
       activesupport (>= 2.3.9)
     ffi (1.1.5)
+<<<<<<< HEAD
+    gherkin (2.11.5)
+=======
     gherkin (2.11.4)
+>>>>>>> 1d6c8ef6d2b465ae362f29397f4d4023d472f948
       json (>= 1.4.6)
     gherkin (2.11.5)
     haml (3.1.7)
@@ -147,7 +167,11 @@ GEM
     rspec-expectations (2.11.3)
       diff-lcs (~> 1.1.3)
     rspec-mocks (2.11.3)
+<<<<<<< HEAD
+    rspec-rails (2.11.4)
+=======
     rspec-rails (2.11.0)
+>>>>>>> 1d6c8ef6d2b465ae362f29397f4d4023d472f948
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       railties (>= 3.0)
@@ -165,10 +189,19 @@ GEM
       libwebsocket (~> 0.1.3)
       multi_json (~> 1.0)
       rubyzip
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 93c236782efe56f8d2ce6323539d19f5a7642f1b
     simplecov (0.6.4)
       multi_json (~> 1.0)
       simplecov-html (~> 0.5.3)
     simplecov-html (0.5.3)
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 1d6c8ef6d2b465ae362f29397f4d4023d472f948
+>>>>>>> 93c236782efe56f8d2ce6323539d19f5a7642f1b
     sprockets (2.0.4)
       hike (~> 1.2)
       rack (~> 1.0)
@@ -208,7 +241,14 @@ DEPENDENCIES
   rb-readline
   rspec-rails (~> 2.0)
   sass-rails (~> 3.1.0)
+<<<<<<< HEAD
   simplecov
+=======
+<<<<<<< HEAD
+  simplecov
+=======
+>>>>>>> 1d6c8ef6d2b465ae362f29397f4d4023d472f948
+>>>>>>> 93c236782efe56f8d2ce6323539d19f5a7642f1b
   sqlite3
   therubyracer
   uglifier
