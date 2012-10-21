@@ -9,15 +9,12 @@ body{
     margin-bottom: 15px;
 }
 .buttons {
-	font-family: Arial, Helvetica, sans-serif;
 	font-size: 24px;
 	font-weight: bold;
-	color: #000000;
 	text-decoration: none;
 	line-height: 1.5em;
 }
 .buttons_on {
-	font-family: Arial, Helvetica, sans-serif;
 	font-size: 24px;
 	font-style: normal;
 	font-weight: bold;
@@ -26,66 +23,54 @@ body{
 	line-height: 1.5em;
 }
 .eventtitle {
-	font-family: Arial, Helvetica, sans-serif;
 	font-size: 24px;
 	font-weight: bold;
 	color: #C00000;
 }
 .eventheadline {
-	font-family: Arial, Helvetica, sans-serif;
 	font-size: 12px;
 	font-weight: normal;
 	color: #000000;
 }
 .eventsummary {
-	font-family: Arial, Helvetica, sans-serif;
 	font-size: 14px;
 	font-weight: normal;
 	color: #000000;
 }
 .eventsummarybold {
-	font-family: Arial, Helvetica, sans-serif;
 	font-size: 14px;
 	font-weight: bold;
 	color: #000000;
 }
 .buytickets {
-	font-family: Arial, Helvetica, sans-serif;
+	margin-left: 72%;
 	font-size: 18px;
 	font-style: normal;
-	font-weight: bold;
-	text-transform: uppercase;
-	color: #000000;
 	text-decoration: none;
 }
 .booth_title {
-	font-family: Arial, Helvetica, sans-serif;
 	font-size: 50px;
 	font-weight: bold;
 	color: #000000;
 }
 .scrollingtitles {
-	font-family: Arial, Helvetica, sans-serif;
 	font-size: 58px;
 	line-height: 100%;
 	text-align: left;
 }
 .showoftheday {
-	font-family: Arial, Helvetica, sans-serif;
 	font-size: 200px;
 	line-height: 50%;
 	text-align: center;
 	font-weight: bold;
 }
 .webtitle {
-	font-family: Arial, Helvetica, sans-serif;
 	font-size: 25px;
 	color: #FFFFFF;
 	font-weight: bold;
 	text-align: left;
 }
 .boothheader {
-	font-family: Arial, Helvetica, sans-serif;
 	font-size: 55px;
 	color: #FFFFFF;
 	font-weight: bold;
@@ -95,7 +80,6 @@ body{
 	border: thin solid #000000;
 }
 .regularprice {
-	font-family: Arial, Helvetica, sans-serif;
 	font-size: 20px;
 	font-weight: bold;
 	color: #000000;
@@ -108,26 +92,22 @@ body{
 	height:920px;
 }
 .gs {
-	font-family: Arial, Helvetica, sans-serif;
 	font-size: 20px;
 	font-weight: bold;
 	color: #C00000;
 }
 .reg {
-	font-family: Arial, Helvetica, sans-serif;
 	font-size: 20px;
 	font-weight: bold;
 	color: #000000;
 }
 .reg_gs {
-	font-family: Arial, Helvetica, sans-serif;
 	font-size: 20px;
 	font-weight: bold;
 	color: #000000;
 	text-decoration: line-through;
 }
 .tgheader {
-	font-family: Arial, Helvetica, sans-serif;
 	font-size: 24px;
 	font-weight: bold;
 	color: #FFFFFF;
@@ -138,36 +118,30 @@ body{
 	color: #000000;
 }
 .tgeventtitle {
-	font-family: Arial, Helvetica, sans-serif;
 	font-size: 24px;
 	font-weight: bold;
 	color: #000000;
 }
 .tgbuytickets {
-	font-family: Arial, Helvetica, sans-serif;
 	font-size: 18px;
 	font-weight: bold;
 	color: #C00000;
 }
 .textbold {
-	font-family: Arial, Helvetica, sans-serif;
 	font-size: 16px;
 	font-weight: bold;
 	color: #000000;
 }
 .textgs {
-	font-family: Arial, Helvetica, sans-serif;
 	font-size: 16px;
 	font-weight: bold;
 	color: #C00000;
 }
 .subfont {
-	font-family: Arial, Helvetica, sans-serif;
 	font-size: 10px;
 	font-weight: normal;
 }
 .tixavailtoday {
-	font-family: Arial, Helvetica, sans-serif;
 	font-size: 16px;
 	font-weight: bold;
 	text-transform: uppercase;
@@ -175,14 +149,12 @@ body{
 	background-color: #FFFF00;
 }
 .mobilebuttons {
-	font-family: Arial, Helvetica, sans-serif;
 	font-size: 12px;
 	font-weight: bold;
 	color: #000000;
 	text-decoration: none;
 }
 .mobilebuttons_on {
-	font-family: Arial, Helvetica, sans-serif;
 	font-size: 12px;
 	font-style: normal;
 	font-weight: bold;
@@ -190,27 +162,23 @@ body{
 	text-decoration: none;
 }
 .mobileheader {
-	font-family: Arial, Helvetica, sans-serif;
 	font-size: 20px;
 	color: #FFFFFF;
 	font-weight: bold;
 	text-align: left;
 }
 .mobiletitle {
-	font-family: Arial, Helvetica, sans-serif;
 	font-size: 18px;
 	color: #000000;
 	font-weight: bold;
 	text-align: left;
 }
 .mobiletext {
-	font-family: Arial, Helvetica, sans-serif;
 	font-size: 12px;
 	color: #000000;
 	text-align: left;
 }
 .mobiletixavailtoday {
-	font-family: Arial, Helvetica, sans-serif;
 	font-size: 10px;
 	font-weight: bold;
 	text-transform: uppercase;
@@ -218,7 +186,6 @@ body{
 	background-color: #FFFF00;
 }
 .mobilebuytickets {
-	font-family: Arial, Helvetica, sans-serif;
 	font-size: 10px;
 	font-weight: bold;
 	text-transform: uppercase;
@@ -226,4 +193,7 @@ body{
 	border: solid 1px #000000;
 	padding: 4px;
 	margin: 4px 4px 4px 4px;
+}
+img {
+	padding: 2% 0;
 }
