@@ -28,7 +28,7 @@ Scenario: view new possible shows
 
 Scenario: buy a ticket to a show
   And I see a potential show I like
-  And I press "purchase tickets"
+  And I press "1"
   Then I should be redirected to Goldstar
 
 Scenario: press "tix" logo redirect
@@ -39,22 +39,17 @@ Scenario: press "Theatre Bay Area" redirect
   And I press the "Theatre Bay Area" in the "About Me" section
   Then I should be on the "Theatre Bay Area" page
 
-Scenario: filter "theatre & dance" shows
-  And I press the "theatre & dance" tab
+Scenario: filter "theater" shows
+  And I press the "theater" tab
   Then I should be on the home page
-  And I should see "theatre & dance" shows
+  And I should see "theater" shows
 
 Scenario: filter "music" shows
   And I press the "music" tab
-  Then I should be on the home page
-  And I should see "music" shows
+  Then I should be on the music page
+  And I should see "jazz" shows
 
 Scenario: filter "film" shows
   And I press the "film" tab
-  Then I should be on the home page
+  Then I should be on the film page
   And I should see "film" shows
-
-Scenario: filter "all culture" shows
-  And I press the "all culture" tab
-  Then I should be on the home page
-  And I should see "all" shows

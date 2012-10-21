@@ -15,7 +15,10 @@ module NavigationHelpers
 
     when /^the home\s?page$/
       '/'
-
+    when /^the film page$/
+      '/tixbay/film'
+    when /^the music page$/
+      '/tixbay/music'
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #

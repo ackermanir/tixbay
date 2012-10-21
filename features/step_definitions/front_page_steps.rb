@@ -2,7 +2,6 @@ Given /the following shows exist/ do |shows_table|
     shows_table.hashes.each do |show|
         Show.create!(show)
     end
-    @show = Show.find_by_id(1)
 end
 
 Given /the following categories exist/ do |categories_table|
@@ -24,7 +23,7 @@ Given /there are category and show associations/ do
 end
 
 When /^I see a potential show I like$/ do
-    page.should include(@show)
+    step 'I should see "The Greatest Show"'
 end
 
 Then /^I should be redirected to Goldstar$/ do
@@ -36,6 +35,20 @@ When /^I press the tix logo$/ do
     click_link("Redtopper") 
 end
 
+Then /^I should see "theater" shows$/ do
+    step 'I should see "The Greatest Show"'
+    step 'I should see "Another Show"'
+end
+
+Then /^I should see "jazz" shows$/ do
+    step 'I should see "Lala"'
+end
+
+Then /^I should see "film" shows$/ do
+    step 'I should see "Another Show"'
+    step 'I should see "What Show"'
+end
+
 When /^I press the "(.*?)" in the "(.*?)" section$/ do |arg1, arg2|
     with_scope(selector,:arg2) do
         click_link(arg1)
@@ -43,9 +56,5 @@ When /^I press the "(.*?)" in the "(.*?)" section$/ do |arg1, arg2|
 end
 
 When /^I press the "(.*?)" tab$/ do |arg1|
-    pending # express the regexp above with the code you wish you had
-end
-
-Then /^I should see "(.*?)" shows$/ do |arg1|
-    pending # express the regexp above with the code you wish you had
+    click_link(arg1)
 end
