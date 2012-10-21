@@ -27,8 +27,7 @@ Scenario: view new possible shows
   And I should see "Another Show"
 
 Scenario: buy a ticket to a show
-  And I see a potential show I like
-  And I press "purchase tickets"
+  And I follow "Purchase Tickets"
   Then I should be redirected to Goldstar
 
 Scenario: press "tix" logo redirect

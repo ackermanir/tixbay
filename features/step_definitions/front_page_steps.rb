@@ -29,8 +29,9 @@ end
 
 Then /^I should be redirected to Goldstar$/ do
     current_path = URI.parse(current_url).path
-    domain = /.*\.com/.match(current_path)
-    assert_equal domain "www.goldstar.com"
+    domain = current_path.match(/goldstar/i)
+    current_path.should == "www.goldstar.com"
+    assert_not_nil domain
     # response.should redirect_to(http://www.goldstar.com/)
     # pending
 end
