@@ -1,20 +1,20 @@
 {
   "Cucumber Features": {
     "coverage": {
-      "/home/ian/school/cs169/tixbay/app/controllers/application_controller.rb": [
+      "/Users/brittanycheng/Dropbox/2012FALL/CS169 saas/tixbay/app/controllers/application_controller.rb": [
         1,
         1,
         null
       ],
-      "/home/ian/school/cs169/tixbay/app/helpers/application_helper.rb": [
+      "/Users/brittanycheng/Dropbox/2012FALL/CS169 saas/tixbay/app/helpers/application_helper.rb": [
         1,
         null
       ],
-      "/home/ian/school/cs169/tixbay/app/helpers/tixbay_helper.rb": [
+      "/Users/brittanycheng/Dropbox/2012FALL/CS169 saas/tixbay/app/helpers/tixbay_helper.rb": [
         1,
         null
       ],
-      "/home/ian/school/cs169/tixbay/app/controllers/tixbay_controller.rb": [
+      "/Users/brittanycheng/Dropbox/2012FALL/CS169 saas/tixbay/app/controllers/tixbay_controller.rb": [
         1,
         1,
         0,
@@ -40,12 +40,12 @@
         null,
         null
       ],
-      "/home/ian/school/cs169/tixbay/app/models/category.rb": [
+      "/Users/brittanycheng/Dropbox/2012FALL/CS169 saas/tixbay/app/models/category.rb": [
         1,
         1,
         null
       ],
-      "/home/ian/school/cs169/tixbay/app/models/event.rb": [
+      "/Users/brittanycheng/Dropbox/2012FALL/CS169 saas/tixbay/app/models/event.rb": [
         1,
         1,
         1,
@@ -264,67 +264,63 @@
         null,
         0,
         null,
-        null,
-        null,
-        null,
-        null
-      ],
-      "/home/ian/school/cs169/tixbay/app/models/show.rb": [
-        1,
-        1,
-        1,
-        null,
-        1,
-        1,
-        1,
-        1,
-        null,
-        null,
-        1,
-        0,
-        0,
-        0,
-        0,
-        0,
         null,
         null,
         null,
         null
       ],
-      "/home/ian/school/cs169/tixbay/app/models/showtime.rb": [
+      "/Users/brittanycheng/Dropbox/2012FALL/CS169 saas/tixbay/app/models/show.rb": [
+        1,
+        1,
+        1,
+        null,
+        1,
+        1,
+        1,
+        1,
+        null,
+        null,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        null,
+        null,
+        null,
+        null
+      ],
+      "/Users/brittanycheng/Dropbox/2012FALL/CS169 saas/tixbay/app/models/showtime.rb": [
         1,
         1,
         null,
         null
       ],
-      "/home/ian/school/cs169/tixbay/app/models/venue.rb": [
+      "/Users/brittanycheng/Dropbox/2012FALL/CS169 saas/tixbay/app/models/venue.rb": [
         1,
         1,
         null
       ]
     },
-<<<<<<< HEAD
-    "timestamp": 1350846177
-=======
-    "timestamp": 1350858891
->>>>>>> 29790783e811922f3577fdcba27cbaebb0ee47db
+    "timestamp": 1350861774
   },
   "RSpec": {
     "coverage": {
-      "/home/ian/school/cs169/tixbay/app/controllers/application_controller.rb": [
+      "/Users/brittanycheng/Dropbox/2012FALL/CS169 saas/tixbay/app/controllers/application_controller.rb": [
         1,
         1,
         null
       ],
-      "/home/ian/school/cs169/tixbay/app/helpers/application_helper.rb": [
+      "/Users/brittanycheng/Dropbox/2012FALL/CS169 saas/tixbay/app/helpers/application_helper.rb": [
         1,
         null
       ],
-      "/home/ian/school/cs169/tixbay/app/helpers/tixbay_helper.rb": [
+      "/Users/brittanycheng/Dropbox/2012FALL/CS169 saas/tixbay/app/helpers/tixbay_helper.rb": [
         1,
         null
       ],
-      "/home/ian/school/cs169/tixbay/app/controllers/tixbay_controller.rb": [
+      "/Users/brittanycheng/Dropbox/2012FALL/CS169 saas/tixbay/app/controllers/tixbay_controller.rb": [
         1,
         1,
         0,
@@ -350,12 +346,12 @@
         null,
         null
       ],
-      "/home/ian/school/cs169/tixbay/app/models/category.rb": [
+      "/Users/brittanycheng/Dropbox/2012FALL/CS169 saas/tixbay/app/models/category.rb": [
         1,
         1,
         null
       ],
-      "/home/ian/school/cs169/tixbay/app/models/event.rb": [
+      "/Users/brittanycheng/Dropbox/2012FALL/CS169 saas/tixbay/app/models/event.rb": [
         1,
         1,
         1,
@@ -579,7 +575,7 @@
         null,
         null
       ],
-      "/home/ian/school/cs169/tixbay/app/models/show.rb": [
+      "/Users/brittanycheng/Dropbox/2012FALL/CS169 saas/tixbay/app/models/show.rb": [
         1,
         1,
         1,
@@ -601,18 +597,18 @@
         null,
         null
       ],
-      "/home/ian/school/cs169/tixbay/app/models/showtime.rb": [
+      "/Users/brittanycheng/Dropbox/2012FALL/CS169 saas/tixbay/app/models/showtime.rb": [
         1,
         1,
         null,
         null
       ],
-      "/home/ian/school/cs169/tixbay/app/models/venue.rb": [
+      "/Users/brittanycheng/Dropbox/2012FALL/CS169 saas/tixbay/app/models/venue.rb": [
         1,
         1,
         null
       ]
     },
-    "timestamp": 1350858911
+    "timestamp": 1350861819
   }
 }
