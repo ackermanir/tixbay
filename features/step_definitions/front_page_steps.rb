@@ -27,12 +27,16 @@ When /^I see a potential show I like$/ do
 end
 
 Then /^I should be redirected to Goldstar$/ do
+    current_path = URI.parse(current_url).path
+    domain = current_path.match(/goldstar/i)
+    current_path.should == "www.goldstar.com"
+    assert_not_nil domain
     # response.should redirect_to(http://www.goldstar.com/)
-    pending
+    # pending
 end
 
 When /^I press the tix logo$/ do
-    click_link("Redtopper") 
+    click_link("Redtopper")
 end
 
 Then /^I should see "theater" shows$/ do
