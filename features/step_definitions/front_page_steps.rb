@@ -7,12 +7,15 @@ When /^I see a potential show I like$/ do
 end
 
 Then /^I should be redirected to Goldstar$/ do
+    current_path = URI.parse(current_url).path
+    domain = /.*\.com/.match(current_path)
+    assert_equal domain "www.goldstar.com"
     # response.should redirect_to(http://www.goldstar.com/)
-    pending
+    # pending
 end
 
 When /^I press the tix logo$/ do
-    click_link("Redtopper") 
+    click_link("Redtopper")
 end
 
 When /^I press the "(.*?)" in the "(.*?)" section$/ do |arg1, arg2|
