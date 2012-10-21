@@ -28,7 +28,7 @@ body {
 #navbar {
 
   td {
-    border: solid 4px #C00000;
+    border-right: solid 4px #C00000;
   }
 }
 
@@ -79,15 +79,6 @@ hr {
   a {
     color: white;
   }
-}
-
-.btn-danger {
-  background-color: #C00000;
-  background-image: none;
-}
-
-.btn {
-  background-image: none;
 }
 
 .eventtitle {
@@ -294,3 +285,17 @@ hr {
   margin: 4px 4px 4px 4px;
 }
 
+//bootstrap overrides
+
+.btn-danger {
+  background-color: #C00000;
+  background-image: none;
+}
+
+.btn {
+  background-image: none;
+}
+
+.row-fluid .span3 {
+  width: 23%;
+}
