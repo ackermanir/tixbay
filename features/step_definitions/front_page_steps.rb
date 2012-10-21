@@ -53,12 +53,6 @@ Then /^I should see "film" shows$/ do
     step 'I should see "What Show"'
 end
 
-When /^I press the "(.*?)" in the "(.*?)" section$/ do |arg1, arg2|
-    with_scope(selector,:arg2) do
-        click_link(arg1)
-    end
-end
-
 When /^I press the "(.*?)" tab$/ do |arg1|
     click_link(arg1)
 end
