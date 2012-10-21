@@ -36,7 +36,7 @@ Scenario: press "tix" logo redirect
 
 Scenario: press "Theatre Bay Area" redirect
   And I follow "Theatre Bay Area"
-  Then I should be on the "Theatre Bay Area" page
+  Then I should be redirected to the Theatre Bay Area page
 
 Scenario: filter "theater" shows
   And I press the "theater" tab

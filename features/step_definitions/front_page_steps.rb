@@ -27,12 +27,13 @@ When /^I see a potential show I like$/ do
 end
 
 Then /^I should be redirected to Goldstar$/ do
-    current_path = URI.parse(current_url).path
-    domain = current_path.match(/goldstar/i)
-    current_path.should == "www.goldstar.com"
+    domain = current_url.match(/www.goldstar.com/i)
     assert_not_nil domain
-    # response.should redirect_to(http://www.goldstar.com/)
-    # pending
+end
+
+Then /^I should be redirected to the Theatre Bay Area page$/ do
+    domain = current_url.match(/www.theatrebayarea.org/i)
+    assert_not_nil domain
 end
 
 When /^I press the tix logo$/ do
