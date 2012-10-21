@@ -6,15 +6,25 @@ Feature: Basic Front Page
 
 Background: shows have been added to database
 
-  Given the following show exist:
-    | title                   | image_url      | summary       | link                                 
-    | Oktoberfest East Bay    | image.jpg      | fake summary  | http://www.goldstar.com/venues/richmond-ca/the-craneway-pavilion
-    |                         | image.jpg      | fake summary  | http://www.goldstar.com/venues/richmond-ca/the-craneway-pavilion    
+  Given the following shows exist:
+    | title                   | image_url      | summary       | link                       | id      |     
+    | The Greatest Show       | image.jpg      | fake summary  | http://www.goldstar.com/   |  1      |
+    | Another Show            | image.jpg      | fake summary  | http://www.goldstar.com/   |  2      |
+    | Lala Show               | image.jpg      | fake summary  | http://www.goldstar.com/   |  3      |
+    | What Show               | image.jpg      | fake summary  | http://www.goldstar.com/   |  4      |
 
-  	And  I am on the home page
+  Given the following categories exist:
+    | name                    | id  | 
+    | Theater                 | 1   | 
+    | Jazz                    | 2   | 
+    | Film                    | 3   | 
+
+  And there are category and show associations
+  And I am on the home page
 
 Scenario: view new possible shows
-  Then I should see shows
+  Then I should see "The Greatest Show"
+  And I should see "Another Show"
 
 Scenario: buy a ticket to a show
   And I see a potential show I like
