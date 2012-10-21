@@ -3,15 +3,17 @@ require 'hpricot'
 require 'open-uri'
 
 class Event
+
+  #keep xml associated with event as instance variable, don't know
+  #if show is in db yet so starts as nil
   def initialize(xml)
     @event = xml
     @show = nil
   end
   
-  #Main logic of proccessing an event in the xml feed
+  #checks if there is a previous record, updates or creates it accordingly
   def process_event
     previous_record_show
-    
     if @show
       update_stored_showtime
       update_stored_prices
@@ -20,14 +22,19 @@ class Event
       create_venue_record
       create_showtime_records
       create_category_records
-      @show.save
+      save_show
     end
   end
   
   #########
   # Helpers
   #########
-  
+
+  #seam added for testing
+  def save_show
+    @show.save
+  end
+
   #store the xml elements relating to symbols in syms into hash
   def store_fields(xml, hash, syms)
     syms.each do |field|
@@ -41,7 +48,7 @@ class Event
     end
   end
   
-  #returns array of date_ids
+  #returns array of date_ids from xml's upcoming dates field
   def event_dates
     date = @event.at('upcoming_dates')              
     result = []
@@ -58,7 +65,7 @@ class Event
   def match_prices(hash, elt_name)
     #match to get the prices
     text = @event.at(elt_name).inner_html
-    if (text.eql?('FREE'))
+    if (text.include?('FREE'))
       result = 0
     elsif (text.eql?('SOLD OUT'))
       result = -1
@@ -78,12 +85,14 @@ class Event
     hash[elt_symbol] = result
   end
   
+  #checks if event already seen and loads it into @show
   def previous_record_show
     event_id = @event.to_html.match(/"([^"]+)"/)[1].to_i
     #check database to see if it contains the id
     @show = Show.where(:event_id => event_id).first
   end
   
+  #updates the showtimes in @show based on the date info from xml
   def update_stored_showtime
     #Get the information of dates for current XML feed
     dates_info = event_dates
@@ -134,9 +143,9 @@ class Event
     store_fields(@event, hash_show, show_sym)
     
     hash_show[:image_url] = 
-      @event.at('venue').at('image').inner_html
+      @event.at('image').inner_html
     hash_show[:sold_out] = 
-      @event.at('venue').at('capacity').inner_html.eql?('true')
+      @event.at('sold_out').inner_html.eql?('true')
     
     @show = Show.new(hash_show)
   end
@@ -144,13 +153,9 @@ class Event
   def create_venue_record
     hash_venue = {}
     venue = @event.at('venue')
-    
-    venue_sym = [:link, :name]
-    
+
+    venue_sym = [:link, :name]    
     store_fields(venue, hash_venue, venue_sym)
-    
-    hash_venue[:image_url] =
-      @event.at('venue').at('image').inner_html
     
     #Uniquely identify venues by their link
     db_venue = Venue.where(:link => hash_venue[:link]).first
@@ -161,6 +166,9 @@ class Event
       #TODO validate the save      
         
     else
+      hash_venue[:image_url] =
+      @event.at('venue').at('image').inner_html
+
       hash_venue[:geocode_longitude] = 
         venue.at('geocode_longitude').inner_html.to_f
       hash_venue[:geocode_latitude] =
@@ -170,9 +178,7 @@ class Event
         
       #extract the inner fields of adddress for venue information
       address = venue.at('address')
-        
-      #getting postal code to number
-      #check for 0 for failing
+
       hash_venue[:postal_code] =
         venue.at('postal_code').inner_html.to_i
       
