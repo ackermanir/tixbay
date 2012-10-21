@@ -48,3 +48,5 @@ gem 'jquery-rails'
 
 gem "rspec-rails", "~> 2.0"
 gem 'haml'
+gem 'sass'
+gem 'bootstrap-sass', '~> 2.1.0.1'
