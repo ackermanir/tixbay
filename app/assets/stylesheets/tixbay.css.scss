@@ -47,15 +47,20 @@ body {
 
 #listings {
 
+  .show {
+    padding: 1%;
+  }
+
   img {
     padding: 0 0 1% 0;
   }
+
+  hr {
+    border-bottom: 1px solid #CCC;
+    border-top: none;
+  }
 }
 
-hr {
-  border-top: none;
-  border-bottom: 1px solid #CCC;
-}
 
 .buttons {
   font-size: 24px;
@@ -106,7 +111,7 @@ hr {
 }
 
 .buytickets {
-  margin-left: 68%;
+  margin-left: 70%;
   font-size: 1.4em;
   font-style: normal;
   text-decoration: none;
