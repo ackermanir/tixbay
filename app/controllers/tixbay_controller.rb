@@ -18,7 +18,7 @@ class TixbayController < ApplicationController
 	render :body 
   end
   def all_culture
-	@title = "theater"
+	@title = "all culture"
 	@shows = Category.find_by_name("Theater").shows
 	render :body
   end
