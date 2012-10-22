@@ -2,23 +2,23 @@
 
 ### added by Terence (10/22/2012)
 
-* 1. make sure you login in heroku
+* make sure you login in heroku
 
 	$ heroku login
 
-* 2. you have your heroku remote origin
+* you have your heroku remote origin
 
 	$ heroku git:remote -a tixbay
 
-* 3. deploy to heroku
+* deploy to heroku
 
-	$ git push heroku <branch>:master
+	$ git push heroku [branch]:master
 
-* 4. if it is a fresh deploy
+* if it is a fresh deploy
 	
 	$ heroku run rake db:migrate
 
-* 5. if you want to drop the database
+* if you want to drop the database
 
 	$ heroku pg:reset HEROKU_POSTGRESQL_YELLOW --confirm tixbay 
 
