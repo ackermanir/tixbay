@@ -1,6 +1,7 @@
 require 'rubygems'
 require 'hpricot'
 require 'open-uri'
+require 'net/http'
 
 class Show < ActiveRecord::Base
   has_and_belongs_to_many :categories
@@ -15,6 +16,32 @@ class Show < ActiveRecord::Base
       ev = Event.new(event)
       ev.process_event
     end
+  end
+
+  def self.get_closest_show
+  	url = "http://maps.googleapis.com/maps/api/geocode/xml?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&sensor=true"
+    resp = Net::HTTP.get_response(URI.parse(url))
+    data = resp.body
+	xml_doc = Hpricot::XML(data)
+	xml_doc.search(:result).each do |event|
+      puts event
+	end  
+  end
+
+  #might move this in venue, so we can cache the geocoding without using up the quota
+  #even though json might be better, we had been using xml already
+  def get_geocoding
+	venue = Venue.find(self.venue_id)
+  	url = "http://maps.googleapis.com/maps/api/geocode/xml?address="
+    url += (venue.street_address.gsub /\s+/, '+')  + ","
+	url += (venue.locality.gsub /\s+/, '+')  + ","
+    url += venue.region + "+" + venue.postal_code.to_s
+    url +=  "&sensor=true"
+    resp = Net::HTTP.get_response(URI.parse(url))
+    data = resp.body
+	xml_doc = Hpricot::XML(data)
+	location = xml_doc.search(:location)
+	location.search(:lat).inner_html + "," + location.search(:lng).inner_html
   end
   
 end
