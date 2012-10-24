@@ -8,8 +8,9 @@ class Show < ActiveRecord::Base
   has_many :showtimes, :dependent => :destroy
 
   #Method to call to parse all xml listings and add to database
-  def self.fill_from_web
-    raw = File.open(File.join(Rails.root, "app", "data", "listings.xml"))
+  def self.fill_from_xml(location = File.join(Rails.root, "app", 
+                                              "data", "listings.xml"))
+    raw = File.open(location)
     xml_doc = Nokogiri::XML(raw)
     xml_doc.xpath("//event").each do |event|
       ev = Event.new(event)
