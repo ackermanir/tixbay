@@ -38,23 +38,30 @@ class Event
   #store the xml elements relating to symbols in syms into hash
   def store_fields(xml, hash, syms)
     syms.each do |field|
+      val = xml.at(field).inner_html
       field_str = field.to_s
       #strip off the _as_text if in symbol name
       matchData = field_str.match(/(.*)_as_text/)
       if (matchData)
         field_str = matchData[1]
+        val = val.gsub('&amp;', '&')
       end
-      hash[field_str.to_sym] = xml.at(field).inner_html
+      hash[field_str.to_sym] = val
     end
   end
   
+  #only continue with the listing if this is a valid category
+  def category_whitelist
+    return true
+  end
+
   #returns array of date_ids from xml's upcoming dates field
   def event_dates
-    date = @event.at('upcoming_dates')              
+    date = @event.at('upcoming_dates')
     result = []
     date.search(:event_date).each do |event_date|
       date_id = event_date.to_html.match(/"([^"]+)"/)[1].to_i
-      time_str = event_date.at('date').inner_html + 
+      time_str = event_date.at('date').inner_html +
         " " + event_date.at('time_note').inner_html
       result << [date_id, time_str]
     end
@@ -138,14 +145,14 @@ class Event
     match_prices(hash_show, 'full_price_range')
     
     #simply store string result of following fields
-    show_sym = [:summary_as_text, :title_as_text,
-                :link, :headline_as_text]
+    show_sym = [:summary_as_text, :title_as_text, :headline_as_text]
     store_fields(@event, hash_show, show_sym)
-    
-    hash_show[:image_url] = 
-      @event.at('image').inner_html
-    hash_show[:sold_out] = 
-      @event.at('sold_out').inner_html.eql?('true')
+
+    #store the correct link, the second one
+    hash_show[:link] = @event.search('link').to_a.last.inner_html
+
+    hash_show[:image_url] = @event.at('image').inner_html
+    hash_show[:sold_out] = @event.at('sold_out').inner_html.eql?('true')
     
     @show = Show.new(hash_show)
   end
@@ -154,6 +161,7 @@ class Event
     hash_venue = {}
     venue = @event.at('venue')
 
+    
     venue_sym = [:link, :name]    
     store_fields(venue, hash_venue, venue_sym)
     
@@ -207,7 +215,7 @@ class Event
   
   def create_category_records
     @event.at('category_list').search(:category).each do |category|
-      name = category.at('name').inner_html
+      name = category.at('name').inner_html.gsub('&amp;', '&')
       
       #Uniquely identify categories by name
       db_category = Category.where(:name => name).first
