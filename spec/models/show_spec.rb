@@ -5,7 +5,6 @@ require 'rspec-rails'
 describe Show do
   describe "fill_from_web" do
     it "loads the xml file" do
-      #File.stub(:open).and_return("<Hello>")
       File.should_receive(:open).with(any_args()).and_return("<Hello>")
       Show.fill_from_web
     end

@@ -1,4 +1,28 @@
-== Welcome to Rails
+# Heroku Deployment
+
+### added by Terence (10/22/2012)
+
+* make sure you login in heroku
+
+	$ heroku login
+
+* you have your heroku remote origin
+
+	$ heroku git:remote -a tixbay
+
+* deploy to heroku
+
+	$ git push heroku [branch]:master
+
+* if it is a fresh deploy
+	
+	$ heroku run rake db:migrate
+
+* if you want to drop the database
+
+	$ heroku pg:reset HEROKU_POSTGRESQL_YELLOW --confirm tixbay 
+
+# Rails
 
 Rails is a web-application framework that includes everything needed to create
 database-backed web applications according to the Model-View-Control pattern.
