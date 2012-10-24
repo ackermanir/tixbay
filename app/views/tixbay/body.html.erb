@@ -10,6 +10,9 @@
 
 <% @shows.each do |s| %>
 <div class="show">
+<% if @distances %>
+<p>Distance from you: <%= @distances[s.id] %>
+<% end %>
 <h2><%= s.title %></h2>
 <%= image_tag s.image_url, "width"=>"35%" %>
 <p><%= s.summary %>

@@ -22,4 +22,9 @@ class TixbayController < ApplicationController
 	@shows = Category.find_by_name("Theater").shows
 	render :body
   end
+  def preference
+	@title = "nearby shows"
+	@shows,@distances = Show.get_closest_shows("2111 Bancroft Way", "Berkeley", "CA", 94704)
+	render :body
+  end
 end
