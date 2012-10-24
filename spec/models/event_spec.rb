@@ -1,7 +1,7 @@
 # spec/models/event_spec.rb
 require 'spec_helper'
 require 'rspec-rails'
-require 'hpricot'
+require 'nokogiri'
 
 describe Event do
   it "sets event when initialized" do
@@ -41,7 +41,7 @@ describe Event do
     it "should strip off _as_text from the symbol" do
       hash = {}
       syms = [:test_as_text]
-      xml = Hpricot::XML("<test_as_text>hl</test_as_text>")
+      xml = Nokogiri::XML("<test_as_text>hl</test_as_text>")
       ev = Event.new("bogus")
       ev.store_fields(xml, hash, syms)
       hash[:test].should == "hl"
@@ -49,7 +49,7 @@ describe Event do
     it "should place the matching field with symbol in hash" do
       hash = {}
       syms = [:cat]
-      xml = Hpricot::XML("<cat>hl</cat>")
+      xml = Nokogiri::XML("<cat>hl</cat>")
       ev = Event.new("bogus")
       ev.store_fields(xml, hash, syms)
       hash[:cat].should == "hl"
@@ -57,7 +57,7 @@ describe Event do
   end
   describe "event_dates" do
     it "should return info in upcoming dates xml into array" do
-      xml = Hpricot::XML('<upcoming_dates><event_date id="619189">' +
+      xml = Nokogiri::XML('<upcoming_dates><event_date id="619189">' +
                          '<time_note>8:00pm (Improvised Horror Musical)' +
                          '</time_note><date>2012-10-20</date></upcoming_dates>')
       ev = Event.new(xml)
@@ -68,14 +68,14 @@ describe Event do
   describe "match_prices" do
     it "should set prices to zero for SOLD OUT" do
       hash = {}
-      xml = Hpricot::XML('<our_price_range>SOLD OUT</our_price_range>')
+      xml = Nokogiri::XML('<our_price_range>SOLD OUT</our_price_range>')
       ev = Event.new(xml)
       ev.match_prices(hash, "our_price_range")
       hash[:our_price_range_high].should == -1
       hash[:our_price_range_high].should == -1
     end
     it "should have two same prices if only given one price" do
-      xml = Hpricot::XML('<our_price_range>$7.50</our_price_range>')
+      xml = Nokogiri::XML('<our_price_range>$7.50</our_price_range>')
       hash = {}
       ev = Event.new(xml)
       ev.match_prices(hash, "our_price_range")
@@ -83,7 +83,7 @@ describe Event do
       hash[:our_price_range_high].should == 750
     end
     it "should set relevant price to 0 if FREE" do
-      xml = Hpricot::XML('<our_price_range>FREE - $7.50</our_price_range>')
+      xml = Nokogiri::XML('<our_price_range>FREE - $7.50</our_price_range>')
       hash = {}
       ev = Event.new(xml)
       ev.match_prices(hash, "our_price_range")
@@ -93,13 +93,13 @@ describe Event do
   end
   describe "previous_record_show" do
     it "should set look up show based on event id from xml" do
-      xml = Hpricot::XML('<event id="62650"><deal_of_the_day/></event>')
-      ev = Event.new(xml)
-      Show.should_receive(:where).with(:event_id => 62650).and_return([])
+      xml = Nokogiri::XML('<event id="65324"><deal_of_the_day/></event>')
+      ev = Event.new(xml.xpath('event').first)
+      Show.should_receive(:where).with(:event_id => 65324).and_return([])
       ev.previous_record_show
     end
     it "should set the instance variable show" do
-      xml = Hpricot::XML('<event id="62650"><deal_of_the_day/></event>')
+      xml = Nokogiri::XML('<event id="62650"><deal_of_the_day/></event>')
       ev = Event.new(xml)
       Show.stub(:where).and_return(["l"])
       ev.previous_record_show
@@ -150,8 +150,8 @@ describe Event do
   describe "create_show_record" do
     it "should fill in all relevent fields" do
       input = %Q{<event id="46404"><summary_as_text>Show twice.</summary_as_text><image>improv.jpg</image><headline_as_text>BATS</headline_as_text><link>sub=46404</link><title_as_text>Comedy</title_as_text><sold_out>false</sold_out></event>}
-      xml = Hpricot::XML(input)
-      ev = Event.new(xml)
+      xml = Nokogiri::XML(input)
+      ev = Event.new(xml.xpath('event').first)
       ev.stub(:match_prices)
       hash_show = {:sold_out => false, :image_url => 'improv.jpg',
         :summary => 'Show twice.', :title => 'Comedy',
@@ -164,8 +164,8 @@ describe Event do
   describe "create_venue_record" do
     it "should not recreate a venue that already exists" do
       input = %Q{<event id="46404"><venue><link>front.jpg</link><name>Bay</name></venue></event>}
-      xml = Hpricot::XML(input)
-      ev = Event.new(xml)
+      xml = Nokogiri::XML(input)
+      ev = Event.new(xml.xpath('event').first)
       v = mock('ven')
       v.stub(:shows).and_return([])
       v.should_receive(:save)
@@ -173,13 +173,13 @@ describe Event do
       ev.create_venue_record
     end
     it "should create a new venue object if new venue" do
-      input = %Q{<event id="46404"><venue><capacity>194</capacity><geocode_longitude>-122</geocode_longitude><image>front.jpg</image><geocode_latitude>37</geocode_latitude><link>theater</link><address><locality>San</locality><country_name>US</country_name><postal_code>94</postal_code><street_address>Marina</street_address><region>CA</region></address><name>Bay</name></venue></event>}
-      xml = Hpricot::XML(input)
-      ev = Event.new(xml)
+      input = %Q{<event id="46404"><venue><capacity>194</capacity><geocode_longitude>-122.3</geocode_longitude><image>front.jpg</image><geocode_latitude>37</geocode_latitude><link>theater</link><address><locality>San</locality><country_name>US</country_name><postal_code>94</postal_code><street_address>Marina</street_address><region>CA</region></address><name>Bay</name></venue></event>}
+      xml = Nokogiri::XML(input)
+      ev = Event.new(xml.xpath('event').first)
       v = mock('ven')
       v.stub(:shows).and_return([])
       v.should_receive(:save)
-      hash_venue = {:capacity => 194, :geocode_longitude => -122,
+      hash_venue = {:capacity => 194, :geocode_longitude => -122.3,
         :image_url => 'front.jpg', :geocode_latitude => 37,:link => 'theater', 
         :locality => 'San', :country_name => 'US', :postal_code => 94,
         :street_address => 'Marina', :name => 'Bay', :region => 'CA'}
@@ -203,8 +203,8 @@ describe Event do
   describe "create_category_record" do
     it "should reuse previous entry for category" do
       input = %Q{<event id="46404"><category_list><category id="1"><name>Comedy</name></category></category_list></event>}
-      xml = Hpricot::XML(input)
-      ev = Event.new(xml)
+      xml = Nokogiri::XML(input)
+      ev = Event.new(xml.xpath('event').first)
       sh = mock('show')
       sh.should_receive(:categories).and_return([])
       ev.instance_variable_set(:@show, sh)
@@ -214,8 +214,8 @@ describe Event do
     end
     it "should link show to category" do
       input = %Q{<event id="46404"><category_list><category id="1"><name>Comedy</name></category></category_list></event>}
-      xml = Hpricot::XML(input)
-      ev = Event.new(xml)
+      xml = Nokogiri::XML(input)
+      ev = Event.new(xml.xpath('event').first)
       ar = mock('showtimes')
       ar.should_receive(:build).with({:name => 'Comedy'})
       sh = mock('show')

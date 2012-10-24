@@ -1,5 +1,5 @@
 require 'rubygems'
-require 'hpricot'
+require 'nokogiri'
 require 'open-uri'
 
 class Show < ActiveRecord::Base
@@ -10,8 +10,8 @@ class Show < ActiveRecord::Base
   #Method to call to parse all xml listings and add to database
   def self.fill_from_web
     raw = File.open(File.join(Rails.root, "app", "data", "listings.xml"))
-    xml_doc = Hpricot::XML(raw)
-    xml_doc.search(:event).each do |event|
+    xml_doc = Nokogiri::XML(raw)
+    xml_doc.xpath("//event").each do |event|
       ev = Event.new(event)
       ev.process_event
     end

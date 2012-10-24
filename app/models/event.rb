@@ -1,11 +1,8 @@
 require 'rubygems'
-require 'hpricot'
-require 'open-uri'
+require 'nokogiri'
 
 class Event
-
-  #keep xml associated with event as instance variable, don't know
-  #if show is in db yet so starts as nil
+  #keep xml associated with event as instance variable
   def initialize(xml)
     @event = xml
     @show = nil
@@ -38,10 +35,10 @@ class Event
   #store the xml elements relating to symbols in syms into hash
   def store_fields(xml, hash, syms)
     syms.each do |field|
-      val = xml.at(field).inner_html
       field_str = field.to_s
       #strip off the _as_text if in symbol name
       matchData = field_str.match(/(.*)_as_text/)
+      val = xml.xpath(field.to_s).inner_html
       if (matchData)
         field_str = matchData[1]
         val = val.gsub('&amp;', '&')
@@ -57,12 +54,12 @@ class Event
 
   #returns array of date_ids from xml's upcoming dates field
   def event_dates
-    date = @event.at('upcoming_dates')
+    date = @event.xpath('upcoming_dates')
     result = []
     date.search(:event_date).each do |event_date|
-      date_id = event_date.to_html.match(/"([^"]+)"/)[1].to_i
-      time_str = event_date.at('date').inner_html +
-        " " + event_date.at('time_note').inner_html
+      date_id = event_date.to_s.match(/"([^"]+)"/)[1].to_i
+      time_str = event_date.xpath('date').inner_html +
+        " " + event_date.xpath('time_note').inner_html
       result << [date_id, time_str]
     end
     return result
@@ -71,7 +68,7 @@ class Event
   #store the elt_name information into the hash
   def match_prices(hash, elt_name)
     #match to get the prices
-    text = @event.at(elt_name).inner_html
+    text = @event.xpath(elt_name).inner_html
     if (text.include?('FREE'))
       result = 0
     elsif (text.eql?('SOLD OUT'))
@@ -94,7 +91,7 @@ class Event
   
   #checks if event already seen and loads it into @show
   def previous_record_show
-    event_id = @event.to_html.match(/"([^"]+)"/)[1].to_i
+    event_id = @event.to_s.match(/"([^"]+)"/)[1].to_i
     #check database to see if it contains the id
     @show = Show.where(:event_id => event_id).first
   end
@@ -137,7 +134,7 @@ class Event
   
   def create_show_record
     hash_show = {}
-    event_id = @event.to_html.match(/"([^"]+)"/)[1].to_i
+    event_id = @event.to_s.match(/"([^"]+)"/)[1].to_i
     hash_show[:event_id] = event_id
     
     #store the price ranges in hash
@@ -149,19 +146,18 @@ class Event
     store_fields(@event, hash_show, show_sym)
 
     #store the correct link, the second one
-    hash_show[:link] = @event.search('link').to_a.last.inner_html
+    hash_show[:link] = @event.xpath('link').to_a.last.inner_html
 
-    hash_show[:image_url] = @event.at('image').inner_html
-    hash_show[:sold_out] = @event.at('sold_out').inner_html.eql?('true')
+    hash_show[:image_url] = @event.xpath('image').inner_html
+    hash_show[:sold_out] = @event.xpath('sold_out').inner_html.eql?('true')
     
     @show = Show.new(hash_show)
   end
   
   def create_venue_record
     hash_venue = {}
-    venue = @event.at('venue')
+    venue = @event.xpath('venue')
 
-    
     venue_sym = [:link, :name]    
     store_fields(venue, hash_venue, venue_sym)
     
@@ -175,20 +171,20 @@ class Event
         
     else
       hash_venue[:image_url] =
-      @event.at('venue').at('image').inner_html
+      @event.xpath('venue').xpath('image').inner_html
 
       hash_venue[:geocode_longitude] = 
-        venue.at('geocode_longitude').inner_html.to_f
+        venue.xpath('geocode_longitude').inner_html.to_f
       hash_venue[:geocode_latitude] =
-        venue.at('geocode_latitude').inner_html.to_f
+        venue.xpath('geocode_latitude').inner_html.to_f
       hash_venue[:capacity] =
-        venue.at('capacity').inner_html.to_i
+        venue.xpath('capacity').inner_html.to_i
         
       #extract the inner fields of adddress for venue information
-      address = venue.at('address')
+      address = venue.xpath('address')
 
       hash_venue[:postal_code] =
-        venue.at('postal_code').inner_html.to_i
+        address.xpath('postal_code').inner_html.to_i
       
       #get default strings for following fields
       address_sym = [:locality, :country_name, :region, :street_address]
@@ -214,8 +210,8 @@ class Event
   end
   
   def create_category_records
-    @event.at('category_list').search(:category).each do |category|
-      name = category.at('name').inner_html.gsub('&amp;', '&')
+    @event.xpath('category_list').xpath('category').each do |category|
+      name = category.xpath('name').inner_html.gsub('&amp;', '&')
       
       #Uniquely identify categories by name
       db_category = Category.where(:name => name).first
