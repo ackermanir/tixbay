@@ -8,15 +8,32 @@
      <td width="100%" bgcolor="#000000"><div align="center" class="buttons_on" id="pagetitle"><%=  @title %></div>
      </td></tr></table>
 
-<% @shows.each do |s| %>
-<div class="show">
-<% if @distances %>
-<p>Distance from you: <%= @distances[s.id] %>
-<% end %>
-<h2><%= s.title %></h2>
-<%= image_tag s.image_url, "width"=>"35%" %>
-<p><%= s.summary %>
-<p><a class="buytickets btn btn-danger" id="<%=s.id %>" href="<%= s.link %>">Purchase Tickets</a>
-</div>
-<hr/>
+  <% if @distances %>
+	<br/>
+	<form action="/tixbay/preference" method="post" class="form-inline well">	
+ 	<input type="text" name="street_address" value="<%= @street_address %>"/> 
+ 	<input type="text" name="city" value="<%= @city %>"/> 
+ 	<input type="text" name="region" value="<%= @region %>"/> 
+ 	<input type="text" name="zip_code" value="<%= @zip_code %>"/> 
+	<input type="submit" />
+	</form>
+  <% end %>
+
+  <% @shows.each do |s| %>
+  <div class="show">
+  <% if @distances %>
+  <p>Distance from you: <%= @distances[s.id] %>
+  <% end %>
+  <%= image_tag s.image_url, "width"=>"35%" %>
+  <p class="evTitle"><%= s.title %>
+  <p><%= s.headline %>
+  <p><b>Availible Dates:</b><%= s.date_string %>
+  <p><a class="venue_link" href="<%= s.venue.link %>"><%= s.venue.name %></a><br>
+    <span class ="venue_address"><%= s.venue.full_address %>
+  <p><%= s.summary %>
+  <p class="pricing">Full Price:<span class ="prices"><%= s.price_format('ours') %>
+  <p class="pricing">Goldstar Price:<span class ="prices"><%= s.price_format('full') %>
+  <p><a class="buytickets btn btn-danger" id="<%=s.id %>" href="<%= s.link %>">Purchase Tickets</a>
+  </div>
+  <hr/>
 <% end %>

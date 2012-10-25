@@ -14,7 +14,7 @@ class Event
     if @show
       update_stored_showtime
       update_stored_prices
-    else
+    elsif category_whitelist
       create_show_record
       create_venue_record
       create_showtime_records
@@ -47,9 +47,16 @@ class Event
     end
   end
   
-  #only continue with the listing if this is a valid category
+  #return true if show has at least one category we want
   def category_whitelist
-    return true
+    valid = ['Theater', 'Performing Arts', 'Popular Music', 'Jazz',
+             'Classical', 'Classic Rock', 'Film']
+    create = false
+    @event.xpath('category_list').xpath('category').each do |category|
+      name = category.xpath('name').inner_html.gsub('&amp;', '&')
+      create |= valid.include?(name)
+    end
+    return create
   end
 
   #returns array of date_ids from xml's upcoming dates field
@@ -58,8 +65,11 @@ class Event
     result = []
     date.search(:event_date).each do |event_date|
       date_id = event_date.to_s.match(/"([^"]+)"/)[1].to_i
-      time_str = event_date.xpath('date').inner_html +
-        " " + event_date.xpath('time_note').inner_html
+      time_note = event_date.xpath('time_note').inner_html
+      if time_note.include?('TBA')
+        time_note = ""
+      end
+      time_str = event_date.xpath('date').inner_html + " " + time_note
       result << [date_id, time_str]
     end
     return result
@@ -146,7 +156,7 @@ class Event
     store_fields(@event, hash_show, show_sym)
 
     #store the correct link, the second one
-    hash_show[:link] = @event.xpath('link').to_a.last.inner_html
+    hash_show[:link] = @event.xpath('link').inner_html
 
     hash_show[:image_url] = @event.xpath('image').inner_html
     hash_show[:sold_out] = @event.xpath('sold_out').inner_html.eql?('true')

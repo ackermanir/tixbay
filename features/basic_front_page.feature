@@ -6,25 +6,12 @@ Feature: Basic Front Page
 
 Background: shows have been added to database
 
-  Given the following shows exist:
-    | title                   | image_url      | summary       | link                       | id      |     
-    | The Greatest Show       | image.jpg      | fake summary  | http://www.goldstar.com/   |  1      |
-    | Another Show            | image.jpg      | fake summary  | http://www.goldstar.com/   |  2      |
-    | Lala Show               | image.jpg      | fake summary  | http://www.goldstar.com/   |  3      |
-    | What Show               | image.jpg      | fake summary  | http://www.goldstar.com/   |  4      |
-
-  Given the following categories exist:
-    | name                    | id  | 
-    | Theater                 | 1   | 
-    | Jazz                    | 2   | 
-    | Film                    | 3   | 
-
-  And there are category and show associations
+  Given the database has been setup from xml
   And I am on the home page
 
 Scenario: view new possible shows
-  Then I should see "The Greatest Show"
-  And I should see "Another Show"
+  Then I should see "Avenue Q"
+  And I should see "Erickson Theatre"
 
 Scenario: buy a ticket to a show
   And I follow "Purchase Tickets"
@@ -46,7 +33,7 @@ Scenario: filter "theater" shows
 Scenario: filter "music" shows
   And I press the "music" tab
   Then I should be on the music page
-  And I should see "jazz" shows
+  And I should see "music" shows
 
 Scenario: filter "film" shows
   And I press the "film" tab

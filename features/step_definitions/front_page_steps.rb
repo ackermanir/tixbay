@@ -4,6 +4,10 @@ Given /the following shows exist/ do |shows_table|
     end
 end
 
+Given /the database has been setup from xml/ do
+  Show.fill_from_xml(File.join(Rails.root, "app", "data", "cuke.xml"))
+end
+
 Given /the following categories exist/ do |categories_table|
     categories_table.hashes.each do |category|
         Category.create!(category)
@@ -27,7 +31,7 @@ When /^I see a potential show I like$/ do
 end
 
 Then /^I should be redirected to Goldstar$/ do
-    domain = current_url.match(/www.goldstar.com/i)
+    domain = current_url.match(/goldstar.com/i)
     assert_not_nil domain
 end
 
@@ -41,17 +45,17 @@ When /^I press the tix logo$/ do
 end
 
 Then /^I should see "theater" shows$/ do
-    step 'I should see "The Greatest Show"'
-    step 'I should see "Another Show"'
+    step 'I should see "Avenue Q"'
+    step 'I should see "Erickson Theatre"'
 end
 
-Then /^I should see "jazz" shows$/ do
-    step 'I should see "Lala"'
+Then /^I should see "music" shows$/ do
+    step 'I should see "Kristin Chenoweth"'
 end
 
 Then /^I should see "film" shows$/ do
-    step 'I should see "Another Show"'
-    step 'I should see "What Show"'
+    step 'I should see "BATS Improv Comedy"'
+    step 'I should see "Marina Blvd"'
 end
 
 When /^I press the "(.*?)" tab$/ do |arg1|

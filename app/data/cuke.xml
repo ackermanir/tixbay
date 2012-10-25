@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listings>
+  <event id="46404">
+    <full_price_range>$17.00</full_price_range>
+    <summary_as_text>BATS Improv.</summary_as_text>
+    <image>https://i.goldstar.com/gse_media/112/1/bats-improv.jpg</image>
+    <venue>
+      <capacity>194</capacity>
+      <geocode_longitude>-122.433704</geocode_longitude>
+      <image>https://i.goldstar.com/gse_media/105/9/21203652bayfront.jpg</image>
+      <geocode_latitude>37.805033</geocode_latitude>
+      <link>http://www.goldstar.com/venues/san-francisco-ca/bayfront-theater</link>
+      <address>
+        <locality>San Francisco</locality>
+        <country_name>United States</country_name>
+        <postal_code>94123</postal_code>
+        <street_address>Marina Blvd At Buchanan St</street_address>
+        <region>CA</region>
+        <extended_address>Fort Mason Center Building</extended_address>
+      </address>
+      <name>Bayfront Theater</name>
+    </venue>
+    <headline_as_text>BATS Improv: SF's Longest-Running Improv Comedy Theater</headline_as_text>
+    <link>http://tracking.goldstar.com/aff_c?offer_id=6&amp;aff_id=1654&amp;aff_sub=46404</link>
+    <upcoming_dates>
+      <event_date id="619189">
+        <time_note>8:00pm (Improvised Horror Musical)</time_note>
+        <date>2012-10-20</date>
+      </event_date>
+      <event_date id="619194">
+        <time_note>8:00pm (This Just In)</time_note>
+        <date>2012-10-26</date>
+      </event_date>
+    </upcoming_dates>
+    <title_as_text>BATS Improv Comedy</title_as_text>
+    <sold_out>false</sold_out>
+    <category_list>
+      <category id="1">
+        <name>Film</name>
+      </category>
+    </category_list>
+    <our_price_range>FREE - $8.50</our_price_range>
+  </event>
+  <event id="62608">
+    <full_price_range>$40.00 - $105.00</full_price_range>
+    <summary_as_text>"Cirque du Soleil"</summary_as_text>
+    <image>https://i.goldstar.com/gse_media/112/9/saltimbanco-101812.jpg</image>
+    <venue>
+      <capacity>6150</capacity>
+      <geocode_longitude>-71.117785</geocode_longitude>
+      <image>https://i.goldstar.com/gse_media/108/7/agganis.jpg</image>
+      <geocode_latitude>42.351789</geocode_latitude>
+      <link>http://www.goldstar.com/venues/boston-ma/agganis-arena</link>
+      <address>
+        <locality>Boston</locality>
+        <country_name>United States</country_name>
+        <postal_code>02215</postal_code>
+        <street_address>925 Commonwealth Ave.</street_address>
+        <region>MA</region>
+        <extended_address/>
+      </address>
+      <phone>617-353-4628</phone>
+      <name>Agganis Arena</name>
+    </venue>
+    <headline_as_text>"Cirque du Soleil: Saltimbanco" Comes to Boston's Agganis Arena</headline_as_text>
+    <link>http://tracking.goldstar.com</link>
+    <upcoming_dates>
+      <event_date id="626310">
+        <time_note>8:00pm</time_note>
+        <date>2012-10-31</date>
+      </event_date>
+      <event_date id="626313">
+        <time_note>8:00pm</time_note>
+        <date>2012-11-02</date>
+      </event_date>
+    </upcoming_dates>
+    <title_as_text>"Cirque du Soleil: Saltimbanco"</title_as_text>
+    <browsable_series/>
+    <sold_out>false</sold_out>
+    <category_list>
+      <category id="2">
+        <name>Performing Arts</name>
+      </category>
+    </category_list>
+    <our_price_range>$26.00 - $76.00</our_price_range>
+  </event>
+  <event id="62414">
+    <full_price_range>$79.50 - $109.50</full_price_range>
+    <summary_as_text>When it comes to singing</summary_as_text>
+    <image>https://i.goldstar.com/gse_media/112/9/kristenchen-101412.jpg</image>
+    <venue>
+      <capacity>1704</capacity>
+      <geocode_longitude>-117.88105</geocode_longitude>
+      <image>https://i.goldstar.com/gse_media/106/8/19235061.gif</image>
+      <geocode_latitude>33.692323</geocode_latitude>
+      <link>http://www.goldstar.com/venues/costa-mesa-ca/rene-and-henry-segerstrom-concert-hall-at-the-segerstrom-center-for-the-arts</link>
+      <address>
+        <locality>Costa Mesa</locality>
+        <country_name>United States</country_name>
+        <postal_code>92626</postal_code>
+        <street_address>600 Town Center Drive</street_address>
+        <region>CA</region>
+        <extended_address/>
+      </address>
+      <phone>(714) 556-2787</phone>
+      <name>Renée Hall</name>
+    </venue>
+    <headline_as_text>Broadway and TV Star Kristin Chenoweth ("Glee", "Wicked") in Concert</headline_as_text>
+    <link>http://tracking.goldstar.com/aff_c?offer_id=6&amp;aff_id=1654&amp;aff_sub=62414</link>
+    <upcoming_dates>
+      <event_date id="623866">
+        <time_note>7:30pm</time_note>
+        <date>2012-11-05</date>
+      </event_date>
+    </upcoming_dates>
+    <title_as_text>Kristin Chenoweth in Concert</title_as_text>
+    <browsable_series/>
+    <sold_out>false</sold_out>
+    <category_list>
+      <category id="6">
+        <name>Popular Music</name>
+      </category>
+      <category id="7">
+        <name>Classical</name>
+      </category>
+      <category id="9">
+        <name>Theater</name>
+      </category>
+    </category_list>
+    <our_price_range>$39.75 - $54.75</our_price_range>
+  </event>
+  <event id="62214">
+    <full_price_range>$25.00</full_price_range>
+    <summary_as_text>Balagan Theatre presents</summary_as_text>
+    <image>https://i.goldstar.com/gse_media/112/9/avenue-q-100812.jpg</image>
+    <venue>
+      <capacity>100</capacity>
+      <geocode_longitude>-122.322095</geocode_longitude>
+      <image>https://i.goldstar.com/gse_media/110/6/EricksonTheatre2_DougScott.jpg</image>
+      <geocode_latitude>47.614804</geocode_latitude>
+      <link>http://www.goldstar.com/venues/seattle-wa/the-erickson-theatre-off-broadway</link>
+      <address>
+        <locality>Seattle</locality>
+        <country_name>United States</country_name>
+        <postal_code>98122</postal_code>
+        <street_address>1524 Harvard Ave.</street_address>
+        <region>WA</region>
+        <extended_address/>
+      </address>
+      <phone/>
+      <name>The Erickson Theatre Off Broadway</name>
+    </venue>
+    <headline_as_text>"Avenue Q": The Tony-Winning Adult Puppet Musical</headline_as_text>
+    <link>http://tracking.goldstar.com/aff_c?offer_id=6&amp;aff_id=1654&amp;aff_sub=62214</link>
+    <upcoming_dates>
+      <event_date id="621912">
+        <time_note>2:00pm</time_note>
+        <date>2012-11-18</date>
+      </event_date>
+      <event_date id="624474">
+        <time_note>8:00pm</time_note>
+        <date>2012-11-23</date>
+      </event_date>
+    </upcoming_dates>
+    <title_as_text>"Avenue Q"</title_as_text>
+    <browsable_series/>
+    <sold_out>true</sold_out>
+    <category_list>
+      <category id="9">
+        <name>Theater</name>
+      </category>
+    </category_list>
+    <our_price_range>SOLD OUT</our_price_range>
+  </event>
+</listings>

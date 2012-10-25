@@ -51,8 +51,38 @@ body {
     padding: 1%;
   }
 
+  .evTitle {
+    font-size: 24px;
+    font-weight: bold;
+    color: #C00000;
+  }
+
+  .venue_link {
+    font-size: 14px;
+    color: #333333;
+    font-weight: bold;
+    text-decoration: none;
+  }
+
+  .venue_address {
+    font-size: 12px;
+    font-weight: normal;
+  }
+
+  .pricing {
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  .prices {
+    font-size: 24px;
+    font-weight: bold;
+    color: #C00000;
+  }
+
   img {
-    padding: 0 0 1% 0;
+    padding: 0 2% 1% 0%;
+    float: left;
   }
 
   hr {
