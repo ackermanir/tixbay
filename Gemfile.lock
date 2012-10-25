@@ -194,6 +194,7 @@ DEPENDENCIES
   hpricot
   jquery-rails
   launchy
+  nokogiri
   pg
   rails (= 3.1.0)
   rb-readline

@@ -37,6 +37,7 @@
         1,
         0,
         0,
+        0,
         null,
         null
       ],
@@ -48,11 +49,8 @@
       "/Users/brittanycheng/Dropbox/2012FALL/CS169 saas/tixbay/app/models/event.rb": [
         1,
         1,
-        1,
         null,
         1,
-        null,
-        null,
         null,
         1,
         0,
@@ -91,9 +89,16 @@
         0,
         0,
         0,
+        0,
+        0,
         null,
         0,
         null,
+        null,
+        null,
+        null,
+        1,
+        0,
         null,
         null,
         null,
@@ -187,13 +192,13 @@
         null,
         null,
         0,
+        0,
+        null,
         null,
         0,
         null,
         0,
-        null,
         0,
-        null,
         null,
         0,
         null,
@@ -303,7 +308,7 @@
         null
       ]
     },
-    "timestamp": 1350863026
+    "timestamp": 1351050010
   },
   "RSpec": {
     "coverage": {
@@ -343,6 +348,7 @@
         1,
         0,
         0,
+        0,
         null,
         null
       ],
@@ -354,11 +360,8 @@
       "/Users/brittanycheng/Dropbox/2012FALL/CS169 saas/tixbay/app/models/event.rb": [
         1,
         1,
-        1,
         null,
         1,
-        null,
-        null,
         null,
         1,
         22,
@@ -392,14 +395,21 @@
         null,
         1,
         9,
-        24,
+        22,
         null,
-        24,
-        24,
+        22,
+        22,
+        22,
+        7,
         7,
         null,
-        24,
+        22,
         null,
+        null,
+        null,
+        null,
+        1,
+        0,
         null,
         null,
         null,
@@ -493,13 +503,13 @@
         null,
         null,
         2,
+        2,
+        null,
         null,
         2,
         null,
         2,
-        null,
         2,
-        null,
         null,
         2,
         null,
@@ -609,6 +619,6 @@
         null
       ]
     },
-    "timestamp": 1350935173
+    "timestamp": 1351050005
   }
 }
