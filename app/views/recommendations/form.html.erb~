@@ -1,0 +1,26 @@
+<% content_for :navbar do %>
+<% render "tixbay/navbar" #render navbar partials here%>
+<% end %>
+
+<!--table width="100%" border="0" cellpadding="0" cellspacing="8" bgcolor="#C00000">
+     <tr>
+     <td width="100%" bgcolor="#000000"><div align="center" class="buttons_on" id="pagetitle"><%=  @title %></div>
+     </td></tr></table-->
+<h1 id="recommendation_header">Recommendation Form</h1>
+
+<div id="recommendation_welcome">
+Welcome <%= @user %>!<br>
+Please fill out this form so we can help you find shows.
+</div>
+
+<%= form_tag :action => "index", :id => "recommendation_form" do %>
+<div>
+    <label for="recommendation_location">Location</label>
+    <%= text_field :recommendation, :location %>
+</div>
+<div>
+    <label for="recommendation_genres">Genres</label>
+    <%= text_area :recommendation, :genres, :id => 'genres' %>
+</div>
+
+<% end %>
