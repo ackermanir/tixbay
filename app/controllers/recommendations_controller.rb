@@ -1,26 +1,29 @@
 class RecommendationsController < ApplicationController
 
-  # POST /recommendations
   # when submit form
   def index
-    # @listings = processed form
-    # if logged in, save answers
-    # render :recommendations
+    @title = "Recommended Shows"
+    @shows = []
+    # @shows = processed form
+    #if logged in
+    # save answers/shows
+    render "tixbay/body"
   end
 
-  # GET /recommendations
-  # when click on 'custom'
   def custom
-    # if not logged in or has no saved answers
-    redirect_to :actions=>"login"
-    # @listings = based on user
-    # render :recommendations
+    #if not logged in
+    # redirect_to :actions=>"login"
+    #elsif no saved answers
+    redirect_to :actions=>"form"
+    #else
+    # @title = "Recommended Shows"
+    # @shows = []
+    # @shows = based on user
+    # render "tixbay/body"
   end
 
-  #should POST to index
   def form
     @title = "Recommendation Form"
-    # @user =
   end
 
   def login
