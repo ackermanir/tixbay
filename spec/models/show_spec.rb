@@ -3,10 +3,10 @@ require 'spec_helper'
 require 'rspec-rails'
 
 describe Show do
-  describe "fill_from_web" do
+  describe "fill_from_xml" do
     it "loads the xml file" do
       File.should_receive(:open).with(any_args()).and_return("<Hello>")
-      Show.fill_from_web
+      Show.fill_from_xml
     end
     it "creates an Event object if there is event data" do
       test = %Q{<listings><event id="46404"><summary_as_html>BATS
@@ -16,7 +16,7 @@ describe Show do
       File.stub(:open).and_return(test)
       Event.should_receive(:new).with(any_args()).and_return(fake_event)
       fake_event.should_receive(:process_event).with(no_args())
-      Show.fill_from_web
+      Show.fill_from_xml
     end
   end
 end
