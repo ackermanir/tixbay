@@ -35,11 +35,12 @@ class Show < ActiveRecord::Base
       return output
     end
 
-    low = cent_string(our_price_range_low)
-    high = cent_string(our_price_range_high)
     if whose == 'full'
       low = cent_string(full_price_range_low)
       high = cent_string(full_price_range_high)
+    else
+      low = cent_string(our_price_range_low)
+      high = cent_string(our_price_range_high)
     end
     output = low
     if high != low
