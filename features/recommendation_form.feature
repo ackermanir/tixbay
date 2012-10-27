@@ -10,6 +10,6 @@ Scenario: link to recommendations form
 
 Scenario: get recommendations by genre
     Given I am on the recommendations form page
-    When I check "recommendations_category_film"
-    And I follow "Submit"
+    When I check "recommendation_category_film"
+    And I press "Submit"
     Then I should see 
