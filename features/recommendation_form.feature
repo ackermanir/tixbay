@@ -8,8 +8,16 @@ Scenario: link to recommendations form
     And I follow "custom"
     Then I should be on the recommendations form page
 
-Scenario: get recommendations by genre
+Scenario: get recommendations by one genre
     Given I am on the recommendations form page
     When I check "recommendation_category_film"
     And I press "Submit"
-    Then I should see 
+    Then I should see "BATS Improv Comedy"
+
+Scenario: get recommendations by multiple genres
+   Given I am on the recommendations form page
+   When I check "recommendation_category_film"
+   And I check "recommendation_category_theater"
+   And I press "Submit"
+   Then I should see "BATS Improv Comedy"
+   And I should see "Erickson Theatre"

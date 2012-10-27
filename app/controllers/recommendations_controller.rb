@@ -4,6 +4,15 @@ class RecommendationsController < ApplicationController
   def index
     @title = "Recommended Shows"
     @shows = []
+    categories = []
+    params["recommendation"]["category"].each_pair do |k,v|
+      if v == "1"
+        categories << k
+      end
+    end
+    Category.where(:name => categories).each do |c|
+      @shows += c.shows.to_a
+    end
     # @shows = processed form
     #if logged in
     # save answers/shows
