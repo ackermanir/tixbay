@@ -6,7 +6,7 @@
      <tr>
      <td width="100%" bgcolor="#000000"><div align="center" class="buttons_on" id="pagetitle"><%=  @title %></div>
      </td></tr></table-->
-<h1 id="recommendation_header">Recommendation Form</h1>
+<h1 id="recommendation_header">Custom Recommendations</h1>
 
 <div id="recommendation_welcome">
 Welcome <%= @user %>!<br>
@@ -14,15 +14,30 @@ Please fill out this form so we can help you find shows.
 </div>
 
 <%= form_tag :action => "index" do %>
-<div>
-    <label for="recommendation_location">Location</label>
-    <%= text_field :recommendation, :location %>
-</div>
-<div>
-    <label for="recommendation_genres">Genres</label>
-    <%= text_area :recommendation, :genres, :id => 'genres' %>
-</div>
-<div>
+  <div class="recommendation_input">
+    <div class="recommendation_header recommendation_section">Location</div>
+    <div>
+      <%= text_field :recommendation, :location, :id => "recommendation_location" %>
+    </div>
+  </div>
+  <div class="recommendation_input">
+    <div id="recommendation_category_header" class="recommendation_section recommendation_header">Category</div>
+    <div class="recommendation_section">
+      <label for="recommendation_category_theatredance">
+        <%= check_box 'recommendation', 'theatre & dance', :id => 'recommendation_category_theatredance' %>
+        Theatre & Dance
+      </label>
+      <label for="recommendation_category_music">
+        <%= check_box 'recommendation', 'music', :id => 'recommendation_category_music' %>
+        Music
+      </label>
+      <label for="recommendation_category_film">
+        <%= check_box 'recommendation', 'film', :id => 'recommendation_category_film' %>
+        Film
+      </label>
+    </div>
+  </div>
+  <div class="recommendation_input" id="recommendation_submit">
     <%= submit_tag value="Submit" %>
-</div>
+  </div>
 <% end %>
