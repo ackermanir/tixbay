@@ -1,6 +1,8 @@
 require 'rubygems'
 require 'nokogiri'
 require 'open-uri'
+require 'net/http'
+require 'mathn'
 
 class Show < ActiveRecord::Base
   has_and_belongs_to_many :categories
@@ -16,6 +18,35 @@ class Show < ActiveRecord::Base
       ev = Event.new(event)
       ev.process_event
     end
+  end
+
+  def self.get_closest_shows(shows, location)
+    url = "http://maps.googleapis.com/maps/api/geocode/xml?address="
+    url += (location["street_address"].gsub /\s+/, '+')  + ","
+    url += (location["city"].gsub /\s+/, '+')  + ","
+    url += location["region"] + "+" + location["zip_code"].to_s
+    url +=  "&sensor=true"
+    resp = Net::HTTP.get_response(URI.parse(url))
+    data = resp.body
+    xml_doc = Nokogiri::XML(data)
+    location = xml_doc.xpath("//location")
+    myLat = location.xpath("lat").inner_html.to_f
+    myLong = location.xpath("lng").inner_html.to_f
+
+    result = []
+    shows.each do |s|
+        distance = s.get_distance(myLat, myLong)
+        if distance < 25 
+            result << s
+        end
+    end 
+    result
+  end
+
+  def get_distance(myLat,myLong) 
+     v = Venue.find(self.venue_id)
+     #approximate distance in miles by latitude/longitude degrees
+     Math.sqrt((69*(myLat - v.geocode_latitude))**2 + (69*(myLong - v.geocode_longitude))**2)
   end
 
   #returns formated string of prices specified by whose
