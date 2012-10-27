@@ -5,24 +5,18 @@ class TixbayController < ApplicationController
   def theater 
     theater_category = ['Theater', 'Performing Arts']
     @title = "theater"
-    @shows = []
-    Category.where(:name => theater_category).each do |c|
-      @shows += c.shows.to_a
-    end
+    @shows = Category.shows_from_category(@title)
     render :body
   end
   def music
     music_category = ['Popular Music', 'Jazz', 'Classical', 'Classic Rock']
     @title = "music"
-    @shows = []
-    Category.where(:name => music_category).each do |c|
-      @shows += c.shows.to_a
-    end
+    @shows = Category.shows_from_category(@title)
     render :body
   end
   def film
     @title = "film"
-    @shows = Category.where(:name => 'Film').first.shows
+    @shows = Category.shows_from_category(@title)
     render :body 
   end
   #for now simply call theater
@@ -30,10 +24,7 @@ class TixbayController < ApplicationController
     all_category = ['Theater', 'Performing Arts', 'Popular Music', 'Jazz',
                     'Classical', 'Classic Rock', 'Film']
     @title = "all culture"
-    @shows = []
-    Category.where(:name => all_category).each do |c|
-      @shows += c.shows.to_a
-    end
+    @shows = Category.shows_from_category(@title)
     render :body    
   end
   def preference
