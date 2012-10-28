@@ -13,39 +13,31 @@ class RecommendationsController < ApplicationController
     end
     shows = Category.where(:name => categories)
 
-    #Category.where(:name => categories).each do |c|
-    #  @shows += c.shows.to_a
-    #end
-
     #setup filter by date (only if user put a date)
     filterbydate = true
-    params["startdate"].each_pair do |k,v|
+    params["recommendation"]["startdate"].each_pair do |k,v|
       if v == ""
         filterbydate = false
       end
     end
-    params["enddate"].each_pair do |k,v|
+    params["recommendation"]["enddate"].each_pair do |k,v|
       if v == ""
         filterbydate = false
       end
     end
     if filterbydate == true
-      start_date = DateTime.new(params["startdate"]["year"].to_i, params["startdate"]["month"].to_i, params["startdate"]["day"].to_i)
-      end_date = DateTime.new(params["enddate"]["year"].to_i, params["enddate"]["month"].to_i, params["enddate"]["day"])
+      start_date = DateTime.new(params["recommendation"]["startdate"]["year"].to_i, params["recommendation"]["startdate"]["month"].to_i, params["recommendation"]["startdate"]["day"].to_i)
+      end_date = DateTime.new(params["recommendation"]["enddate"]["year"].to_i, params["recommendation"]["enddate"]["month"].to_i, params["recommendation"]["enddate"]["day"].to_i)
     end
 
 
     #filter by date and category
     Category.where(:name => categories).each do |c|
-      if filterbydate == true
-        @shows += c.shows.filter(start_date..end_date).to_a
-      else
-        @shows += c.shows.to_a
-      end
+      @shows += c.shows.to_a
     end
 
     #filter by location
-    @shows = Show.get_closest_shows(@shows, params["location"])
+    # @shows = Show.get_closest_shows(@shows, params["location"])
 
     #if logged in
     # save answers/shows
