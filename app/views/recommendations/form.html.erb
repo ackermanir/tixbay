@@ -14,15 +14,50 @@ Please fill out this form so we can help you find shows.
 </div>
 
 <%= form_tag :action => "index" do %>
+
   <div class="recommendation_input">
-    <div class="recommendation_header recommendation_section">Location</div>
-    <div>
-      <%= text_field :recommendation, :location, :id => "recommendation_location" %>
+    <div id="recommendation_location_header">Location</div>
+    <div class="recommendation_header recommendation_section">Street Address</div>
+    <div class="recommendation_location_input recommendation_section">
+      <%= text_field 'recommendation[location]', 'street_address' %>
+    </div>
+    <div class="recommendation_header recommendation_section">City</div>
+    <div class="recommendation_location_input recommendation_section">
+      <%= text_field 'recommendation[location]', 'city' %>
+    </div>
+    <div class="recommendation_header recommendation_section">State/Region</div>
+    <div class="recommendation_location_input recommendation_section">
+      <%= text_field 'recommendation[location]', 'region' %>
+    </div>
+    <div class="recommendation_header recommendation_section">Zip Code</div>
+    <div class="recommendation_location_input recommendation_section">
+      <%= text_field 'recommendation[location]', 'zip_code' %>
     </div>
   </div>
+
   <div class="recommendation_input">
-    <div id="recommendation_category_header" class="recommendation_section recommendation_header">Category</div>
-    <div class="recommendation_section">
+    <div id="recommendation_date_header">
+      Dates
+      <span id="date_format">(MM/DD/YYYY)</span>
+    </div>
+    <span>From&nbsp;</span>
+    <%= text_field 'recommendation[startdate]', 'month', :class => 'two_input', :maxlength => 2 %>
+    <span>/</span>
+    <%= text_field 'recommendation[startdate]', 'day', :class => 'two_input', :maxlength => 2 %>
+   <span>/</span>
+   <%= text_field 'recommendation[startdate]', 'year', :class => 'four_input', :maxlength => 4 %>
+   <span>&nbsp;To&nbsp;</span>
+   <%= text_field 'recommendation[enddate]', 'month', :class => 'two_input', :maxlength => 2 %>
+   <span>/</span>
+   <%= text_field 'recommendation[enddate]', 'day', :class => 'two_input', :maxlength => 2 %>
+   <span>/</span>
+   <%= text_field 'recommendation[enddate]', 'year', :class => 'four_input', :maxlength => 4 %>
+
+  </div>
+
+  <div class="recommendation_input">
+    <div id="recommendation_category_header" class="recommendation_header">Category</div>
+    <div>
       <label for="recommendation_category_theater">
         <%= check_box 'recommendation[category]', 'Theater', :id => 'recommendation_category_theater' %>
         Theatre
@@ -51,9 +86,23 @@ Please fill out this form so we can help you find shows.
         <%= check_box 'recommendation[category]', 'Film', :id => 'recommendation_category_film' %>
         Film
       </label>
+      <label for="recommendation_category_comedy">
+        <%= check_box 'recommendation[category]', 'Comedy', :id => 'recommendation_category_comedy' %>
+        Comedy
+      </label>
+      <label for="recommendation_category_family">
+        <%= check_box 'recommendation[category]', 'Family', :id => 'recommendation_category_family' %>
+        Family
+      </label>
+      <label for="recommendation_category_foodsocial">
+        <%= check_box 'recommendation[category]', 'Food & Social', :id => 'recommendation_category_foodsocial' %>
+        Food & Social
+      </label>
     </div>
   </div>
+
   <div class="recommendation_input" id="recommendation_submit">
     <%= submit_tag value="Submit" %>
   </div>
+
 <% end %>

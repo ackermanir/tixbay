@@ -5,7 +5,9 @@ padding-bottom: 30px;
 
 .recommendation_input {
 padding-top: 10px;
-padding-bottom: 10px;
+padding-bottom: 30px;
+width: 100%;
+float: left;
 }
 
 .recommendation_section {
@@ -13,10 +15,43 @@ float: left;
 }
 
 .recommendation_header {
-width: 80px;
+width: 120px;
+clear: left;
 }
 
 #recommendation_submit {
 clear:both;
 padding-top: 45px;
+}
+
+.recommendation_location_input {
+clear: right;
+}
+
+#recommendation_location_header {
+padding-bottom: 20px;
+font-size: 16px;
+}
+
+#recommendation_date_header {
+padding-bottom: 20px;
+font-size: 16px;
+}
+
+#recommendation_category_header {
+padding-bottom: 20px;
+font-size: 16px;
+}
+
+.two_input{
+width: 24px;
+}
+
+.four_input{
+width: 48px;
+}
+
+#date_format{
+font-size:10px;
+padding-left:10px;
 }
