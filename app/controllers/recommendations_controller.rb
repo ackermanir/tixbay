@@ -4,16 +4,18 @@ class RecommendationsController < ApplicationController
     @title = "Recommended Shows"
     @shows = []
 
-    #setup filter by category
+    #filter by category
     categories = []
     params["recommendation"]["category"].each_pair do |k,v|
       if v == "1"
         categories << k
       end
     end
-    shows = Category.where(:name => categories)
+    Category.where(:name => categories).each do |c|
+      @shows += c.shows.to_a
+    end
 
-    #setup filter by date (only if user put a date)
+    #filter by date (only if user put a date)
     filterbydate = true
     params["recommendation"]["startdate"].each_pair do |k,v|
       if v == ""
@@ -30,14 +32,16 @@ class RecommendationsController < ApplicationController
       end_date = DateTime.new(params["recommendation"]["enddate"]["year"].to_i, params["recommendation"]["enddate"]["month"].to_i, params["recommendation"]["enddate"]["day"].to_i)
     end
 
-
-    #filter by date and category
-    Category.where(:name => categories).each do |c|
-      @shows += c.shows.to_a
-    end
-
     #filter by location
-    # @shows = Show.get_closest_shows(@shows, params["location"])
+    filterbylocation = false
+    params["recommendation"]["location"].each do |k,v|
+      if v != ""
+        filterbylocation = true
+      end
+    end
+    if filterbylocation == true
+      @shows = Show.get_closest_shows(@shows, params["recommendation"]["location"])
+    end
 
     #if logged in
     # save answers/shows
