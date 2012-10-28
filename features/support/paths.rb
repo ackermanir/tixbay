@@ -19,6 +19,8 @@ module NavigationHelpers
       '/tixbay/film'
     when /^the music page$/
       '/tixbay/music'
+    when /^the recommendations form page$/
+      '/recommendations/form'
     when /^the all culture page$/
       '/tixbay/all_culture'
     # Add more mappings here.

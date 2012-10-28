@@ -1,0 +1,108 @@
+<% content_for :navbar do %>
+<% render "tixbay/navbar" #render navbar partials here%>
+<% end %>
+
+<!--table width="100%" border="0" cellpadding="0" cellspacing="8" bgcolor="#C00000">
+     <tr>
+     <td width="100%" bgcolor="#000000"><div align="center" class="buttons_on" id="pagetitle"><%=  @title %></div>
+     </td></tr></table-->
+<h1 id="recommendation_header">Custom Recommendations</h1>
+
+<div id="recommendation_welcome">
+Welcome <%= @user %>!<br>
+Please fill out this form so we can help you find shows.
+</div>
+
+<%= form_tag :action => "index" do %>
+
+  <div class="recommendation_input">
+    <div id="recommendation_location_header">Location</div>
+    <div class="recommendation_header recommendation_section">Street Address</div>
+    <div class="recommendation_location_input recommendation_section">
+      <%= text_field 'recommendation[location]', 'street_address' %>
+    </div>
+    <div class="recommendation_header recommendation_section">City</div>
+    <div class="recommendation_location_input recommendation_section">
+      <%= text_field 'recommendation[location]', 'city' %>
+    </div>
+    <div class="recommendation_header recommendation_section">State/Region</div>
+    <div class="recommendation_location_input recommendation_section">
+      <%= text_field 'recommendation[location]', 'region' %>
+    </div>
+    <div class="recommendation_header recommendation_section">Zip Code</div>
+    <div class="recommendation_location_input recommendation_section">
+      <%= text_field 'recommendation[location]', 'zip_code' %>
+    </div>
+  </div>
+
+  <div class="recommendation_input">
+    <div id="recommendation_date_header">
+      Dates
+      <span id="date_format">(MM/DD/YYYY)</span>
+    </div>
+    <span>From&nbsp;</span>
+    <%= text_field 'recommendation[startdate]', 'month', :class => 'two_input', :maxlength => 2 %>
+    <span>/</span>
+    <%= text_field 'recommendation[startdate]', 'day', :class => 'two_input', :maxlength => 2 %>
+   <span>/</span>
+   <%= text_field 'recommendation[startdate]', 'year', :class => 'four_input', :maxlength => 4 %>
+   <span>&nbsp;To&nbsp;</span>
+   <%= text_field 'recommendation[enddate]', 'month', :class => 'two_input', :maxlength => 2 %>
+   <span>/</span>
+   <%= text_field 'recommendation[enddate]', 'day', :class => 'two_input', :maxlength => 2 %>
+   <span>/</span>
+   <%= text_field 'recommendation[enddate]', 'year', :class => 'four_input', :maxlength => 4 %>
+
+  </div>
+
+  <div class="recommendation_input">
+    <div id="recommendation_category_header" class="recommendation_header">Category</div>
+    <div>
+      <label for="recommendation_category_theater">
+        <%= check_box 'recommendation[category]', 'Theater', :id => 'recommendation_category_theater' %>
+        Theatre
+      </label>
+      <label for="recommendation_category_performingarts">
+        <%= check_box 'recommendation[category]', 'Performing Arts', :id => 'recommendation_category_performingarts' %>
+        Performing Arts
+      </label>
+      <label for="recommendation_category_popularmusic">
+        <%= check_box 'recommendation[category]', 'Popular Music', :id => 'recommendation_category_popularmusic' %>
+        Popular Music
+      </label>
+      <label for="recommendation_category_jazz">
+        <%= check_box 'recommendation[category]', 'Jazz', :id => 'recommendation_category_jazz' %>
+        Jazz
+      </label>
+      <label for="recommendation_category_classical">
+        <%= check_box 'recommendation[category]', 'Classical', :id => 'recommendation_category_classical' %>
+        Classical
+      </label>
+      <label for="recommendation_category_classicrock">
+        <%= check_box 'recommendation[category]', 'Classic Rock', :id => 'recommendation_category_classicrock' %>
+        Classic Rock
+      </label>
+      <label for="recommendation_category_film">
+        <%= check_box 'recommendation[category]', 'Film', :id => 'recommendation_category_film' %>
+        Film
+      </label>
+      <label for="recommendation_category_comedy">
+        <%= check_box 'recommendation[category]', 'Comedy', :id => 'recommendation_category_comedy' %>
+        Comedy
+      </label>
+      <label for="recommendation_category_family">
+        <%= check_box 'recommendation[category]', 'Family', :id => 'recommendation_category_family' %>
+        Family
+      </label>
+      <label for="recommendation_category_foodsocial">
+        <%= check_box 'recommendation[category]', 'Food & Social', :id => 'recommendation_category_foodsocial' %>
+        Food & Social
+      </label>
+    </div>
+  </div>
+
+  <div class="recommendation_input" id="recommendation_submit">
+    <%= submit_tag value="Submit" %>
+  </div>
+
+<% end %>
