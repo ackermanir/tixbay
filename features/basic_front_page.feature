@@ -39,3 +39,10 @@ Scenario: filter "film" shows
   And I press the "film" tab
   Then I should be on the film page
   And I should see "film" shows
+
+Scenario: filter "all culture" shows
+  And I press the "all culture" tab
+  Then I should be on the all culture page
+  And I should see "film" shows
+  And I should see "music" shows
+  And I should see "theater" shows
