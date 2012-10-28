@@ -9,4 +9,10 @@ Background: shows have been added to the database
   Given the database has been setup from xml
   And I am on the home page
 
-Scenario: #not actually sure how to write these yet
+Scenario: show only 10 listings
+  Then I should see only 10 listings
+
+Scenario: show more listings when scroll to the bottom
+  And my cursor hovers to the bottom of the page
+  Then I should see 20 listings
+
