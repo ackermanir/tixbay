@@ -21,6 +21,8 @@ module NavigationHelpers
       '/tixbay/music'
     when /^the recommendations form page$/
       '/recommendations/form'
+    when /^the all culture page$/
+      '/tixbay/all_culture'
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #
