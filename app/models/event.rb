@@ -86,14 +86,14 @@ class Event
     else
       result = (text.
                 match(/\$(\S*)\s*/)[1].
-                to_f * 100).round
+                to_f * 100).round.to_i
     end
     elt_symbol = "#{elt_name}_low".to_sym
     hash[elt_symbol] = result
     if (text =~ /\s\$(\S*)/)
       result = (text.
                 match(/\s\$(\S*)/)[1].
-                to_f * 100).round
+                to_f * 100).round.to_i
     end
     elt_symbol = "#{elt_name}_high".to_sym
     hash[elt_symbol] = result
