@@ -53,6 +53,7 @@ class Show < ActiveRecord::Base
   def price_format(whose)
     #Helper method
     def cent_string(cents)
+      cents = cents.to_i
       if cents == 0
         return "Free"
       elsif cents == -1
@@ -62,7 +63,7 @@ class Show < ActiveRecord::Base
       if output.length != 2
         output += '0'
       end
-      output = "$" + (cents / 100).to_s + "." + output
+      output = "$" + (cents / 100).floor.to_s + "." + output
       return output
     end
 
