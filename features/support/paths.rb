@@ -19,6 +19,8 @@ module NavigationHelpers
       '/tixbay/film'
     when /^the music page$/
       '/tixbay/music'
+    when /^the similar shows page with id "(.+)"$/
+      '/tixbay/'+$1+'/similarshows'
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #
