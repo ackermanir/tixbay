@@ -8,6 +8,7 @@ Background: Set the testing database with values
   Given the database has been setup with similarshows.xml
   And I am on the home page
 
+@wip
 Scenario: Click on a show to redirect to the similarshow for Cirque de Soleil
   # Update to pick link under theater & dance for Cirque de Soleil
   #This link hasn't been set up yet
@@ -23,7 +24,8 @@ Scenario: Click on a show to redirect to the similarshow for Cirque de Soleil
   #A similar Show
   And I should see "Memphis"
   And I should see "he man who first spun the music of black and white musicians together on American radio"
-
+ 
+@wip
 Scenario: When I click on a show in the similarshow table, I should be redirected to a new similarshow page for that show
   Given that I am on the similar shows page with id "2"
   #At the moment, this link hasn't been set up
@@ -33,6 +35,7 @@ Scenario: When I click on a show in the similarshow table, I should be redirecte
   And I should see "Memphis"
   And I should see "the man who first spun the music of black and white musicians together on American radio"
 
+@wip
 Scenario: Being on a similarshow page, I should still be able to purchase tickets
   Given that I am on the similar shows page with id "2"
   When I press "Purchase Ticket"
