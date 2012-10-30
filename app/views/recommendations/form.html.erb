@@ -16,27 +16,105 @@ Please fill out this form so we can help you find shows.
 <%= form_tag :action => "index" do %>
 
   <div class="recommendation_input">
-    <div id="recommendation_location_header">Location</div>
-    <div class="recommendation_header recommendation_section">Street Address</div>
+    <div class="recommendation_header">What type of cultural event are you looking for?<span id="select_all">Select all that apply.</span></div>
+    <div class="recommendation_keyword">Theatre</div>
+    <div class="recommendation_keyword_options">
+      <label for="recommendation_keyword_comedy">
+      <%= check_box 'recommendation[keyword]', 'Comedy', :id => 'recommendation_keyword_comedy' %>
+      Comedy</label>
+      <label for="recommendation_keyword_drama">
+        <%= check_box 'recommendation[keyword]', 'Drama', :id => 'recommendation_keyword_drama' %>
+        Drama
+      </label>
+      <label for="recommendation_keyword_tragedy">
+        <%= check_box 'recommendation[keyword]', 'Tragedy', :id => 'recommendation_keyword_tragedy' %>
+        Tragedy
+      </label>
+      <label for="recommendation_keyword_musical">
+      <%= check_box 'recommendation[keyword]', 'Musical', :id => 'recommendation_keyword_musical' %>
+      Musical
+      </label>
+      <label for="recommendation_keyword_solo">
+      <%= check_box 'recommendation[keyword]', 'Solo', :id => 'recommendation_keyword_solo' %>
+     Solo
+      </label>
+    </div>
+    <div class="recommendation_keyword">Music</div>
+      <label for="recommendation_keyword_jazz">
+      <%= check_box 'recommendation[keyword]', 'Jazz', :id => 'recommendation_keyword_jazz' %>
+        Jazz
+      </label>
+      <label for="recommendation_keyword_cabaret">
+      <%= check_box 'recommendation[keyword]', 'Cabaret', :id => 'recommendation_keyword_cabaret' %>
+      Cabaret
+      </label>
+      <label for="recommendation_keyword_classical">
+      <%= check_box 'recommendation[keyword]', 'Classical', :id => 'recommendation_keyword_classical' %>
+      Classical
+     </label>
+      <label for="recommendation_keyword_indierock">
+      <%= check_box 'recommendation[keyword]', 'Indie-Rock', :id => 'recommendation_keyword_indierock' %>
+      Indie-Rock
+      </label>
+    <div class="recommendation_keyword">Film</div>
+      <label for="recommendation_keyword_animated">
+      <%= check_box 'recommendation[keyword]', 'Animated', :id => 'recommendation_keyword_animated' %>
+       Animated
+      </label>
+      <label for="recommendation_keyword_documentary">
+      <%= check_box 'recommendation[keyword]', 'Documentary', :id => 'recommendation_keyword_documentary' %>
+      Documentary
+      </label>
+      <label for="recommendation_keyword_silent">
+      <%= check_box 'recommendation[keyword]', 'Silent', :id => 'recommendation_keyword_silent' %>
+      Silent
+      </label>
+      <label for="recommendation_keyword_festival">
+      <%= check_box 'recommendation[keyword]', 'Festival', :id => 'recommendation_keyword_festival' %>
+      Festival
+      </label>
+      <label for="recommendation_keyword_short">
+      <%= check_box 'recommendation[keyword]', 'Short', :id => 'recommendation_keyword_short' %>
+      Short
+      </label>
+      <label for="recommendation_keyword_drivein">
+      <%= check_box 'recommendation[keyword]', 'Drive-In', :id => 'recommendation_keyword_drivein' %>
+      Drive-In
+      </label>
+      <label for="recommendation_keyword_classic">
+      <%= check_box 'recommendation[keyword]', 'Classic', :id => 'recommendation_keyword_classic' %>
+     Classic
+     </label>
+      <label for="recommendation_keyword_scifi">
+      <%= check_box 'recommendation[keyword]', 'Sci-Fi', :id => 'recommendation_keyword_scifi' %>
+      Sci-Fi
+      </label>
+    <div class="recommendation_keyword">Premiere</div>
+    <div class="recommendation_keyword">Family</div>
+  </div>
+
+  <div class="recommendation_input">
+    <div class="recommendation_header">Where do you live?</div>
+    <div class="recommendation_label recommendation_section">Street Address</div>
     <div class="recommendation_location_input recommendation_section">
       <%= text_field 'recommendation[location]', 'street_address' %>
     </div>
-    <div class="recommendation_header recommendation_section">City</div>
+    <div class="recommendation_label recommendation_section">City</div>
     <div class="recommendation_location_input recommendation_section">
       <%= text_field 'recommendation[location]', 'city' %>
     </div>
-    <div class="recommendation_header recommendation_section">State/Region</div>
+    <div class="recommendation_label recommendation_section">State/Region</div>
     <div class="recommendation_location_input recommendation_section">
       <%= text_field 'recommendation[location]', 'region' %>
     </div>
-    <div class="recommendation_header recommendation_section">Zip Code</div>
+    <div class="recommendation_label recommendation_section">Zip Code</div>
     <div class="recommendation_location_input recommendation_section">
       <%= text_field 'recommendation[location]', 'zip_code' %>
     </div>
   </div>
 
   <div class="recommendation_input">
-    <div id="recommendation_date_header">
+    <div class="recommendation_header">
       Dates
       <span id="date_format">(MM/DD/YYYY)</span>
     </div>
@@ -56,7 +134,19 @@ Please fill out this form so we can help you find shows.
   </div>
 
   <div class="recommendation_input">
-    <div id="recommendation_category_header" class="recommendation_header">Category</div>
+    <div class="recommendation_header">How far are you willing to go for culture?</div>
+    <%= text_field 'reccomendation', 'distance', :id => 'recommendation_distance' %>
+  <span>miles</span>
+  </div>
+
+  <div class="recommendation_input">
+    <div class="recommendation_header">How much are you willing to spend per ticket?<span id="max">&nbsp&nbsp(Maximum)</div>
+    <span>$</span>
+    <%= text_field 'recommendation', 'maxprice', :id => 'recommendation_maxprice' %>
+  </div>
+
+  <div class="recommendation_input">
+    <div class="recommendation_header">What categories of culture are you interested in?</div>
     <div>
       <label for="recommendation_category_theater">
         <%= check_box 'recommendation[category]', 'Theater', :id => 'recommendation_category_theater' %>

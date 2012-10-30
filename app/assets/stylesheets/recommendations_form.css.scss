@@ -14,7 +14,7 @@ float: left;
 float: left;
 }
 
-.recommendation_header {
+.recommendation_label {
 width: 120px;
 clear: left;
 }
@@ -33,14 +33,9 @@ padding-bottom: 20px;
 font-size: 16px;
 }
 
-#recommendation_date_header {
+.recommendation_header {
 padding-bottom: 20px;
-font-size: 16px;
-}
-
-#recommendation_category_header {
-padding-bottom: 20px;
-font-size: 16px;
+font-weight: bold;
 }
 
 .two_input{
@@ -54,4 +49,17 @@ width: 48px;
 #date_format{
 font-size:10px;
 padding-left:10px;
+font-weight: normal;
+}
+
+#recommendation_distance{
+width: 40px;
+}
+
+#recommendation_maxprice{
+width:40px;
+}
+
+#max{
+font-weight: normal;
 }
