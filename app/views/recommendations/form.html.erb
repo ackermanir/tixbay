@@ -16,24 +16,28 @@ Please fill out this form so we can help you find shows.
 <%= form_tag :action => "index" do %>
 
   <div class="recommendation_input">
+
     <div class="recommendation_header">What type of cultural event are you looking for?<span id="select_all">&nbspSelect all that apply.</span></div>
+
     <div class="any_or_all">
       <div class="recommendation_select_options">
-      <label for="recommendation_select_any">
-      <%= radio_button 'recommendation[select]', 'any', :id => 'recommendation_select_any' %>
-      Show results with any word
-      </label>
-      <label for="recommendation_select_all">
-      <%= radio_button 'recommendationpselect]', 'all', :id => 'recommendation_select_all' %>
-      Show results with all words
-      </label>
+        <label for="recommendation_select_any">
+          <%= radio_button 'recommendation[select]', 'any', :id => 'recommendation_select_any' %>
+          Show results with any word
+        </label>
+        <label for="recommendation_select_all">
+          <%= radio_button 'recommendationpselect]', 'all', :id => 'recommendation_select_all' %>
+          Show results with all words
+        </label>
      </div>
-    </div>
+   </div>
+
     <div class="recommendation_keyword">Theatre</div>
     <div class="recommendation_keyword_options">
       <label for="recommendation_keyword_comedy">
-      <%= check_box 'recommendation[keyword]', 'Comedy', :id => 'recommendation_keyword_comedy' %>
-      Comedy</label>
+        <%= check_box 'recommendation[keyword]', 'Comedy', :id => 'recommendation_keyword_comedy' %>
+        Comedy
+      </label>
       <label for="recommendation_keyword_drama">
         <%= check_box 'recommendation[keyword]', 'Drama', :id => 'recommendation_keyword_drama' %>
         Drama
@@ -43,97 +47,101 @@ Please fill out this form so we can help you find shows.
         Tragedy
       </label>
       <label for="recommendation_keyword_musical">
-      <%= check_box 'recommendation[keyword]', 'Musical', :id => 'recommendation_keyword_musical' %>
-      Musical
+        <%= check_box 'recommendation[keyword]', 'Musical', :id => 'recommendation_keyword_musical' %>
+        Musical
       </label>
       <label for="recommendation_keyword_solo">
-      <%= check_box 'recommendation[keyword]', 'Solo', :id => 'recommendation_keyword_solo' %>
-     Solo
+        <%= check_box 'recommendation[keyword]', 'Solo', :id => 'recommendation_keyword_solo' %>
+        Solo
       </label>
     </div>
+
     <div class="recommendation_keyword">Music</div>
     <div class="recommendation_keyword_options">
       <label for="recommendation_keyword_jazz">
-      <%= check_box 'recommendation[keyword]', 'Jazz', :id => 'recommendation_keyword_jazz' %>
+        <%= check_box 'recommendation[keyword]', 'Jazz', :id => 'recommendation_keyword_jazz' %>
         Jazz
       </label>
       <label for="recommendation_keyword_cabaret">
-      <%= check_box 'recommendation[keyword]', 'Cabaret', :id => 'recommendation_keyword_cabaret' %>
-      Cabaret
+        <%= check_box 'recommendation[keyword]', 'Cabaret', :id => 'recommendation_keyword_cabaret' %>
+        Cabaret
       </label>
       <label for="recommendation_keyword_classical">
-      <%= check_box 'recommendation[keyword]', 'Classical', :id => 'recommendation_keyword_classical' %>
-      Classical
-     </label>
+        <%= check_box 'recommendation[keyword]', 'Classical', :id => 'recommendation_keyword_classical' %>
+        Classical
+      </label>
       <label for="recommendation_keyword_indierock">
-      <%= check_box 'recommendation[keyword]', 'Indie-Rock', :id => 'recommendation_keyword_indierock' %>
-      Indie-Rock
+        <%= check_box 'recommendation[keyword]', 'Indie-Rock', :id => 'recommendation_keyword_indierock' %>
+        Indie-Rock
       </label>
     </div>
+
     <div class="recommendation_keyword">Film</div>
     <div class="recommendation_keyword_options">
       <label for="recommendation_keyword_animated">
-      <%= check_box 'recommendation[keyword]', 'Animated', :id => 'recommendation_keyword_animated' %>
-       Animated
+        <%= check_box 'recommendation[keyword]', 'Animated', :id => 'recommendation_keyword_animated' %>
+        Animated
       </label>
       <label for="recommendation_keyword_documentary">
-      <%= check_box 'recommendation[keyword]', 'Documentary', :id => 'recommendation_keyword_documentary' %>
-      Documentary
+        <%= check_box 'recommendation[keyword]', 'Documentary', :id => 'recommendation_keyword_documentary' %>
+        Documentary
       </label>
       <label for="recommendation_keyword_silent">
-      <%= check_box 'recommendation[keyword]', 'Silent', :id => 'recommendation_keyword_silent' %>
-      Silent
+        <%= check_box 'recommendation[keyword]', 'Silent', :id => 'recommendation_keyword_silent' %>
+        Silent
       </label>
       <label for="recommendation_keyword_festival">
-      <%= check_box 'recommendation[keyword]', 'Festival', :id => 'recommendation_keyword_festival' %>
-      Festival
+        <%= check_box 'recommendation[keyword]', 'Festival', :id => 'recommendation_keyword_festival' %>
+        Festival
       </label>
       <label for="recommendation_keyword_short">
-      <%= check_box 'recommendation[keyword]', 'Short', :id => 'recommendation_keyword_short' %>
-      Short
+        <%= check_box 'recommendation[keyword]', 'Short', :id => 'recommendation_keyword_short' %>
+        Short
       </label>
       <label for="recommendation_keyword_drivein">
-      <%= check_box 'recommendation[keyword]', 'Drive-In', :id => 'recommendation_keyword_drivein' %>
-      Drive-In
+        <%= check_box 'recommendation[keyword]', 'Drive-In', :id => 'recommendation_keyword_drivein' %>
+        Drive-In
       </label>
       <label for="recommendation_keyword_classic">
-      <%= check_box 'recommendation[keyword]', 'Classic', :id => 'recommendation_keyword_classic' %>
-     Classic
-     </label>
+        <%= check_box 'recommendation[keyword]', 'Classic', :id => 'recommendation_keyword_classic' %>
+        Classic
+      </label>
       <label for="recommendation_keyword_scifi">
-      <%= check_box 'recommendation[keyword]', 'Sci-Fi', :id => 'recommendation_keyword_scifi' %>
-      Sci-Fi
+        <%= check_box 'recommendation[keyword]', 'Sci-Fi', :id => 'recommendation_keyword_scifi' %>
+        Sci-Fi
       </label>
     </div>
+
     <div class="recommendation_keyword">Other</div>
     <div class="recommendation_keyword_options">
       <label for="recommendation_keyword_premiere">
-      <%= check_box 'recommendation[keyword]', 'Premiere', :id => 'recommendation_keyword_premiere' %>
-      Premiere
+        <%= check_box 'recommendation[keyword]', 'Premiere', :id => 'recommendation_keyword_premiere' %>
+        Premiere
       </label>
      <label for="recommendation_keyword_family">
-     <%= check_box 'recommendation[keyword]', 'Family', :id => 'recommendation_keyword_family' %>
-     Family
+       <%= check_box 'recommendation[keyword]', 'Family', :id => 'recommendation_keyword_family' %>
+       Family
      </label>
    </div>
+
   </div>
 
   <div class="recommendation_input">
     <div class="recommendation_header">Where do you live?</div>
-    <div class="recommendation_label recommendation_section">Street Address</div>
-    <div class="recommendation_location_input recommendation_section">
+    <div class="recommendation_location_label recommendation_location">Street Address</div>
+    <div class="recommendation_location_input recommendation_location">
       <%= text_field 'recommendation[location]', 'street_address' %>
     </div>
-    <div class="recommendation_label recommendation_section">City</div>
-    <div class="recommendation_location_input recommendation_section">
+    <div class="recommendation_location_label recommendation_location">City</div>
+    <div class="recommendation_location_input recommendation_location">
       <%= text_field 'recommendation[location]', 'city' %>
     </div>
-    <div class="recommendation_label recommendation_section">State/Region</div>
-    <div class="recommendation_location_input recommendation_section">
+    <div class="recommendation_location_label recommendation_location">State/Region</div>
+    <div class="recommendation_location_input recommendation_location">
       <%= text_field 'recommendation[location]', 'region' %>
     </div>
-    <div class="recommendation_label recommendation_section">Zip Code*</div>
-    <div class="recommendation_location_input recommendation_section">
+    <div class="recommendation_location_label recommendation_location">Zip Code*</div>
+    <div class="recommendation_location_input recommendation_location">
       <%= text_field 'recommendation[location]', 'zip_code' %>
     </div>
   </div>
@@ -147,21 +155,20 @@ Please fill out this form so we can help you find shows.
     <%= text_field 'recommendation[startdate]', 'month', :class => 'two_input', :maxlength => 2 %>
     <span>/</span>
     <%= text_field 'recommendation[startdate]', 'day', :class => 'two_input', :maxlength => 2 %>
-   <span>/</span>
-   <%= text_field 'recommendation[startdate]', 'year', :class => 'four_input', :maxlength => 4 %>
-   <span>&nbsp;To&nbsp;</span>
-   <%= text_field 'recommendation[enddate]', 'month', :class => 'two_input', :maxlength => 2 %>
-   <span>/</span>
-   <%= text_field 'recommendation[enddate]', 'day', :class => 'two_input', :maxlength => 2 %>
-   <span>/</span>
-   <%= text_field 'recommendation[enddate]', 'year', :class => 'four_input', :maxlength => 4 %>
-
+    <span>/</span>
+    <%= text_field 'recommendation[startdate]', 'year', :class => 'four_input', :maxlength => 4 %>
+    <span>&nbsp;To&nbsp;</span>
+    <%= text_field 'recommendation[enddate]', 'month', :class => 'two_input', :maxlength => 2 %>
+    <span>/</span>
+    <%= text_field 'recommendation[enddate]', 'day', :class => 'two_input', :maxlength => 2 %>
+    <span>/</span>
+    <%= text_field 'recommendation[enddate]', 'year', :class => 'four_input', :maxlength => 4 %>
   </div>
 
   <div class="recommendation_input">
     <div class="recommendation_header">How far are you willing to go for culture?</div>
     <%= text_field 'reccomendation', 'distance', :id => 'recommendation_distance' %>
-  <span>miles</span>
+    <span>miles</span>
   </div>
 
   <div class="recommendation_input">
