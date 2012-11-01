@@ -23,6 +23,8 @@ module NavigationHelpers
       '/recommendations/form'
     when /^the all culture page$/
       '/tixbay/all_culture'
+    when /^the similar shows page with id "(.+)"$/
+      '/tixbay/'+$1+'/similarshows'
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #

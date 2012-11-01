@@ -4,6 +4,8 @@ Tixbay::Application.routes.draw do
   root :to => 'tixbay#theater'
   match ':controller/:action/'
   resources :tixbay
+  #  resources :similarshows
+  #end
   #match 'tixbay/' => 'tixbay/theater'
   
   # Sample of regular route:
