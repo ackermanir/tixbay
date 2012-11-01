@@ -19,7 +19,7 @@
 	</form>
   <% end %>
 
-  <% @shows.each do |s| %>
+  <% for s in @shows %>
   <div class="show">
   <%= image_tag s.image_url, "width"=>"35%" %>
   <p class="evTitle"><%= s.title %>
@@ -34,4 +34,6 @@
   <!--<p><a class="similarshows btn btn-danger" id="similarshows" href="tixbay_similarshows_path">Similar Shows</a>-->
   </div>
   <hr/>
-<% end %>
+  <% end %>
+
+  <%= will_paginate @shows %>

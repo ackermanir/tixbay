@@ -1,3 +1,5 @@
+require 'will_paginate'
+
 class TixbayController < ApplicationController
   def index
     redirect_to :action => :theater
@@ -6,17 +8,20 @@ class TixbayController < ApplicationController
     theater_category = ['Theater', 'Performing Arts']
     @title = "theater"
     @shows = Category.shows_from_category(@title)
+    @shows = Show.paginate(:page => params[:page], :per_page => 10)
     render :body
   end
   def music
     music_category = ['Popular Music', 'Jazz', 'Classical', 'Classic Rock']
     @title = "music"
     @shows = Category.shows_from_category(@title)
+    @shows = Show.paginate(:page => params[:page], :per_page => 10)
     render :body
   end
   def film
     @title = "film"
     @shows = Category.shows_from_category(@title)
+    @shows = Show.paginate(:page => params[:page], :per_page => 10)
     render :body 
   end
   #for now simply call theater
@@ -25,6 +30,7 @@ class TixbayController < ApplicationController
                     'Classical', 'Classic Rock', 'Film']
     @title = "all culture"
     @shows = Category.shows_from_category(@title)
+    @shows = Show.paginate(:page => params[:page], :per_page => 10)
     render :body    
   end
   def preference
