@@ -16,13 +16,13 @@ module NavigationHelpers
     when /^the home\s?page$/
       '/'
     when /^the film page$/
-      '/tixbay/film'
+      '/category/film'
     when /^the music page$/
-      '/tixbay/music'
+      '/category/music'
     when /^the all culture page$/
-      '/tixbay/all_culture'
-    when /^the similar shows page with id "(.+)"$/
-      '/tixbay/'+$1+'/similarshows'
+      '/category/all_culture'
+    when /^the show page with id "(.+)"$/
+      '/show/'+$1
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #
