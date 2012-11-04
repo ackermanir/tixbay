@@ -16,6 +16,10 @@ class Show < ActiveRecord::Base
     {:conditions => ["our_price_range_low <= ?", price]} }
   scope :in_categories, lambda { |categories|
     {:conditions => {'categories.name' => categories}} }
+  scope :date_later, lambda { |start_date|
+    {:conditions => ["showtimes.date_time >= ?", start_date]} }
+  scope :date_earlier, lambda { |end_date|
+    {:conditions => ["showtimes.date_time <= ?", end_date]} }
 
   #Method to call to parse all xml listings and add to database
   def self.fill_from_xml(location = File.join(Rails.root, "app", 
@@ -61,7 +65,8 @@ class Show < ActiveRecord::Base
 Filters and order of application:
   Query search:
     Price Range - Default to free through infinite or [0, -1]
-    Category ID - Hard filtering, all optional, default to all categories
+    Category ID - Filtering removes non-matching, default to all categories
+    Dates - Shows between date range, defaults starting from today
   Done on array of shows:
     Address - hash with 'street_address', 'city', 'region', and 'zip_code',
               zip code the only thing necessary
@@ -70,13 +75,17 @@ Filters and order of application:
 
 Defaults to recommending all shows
 """
-  def self.recommendShows(price_range = [0, -1], 
-                          categories = Category.all_categories,
-                          location = nil, 
-                          distance = 10,
-                          keywords = [])
+  def self.recommend_shows(price_range = [0, -1], 
+                           categories = Category.all_categories,
+                           dates = [DateTime.current, nil],
+                           location = nil, 
+                           distance = 10,
+                           keywords = [])
     #Filter based on price and categories
-    shows = Show.price_greater(price_range[0])
+    shows = Show.price_greater(price_range[0]).
+      joins(:showtimes).date_later(dates[0])
+    shows = shows.date_earlier(dates[1]) unless not dates[1]
+    
     shows = shows.price_lower(price_range[1]) unless price_range[1] == -1
     shows = shows.joins(:categories).in_categories(categories)
     shows = shows.all

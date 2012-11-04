@@ -46,22 +46,28 @@ describe Show do
     end
   end
 
-  describe "self.recommendShows" do
-    it "handles having no upper price bound" do
+  describe "self.recommend_shows" do
+    it "handles having no upper price bound or date end" do
       Show.stub(:price_greater).and_return(Show)
       Show.should_not_receive(:price_lower).with(-1)
       Show.stub(:joins).and_return(Show)
+      Show.stub(:date_later).and_return(Show)
+      Show.should_not_receive(:date_earlier).with(nil)
       Show.stub(:in_categories).and_return(Show)
-      Show.recommendShows
+      Show.recommend_shows
     end
     it "filters based on location and upper bound price" do
       Show.stub(:price_greater).and_return(Show)
       Show.should_receive(:price_lower).with(100).and_return(Show)
       Show.stub(:joins).and_return(Show)
       Show.stub(:in_categories).and_return(Show)
+      Show.stub(:date_later).and_return(Show)
       Show.stub(:all).and_return([])
       Show.should_receive(:get_closest_shows).with([], "look")
-      Show.recommendShows([0, 100], Category.all_categories, "look", 20)
+      Show.recommend_shows([0, 100], 
+                          [DateTime.current, nil],
+                          Category.all_categories, 
+                          "look", 20)
     end
   end
 
