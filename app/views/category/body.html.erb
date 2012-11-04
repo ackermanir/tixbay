@@ -1,0 +1,37 @@
+<% content_for :navbar do %>
+<% render "navbar" #render navbar partials here%>
+<% end %>
+
+<!--title -->
+<table width="100%" border="0" cellpadding="0" cellspacing="8" bgcolor="#C00000">
+     <tr>
+     <td width="100%" bgcolor="#000000"><div align="center" class="buttons_on" id="pagetitle"><%=  @title %></div>
+     </td></tr></table>
+
+  <% if @location %>
+	<br/>
+	<form action="/category/preference" method="get" class="form-inline well">	
+ 	<input type="text" name="street_address" value="<%= @location['street_address'] %>"/> 
+ 	<input class="input-small" type="text" name="city" value="<%= @location['city'] %>"/> 
+ 	<input class="input-small" type="text" name="region" value="<%= @location['region'] %>"/> 
+ 	<input class="input-small" type="text" name="zip_code" value="<%= @location['zip_code'] %>"/> 
+	<input type="submit" />
+	</form>
+  <% end %>
+
+  <% @shows.each do |s| %>
+  <div class="show">
+  <%= image_tag s.image_url, "width"=>"35%" %>
+  <p class="evTitle"><%= s.title %>
+  <p><%= s.headline %>
+  <p><b>Availible Dates:</b><%= s.date_string %>
+  <p><a class="venue_link" href="<%= s.venue.link %>"><%= s.venue.name %></a><br>
+    <span class ="venue_address"><%= s.venue.full_address %>
+  <p><%= s.summary %>
+  <p class="pricing">Full Price: <span class ="prices"><%= s.price_format('ours') %>
+  <p class="pricing">Goldstar Price: <span class ="prices"><%= s.price_format('full') %>
+  <p><a class="buytickets btn btn-danger" id="<%=s.id %>" href="<%= s.link %>">Purchase Tickets</a>
+  <!--<p><a class="similarshows btn btn-danger" id="similarshows" href="category_similarshows_path">Similar Shows</a>-->
+  </div>
+  <hr/>
+<% end %>
