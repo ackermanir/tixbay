@@ -77,7 +77,7 @@ Defaults to recommending all shows
 """
   def self.recommend_shows(price_range = [0, -1], 
                            categories = Category.all_categories,
-                           dates = [DateTime.current, nil],
+                           dates = [DateTime.now, nil],
                            location = nil, 
                            distance = 10,
                            keywords = [])
@@ -92,7 +92,7 @@ Defaults to recommending all shows
 
     #TODO Pass in distance as well
     shows = Show.get_closest_shows(shows, location) unless not location
-    return shows
+    return shows.uniq
   end
 
 """
@@ -110,8 +110,10 @@ How it chooses similarity:
     end
     price_range = [our_price_range_low * 0.8, our_price_range_high * 1.2]
     location = venue.location_hash
-    shows = Show.recommendShows(price_range, category, location, 20)
-    return shows - [self]
+    shows = Show.recommend_shows(price_range, category,
+                                 [DateTime.now, nil],
+                                 location, 20)
+    return (shows - [self]).uniq
   end
 
   #returns formated string of prices specified by whose

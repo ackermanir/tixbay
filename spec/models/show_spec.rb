@@ -63,18 +63,19 @@ describe Show do
       Show.stub(:in_categories).and_return(Show)
       Show.stub(:date_later).and_return(Show)
       Show.stub(:all).and_return([])
-      Show.should_receive(:get_closest_shows).with([], "look")
+      Show.should_receive(:get_closest_shows).with([], "look").and_return([])
       Show.recommend_shows([0, 100], 
-                          [DateTime.current, nil],
-                          Category.all_categories, 
-                          "look", 20)
+                           Category.all_categories,
+                           [DateTime.now, nil], 
+                           "look", 20)
     end
   end
 
   describe "similar_shows" do
     it "calls recommend with correct arguments" do
       s = Show.new
-      c1, c2 = mock('category')
+      c1 = mock('category')
+      c2 = mock('category')
       c1.stub(:name).and_return('Film')
       c2.stub(:name).and_return('Food')
       s.stub(:categories).and_return([c1, c2])
@@ -83,8 +84,12 @@ describe Show do
       v = mock('venue')
       v.stub(:location_hash).and_return("loc")
       s.stub(:venue).and_return(v)
-      Show.should_receive(:recommendShows).
-        with([80,240], ['Film', 'Food'], "loc", 20).and_return([])
+      DateTime.stub(:now).and_return("now")
+      Show.should_receive(:recommend_shows).
+        with([80.0, 240.0], 
+             ['Film', 'Food'],
+             [DateTime.now, nil],
+             "loc", 20).and_return([])
       s.similar_shows
     end
   end
