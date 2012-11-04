@@ -42,7 +42,7 @@ class TixbayController < ApplicationController
 	    @location["zip_code"] = params[:zip_code]
 	end
     shows = Show.all
-	@shows = Show.get_closest_shows(shows, @location)
+	@shows = Show.get_closest_shows(shows, @location, 25)
 	render :body
   end
 end
