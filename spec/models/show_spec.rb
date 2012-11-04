@@ -30,7 +30,8 @@ describe Show do
       location['city'] = "Berkeley"
       location['region'] = "CA"
       location['zip_code'] = 94709 
-      Show.get_closest_shows(fake_shows,location) 
+      distance = 25
+      Show.get_closest_shows(fake_shows,location,distance) 
     end
   end
   describe 'get_distance' do
@@ -41,7 +42,6 @@ describe Show do
       Venue.stub(:find).and_return(fake_venue)
       fake_show = Show.new() 
       fake_show.stub(:venue_id).and_return(1)
-      #fake_show.should_receive(:get_distance).and_return(0)
       fake_show.get_distance(20,20).should > 0
     end
   end
@@ -60,7 +60,7 @@ describe Show do
       Show.stub(:joins).and_return(Show)
       Show.stub(:in_categories).and_return(Show)
       Show.stub(:all).and_return([])
-      Show.should_receive(:get_closest_shows).with([], "look")
+      Show.should_receive(:get_closest_shows).with([], "look",20)
       Show.recommendShows([0, 100], Category.all_categories, "look", 20)
     end
   end
@@ -68,7 +68,8 @@ describe Show do
   describe "similar_shows" do
     it "calls recommend with correct arguments" do
       s = Show.new
-      c1, c2 = mock('category')
+      c1 = mock('category')
+      c2 = mock('category')
       c1.stub(:name).and_return('Film')
       c2.stub(:name).and_return('Food')
       s.stub(:categories).and_return([c1, c2])
