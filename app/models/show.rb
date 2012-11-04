@@ -81,8 +81,7 @@ Defaults to recommending all shows
     shows = shows.joins(:categories).in_categories(categories)
     shows = shows.all
 
-    #TODO Pass in distance as well
-    shows = Show.get_closest_shows(shows, location) unless not location
+    shows = Show.get_closest_shows(shows, location, distance) unless not location
     return shows
   end
 
