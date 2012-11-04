@@ -45,6 +45,44 @@ describe Show do
       fake_show.get_distance(20,20).should > 0
     end
   end
+
+  describe "self.recommendShows" do
+    it "handles having no upper price bound" do
+      Show.stub(:price_greater).and_return(Show)
+      Show.should_not_receive(:price_lower).with(-1)
+      Show.stub(:joins).and_return(Show)
+      Show.stub(:in_categories).and_return(Show)
+      Show.recommendShows
+    end
+    it "filters based on location and upper bound price" do
+      Show.stub(:price_greater).and_return(Show)
+      Show.should_receive(:price_lower).with(100).and_return(Show)
+      Show.stub(:joins).and_return(Show)
+      Show.stub(:in_categories).and_return(Show)
+      Show.stub(:all).and_return([])
+      Show.should_receive(:get_closest_shows).with([], "look")
+      Show.recommendShows([0, 100], Category.all_categories, "look", 20)
+    end
+  end
+
+  describe "similar_shows" do
+    it "calls recommend with correct arguments" do
+      s = Show.new
+      c1, c2 = mock('category')
+      c1.stub(:name).and_return('Film')
+      c2.stub(:name).and_return('Food')
+      s.stub(:categories).and_return([c1, c2])
+      s.stub(:our_price_range_low).and_return(100)
+      s.stub(:our_price_range_high).and_return(200)
+      v = mock('venue')
+      v.stub(:location_hash).and_return("loc")
+      s.stub(:venue).and_return(v)
+      Show.should_receive(:recommendShows).
+        with([80,240], ['Film', 'Food'], "loc", 20).and_return([])
+      s.similar_shows
+    end
+  end
+
   describe "price_format" do
     it "Handles sold out shows" do
       s = Show.new

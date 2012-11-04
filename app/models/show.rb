@@ -9,6 +9,14 @@ class Show < ActiveRecord::Base
   belongs_to :venue  
   has_many :showtimes, :dependent => :destroy
 
+  #Scopes used for recommendation filtering
+  scope :price_greater, lambda { |price|
+    {:conditions => ["our_price_range_high >= ?", price]} }
+  scope :price_lower, lambda { |price|
+    {:conditions => ["our_price_range_low <= ?", price]} }
+  scope :in_categories, lambda { |categories|
+    {:conditions => {'categories.name' => categories}} }
+
   #Method to call to parse all xml listings and add to database
   def self.fill_from_xml(location = File.join(Rails.root, "app", 
                                               "data", "listings.xml"))
@@ -47,6 +55,54 @@ class Show < ActiveRecord::Base
      v = Venue.find(self.venue_id)
      #approximate distance in miles by latitude/longitude degrees
      Math.sqrt((69*(myLat - v.geocode_latitude))**2 + (69*(myLong - v.geocode_longitude))**2)
+  end
+
+"""
+Filters and order of application:
+  Query search:
+    Price Range - Default to free through infinite or [0, -1]
+    Category ID - Hard filtering, all optional, default to all categories
+  Done on array of shows:
+    Address - hash with 'street_address', 'city', 'region', and 'zip_code',
+              zip code the only thing necessary
+    Distance - miles, default to 10
+    Keyword - implemented next iteration
+
+Defaults to recommending all shows
+"""
+  def self.recommendShows(price_range = [0, -1], 
+                          categories = Category.all_categories,
+                          location = nil, 
+                          distance = 10,
+                          keywords = [])
+    #Filter based on price and categories
+    shows = Show.price_greater(price_range[0])
+    shows = shows.price_lower(price_range[1]) unless price_range[1] == -1
+    shows = shows.joins(:categories).in_categories(categories)
+    shows = shows.all
+
+    #TODO Pass in distance as well
+    shows = Show.get_closest_shows(shows, location) unless not location
+    return shows
+  end
+
+"""
+Returns all shows similar to show object.
+How it chooses similarity:
+  Only looks at shows who have at least one category the same as it.
+  Price new show's highest price >= 0.8 * this show's lowest price and
+    new show's lowest price <= 1.2 * this show's highest price
+  Shows within 20 miles of the venue of this show.
+"""
+  def similar_shows
+    category = []
+    self.categories.each do |c|
+      category << c.name
+    end
+    price_range = [our_price_range_low * 0.8, our_price_range_high * 1.2]
+    location = venue.location_hash
+    shows = Show.recommendShows(price_range, category, location, 20)
+    return shows - [self]
   end
 
   #returns formated string of prices specified by whose
