@@ -1,0 +1,75 @@
+#recommendation_welcome {
+  padding-top: 20px;
+  padding-bottom: 30px;
+}
+
+.recommendation_input {
+  padding-top: 10px;
+  padding-bottom: 30px;
+  width: 100%;
+  float: left;
+}
+
+.recommendation_location_label {
+  width: 120px;
+  clear: left;
+}
+
+#recommendation_submit {
+  clear:both;
+  padding-top: 45px;
+}
+
+.recommendation_location{
+  float: left;
+}
+
+.recommendation_location_input {
+  clear: right;
+}
+
+#recommendation_location_header {
+  padding-bottom: 20px;
+  font-size: 16px;
+}
+
+.recommendation_header {
+  padding-bottom: 20px;
+  font-weight: bold;
+}
+
+.two_input{
+  width: 24px;
+}
+
+.four_input{
+  width: 48px;
+}
+
+#date_format{
+  font-size:10px;
+  padding-left:10px;
+  font-weight: normal;
+}
+
+#recommendation_maxprice{
+  width:40px;
+}
+
+#max{
+  font-weight: normal;
+}
+
+#select_all{
+  font-weight: normal;
+}
+
+.recommendation_keyword_options{
+  padding-left: 20px;
+  padding-bottom: 20px;
+  padding-top: 5px;
+}
+
+.recommendation_select_options{
+  padding-bottom: 20px;
+}
