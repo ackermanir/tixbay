@@ -1,9 +1,12 @@
 Tixbay::Application.routes.draw do
   # The priority is based upon order of creation:
   # first created -> highest priority.
-  root :to => 'tixbay#theater'
+  root :to => 'category#theater'
+  #match ':controller/:id'
+  resources :show
   match ':controller/:action/'
-  resources :tixbay
+  resources :category
+  #resources :tixbay
   #  resources :similarshows
   #end
   #match 'tixbay/' => 'tixbay/theater'
