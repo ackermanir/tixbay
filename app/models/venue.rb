@@ -8,4 +8,10 @@ class Venue < ActiveRecord::Base
     return output
   end
 
+  #return location hash understandable by Terence's API
+  def location_hash
+    return {'street_address' => street_address,
+      'city' => locality, 'region' => region, 'zipcode' => postal_code.to_s}
+  end
+
 end
