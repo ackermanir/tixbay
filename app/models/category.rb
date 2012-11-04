@@ -18,6 +18,6 @@ class Category < ActiveRecord::Base
     Category.where(:name => @@category_types[page]).each do |c|
       shows += c.shows.to_a
     end
-    return shows
+    return shows.uniq
   end
 end

@@ -59,39 +59,43 @@ class Show < ActiveRecord::Base
 
 """
 Filters and order of application:
+  Query search:
+    Price Range - Default to free through infinite or [0, -1]
+    Category ID - Hard filtering, all optional, default to all categories
+  Done on array of shows:
+    Address - hash with 'street_address', 'city', 'region', and 'zip_code',
+              zip code the only thing necessary
+    Distance - miles, default to 10
+    Keyword - implemented next iteration
 
-Query search:
-Price Range - Default to free through infinite or [0, -1]
-Category ID - Hard filtering, all optional, default to all categories
-
-Done on a show array:
-Address - hash with 'street_address', 'city', 'region', and 'zip_code',
-          zip code the only thing necessary
-Distance - miles, default to 10
-
-TODO: Keyword which only makes preferential searches
-
+Defaults to recommending all shows
 """
-  #Defaults to recommending all shows
-  def self.recommendShows(priceRange = [0, -1], 
+  def self.recommendShows(price_range = [0, -1], 
                           categories = Category.all_categories,
                           location = nil, 
                           distance = 10,
                           keywords = [])
     #Filter based on price and categories
-    shows = Show.price_greater(priceRange[0])
-    shows = shows.price_lower(priceRange[1]) unless priceRange[1] == -1
+    shows = Show.price_greater(price_range[0])
+    shows = shows.price_lower(price_range[1]) unless price_range[1] == -1
     shows = shows.joins(:categories).in_categories(categories)
     shows = shows.all
 
     #TODO Pass in distance as well
     shows = Show.get_closest_shows(shows, location) unless not location
-    return shows.first(1)
+    return shows
   end
 
-  #returns the shows similar to the current show
+  #returns all shows similar to the current show
   def similar_shows
-    return nil
+    categories = []
+    self.categories.each do |c|
+      categories << c.name
+    end
+    price_range = [our_price_range_low * 0.8, our_price_range_low * 1.2]
+    location = venue.location_hash
+    shows = Show.recommendShows(price_range, categories, location, 20)
+    return shows
   end
 
   #returns formated string of prices specified by whose
