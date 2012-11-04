@@ -40,7 +40,7 @@ class RecommendationsController < ApplicationController
       end
     end
     if filterbylocation == true
-      @shows = Show.get_closest_shows(@shows, params["recommendation"]["location"])
+      @shows = Show.get_closest_shows(@shows, params["recommendation"]["location"],params["recommendation"]["distance"].to_i)
     end
 
     #if logged in
