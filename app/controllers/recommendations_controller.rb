@@ -31,7 +31,7 @@ class RecommendationsController < ApplicationController
     #if logged in
     # save answers/shows
 
-    render "tixbay/body"
+    render "category/body"
   end
 
   def custom
