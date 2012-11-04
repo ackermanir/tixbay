@@ -167,7 +167,7 @@ Please fill out this form so we can help you find shows.
 
   <div class="recommendation_input">
     <div class="recommendation_header">How far are you willing to go for culture?</div>
-    <%= text_field 'reccomendation', 'distance', :id => 'recommendation_distance' %>
+      <%= select_tag 'recommendation[distance]', options_for_select([5,10,25,50],25), :class => "span2" %>
     <span>miles</span>
   </div>
 
