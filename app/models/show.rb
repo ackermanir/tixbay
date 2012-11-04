@@ -86,13 +86,20 @@ Defaults to recommending all shows
     return shows
   end
 
-  #returns all shows similar to the current show
+"""
+Returns all shows similar to show object.
+How it chooses similarity:
+  Only looks at shows who have at least one category the same as it.
+  Price new show's highest price >= 0.8 * this show's lowest price and
+    new show's lowest price <= 1.2 * this show's highest price
+  Shows within 20 miles of the venue of current show.
+"""
   def similar_shows
     categories = []
     self.categories.each do |c|
       categories << c.name
     end
-    price_range = [our_price_range_low * 0.8, our_price_range_low * 1.2]
+    price_range = [our_price_range_low * 0.8, our_price_range_high * 1.2]
     location = venue.location_hash
     shows = Show.recommendShows(price_range, categories, location, 20)
     return shows
