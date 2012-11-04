@@ -4,7 +4,7 @@ class RecommendationsController < ApplicationController
     @title = "Recommended Shows"
     price_range = params["recommendation"]["maxprice"]
     location = params["recommendation"]["location"]
-    distance = params["recommendation"]["distance"]
+    distance = params["recommendation"]["distance"].to_i
 
     categories = []
     params["recommendation"]["category"].each do |category, value|
@@ -21,17 +21,17 @@ class RecommendationsController < ApplicationController
     end
 
     if price_range[1] != "" && location["zipcode"] != ""
-      @shows = Show.recommendShows(price_range=[0,price_range.to_i], location=location, categories=categories, distance=distance, keywords=keywords)
-   elsif price_range[1] != ""
-      @shows = Show.recommendShows(price_range=[0,price_range.to_i], categories=categories, distance=distance, keywords=keywords)
+      @shows = Show.recommendShows(price_range=[0,price_range.to_i], categories=categories, location=location, distance=distance, keywords=keywords)
+    elsif price_range[1] != ""
+      @shows = Show.recommendShows(price_range=[0,price_range.to_i], categories=categories, location=nil, distance=distance, keywords=keywords)
     else
-      @shows = Show.recommendShows(location=location,categories=categories,distance=distance,keywords=keywords)
+      @shows = Show.recommendShows(price_range=[0, -1], categories=categories,location=location,distance=distance,keywords=keywords)
     end
 
     #if logged in
     # save answers/shows
 
-    render "category/body"
+    render "tixbay/body"
   end
 
   def custom
