@@ -92,17 +92,17 @@ How it chooses similarity:
   Only looks at shows who have at least one category the same as it.
   Price new show's highest price >= 0.8 * this show's lowest price and
     new show's lowest price <= 1.2 * this show's highest price
-  Shows within 20 miles of the venue of current show.
+  Shows within 20 miles of the venue of this show.
 """
   def similar_shows
-    categories = []
+    category = []
     self.categories.each do |c|
-      categories << c.name
+      category << c.name
     end
     price_range = [our_price_range_low * 0.8, our_price_range_high * 1.2]
     location = venue.location_hash
-    shows = Show.recommendShows(price_range, categories, location, 20)
-    return shows
+    shows = Show.recommendShows(price_range, category, location, 20)
+    return shows - [self]
   end
 
   #returns formated string of prices specified by whose
