@@ -2,51 +2,36 @@ class RecommendationsController < ApplicationController
 
   def index
     @title = "Recommended Shows"
-    @shows = []
+    price_range = params["recommendation"]["maxprice"]
+    location = params["recommendation"]["location"]
+    distance = params["recommendation"]["distance"]
 
-    #filter by category
     categories = []
-    params["recommendation"]["category"].each_pair do |k,v|
-      if v == "1"
-        categories << k
+    params["recommendation"]["category"].each do |category, value|
+      if value == "1"
+        categories << category
       end
-    end
-    Category.where(:name => categories).each do |c|
-      @shows += c.shows.to_a
     end
 
-    #filter by date (only if user put a date)
-    filterbydate = true
-    params["recommendation"]["startdate"].each_pair do |k,v|
-      if v == ""
-        filterbydate = false
+    keywords = []
+    params["recommendation"]["keyword"].each do |word, value|
+      if value == "1"
+        keywords << word
       end
-    end
-    params["recommendation"]["enddate"].each_pair do |k,v|
-      if v == ""
-        filterbydate = false
-      end
-    end
-    if filterbydate == true
-      start_date = DateTime.new(params["recommendation"]["startdate"]["year"].to_i, params["recommendation"]["startdate"]["month"].to_i, params["recommendation"]["startdate"]["day"].to_i)
-      end_date = DateTime.new(params["recommendation"]["enddate"]["year"].to_i, params["recommendation"]["enddate"]["month"].to_i, params["recommendation"]["enddate"]["day"].to_i)
     end
 
-    #filter by location
-    filterbylocation = false
-    params["recommendation"]["location"].each do |k,v|
-      if v != ""
-        filterbylocation = true
-      end
-    end
-    if filterbylocation == true
-      @shows = Show.get_closest_shows(@shows, params["recommendation"]["location"],params["recommendation"]["distance"].to_i)
+    if price_range[1] != "" && location["zipcode"] != ""
+      @shows = Show.recommendShows(price_range=[0,price_range.to_i], location=location, categories=categories, distance=distance, keywords=keywords)
+   elsif price_range[1] != ""
+      @shows = Show.recommendShows(price_range=[0,price_range.to_i], categories=categories, distance=distance, keywords=keywords)
+    else
+      @shows = Show.recommendShows(location=location,categories=categories,distance=distance,keywords=keywords)
     end
 
     #if logged in
     # save answers/shows
 
-    render "tixbay/body"
+    render "category/body"
   end
 
   def custom
