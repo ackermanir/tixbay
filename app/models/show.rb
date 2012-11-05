@@ -3,6 +3,7 @@ require 'nokogiri'
 require 'open-uri'
 require 'net/http'
 require 'mathn'
+require 'will_paginate'
 
 class Show < ActiveRecord::Base
   has_and_belongs_to_many :categories
@@ -99,12 +100,9 @@ Defaults to recommending all shows
 
   def self.category_shows(title)
     categories = Category.categories_by_title(title)
-    shows = Show.joins(:venue).commutable.
-      joins(:categories).in_categories(categories).
-      joins(:showtimes).date_later(DateTime.now).
+    shows = Show.joins(:categories).in_categories(categories).
       not_sold_out
 
-    #Brittany put your paginate here to call on shows
     shows = shows.all
     return shows.uniq
   end    

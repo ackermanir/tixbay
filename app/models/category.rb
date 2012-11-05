@@ -1,5 +1,3 @@
-require 'will_paginate'
-
 class Category < ActiveRecord::Base
   has_and_belongs_to_many :shows
 
@@ -20,7 +18,6 @@ class Category < ActiveRecord::Base
   end
   
   def self.shows_from_category(category, page)
-    paginate :per_page => 15, :page => page
     shows = []
     Category.where(:name => @@category_types[category]).each do |c|
       shows += c.shows.to_a
