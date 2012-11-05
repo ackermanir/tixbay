@@ -6,7 +6,7 @@ require 'mathn'
 
 class Show < ActiveRecord::Base
   has_and_belongs_to_many :categories
-  belongs_to :venue  
+  belongs_to :venue
   has_many :showtimes, :dependent => :destroy
 
   #Scopes used for recommendation filtering
@@ -22,7 +22,7 @@ class Show < ActiveRecord::Base
     {:conditions => ["showtimes.date_time <= ?", end_date]} }
 
   #Method to call to parse all xml listings and add to database
-  def self.fill_from_xml(location = File.join(Rails.root, "app", 
+  def self.fill_from_xml(location = File.join(Rails.root, "app",
                                               "data", "listings.xml"))
     raw = File.open(location)
     xml_doc = Nokogiri::XML(raw)
@@ -32,7 +32,7 @@ class Show < ActiveRecord::Base
     end
   end
 
-  def self.get_closest_shows(shows, location)
+  def self.get_closest_shows(shows, location, distance)
     url = "http://maps.googleapis.com/maps/api/geocode/xml?address="
     url += (location["street_address"].gsub /\s+/, '+')  + ","
     url += (location["city"].gsub /\s+/, '+')  + ","
@@ -47,15 +47,15 @@ class Show < ActiveRecord::Base
 
     result = []
     shows.each do |s|
-        distance = s.get_distance(myLat, myLong)
-        if distance < 25 
+        show_distance = s.get_distance(myLat, myLong)
+        if show_distance < distance
             result << s
         end
-    end 
+    end
     result
   end
 
-  def get_distance(myLat,myLong) 
+  def get_distance(myLat,myLong)
      v = Venue.find(self.venue_id)
      #approximate distance in miles by latitude/longitude degrees
      Math.sqrt((69*(myLat - v.geocode_latitude))**2 + (69*(myLong - v.geocode_longitude))**2)
@@ -75,23 +75,22 @@ Filters and order of application:
 
 Defaults to recommending all shows
 """
-  def self.recommend_shows(price_range = [0, -1], 
+  def self.recommend_shows(price_range = [0, -1],
                            categories = Category.all_categories,
                            dates = [DateTime.now, nil],
-                           location = nil, 
+                           location = nil,
                            distance = 10,
                            keywords = [])
     #Filter based on price and categories
     shows = Show.price_greater(price_range[0]).
       joins(:showtimes).date_later(dates[0])
     shows = shows.date_earlier(dates[1]) unless not dates[1]
-    
     shows = shows.price_lower(price_range[1]) unless price_range[1] == -1
     shows = shows.joins(:categories).in_categories(categories)
     shows = shows.all
 
     #TODO Pass in distance as well
-    shows = Show.get_closest_shows(shows, location) unless not location
+    shows = Show.get_closest_shows(shows, location, distance) unless not location
     return shows.uniq
   end
 
@@ -157,7 +156,7 @@ How it chooses similarity:
     times = times.sort
     first_date = times.first.to_date.strftime('%m/%d')
     last_date = times.last.to_date.strftime('%m/%d')
-    output = first_date 
+    output = first_date
     if last_date != first_date
       output += " - " + last_date
     end

@@ -29,8 +29,9 @@ describe Show do
       location['street_address'] = "2111 Bancroft Way"
       location['city'] = "Berkeley"
       location['region'] = "CA"
-      location['zip_code'] = 94709 
-      Show.get_closest_shows(fake_shows,location) 
+      location['zip_code'] = 94709
+      distance = 25
+      Show.get_closest_shows(fake_shows,location,distance)
     end
   end
   describe 'get_distance' do
@@ -39,9 +40,8 @@ describe Show do
       fake_venue.stub(:geocode_latitude).and_return(19)
       fake_venue.stub(:geocode_longitude).and_return(20)
       Venue.stub(:find).and_return(fake_venue)
-      fake_show = Show.new() 
+      fake_show = Show.new()
       fake_show.stub(:venue_id).and_return(1)
-      #fake_show.should_receive(:get_distance).and_return(0)
       fake_show.get_distance(20,20).should > 0
     end
   end
@@ -63,10 +63,10 @@ describe Show do
       Show.stub(:in_categories).and_return(Show)
       Show.stub(:date_later).and_return(Show)
       Show.stub(:all).and_return([])
-      Show.should_receive(:get_closest_shows).with([], "look").and_return([])
-      Show.recommend_shows([0, 100], 
+      Show.should_receive(:get_closest_shows).with([], "look", 20).and_return([])
+      Show.recommend_shows([0, 100],
                            Category.all_categories,
-                           [DateTime.now, nil], 
+                           [DateTime.now, nil],
                            "look", 20)
     end
   end
@@ -86,7 +86,7 @@ describe Show do
       s.stub(:venue).and_return(v)
       DateTime.stub(:now).and_return("now")
       Show.should_receive(:recommend_shows).
-        with([80.0, 240.0], 
+        with([80.0, 240.0],
              ['Film', 'Food'],
              [DateTime.now, nil],
              "loc", 20).and_return([])
@@ -118,7 +118,7 @@ describe Show do
     it "Handles one date" do
       s = Show.new
       sh = mock('showtimes')
-      sh.stub(:all).and_return([Showtime.new(:date_time => 
+      sh.stub(:all).and_return([Showtime.new(:date_time =>
                                              DateTime.parse("2012/11/26"))])
       s.stub(:showtimes).and_return(sh)
       s.date_string.should == "11/26"
@@ -126,11 +126,11 @@ describe Show do
     it "Sort three dates out of order" do
       s = Show.new
       sh = mock('showtimes')
-      sh.stub(:all).and_return([Showtime.new(:date_time => 
+      sh.stub(:all).and_return([Showtime.new(:date_time =>
                                              DateTime.parse("2012/12/26")),
-                               Showtime.new(:date_time => 
+                               Showtime.new(:date_time =>
                                              DateTime.parse("2012/8/26")),
-                               Showtime.new(:date_time => 
+                               Showtime.new(:date_time =>
                                              DateTime.parse("2012/10/26"))])
       s.stub(:showtimes).and_return(sh)
       s.date_string.should == "08/26 - 12/26"

@@ -19,8 +19,12 @@ module NavigationHelpers
       '/category/film'
     when /^the music page$/
       '/category/music'
+    when /^the recommendations form page$/
+      '/recommendations/form'
     when /^the all culture page$/
       '/category/all_culture'
+   when /^the recommendations form page$/
+      '/recommendations/form'
     when /^the show page with id "(.+)"$/
       '/show/'+$1
     # Add more mappings here.
