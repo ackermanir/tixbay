@@ -1,3 +1,5 @@
+require 'will_paginate'
+
 class Category < ActiveRecord::Base
   has_and_belongs_to_many :shows
 
@@ -13,9 +15,10 @@ class Category < ActiveRecord::Base
     return @@category_types["all culture"]
   end
   
-  def self.shows_from_category(page)
+  def self.shows_from_category(category, page)
+    paginate :per_page => 15, :page => page
     shows = []
-    Category.where(:name => @@category_types[page]).each do |c|
+    Category.where(:name => @@category_types[category]).each do |c|
       shows += c.shows.to_a
     end
     return shows.uniq

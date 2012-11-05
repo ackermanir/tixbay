@@ -12,8 +12,3 @@ Background: shows have been added to the database
 Scenario: should show only 15 shows at first
   Given we paginate after 15 shows 
   Then I should only see 15 shows
-
-@wip
-Scenario: should add 15 more shows when you scroll down
-  And I hover over the bottom of the page
-  Then I should see 15 more shows
