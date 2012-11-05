@@ -2,15 +2,35 @@ class RecommendationsController < ApplicationController
 
   def index
     @title = "Recommended Shows"
+
+    args = {}
+
     price_range = params["recommendation"]["maxprice"]
+    if price_range == ""
+      args["price_range"] = [0, -1]
+    else
+      args["price_range"] = [0, price_range.to_i]
+    end
+
     location = params["recommendation"]["location"]
-    distance = params["recommendation"]["distance"].to_i
+    if location["zip_code"] == ""
+      args["location"] = nil
+    else
+      args["location"] = location
+    end
+
+    args["distance"] = params["recommendation"]["distance"].to_i
 
     categories = []
     params["recommendation"]["category"].each do |category, value|
       if value == "1"
         categories << category
       end
+    end
+    if categories.length == 0
+      args["categories"] = Category.all_categories
+    else
+      args["categories"] = categories
     end
 
     keywords = []
@@ -19,14 +39,9 @@ class RecommendationsController < ApplicationController
         keywords << word
       end
     end
+    args["keywords"] = keywords
 
-    if price_range[1] != "" && location["zipcode"] != ""
-      @shows = Show.recommendShows(price_range=[0,price_range.to_i], categories=categories, location=location, distance=distance, keywords=keywords)
-    elsif price_range[1] != ""
-      @shows = Show.recommendShows(price_range=[0,price_range.to_i], categories=categories, location=nil, distance=distance, keywords=keywords)
-    else
-      @shows = Show.recommendShows(price_range=[0, -1], categories=categories,location=location,distance=distance,keywords=keywords)
-    end
+    @shows = Show.recommendShows(price_range=args["price_range"], categories=args["categories"], location=args["location"], distance=args["distance"], keywords=args["keywords"])
 
     #if logged in
     # save answers/shows

@@ -25,13 +25,13 @@ describe RecommendationsController do
         }
       }
       Show.should_receive(:recommendShows).with(price_range=[0, 300],
+                                                categories = ["Film"],
                                                 location = { "street_address" => "",
                                                   "city" => "",
                                                   "region" => "",
                                                   "zip_code" => "94704"
                                                 },
-                                                categories = ["Film"],
-                                                distance = "25",
+                                                distance = 25,
                                                 keywords = ["Film"]
                                                 )
       post :index, :recommendation => params["recommendation"]
