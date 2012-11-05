@@ -33,6 +33,15 @@ class RecommendationsController < ApplicationController
       args["categories"] = categories
     end
 
+    startdate = params["recommendation"]["startdate"]
+    enddate = params["recommendation"]["enddate"]
+    if startdate["month"] != "" && startdate["day"] != "" && startdate["year"] != "" && enddate["month"] != "" && enddate["day"] != "" && enddate["year"]
+      args["dates"] = [DateTime.new(startdate["year"].to_i, startdate["month"].to_i, startdate["day"].to_i), DateTime.new(enddate["year"].to_i, enddate["month"].to_i, enddate["day"].to_i)]
+    else
+      args["dates"] = [DateTime.now, nil]
+    end
+
+
     keywords = []
     params["recommendation"]["keyword"].each do |word, value|
       if value == "1"
@@ -41,7 +50,7 @@ class RecommendationsController < ApplicationController
     end
     args["keywords"] = keywords
 
-    @shows = Show.recommendShows(price_range=args["price_range"], categories=args["categories"], location=args["location"], distance=args["distance"], keywords=args["keywords"])
+    @shows = Show.recommend_shows(price_range=args["price_range"], categories=args["categories"], dates=args["dates"], location=args["location"], distance=args["distance"], keywords=args["keywords"])
 
     #if logged in
     # save answers/shows

@@ -16,6 +16,16 @@ describe RecommendationsController do
             "region" => "",
             "zip_code" => "94704"
           },
+          "startdate" => {
+            "year" => "2012",
+            "day" => "3",
+            "month" => "2"
+          },
+          "enddate" => {
+            "year" => "2012",
+            "day" => "4",
+            "month" => "10"
+          },
           "distance" => "25",
           "maxprice" => "300",
           "category" => {
@@ -24,8 +34,9 @@ describe RecommendationsController do
           }
         }
       }
-      Show.should_receive(:recommendShows).with(price_range=[0, 300],
+      Show.should_receive(:recommend_shows).with(price_range=[0, 300],
                                                 categories = ["Film"],
+                                                dates = [DateTime.new(2012, 2, 3), DateTime.new(2012,10,4)],
                                                 location = { "street_address" => "",
                                                   "city" => "",
                                                   "region" => "",
