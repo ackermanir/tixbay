@@ -8,6 +8,7 @@ Background: shows have been added to the database
 
   Given the database has been setup from xml
   And I am on the home page
+  And the date is set to 2012
 
 @wip
 Scenario: should show only 10 listings at first
