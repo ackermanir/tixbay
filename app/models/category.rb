@@ -12,6 +12,10 @@ class Category < ActiveRecord::Base
   def self.all_categories
     return @@category_types["all culture"]
   end
+
+  def self.categories_by_title(title)
+    return @@category_types[title]
+  end
   
   def self.shows_from_category(page)
     shows = []

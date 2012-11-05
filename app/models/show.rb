@@ -20,6 +20,9 @@ class Show < ActiveRecord::Base
     {:conditions => ["showtimes.date_time >= ?", start_date]} }
   scope :date_earlier, lambda { |end_date|
     {:conditions => ["showtimes.date_time <= ?", end_date]} }
+  scope :not_sold_out, :conditions => {"sold_out" => true}
+  scope :commutable, :conditions => 
+    {'venues.locality' => Venue.default_localities}
 
   #Method to call to parse all xml listings and add to database
   def self.fill_from_xml(location = File.join(Rails.root, "app",
@@ -93,6 +96,18 @@ Defaults to recommending all shows
     shows = Show.get_closest_shows(shows, location, distance) unless not location
     return shows.uniq
   end
+
+  def self.category_shows(title)
+    categories = Category.categories_by_title(title)
+    shows = Show.joins(:venue).commutable.
+      joins(:categories).in_categories(categories).
+      joins(:showtimes).date_later(DateTime.now).
+      not_sold_out
+
+    #Brittany put your paginate here to call on shows
+    shows = shows.all
+    return shows.uniq
+  end    
 
 """
 Returns all shows similar to show object.

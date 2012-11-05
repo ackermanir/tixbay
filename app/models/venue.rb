@@ -8,6 +8,10 @@ class Venue < ActiveRecord::Base
     return output
   end
 
+  def self.default_localities
+    return ['San Francisco', 'Oakland', 'Alameda', 'Berkeley' 'San Jose']
+  end
+
   #return location hash understandable by Terence's API
   def location_hash
     return {'street_address' => street_address,
