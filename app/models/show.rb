@@ -6,7 +6,7 @@ require 'mathn'
 
 class Show < ActiveRecord::Base
   has_and_belongs_to_many :categories
-  belongs_to :venue  
+  belongs_to :venue
   has_many :showtimes, :dependent => :destroy
 
   #Scopes used for recommendation filtering
@@ -16,9 +16,13 @@ class Show < ActiveRecord::Base
     {:conditions => ["our_price_range_low <= ?", price]} }
   scope :in_categories, lambda { |categories|
     {:conditions => {'categories.name' => categories}} }
+  scope :date_later, lambda { |start_date|
+    {:conditions => ["showtimes.date_time >= ?", start_date]} }
+  scope :date_earlier, lambda { |end_date|
+    {:conditions => ["showtimes.date_time <= ?", end_date]} }
 
   #Method to call to parse all xml listings and add to database
-  def self.fill_from_xml(location = File.join(Rails.root, "app", 
+  def self.fill_from_xml(location = File.join(Rails.root, "app",
                                               "data", "listings.xml"))
     raw = File.open(location)
     xml_doc = Nokogiri::XML(raw)
@@ -44,14 +48,14 @@ class Show < ActiveRecord::Base
     result = []
     shows.each do |s|
         show_distance = s.get_distance(myLat, myLong)
-        if show_distance < distance 
+        if show_distance < distance
             result << s
         end
-    end 
+    end
     result
   end
 
-  def get_distance(myLat,myLong) 
+  def get_distance(myLat,myLong)
      v = Venue.find(self.venue_id)
      #approximate distance in miles by latitude/longitude degrees
      Math.sqrt((69*(myLat - v.geocode_latitude))**2 + (69*(myLong - v.geocode_longitude))**2)
@@ -61,7 +65,8 @@ class Show < ActiveRecord::Base
 Filters and order of application:
   Query search:
     Price Range - Default to free through infinite or [0, -1]
-    Category ID - Hard filtering, all optional, default to all categories
+    Category ID - Filtering removes non-matching, default to all categories
+    Dates - Shows between date range, defaults starting from today
   Done on array of shows:
     Address - hash with 'street_address', 'city', 'region', and 'zip_code',
               zip code the only thing necessary
@@ -70,19 +75,24 @@ Filters and order of application:
 
 Defaults to recommending all shows
 """
-  def self.recommendShows(price_range = [0, -1], 
-                          categories = Category.all_categories,
-                          location = nil, 
-                          distance = 10,
-                          keywords = [])
+  def self.recommend_shows(price_range = [0, -1],
+                           categories = Category.all_categories,
+                           dates = [DateTime.now, nil],
+                           location = nil,
+                           distance = 10,
+                           keywords = [])
     #Filter based on price and categories
-    shows = Show.price_greater(price_range[0])
+    shows = Show.price_greater(price_range[0]).
+      joins(:showtimes).date_later(dates[0])
+    shows = shows.date_earlier(dates[1]) unless not dates[1]
+
     shows = shows.price_lower(price_range[1]) unless price_range[1] == -1
     shows = shows.joins(:categories).in_categories(categories)
     shows = shows.all
 
-    shows = Show.get_closest_shows(shows, location, distance) unless not location
-    return shows
+    #TODO Pass in distance as well
+    shows = Show.get_closest_shows(shows, location) unless not location
+    return shows.uniq
   end
 
 """
@@ -100,8 +110,10 @@ How it chooses similarity:
     end
     price_range = [our_price_range_low * 0.8, our_price_range_high * 1.2]
     location = venue.location_hash
-    shows = Show.recommendShows(price_range, category, location, 20)
-    return shows - [self]
+    shows = Show.recommend_shows(price_range, category,
+                                 [DateTime.now, nil],
+                                 location, 20)
+    return (shows - [self]).uniq
   end
 
   #returns formated string of prices specified by whose
@@ -145,7 +157,7 @@ How it chooses similarity:
     times = times.sort
     first_date = times.first.to_date.strftime('%m/%d')
     last_date = times.last.to_date.strftime('%m/%d')
-    output = first_date 
+    output = first_date
     if last_date != first_date
       output += " - " + last_date
     end

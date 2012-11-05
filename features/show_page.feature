@@ -7,6 +7,7 @@ Feature: All the displayed shows should be able to redirect to another page that
 Background: Set the testing database with values
   Given the database has been setup with similarshows.xml
   And I am on the home page
+  And the date is set to 2012
 
 Scenario: Click on a show to redirect to the show page for Cirque de Soleil
   # Update to pick link under theater & dance for Cirque de Soleil
