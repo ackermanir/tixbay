@@ -1,8 +1,8 @@
 <% color_map = {'theater'=> '#FFFFFF', 'music'=> '#FFFFFF','film'=> '#FFFFFF','all culture'=>'#FFFFFF', 'custom'=> '#FFFFFF'} %>
 <% color_map.each do |key, value| %>
-<% if key == @title %>
-<% color_map[key] = '#000000' %>
-<% end %>
+    <% if key == @title %>
+    <% color_map[key] = '#000000' %>
+    <% end %>
 <% end %>
 
 <% buttons_map = {'theater'=> 'buttons', 'music'=> 'buttons','film'=> 'buttons','all culture'=>'buttons', 'custom'=> 'buttons'} %>

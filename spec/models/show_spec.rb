@@ -63,7 +63,7 @@ describe Show do
       Show.stub(:in_categories).and_return(Show)
       Show.stub(:date_later).and_return(Show)
       Show.stub(:all).and_return([])
-      Show.should_receive(:get_closest_shows).with([], "look").and_return([])
+      Show.should_receive(:get_closest_shows).with([], "look", 20).and_return([])
       Show.recommend_shows([0, 100],
                            Category.all_categories,
                            [DateTime.now, nil],

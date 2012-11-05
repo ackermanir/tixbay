@@ -85,13 +85,12 @@ Defaults to recommending all shows
     shows = Show.price_greater(price_range[0]).
       joins(:showtimes).date_later(dates[0])
     shows = shows.date_earlier(dates[1]) unless not dates[1]
-
     shows = shows.price_lower(price_range[1]) unless price_range[1] == -1
     shows = shows.joins(:categories).in_categories(categories)
     shows = shows.all
 
     #TODO Pass in distance as well
-    shows = Show.get_closest_shows(shows, location) unless not location
+    shows = Show.get_closest_shows(shows, location, distance) unless not location
     return shows.uniq
   end
 
