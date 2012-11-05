@@ -105,8 +105,7 @@ Returns all shows for the category that are
 """
   def self.category_shows(title, page)
     categories = Category.categories_by_title(title)
-    shows = Show.joins(:categories).in_categories(categories).
-      not_sold_out
+    shows = Show.joins(:categories).in_categories(categories)
 
     shows = shows.paginate(:page => page, :per_page => 15)
     return shows
