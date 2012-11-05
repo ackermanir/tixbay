@@ -34,6 +34,7 @@ describe RecommendationsController do
           }
         }
       }
+      
       Show.should_receive(:recommend_shows).with(price_range=[0, 300],
                                                 categories = ["Film"],
                                                 dates = [DateTime.new(2012, 2, 3), DateTime.new(2012,10,4)],
@@ -44,7 +45,7 @@ describe RecommendationsController do
                                                 },
                                                 distance = 25,
                                                 keywords = ["Film"]
-                                                )
+                                                ).and_return([])
       post :index, :recommendation => params["recommendation"]
     end
   end
