@@ -3,7 +3,6 @@ require 'will_paginate/array'
 
 class CategoryController < ApplicationController
   def index
-    @page = params[:page] || 1
     redirect_to :action => :theater
   end
   def theater 
