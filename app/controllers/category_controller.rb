@@ -1,5 +1,9 @@
+require 'will_paginate'
+require 'will_paginate/array'
+
 class CategoryController < ApplicationController
   def index
+    @page = params[:page] || 1
     redirect_to :action => :theater
   end
   def theater 
@@ -19,7 +23,6 @@ class CategoryController < ApplicationController
     @shows = Show.category_shows(@title, params[:page])
     render :body 
   end
-  #for now simply call theater
   def all_culture
     all_category = ['Theater', 'Performing Arts', 'Popular Music', 'Jazz',
                     'Classical', 'Classic Rock', 'Film']

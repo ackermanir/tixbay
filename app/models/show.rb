@@ -3,7 +3,7 @@ require 'nokogiri'
 require 'open-uri'
 require 'net/http'
 require 'mathn'
-require 'will_paginate'
+require 'will_paginate/array'
 
 class Show < ActiveRecord::Base
   has_and_belongs_to_many :categories
@@ -109,8 +109,7 @@ Returns all shows for the category that are
       not_sold_out
 
     shows = shows.paginate(:page => page, :per_page => 15)
-    shows = shows.all
-    return shows.uniq
+    return shows
   end
 
 """

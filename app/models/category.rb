@@ -17,7 +17,7 @@ class Category < ActiveRecord::Base
     return @@category_types[title]
   end
   
-  def self.shows_from_category(category, page)
+  def self.shows_from_category(category)
     shows = []
     Category.where(:name => @@category_types[category]).each do |c|
       shows += c.shows.to_a
