@@ -20,7 +20,7 @@ class Show < ActiveRecord::Base
     {:conditions => ["showtimes.date_time >= ?", start_date]} }
   scope :date_earlier, lambda { |end_date|
     {:conditions => ["showtimes.date_time <= ?", end_date]} }
-  scope :not_sold_out, :conditions => {"sold_out" => true}
+  scope :not_sold_out, :conditions => {"sold_out" => false}
   scope :commutable, :conditions => 
     {'venues.locality' => Venue.default_localities}
 
@@ -96,7 +96,12 @@ Defaults to recommending all shows
     shows = Show.get_closest_shows(shows, location, distance) unless not location
     return shows.uniq
   end
-
+"""
+Returns all shows for the category that are
+  Commutable according to default_localities in category
+  Have a date later than the time of search
+  Not sold out
+"""
   def self.category_shows(title)
     categories = Category.categories_by_title(title)
     shows = Show.joins(:venue).commutable.
@@ -104,10 +109,9 @@ Defaults to recommending all shows
       joins(:showtimes).date_later(DateTime.now).
       not_sold_out
 
-    #Brittany put your paginate here to call on shows
     shows = shows.all
     return shows.uniq
-  end    
+  end
 
 """
 Returns all shows similar to show object.
