@@ -1,5 +1,3 @@
-require 'will_paginate/array'
-
 class CategoryController < ApplicationController
   def index
     redirect_to :action => :theater
@@ -7,21 +5,18 @@ class CategoryController < ApplicationController
   def theater 
     theater_category = ['Theater', 'Performing Arts']
     @title = "theater"
-    @shows = Show.category_shows(@title)
-    @shows = @shows.paginate(:page => params[:page], :per_page => 15)
+    @shows = Show.category_shows(@title, params[:page])
     render :body
   end
   def music
     music_category = ['Popular Music', 'Jazz', 'Classical', 'Classic Rock']
     @title = "music"
-    @shows = Show.category_shows(@title)
-    @shows = @shows.paginate(:page => params[:page], :per_page => 15)
+    @shows = Show.category_shows(@title, params[:page])
     render :body
   end
   def film
     @title = "film"
-    @shows = Show.category_shows(@title)
-    @shows = @shows.paginate(:page => params[:page], :per_page => 15)
+    @shows = Show.category_shows(@title, params[:page])
     render :body 
   end
   #for now simply call theater
@@ -29,8 +24,7 @@ class CategoryController < ApplicationController
     all_category = ['Theater', 'Performing Arts', 'Popular Music', 'Jazz',
                     'Classical', 'Classic Rock', 'Film']
     @title = "all culture"
-    @shows = Show.category_shows(@title)
-    @shows = @shows.paginate(:page => params[:page], :per_page => 15)
+    @shows = Show.category_shows(@title, params[:page])
     render :body    
   end
   def preference
