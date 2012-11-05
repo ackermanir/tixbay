@@ -103,12 +103,13 @@ Returns all shows for the category that are
   Have a date later than the time of search
   Not sold out
 """
-  def self.category_shows(title, page)
+  def self.category_shows(title)
     categories = Category.categories_by_title(title)
-    shows = Show.joins(:categories).in_categories(categories)
+    shows = Show.joins(:categories).in_categories(categories).
+      not_sold_out
 
-    shows = shows.paginate(:page => page, :per_page => 15)
-    return shows
+    shows = shows.all
+    return shows.uniq
   end
 
 """
