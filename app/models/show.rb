@@ -9,7 +9,7 @@ class Show < ActiveRecord::Base
   has_and_belongs_to_many :categories
   belongs_to :venue
   has_many :showtimes, :dependent => :destroy
-
+  
   #Scopes used for recommendation filtering
   scope :price_greater, lambda { |price|
     {:conditions => ["our_price_range_high >= ?", price]} }
@@ -75,7 +75,7 @@ Filters and order of application:
     Address - hash with 'street_address', 'city', 'region', and 'zip_code',
               zip code the only thing necessary
     Distance - miles, default to 10
-    Keyword - implemented next iteration
+    Keyword - category => [keywords]
 
 Defaults to recommending all shows
 """
@@ -91,12 +91,13 @@ Defaults to recommending all shows
     shows = shows.date_earlier(dates[1]) unless not dates[1]
     shows = shows.price_lower(price_range[1]) unless price_range[1] == -1
     shows = shows.joins(:categories).in_categories(categories)
-    shows = shows.all
+    shows = shows.all.uniq
 
-    #TODO Pass in distance as well
     shows = Show.get_closest_shows(shows, location, distance) unless not location
-    return shows.uniq
+    shows = Show.rank_keyword(shows, keywords) unless keywords == []
+    return shows
   end
+
 """
 Returns all shows for the category that are
   Commutable according to default_localities in category
@@ -105,7 +106,9 @@ Returns all shows for the category that are
 """
   def self.category_shows(title, page)
     categories = Category.categories_by_title(title)
-    shows = Show.joins(:categories).in_categories(categories)
+    shows = Show.joins(:categories).in_categories(categories).
+      joins(:showtimes).date_later(DateTime.now).
+      commutable.not_sold_out
 
     shows = shows.paginate(:page => page, :per_page => 15)
     return shows
@@ -130,6 +133,43 @@ How it chooses similarity:
                                  [DateTime.now, nil],
                                  location, 20)
     return (shows - [self]).uniq
+  end
+
+  def self.rank_keyword(shows, keywords)
+    pairings = []
+    shows.each do |show|
+      weight = show.keyword_search(keywords)
+      pairings <<[weight, show]
+    end
+    pairings.sort! do |a,b|
+      b[0] <=> a[0]
+    end
+    shows = []
+    pairings.each {|pair| shows << pair[1] }
+    return shows
+  end
+
+
+"""
+  Weights this show based on the keywords, using each occurence in a
+  description as two points and one point in the summary.
+"""
+  def keyword_search(keywords)
+    #finds weight of string of words from keywords
+    def weight_in_string(str, keywords)
+      weight = 0
+      str = str.downcase
+      keywords.each {|k| weight += str.scan(k.downcase).count}
+      return weight
+    end
+
+    keyword = []
+    keywords.each do |key, value|
+      keywords[key].each {|wrd| keyword << wrd.downcase}
+    end
+    weight = 2 * weight_in_string(self.headline, keyword)
+    weight += weight_in_string(self.summary, keyword)
+    return weight
   end
 
   #returns formated string of prices specified by whose
