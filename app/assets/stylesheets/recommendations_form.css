@@ -86,3 +86,8 @@
 #recommendation_keyword_select{
   clear:both;
 }
+
+#flash_notice{
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
