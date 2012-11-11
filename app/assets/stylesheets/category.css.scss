@@ -39,6 +39,10 @@ body {
   }
 }
 
+#pagetitle_table {
+  margin-bottom: 3%;
+}
+
 #pagetitle {
   padding-left: 10px;
   text-align: left;
@@ -336,6 +340,22 @@ body {
 
 .row-fluid .span3 {
   width: 23%;
+}
+
+.pagination a, .pagination span, .pagination em {
+  float: left;
+  padding: 0 10px;
+  line-height: 38px;
+  text-decoration: none;
+  background-color: white;
+  border: 1px solid #DDD;
+  border-left-width: 0;
+  min-width: 12px;
+}
+
+.pagination {
+  height: 40px;
+  border-left: 1px solid #DDD;
 }
 
 //Add stuff for hiding and showing more text for the summary

@@ -1,3 +1,5 @@
+require 'will_paginate/array'
+
 class RecommendationsController < ApplicationController
 
   def index
@@ -55,6 +57,8 @@ class RecommendationsController < ApplicationController
     if @shows.length == 0
       flash[:notice] = "No results were found. Please broaden your criteria and search again."
     end
+
+    @shows = @shows.paginate(:page => params[:page], :per_page => 15)
 
     render "category/body"
 
