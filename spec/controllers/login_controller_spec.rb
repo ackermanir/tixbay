@@ -6,6 +6,9 @@ describe LoginController do
   describe "facebook_success" do
 
     it "should sign up the user if they are new" do
+
+      pending("implement facebook login")
+
       fake_auth_hash = {
         :uid => '12345',
         :info => {
@@ -37,10 +40,11 @@ describe LoginController do
       User.should_receive(:new).with(hash_including(arg)).and_return(fake_user)
       fake_session.should_receive(:[]=).with(10)
       post :facebook_success, {}
-
     end
 
     it "should login the user if they are returning" do
+
+      pending("implement login")
 
       fake_auth_hash = {
         :uid => '12345',
@@ -67,10 +71,11 @@ describe LoginController do
       User.should_not_receive(:new)
       fake_session.should_receive(:[]=).with(10)
       post :facebook_success
-
     end
 
     it "should fail if no access token" do
+
+      pending("implement login")
 
       fake_auth_hash = {
         :uid => '12345',
@@ -100,6 +105,7 @@ describe LoginController do
 
   describe "facebook_failure" do
     it "should redirect to login" do
+      pending("implement login")
       post :facebook_failure
       response.should redirect_to '/login'
     end
