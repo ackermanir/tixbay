@@ -1,3 +1,5 @@
+require 'will_paginate/array'
+
 class RecommendationsController < ApplicationController
 
   def index
@@ -52,10 +54,14 @@ class RecommendationsController < ApplicationController
 
     @shows = Show.recommend_shows(price_range=args["price_range"], categories=args["categories"], dates=args["dates"], location=args["location"], distance=args["distance"], keywords=args["keywords"])
 
-    #if logged in
-    # save answers/shows
+    if @shows.length == 0
+      @noresults = "No results were found. Please broaden your criteria and search again."
+    end
+
+    @shows = @shows.paginate(:page => params[:page], :per_page => 15)
 
     render "category/body"
+
   end
 
   def custom
