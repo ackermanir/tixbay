@@ -55,7 +55,7 @@ class RecommendationsController < ApplicationController
     @shows = Show.recommend_shows(price_range=args["price_range"], categories=args["categories"], dates=args["dates"], location=args["location"], distance=args["distance"], keywords=args["keywords"])
 
     if @shows.length == 0
-      flash[:notice] = "No results were found. Please broaden your criteria and search again."
+      @noresults = "No results were found. Please broaden your criteria and search again."
     end
 
     @shows = @shows.paginate(:page => params[:page], :per_page => 15)

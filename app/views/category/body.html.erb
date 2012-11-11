@@ -19,9 +19,11 @@
   </form>
   <% end %>
 
-  <div id="flash_notice">
-    <%= flash[:notice] %>
-  </div>
+  <% if @noresults %>
+    <div id="flash_notice">
+      <%= @noresults  %>
+    </div>
+  <% end %>
 
 <div id="shows">
   <%= render :partial => 'category/show' %>
