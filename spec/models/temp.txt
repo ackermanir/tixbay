@@ -1,0 +1,21 @@
+User
+
+username
+password
+first_name
+last_name
+
+street_address
+city
+state
+zip_code
+travel_radius
+
+interested_categories //store as a hash
+max_tix_price
+
+describe User do
+  it 'test that User has and belongs_to shows'
+  it 'test that User has many showtimes and categories through show'
+end
+

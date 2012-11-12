@@ -3,9 +3,6 @@ require 'spec_helper'
 
 describe Show do
   it 'test the many-to-many property between the Show and Category table' do
-    #s = Show.reflect_on_association(:categories)
-    #s.macro.should == :has_and_belongs_to_many
-
     @show = FactoryGirl.build(:show)
     @category = FactoryGirl.build(:category)
     @show.save
@@ -38,5 +35,35 @@ describe Show do
     @show.showtimes.first.date_id.should == 22
 
     @new_showtime.show.should == @show
+  end
+
+  it 'test that User has and belongs to many shows' do
+    @user = FactoryGirl.build(:user)
+    @user.save
+
+    @new_liked_show = @user.shows.create(:date_id => 21)
+    @user.shows.first.date_id.should == 21
+
+    @new_liked_show.user.should == @user
+  end
+
+  it 'test that User has and belongs to many interests' do
+    @user = FactoryGirl.build(:user)
+    @user.save
+
+    @new_interest = @user.interests.create(:click => 2)
+    @user.interests.first.click.should == 2
+
+    @new_interest.user.should == @user
+  end
+
+  it 'test that User has and belongs to many categories' do
+    @user = FactoryGirl.build(:user)
+    @user.save
+
+    @new_categories = @user.categories.create(:name => "Jazz")
+    @user.categories.first.name.should == "Jazz"
+
+    @new_categories.user.should == @user
   end
 end
