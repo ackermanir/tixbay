@@ -24,7 +24,6 @@ describe Show do
     @venue.shows.first.title.should == 'Test title'
 
     @new_show.venue.should == @venue
-
   end
 
   it 'test that Show has_many Showtimes and a Showtime belongs_to a Show' do
@@ -60,4 +59,15 @@ describe Show do
     @user.categories.create(:name => "Jazz")
     @user.categories.first.name.should == "Jazz"
   end
+
+  it 'test that Interest belongs_to a Show and a Show has many Interests' do
+    @show = FactoryGirl.build(:show)
+    @show.save
+
+    @new_interest= @show.interests.create(:click => 1)
+    @show.interests.first.click.should == 1
+
+    @new_interest.show.should == @show
+  end
+
 end
