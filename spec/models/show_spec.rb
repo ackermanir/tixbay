@@ -89,9 +89,18 @@ describe Show do
         with([80.0, 240.0],
              ['Film', 'Food'],
              [DateTime.now, nil],
-             "loc", 20).and_return([])
+             "loc", 20, nil).and_return([])
       s.similar_shows
     end
+  end
+
+  describe "self.rank_keyword" do
+    it "should sort order by weight the shows"
+  end
+
+  describe "keyword_search" do
+    it "extract the list of words relevant to show categories"
+    it "get the weighting for both headline and summary"
   end
 
   describe "price_format" do
