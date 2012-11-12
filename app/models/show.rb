@@ -84,7 +84,7 @@ Defaults to recommending all shows
                            dates = [DateTime.now, nil],
                            location = nil,
                            distance = 10,
-                           keywords = [])
+                           keywords = nil)
     #Filter based on price and categories
     shows = Show.price_greater(price_range[0]).
       joins(:showtimes).date_later(dates[0])
@@ -94,7 +94,7 @@ Defaults to recommending all shows
     shows = shows.all.uniq
 
     shows = Show.get_closest_shows(shows, location, distance) unless not location
-    shows = Show.rank_keyword(shows, keywords) unless keywords == []
+    shows = Show.rank_keyword(shows, keywords) unless not keywords
     return shows
   end
 
@@ -106,9 +106,11 @@ Returns all shows for the category that are
 """
   def self.category_shows(title, page)
     categories = Category.categories_by_title(title)
-    shows = Show.joins(:categories).in_categories(categories).
-      joins(:showtimes).date_later(DateTime.now).
-      commutable.not_sold_out
+    shows = Show.joins(:categories).in_categories(categories)
+    """
+    .joins(:showtimes).date_later(DateTime.now).
+    commutable.not_sold_out
+    """
 
     shows = shows.paginate(:page => page, :per_page => 15)
     return shows
@@ -131,7 +133,7 @@ How it chooses similarity:
     location = venue.location_hash
     shows = Show.recommend_shows(price_range, category,
                                  [DateTime.now, nil],
-                                 location, 20)
+                                 location, 20, nil)
     return (shows - [self]).uniq
   end
 
@@ -139,8 +141,9 @@ How it chooses similarity:
     pairings = []
     shows.each do |show|
       weight = show.keyword_search(keywords)
-      pairings <<[weight, show]
+      pairings << [weight, show]
     end
+    #b first to sort in reverse order (largest weight first)
     pairings.sort! do |a,b|
       b[0] <=> a[0]
     end
@@ -165,6 +168,7 @@ How it chooses similarity:
 
     keyword = []
     keywords.each do |key, value|
+      #TODO should only accept keys matching category names
       keywords[key].each {|wrd| keyword << wrd.downcase}
     end
     weight = 2 * weight_in_string(self.headline, keyword)
