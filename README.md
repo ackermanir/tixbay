@@ -1,5 +1,4 @@
 # Heroku Deployment
-# test line by cong 1
 
 ### added by Terence (10/22/2012)
 
