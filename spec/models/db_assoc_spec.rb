@@ -41,29 +41,23 @@ describe Show do
     @user = FactoryGirl.build(:user)
     @user.save
 
-    @new_liked_show = @user.shows.create(:date_id => 21)
-    @user.shows.first.date_id.should == 21
-
-    @new_liked_show.user.should == @user
+    @user.shows.create(:title => 'Looper')
+    @user.shows.first.title.should == 'Looper'
   end
 
   it 'test that User has and belongs to many interests' do
     @user = FactoryGirl.build(:user)
     @user.save
 
-    @new_interest = @user.interests.create(:click => 2)
+    @user.interests.create(:click => 2)
     @user.interests.first.click.should == 2
-
-    @new_interest.user.should == @user
   end
 
   it 'test that User has and belongs to many categories' do
     @user = FactoryGirl.build(:user)
     @user.save
 
-    @new_categories = @user.categories.create(:name => "Jazz")
+    @user.categories.create(:name => "Jazz")
     @user.categories.first.name.should == "Jazz"
-
-    @new_categories.user.should == @user
   end
 end
