@@ -1,4 +1,11 @@
 Tixbay::Application.routes.draw do
+  #devise_for :users
+    
+  #sign out path didn't work, so this is a fix
+  devise_for :users do 
+      get '/users/sign_out' => 'devise/sessions#destroy' 
+  end
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
   root :to => 'category#theater'
