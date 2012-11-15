@@ -11,6 +11,10 @@ end
 
 module Tixbay
   class Application < Rails::Application
+
+    #for heroku with devise
+    config.assets.initialize_on_precompile = false
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
@@ -45,7 +49,5 @@ module Tixbay
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
 
-    #for heroku with devise
-    config.assets.initialize_on_precompile = false
   end
 end
