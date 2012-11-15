@@ -47,10 +47,8 @@
         <p class="notice"><%= notice %></p>
         <p class="alert"><%= alert %></p>
 
-        <!-- FIX-ME: fix template-->
-        <div class="well" id="listings">
-          <%= yield :before_body_title %>
-        </div>
+        <!-- only have contents if it is individual show view -->
+        <%= yield :before_body_title %>
 
         <div class="well" id="listings">
           <%= yield %>
