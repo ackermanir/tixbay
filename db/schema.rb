@@ -81,7 +81,7 @@ ActiveRecord::Schema.define(:version => 20121115002124) do
 
   create_table "users", :force => true do |t|
     t.string   "username"
-    #t.string   "password"
+    t.string   "password"
     t.string   "first_name"
     t.string   "last_name"
     t.string   "street_address"
@@ -93,7 +93,6 @@ ActiveRecord::Schema.define(:version => 20121115002124) do
     t.string   "fb_hash"
     t.datetime "created_at"
     t.datetime "updated_at"
-    #addded by devise generate
     t.string   "email",                  :default => "", :null => false
     t.string   "encrypted_password",     :default => "", :null => false
     t.string   "reset_password_token"
