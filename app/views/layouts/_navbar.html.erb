@@ -17,27 +17,27 @@
             <tr>
               <td width="29%" bgcolor="<%= color_map['theater'] %>">
                 <div align="center" class="<%= buttons_map['theater'] %>">
-              <%= link_to "theater & dance", :controller=>"category", :action=>"theater"%>
+              <%= link_to "theater & dance", category_path("theater")%>
                 </div>
               </td>
               <td width="14%" bgcolor="<%= color_map['music'] %>">
                 <div align="center" class="<%= buttons_map['music'] %>">
-              <%= link_to "music", :controller=>"category", :action=>"music" %>
+              <%= link_to "music", category_path("music") %>
                 </div>
               </td>
               <td width="14%" bgcolor="<%= color_map['film'] %>">
                 <div align="center" class="<%= buttons_map['film'] %>">
-              <%= link_to "film", :controller=>"category", :action=>"film"%>
+              <%= link_to "film", category_path("film")%>
                 </div>
               </td>
               <td width="26%" bgcolor="<%= color_map['all culture'] %>">
                 <div align="center" class="<%= buttons_map['all culture'] %>">
-              <%= link_to "all culture", :controller=>"category", :action=>"all_culture" %>
+              <%= link_to "all culture", category_path("all_culture") %>
                 </div>
               </td>
               <td width="17%" bgcolor="<%= color_map['custom'] %>">
                 <div align="center" class="<%= buttons_map['custom'] %>">
-              <%= link_to "custom", :controller=>"recommendations", :action=>"login" %>
+              <%= link_to "custom", "/recommendations/login" %>
                 </div>
               </td>
             </tr>
