@@ -2,8 +2,8 @@ Tixbay::Application.routes.draw do
   root :to => 'category#theater'
     
   #sign out path didn't work, so this is a fix
-  #devise_for :users
-  devise_for :users do
+  devise_for :users
+  devise_scope :user do 
       get '/users/sign_out' => 'devise/sessions#destroy' 
   end
 
