@@ -23,10 +23,12 @@ module NavigationHelpers
       '/recommendations/form'
     when /^the all culture page$/
       '/category/all_culture'
-   when /^the recommendations form page$/
-      '/recommendations/form'
     when /^the show page with id "(.+)"$/
       '/show/'+$1
+    when /^the sign in page$/
+      '/devise/users/sign_in/'
+    when /^the sign up page$/
+      '/devise/users/sign_up/'
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #

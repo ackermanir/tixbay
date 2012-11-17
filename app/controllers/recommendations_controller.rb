@@ -1,7 +1,8 @@
 require 'will_paginate/array'
 
 class RecommendationsController < ApplicationController
-  
+
+  #FIX-ME: don't add filter if we have a non-logged in version as well  
   before_filter :authenticate_user!
 
   def index

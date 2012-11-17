@@ -2,6 +2,10 @@
 <% render "layouts/navbar" #render navbar partials here%>
 <% end %>
 
+<!--FIX-ME: move it somewhere else, front-end fix -->
+<a href="" class="btn btn-danger">Sign Up Now</a>
+<a href="" class="btn btn-danger">I do not wish to sign up</a>
+
 <h2>Sign in</h2>
 
 <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
