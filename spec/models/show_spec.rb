@@ -95,12 +95,38 @@ describe Show do
   end
 
   describe "self.rank_keyword" do
-    it "should sort order by weight the shows"
+    it "should sort order by weight the shows" do
+      s1 = Show.new
+      s2 = Show.new
+      s1.stub(:keyword_search).and_return(1)
+      s2.stub(:keyword_search).and_return(2)
+      Show.rank_keyword([s1, s2], "").should == [s2, s1]
+    end
   end
 
   describe "keyword_search" do
-    it "extract the list of words relevant to show categories"
-    it "get the weighting for both headline and summary"
+    it "extract the list of words relevant to show categories" do
+      s = Show.new
+      c1 = mock('category')
+      c1.stub(:name).and_return('music')
+      s.stub(:categories).and_return([c1])
+      s.stub(:headline).and_return('Come see blues')
+      s.stub(:summary).and_return('It is new and classical jazz')
+      s.keyword_search({'music' => ['blues', 'jazz'],
+                         'theater' => ['classical', 'new']}).
+        should == 3
+    end
+    it "get the weighting for both headline and summary" do
+      s = Show.new
+      c1 = mock('category')
+      c1.stub(:name).and_return('music')
+      s.stub(:categories).and_return([c1])
+      s.stub(:headline).and_return('Come see new Blues')
+      s.stub(:summary).and_return('It is Classical Jazz and blues')
+      s.keyword_search({'music' => ['blues', 'jazz'],
+                         'theater' => ['classical', 'new']}).
+        should == 4
+    end
   end
 
   describe "price_format" do

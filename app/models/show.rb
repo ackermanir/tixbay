@@ -168,10 +168,13 @@ How it chooses similarity:
       return weight
     end
 
+    category = []
+    categories.each {|c| category << c.name.downcase}
     keyword = []
     keywords.each do |key, value|
-      #TODO should only accept keys matching category names
-      keywords[key].each {|wrd| keyword << wrd.downcase}
+      if category.include?(key.downcase)
+        value.each {|wrd| keyword << wrd.downcase}
+      end
     end
     weight = 2 * weight_in_string(self.headline, keyword)
     weight += weight_in_string(self.summary, keyword)
