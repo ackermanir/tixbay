@@ -4,6 +4,8 @@ gem 'rails', '3.1.0'
 gem 'rb-readline' #needed for Ian's machine
 gem 'nokogiri' #needed for xml parsing
 gem 'timecop' #used to set time for cucumber
+gem 'omniauth'
+gem 'omniauth-facebook'
 
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
