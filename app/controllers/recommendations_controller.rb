@@ -67,10 +67,11 @@ class RecommendationsController < ApplicationController
 
   end
 
-  def custom
+  def recommended
     #if not logged in
     # redirect_to :actions=>"login"
     #elsif no saved answers
+    @title = "recommended"
     redirect_to :actions=>"form"
     #else
     # @title = "Recommended Shows"
@@ -84,6 +85,7 @@ class RecommendationsController < ApplicationController
   end
 
   def login
+    @title = "recommended"
     #if logged in:
     redirect_to :action=>"form"
   end

@@ -8,25 +8,29 @@ class CategoryController < ApplicationController
   def theater 
     theater_category = ['Theater', 'Performing Arts']
     @title = "theater"
-    @shows = Show.category_shows(@title, params[:page])
+    @shows = Show.category_shows(@title)
+    @shows = @shows.paginate(:page => params[:page], :per_page => 15)
     render :body
   end
   def music
     music_category = ['Popular Music', 'Jazz', 'Classical', 'Classic Rock']
     @title = "music"
-    @shows = Show.category_shows(@title, params[:page])
+    @shows = Show.category_shows(@title)
+    @shows = @shows.paginate(:page => params[:page], :per_page => 15)
     render :body
   end
   def film
     @title = "film"
-    @shows = Show.category_shows(@title, params[:page])
+    @shows = Show.category_shows(@title)
+    @shows = @shows.paginate(:page => params[:page], :per_page => 15)
     render :body 
   end
   def all_culture
     all_category = ['Theater', 'Performing Arts', 'Popular Music', 'Jazz',
                     'Classical', 'Classic Rock', 'Film']
     @title = "all culture"
-    @shows = Show.category_shows(@title, params[:page])
+    @shows = Show.category_shows(@title)
+    @shows = @shows.paginate(:page => params[:page], :per_page => 15)
     render :body    
   end
   def preference

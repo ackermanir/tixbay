@@ -11,8 +11,8 @@ Background: shows have been added to database
   And the date is set to 2012
 
 Scenario: view new possible shows
-  Then I should see "Avenue Q"
-  And I should see "Erickson Theatre"
+  Then I should see "Memphis"
+  And I should see "San Jose Center for the Performing Arts"
 
 Scenario: buy a ticket to a show
   And I follow "Purchase Tickets"
