@@ -28,7 +28,7 @@ Scenario: press "Theatre Bay Area" redirect
 
 Scenario: filter "theater" shows
   And I press the "theater" tab
-  Then I should be on the home page
+  Then I should be on the theater page
   And I should see "theater" shows
 
 Scenario: filter "music" shows

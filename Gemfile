@@ -52,3 +52,4 @@ gem "rspec-rails", "~> 2.0"
 gem 'haml'
 gem 'sass', '3.1.10'
 gem 'bootstrap-sass', '~> 2.1.0.1'
+gem 'devise'
