@@ -47,16 +47,16 @@
     <image>https://i.goldstar.com/gse_media/112/9/saltimbanco-101812.jpg</image>
     <venue>
       <capacity>6150</capacity>
-      <geocode_longitude>-71.117785</geocode_longitude>
+      <geocode_longitude>-122.433704</geocode_longitude>
       <image>https://i.goldstar.com/gse_media/108/7/agganis.jpg</image>
-      <geocode_latitude>42.351789</geocode_latitude>
+      <geocode_latitude>37.805033</geocode_latitude>
       <link>http://www.goldstar.com/venues/boston-ma/agganis-arena</link>
       <address>
-        <locality>Boston</locality>
+        <locality>San Francisco</locality>
         <country_name>United States</country_name>
-        <postal_code>02215</postal_code>
-        <street_address>925 Commonwealth Ave.</street_address>
-        <region>MA</region>
+        <postal_code>94103</postal_code>
+        <street_address>1663 Mission St</street_address>
+        <region>CA</region>
         <extended_address/>
       </address>
       <phone>617-353-4628</phone>
@@ -258,16 +258,16 @@
     <image>https://i.goldstar.com/gse_media/112/7/wrathskellar-081412.jpg</image>
     <venue>
       <capacity>164</capacity>
-      <geocode_longitude>-71.121885</geocode_longitude>
+      <geocode_longitude>-122.433704</geocode_longitude>
       <image>https://i.goldstar.com/gse_media/111/1/somerville-town-pages-015-resized-600.jpg</image>
-      <geocode_latitude>42.395523</geocode_latitude>
+      <geocode_latitude>37.805033</geocode_latitude>
       <link>http://www.goldstar.com/venues/somerville-ma/davis-square-theatre</link>
       <address>
-        <locality>Somerville</locality>
+        <locality>San Francisco</locality>
         <country_name>United States</country_name>
-        <postal_code>02143</postal_code>
-        <street_address>255 Elm St.</street_address>
-        <region>MA</region>
+        <postal_code>94103</postal_code>
+        <street_address>1663 Mission St</street_address>
+        <region>CA</region>
         <extended_address/>
       </address>
       <phone/>

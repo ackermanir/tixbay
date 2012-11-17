@@ -7,8 +7,8 @@ Feature: Basic Front Page
 Background: shows have been added to database
 
   Given the database has been setup from xml
-  And I am on the home page
   And the date is set to 2012
+  And I am on the home page
 
 Scenario: view new possible shows
   Then I should see "Avenue Q"
