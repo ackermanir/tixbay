@@ -15,6 +15,8 @@ module NavigationHelpers
 
     when /^the home\s?page$/
       '/'
+    when /^the theater page$/
+      '/category/theater'
     when /^the film page$/
       '/category/film'
     when /^the music page$/
@@ -26,9 +28,9 @@ module NavigationHelpers
     when /^the show page with id "(.+)"$/
       '/show/'+$1
     when /^the sign in page$/
-      '/devise/users/sign_in/'
+      '/users/sign_in'
     when /^the sign up page$/
-      '/devise/users/sign_up/'
+      '/users/sign_up'
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #

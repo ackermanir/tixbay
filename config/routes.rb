@@ -3,7 +3,7 @@ Tixbay::Application.routes.draw do
     
   #sign out path didn't work, so this is a fix
   #devise_for :users
-  devise_for :users do 
+  devise_for :users do
       get '/users/sign_out' => 'devise/sessions#destroy' 
   end
 

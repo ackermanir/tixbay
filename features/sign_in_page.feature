@@ -1,4 +1,3 @@
-@wip
 Feature: Login and Signup Page
     
     As a tix bay area user
@@ -13,7 +12,7 @@ Background: users table works on backend
 Scenario: sign up for a new account
     Then I follow "custom"
     Then I should be on the sign in page
-    And I press "Sign Up Now"
+    And I follow "Sign Up Now"
     Then I should be on the sign up page
     When I fill in "user_email" with "congchen@gg.com"
     And I fill in "user_password" with "congchen"
@@ -28,7 +27,7 @@ Scenario: login with an existing tixbay account
     Then I should be on the sign in page
     When I fill in "user_email" with "congchen@gg.com"
     And I fill in "user_password" with "congchen"
-    And I click "Sign in"
+    And I press "Sign in"
     Then I should be on the recommendations form page 
 
 Scenario: logout
