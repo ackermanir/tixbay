@@ -1,4 +1,9 @@
+require 'will_paginate/array'
+
 class RecommendationsController < ApplicationController
+
+  #FIX-ME: don't add filter if we have a non-logged in version as well  
+  before_filter :authenticate_user!
 
   def index
     @title = "Recommended Shows"
@@ -53,8 +58,10 @@ class RecommendationsController < ApplicationController
     @shows = Show.recommend_shows(price_range=args["price_range"], categories=args["categories"], dates=args["dates"], location=args["location"], distance=args["distance"], keywords=args["keywords"])
 
     if @shows.length == 0
-      flash[:notice] = "No results were found. Please broaden your criteria and search again."
+      @noresults = "No results were found. Please broaden your criteria and search again."
     end
+
+    @shows = @shows.paginate(:page => params[:page], :per_page => 15)
 
     render "category/body"
 

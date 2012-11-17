@@ -2,6 +2,7 @@ Feature: Recommendations Based On Form
 
 Background: database
     Given the database has been setup from xml
+    Given I am already logged in
 
 Scenario: link to recommendations form
     Given I am on the home page

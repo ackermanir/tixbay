@@ -8,6 +8,7 @@ Background: shows have been added to database
 
   Given the database has been setup from xml
   And I am on the home page
+  And the date is set to 2012
 
 Scenario: view new possible shows
   Then I should see "Avenue Q"
@@ -27,7 +28,7 @@ Scenario: press "Theatre Bay Area" redirect
 
 Scenario: filter "theater" shows
   And I press the "theater" tab
-  Then I should be on the home page
+  Then I should be on the theater page
   And I should see "theater" shows
 
 Scenario: filter "music" shows

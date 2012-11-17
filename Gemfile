@@ -3,6 +3,7 @@ source 'http://rubygems.org'
 gem 'rails', '3.1.0'
 gem 'rb-readline' #needed for Ian's machine
 gem 'nokogiri' #needed for xml parsing
+gem 'will_paginate', '~> 3.0'
 gem 'timecop' #used to set time for cucumber
 gem 'omniauth'
 gem 'omniauth-facebook'
@@ -53,3 +54,4 @@ gem "rspec-rails", "~> 2.0"
 gem 'haml'
 gem 'sass', '3.1.10'
 gem 'bootstrap-sass', '~> 2.1.0.1'
+gem 'devise'
