@@ -113,7 +113,7 @@ Returns all shows for the category that are
       joins(:showtimes).date_later(DateTime.now).
       joins(:venue).commutable
 
-    #shows = shows.all.uniq
+    shows = shows.all.uniq
     shows = shows.paginate(:page => page, :per_page => 15)
     return shows
   end
