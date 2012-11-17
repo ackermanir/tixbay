@@ -2,8 +2,11 @@ require 'spec_helper'
 require 'rspec-rails'
 
 describe RecommendationsController do
+  include Devise::TestHelpers
   describe "index" do
     it "calls filtering model method" do
+      user = FactoryGirl.create(:user)
+      sign_in user
       params = {
         "recommendation" => {
           "keyword" => {

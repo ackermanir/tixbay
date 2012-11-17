@@ -63,6 +63,8 @@ FactoryGirl.define do
     fb_hash "asdf"
     created_at "2011-6-10 05:09:57"
     updated_at "2011-8-20 07:09:57"
+    email "foobar@foobar.com"
+    encrypted_password "$2a$10$/44/HK3DEvufxL9JbB05l.8mhlVRRQEmHE2Wf84kfmYB/rTV1BEF."
   end
 
   factory :interest do
