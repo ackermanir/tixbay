@@ -7,12 +7,12 @@
      <td width="100%" bgcolor="#000000"><div align="center" class="buttons_on" id="pagetitle"><%=  @title %></div>
      </td></tr></table-->
 <div id="recommendation_container">
-<h1 id="recommendation_header">Custom Recommendations</h1>
+<h3 id="recommendation_header">Custom Recommendations Form</h3>
 
 <div id="recommendation_welcome">
-Welcome <%= @user %>!<br>
+<h4>Welcome <%= @user %>!<br>
 Please fill out this form so we can help you find shows.
-</div>
+</h4></div>
 
 <%= form_tag :action => "index" do %>
 
@@ -121,8 +121,8 @@ Please fill out this form so we can help you find shows.
    </div>
 
    <div id="recommendation_keyword_select">
-     <button id="select_all_keywords" type="button">Select All</button>
-     <button id="deselect_all_keywords" type="button">Deselect All</button>
+     <div id="select_all_keywords" class="btn">Select All</div>
+     <div id="deselect_all_keywords" class="btn">Deselect All</div>
    </div>
 
   </div>
@@ -225,7 +225,7 @@ Please fill out this form so we can help you find shows.
   </div>
 
   <div class="recommendation_input" id="recommendation_submit">
-    <%= submit_tag value="Submit" %>
+    <button type="submit" class="btn btn-danger">Submit form</button>
   </div>
 
 </div>
