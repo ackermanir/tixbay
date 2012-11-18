@@ -1,5 +1,6 @@
 require 'spec_helper'
 require 'rspec-rails'
+require 'will_paginate/array'
 
 describe RecommendationsController do
   include Devise::TestHelpers
