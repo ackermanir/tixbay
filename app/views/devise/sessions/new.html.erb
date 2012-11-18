@@ -12,7 +12,7 @@
   <%= f.password_field :password %></div>
 
   <% if devise_mapping.rememberable? -%>
-  	<label class="checkbox">
+    <label class="checkbox">
       <input type="checkbox"> Remember Me
     </label>
   <% end -%>
@@ -20,6 +20,7 @@
   <br/>
   <button type="submit" class="btn btn-danger">Log In</button>
 <% end %>
+
 
 <div id="login_links">
   <%= render "devise/shared/links" %>
