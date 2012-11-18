@@ -108,8 +108,7 @@ Returns all shows for the category that are
 """
   def self.category_shows(title)
     categories = Category.categories_by_title(title)
-    shows = Show.joins(:categories).in_categories(categories).
-      not_sold_out
+    shows = Show.joins(:categories).in_categories(categories)
     shows = shows.all.uniq
     return shows
   end
