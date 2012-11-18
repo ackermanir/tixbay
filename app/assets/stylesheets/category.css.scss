@@ -29,9 +29,18 @@ body {
   float: right;
   background-color: white;
   border: none;
+
   a {
     color: #C5000E;
     font-weight: bold;
+  }
+}
+
+#login_links {
+  a {
+    color: #C5000E;
+    display: inline-block;
+    margin-right: 2%;
   }
 }
 
@@ -59,10 +68,6 @@ body {
   .buttons_on {
     line-height: 2.2em;
   }
-}
-
-#pagetitle_table {
-  margin-bottom: 3%;
 }
 
 #pagetitle {
@@ -358,6 +363,10 @@ body {
 
 .btn {
   background-image: none;
+}
+
+.row-fluid .span2 {
+  width: 10%;
 }
 
 .row-fluid .span3 {

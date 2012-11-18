@@ -6,7 +6,7 @@ class RecommendationsController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-    @title = "Recommended Shows"
+    @title = "recommended"
 
     args = {}
 
@@ -81,7 +81,7 @@ class RecommendationsController < ApplicationController
   end
 
   def form
-    @title = "Recommendation Form"
+    @title = "recommended"
   end
 
   def login
