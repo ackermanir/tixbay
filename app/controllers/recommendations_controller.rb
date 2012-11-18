@@ -10,6 +10,12 @@ class RecommendationsController < ApplicationController
 
     args = {}
 
+    if session[:recommendation]
+      params["recommendation"] = session[:recommendation]
+    elsif params["recommendation"]
+      session[:recommendation] = params["recommendation"]
+    end
+
     price_range = params["recommendation"]["maxprice"]
     if price_range == ""
       args["price_range"] = [0, -1]
@@ -60,9 +66,7 @@ class RecommendationsController < ApplicationController
       @noresults = "No results were found. Please broaden your criteria and search again."
     end
 
-    @shows = @shows.paginate(:page => params[:page], :per_page => 15, 
-      :conditions => [price_range=args["price_range"], categories=args["categories"], dates=args["dates"], location=args["location"], distance=args["distance"], keywords=args["keywords"]] )
-
+    @shows = @shows.paginate(:page => params[:page], :per_page => 15)
     render "category/body"
 
   end
