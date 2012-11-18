@@ -10,7 +10,15 @@ class ShowController < ApplicationController
     @current_show = Show.find(params['id'])
     @current_show_id = params['id']
     @shows = @current_show.similar_shows()
-    
+    check_for_empty_shows()
     render :show_page
+  end
+
+  def check_for_empty_shows
+    if @shows.empty?
+      @noShows = true
+    else
+      @noShows = false
+    end
   end
 end
