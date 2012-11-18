@@ -6,7 +6,7 @@ Background: database
 
 Scenario: link to recommendations form
     Given I am on the home page
-    And I follow "custom"
+    And I follow "recommended"
     Then I should be on the recommendations form page
 
 Scenario: get recommendations by one category

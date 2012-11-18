@@ -3,8 +3,8 @@
 }
 
 #recommendation_welcome {
-  padding-top: 20px;
-  padding-bottom: 30px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .recommendation_input {
@@ -21,7 +21,10 @@
 
 #recommendation_submit {
   clear:both;
-  padding-top: 45px;
+}
+
+input[type="submit"] {
+  background-image: none;
 }
 
 .recommendation_location{

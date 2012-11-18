@@ -2,25 +2,31 @@
 <% render "layouts/navbar" #render navbar partials here%>
 <% end %>
 
-<!--FIX-ME: move it somewhere else, front-end fix -->
-<a href="/users/sign_up" class="btn btn-danger">Sign Up Now</a>
-<a href="/" class="btn btn-danger">I do not wish to sign up</a>
-
-<h2>Sign in</h2>
+<h2>Log In</h2>
 
 <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-  <div><%= f.label :email %><br />
+  <div><%= f.label :email %>
   <%= f.email_field :email %></div>
 
-  <div><%= f.label :password %><br />
+  <div><%= f.label :password %>
   <%= f.password_field :password %></div>
 
   <% if devise_mapping.rememberable? -%>
-    <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
+    <label class="checkbox">
+      <input type="checkbox"> Remember Me
+    </label>
   <% end -%>
 
-  <div><%= f.submit "Sign in" %></div>
+  <br/>
+  <button type="submit" class="btn btn-danger">Log In</button>
 <% end %>
 
-<%= render "devise/shared/links" %>
 
+<div id="login_links">
+  <%= render "devise/shared/links" %>
+</div>
+
+<br/>
+<p><b>Don't want to sign up?</b>
+<br/>We won't be able to save your preferences and improve our recommendations if you choose this option.</p>
+<a href="/" class="btn">I do not wish to sign up</a>

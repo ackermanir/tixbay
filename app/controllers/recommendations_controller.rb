@@ -6,7 +6,7 @@ class RecommendationsController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-    @title = "Recommended Shows"
+    @title = "recommended"
 
     args = {}
 
@@ -67,10 +67,11 @@ class RecommendationsController < ApplicationController
 
   end
 
-  def custom
+  def recommended
     #if not logged in
     # redirect_to :actions=>"login"
     #elsif no saved answers
+    @title = "recommended"
     redirect_to :actions=>"form"
     #else
     # @title = "Recommended Shows"
@@ -80,10 +81,11 @@ class RecommendationsController < ApplicationController
   end
 
   def form
-    @title = "Recommendation Form"
+    @title = "recommended"
   end
 
   def login
+    @title = "recommended"
     #if logged in:
     redirect_to :action=>"form"
   end
