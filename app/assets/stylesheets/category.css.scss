@@ -393,6 +393,12 @@ body {
   border-left: 1px solid #DDD;
 }
 
+.well {
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  border-radius: 0px;
+}
+
 //Add stuff for hiding and showing more text for the summary
 .morecontent span{
   opacity: 10;
@@ -403,4 +409,8 @@ body {
 a.morelink {
   text-decoration:none;
   outline: none;
+}
+
+.summary {
+  margin-bottom: 3%
 }
