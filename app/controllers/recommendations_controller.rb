@@ -10,10 +10,10 @@ class RecommendationsController < ApplicationController
 
     args = {}
 
-    if session[:recommendation]
-      params["recommendation"] = session[:recommendation]
-    elsif params["recommendation"]
+    if params["recommendation"]
       session[:recommendation] = params["recommendation"]
+    elsif session[:recommendation]
+      params["recommendation"] = session[:recommendation]
     end
 
     price_range = params["recommendation"]["maxprice"]
@@ -66,7 +66,10 @@ class RecommendationsController < ApplicationController
       @noresults = "No results were found. Please broaden your criteria and search again."
     end
 
+    params["recommendation"] = nil
+
     @shows = @shows.paginate(:page => params[:page], :per_page => 15)
+    
     render "category/body"
 
   end
