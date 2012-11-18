@@ -1,10 +1,10 @@
 Tixbay::Application.routes.draw do
   root :to => 'category#theater'
-    
+
   #sign out path didn't work, so this is a fix
-  devise_for :users
-  devise_scope :user do 
-      get '/users/sign_out' => 'devise/sessions#destroy' 
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+  devise_scope :user do
+      get '/users/sign_out' => 'devise/sessions#destroy'
   end
 
   # The priority is based upon order of creation:
@@ -17,7 +17,7 @@ Tixbay::Application.routes.draw do
   #  resources :similarshows
   #end
   #match 'tixbay/' => 'tixbay/theater'
-  
+
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
   # Keep in mind you can assign values other than :controller and :action
