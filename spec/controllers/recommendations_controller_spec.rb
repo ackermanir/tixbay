@@ -49,7 +49,7 @@ describe RecommendationsController do
                                                 distance = 25,
                                                 keywords = ["Film"]
                                                  )
-      @shows.should_receive(:length).and_return(10)
+      @shows.should_receive(:length).and_return(15)
       post :index, :recommendation => params["recommendation"]
     end
   end

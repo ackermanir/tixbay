@@ -46,7 +46,6 @@ class RecommendationsController < ApplicationController
       args["dates"] = [DateTime.now, nil]
     end
 
-
     keywords = []
     params["recommendation"]["keyword"].each do |word, value|
       if value == "1"
@@ -61,7 +60,8 @@ class RecommendationsController < ApplicationController
       @noresults = "No results were found. Please broaden your criteria and search again."
     end
 
-    @shows = @shows.paginate(:page => params[:page], :per_page => 15)
+    @shows = @shows.paginate(:page => params[:page], :per_page => 15, 
+      :conditions => [price_range=args["price_range"], categories=args["categories"], dates=args["dates"], location=args["location"], distance=args["distance"], keywords=args["keywords"]] )
 
     render "category/body"
 
@@ -71,7 +71,6 @@ class RecommendationsController < ApplicationController
     #if not logged in
     # redirect_to :actions=>"login"
     #elsif no saved answers
-    @title = "recommended"
     redirect_to :actions=>"form"
     #else
     # @title = "Recommended Shows"
@@ -85,7 +84,6 @@ class RecommendationsController < ApplicationController
   end
 
   def login
-    @title = "recommended"
     #if logged in:
     redirect_to :action=>"form"
   end
