@@ -50,6 +50,7 @@ describe RecommendationsController do
                                                 distance = 25,
                                                 keywords = ["Film"]
                                                  )
+      @shows.stub(:paginate)
       @shows.should_receive(:length).and_return(15)
       post :index, :recommendation => params["recommendation"]
     end
