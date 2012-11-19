@@ -40,6 +40,11 @@ $(document).ready(function() {
   });
 
   $(window).scroll(function() {
-
+    if ($(window).scrollTop() > 700) {
+      $("#back_top").fadeIn("slow");
+    }
+    else {
+      $("#back_top").fadeOut("slow");
+    }
   });
 });
