@@ -1,4 +1,4 @@
-Feature: When displaying the summaires to shows, I want the text to be truncated so I can show less or more
+Feature: When displaying the summaries to shows, I want the text to be truncated so I can show less or more
 
   As a user
   So that I see less text and read the ones I'm interested in

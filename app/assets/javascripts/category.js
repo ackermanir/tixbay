@@ -33,4 +33,18 @@ $(document).ready(function() {
     $(this).prev().toggle();
     return false;
   });
+
+  $("#back_top").click(function() {
+    $("html, body").animate({ scrollTop: 0 }, "slow");
+    return false;
+  });
+
+  $(window).scroll(function() {
+    if ($(window).scrollTop() > 700) {
+      $("#back_top").fadeIn("slow");
+    }
+    else {
+      $("#back_top").fadeOut("slow");
+    }
+  });
 });
