@@ -432,3 +432,33 @@ a.morelink {
 .summary {
   margin-bottom: 3%
 }
+
+//Back to top scroll
+#back_top {
+  bottom: 130px;
+  cursor: pointer;
+  display: none;
+  position: fixed;
+  left: 50%;
+  margin-left: 485px;
+  text-align: center;
+  padding: 5px 10px;
+  width: 24px;
+  z-index: 999;
+  background-color: #f1faff;
+  border: 1px solid #ddd;
+  border-left: none;
+  box-shadow: 2px 0 4px #d7d7d7;
+}
+
+#back_top span {
+  border-width: 4px;
+  border-style: dashed dashed solid dashed;
+  border-color:transparent transparent #f00 transparent;
+  width: 0;
+  height: 0;
+  display: block;
+  font-size: 0;
+  line-height: 0;
+  margin-left: 8px;
+}
