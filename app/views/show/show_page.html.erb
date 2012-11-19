@@ -40,7 +40,7 @@
 <% @shows.each do |s| %>
   <div class="show">
     <%= image_tag s.image_url, "width"=>"35%" %>
-    <p class="evTitle"><a class="show_link" href="<%= url_for(:controller => 'show', :action => 'show', :id => s.id) %>"><%= s.title %></a>
+    <p><a class="linkTitle" href="<%= url_for(:controller => 'show', :action => 'show', :id => s.id) %>"><%= s.title %></a>
     <p><%= s.headline %>
     <p><b>Availible Dates:</b><%= s.date_string %>
     <p><a class="venue_link" href="<%= s.venue.link %>"><%= s.venue.name %></a><br>
@@ -51,4 +51,10 @@
     <p><a class="buytickets btn btn-danger" id="<%=s.id %>" href="<%= s.link %>">Purchase Tickets</a>
   </div>
   <hr/>
+<% end %>
+
+<% if @noShows == true %>
+  <div id="no_shows">
+    <h2>No Similar Shows Found</h2>
+  </div>
 <% end %>
