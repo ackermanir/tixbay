@@ -17,43 +17,43 @@
 </head>
 <body>
     <div class="container">
-    <div class="well" id="top_navbar">
-        <% if user_signed_in? %>
-            <%= link_to "Sign Out", destroy_user_session_path, :method=>:delete %>
-        <% else %>
-            <%= link_to "Sign In", new_user_session_path %>
-        <% end %>
-    </div>
-    <div class="row-fluid">
-    <%= link_to image_tag("redtopper.jpeg", "width"=>"100%", "id"=>"tixlogo"), "/" %>
-    </div>
-    <%= yield :navbar %>
+      <div class="btn" id="sign_in">
+          <% if user_signed_in? %>
+              <%= link_to "log out", destroy_user_session_path, :method=>:delete %>
+          <% else %>
+              <%= link_to "log in", new_user_session_path %>
+          <% end %>
+      </div>
+      <div class="row-fluid">
+      <%= link_to image_tag("redtopper.jpeg", "width"=>"85%", "id"=>"tixlogo", "style"=>"margin-left: 5%"), "/" %>
+      </div>
+      <%= yield :navbar %>
 
-    <div class="row-fluid">
-      <div class="span9">
-        <!-- for alert and notice messages -->
-        <p class="notice"><%= notice %></p>
-        <p class="alert"><%= alert %></p>
+      <div class="row-fluid">
+        <div class="span9">
+          <!-- for alert and notice messages -->
+          <p class="notice"><%= notice %></p>
+          <p class="alert"><%= alert %></p>
 
-        <!-- only have contents if it is individual show view -->
-        <%= yield :before_body_title %>
+          <!-- only have contents if it is individual show view -->
+          <%= yield :before_body_title %>
 
-        <div class="well" id="listings">
-          <%= yield %>
+          <div class="well" id="listings">
+            <%= yield %>
+          </div>
         </div>
-      </div>
-      <div class="span3" id="aboutme">
-        <div class="well">
-        <table width="100%" border="0" cellpadding="0" cellspacing="8" bgcolor="C00000" id="aboutme_header">
-               <tr>
-               <td width="100%" bgcolor="000000"><div align="center" class="buttons_on">did you know?</div></td></tr></table>
-        <b>For every Goldstar ticket purchased through TIX, a substantial portion of the service charge you pay goes to the nonprofit charitable organization <%= link_to "Theatre Bay Area", 'http://www.theatrebayarea.org/' %> to support things like classes, grants, auditions, and health support for Bay Area artists and arts professionals.</b><br><br>
-      </div>
-      <div class="well">
-        Advertisement Here
-      </div>
-  </div>
-  </div> <!-- end row fluid -->
-  </div> <!-- end container -->
+        <div class="span3" id="aboutme">
+          <div class="well">
+          <table width="100%" border="0" cellpadding="0" cellspacing="8" bgcolor="C00000" id="aboutme_header">
+                 <tr>
+                 <td width="100%" bgcolor="000000"><div align="center" class="buttons_on">did you know?</div></td></tr></table>
+          <b>For every Goldstar ticket purchased through TIX, a substantial portion of the service charge you pay goes to the nonprofit charitable organization <%= link_to "Theatre Bay Area", 'http://www.theatrebayarea.org/' %> to support things like classes, grants, auditions, and health support for Bay Area artists and arts professionals.</b><br><br>
+          </div>
+          <div class="well">
+          Advertisement Here
+          </div>
+        </div>
+      </div> <!-- end row fluid -->
+    </div> <!-- end container -->
 </body>
 </html>

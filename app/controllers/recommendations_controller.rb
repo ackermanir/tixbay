@@ -6,9 +6,15 @@ class RecommendationsController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-    @title = "Recommended Shows"
+    @title = "recommended"
 
     args = {}
+
+    if params["recommendation"]
+      session[:recommendation] = params["recommendation"]
+    elsif session[:recommendation]
+      params["recommendation"] = session[:recommendation]
+    end
 
     price_range = params["recommendation"]["maxprice"]
     if price_range == ""
@@ -46,7 +52,6 @@ class RecommendationsController < ApplicationController
       args["dates"] = [DateTime.now, nil]
     end
 
-
     keywords = []
     params["recommendation"]["keyword"].each do |word, value|
       if value == "1"
@@ -61,13 +66,15 @@ class RecommendationsController < ApplicationController
       @noresults = "No results were found. Please broaden your criteria and search again."
     end
 
-    @shows = @shows.paginate(:page => params[:page], :per_page => 15)
+    params["recommendation"] = nil
 
+    @shows = @shows.paginate(:page => params[:page], :per_page => 15)
+    
     render "category/body"
 
   end
 
-  def custom
+  def recommended
     #if not logged in
     # redirect_to :actions=>"login"
     #elsif no saved answers
@@ -80,7 +87,7 @@ class RecommendationsController < ApplicationController
   end
 
   def form
-    @title = "Recommendation Form"
+    @title = "recommended"
   end
 
   def login

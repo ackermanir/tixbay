@@ -2,24 +2,27 @@
 <% render "layouts/navbar" #render navbar partials here%>
 <% end %>
 
-<h2>Sign up</h2>
+<h2>Sign Up</h2>
 
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
-  <div><%= f.label :email %><br />
+  <div><%= f.label :email %>
   <%= f.email_field :email %></div>
 
-  <div><%= f.label :password %><br />
+  <div><%= f.label :password %>
   <%= f.password_field :password %></div>
 
-  <div><%= f.label :password_confirmation %><br />
+  <div><%= f.label :password_confirmation %>
   <%= f.password_field :password_confirmation %></div>
 
-  <div><%= f.label :zip_code %><br />
+  <div><%= f.label :zip_code %>
   <%= f.text_field :zip_code %></div>
 
-  <div><%= f.submit "Sign up" %></div>
+  <br/>
+  <button type="submit" class="btn btn-danger">Sign Up</button>
 <% end %>
 
-<%= render "devise/shared/links" %>
+<div id="login_links">
+  <%= render "devise/shared/links" %>
+</div>

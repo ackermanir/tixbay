@@ -106,7 +106,7 @@ Returns all shows for the category that are
   Have a date later than the time of search
   Not sold out
 """
-  def self.category_shows(title, page)
+  def self.category_shows(title)
     categories = Category.categories_by_title(title)
     shows = Show.joins(:categories).in_categories(categories).
       not_sold_out.
@@ -114,7 +114,6 @@ Returns all shows for the category that are
       joins(:venue).commutable
 
     shows = shows.all.uniq
-    shows = shows.paginate(:page => page, :per_page => 15)
     return shows
   end
 
@@ -136,7 +135,7 @@ How it chooses similarity:
     shows = Show.recommend_shows(price_range, category,
                                  [DateTime.now, nil],
                                  location, 20, nil)
-    return (shows - [self]).uniq
+    return (shows.uniq - [self])
   end
 
   def self.rank_keyword(shows, keywords)

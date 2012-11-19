@@ -25,6 +25,37 @@ body {
   margin-bottom: 15px;
 }
 
+#sign_in {
+  float: right;
+  background-color: white;
+  border: none;
+
+  a {
+    color: #C5000E;
+    font-weight: bold;
+  }
+}
+
+#login_links {
+  a {
+    color: #C5000E;
+    display: inline-block;
+    margin-right: 2%;
+  }
+}
+
+.notice, .alert {
+  padding: 8px 35px 8px 14px;
+  margin-bottom: 20px;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 500/1000);
+  background-color: #fcf8e3;
+  border: 1px solid #fbeed5;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  border-radius: 0px;
+  color: #c09853;
+}
+
 #navbar {
 
   td {
@@ -37,10 +68,6 @@ body {
   .buttons_on {
     line-height: 2.2em;
   }
-}
-
-#pagetitle_table {
-  margin-bottom: 3%;
 }
 
 #pagetitle {
@@ -59,6 +86,12 @@ body {
     font-size: 24px;
     font-weight: bold;
     color: #C00000;
+
+    a {
+      font-size: 24px;
+      font-weight: bold;
+      color: #C00000;
+    }
   }
 
   .venue_link {
@@ -338,8 +371,16 @@ body {
   background-image: none;
 }
 
+.row-fluid .span2 {
+  width: 10%;
+}
+
 .row-fluid .span3 {
   width: 23%;
+}
+
+.row-fluid .span9 {
+  width: 74.468%;
 }
 
 .pagination a, .pagination span, .pagination em {
@@ -358,6 +399,12 @@ body {
   border-left: 1px solid #DDD;
 }
 
+.well {
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  border-radius: 0px;
+}
+
 //Add stuff for hiding and showing more text for the summary
 .morecontent span{
   opacity: 10;
@@ -368,4 +415,8 @@ body {
 a.morelink {
   text-decoration:none;
   outline: none;
+}
+
+.summary {
+  margin-bottom: 3%
 }

@@ -1,5 +1,6 @@
 require 'spec_helper'
 require 'rspec-rails'
+require 'will_paginate/array'
 
 describe RecommendationsController do
   include Devise::TestHelpers
@@ -37,7 +38,7 @@ describe RecommendationsController do
           }
         }
       }
-      
+
       Show.should_receive(:recommend_shows).with(price_range=[0, 300],
                                                 categories = ["Film"],
                                                 dates = [DateTime.new(2012, 2, 3), DateTime.new(2012,10,4)],
@@ -48,7 +49,9 @@ describe RecommendationsController do
                                                 },
                                                 distance = 25,
                                                 keywords = ["Film"]
-                                                ).and_return([])
+                                                 )
+      @shows.stub(:paginate)
+      @shows.should_receive(:length).and_return(15)
       post :index, :recommendation => params["recommendation"]
     end
   end
