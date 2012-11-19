@@ -1,7 +1,7 @@
 require 'timecop'
 
-Given /^the database has been setup with similarshows.xml$/ do
-  Show.fill_from_xml(File.join(Rails.root, "app", "data", "similarshows.xml"))
+Given /^the database has been setup with (.+)$/ do |xml_file|
+  Show.fill_from_xml(File.join(Rails.root, "app", "data", xml_file))
 end
 
 Given /^that (?:|I )am on the show page with id "(.+)"$/ do |id_val|

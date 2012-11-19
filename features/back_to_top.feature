@@ -8,8 +8,7 @@ Scenario: When I am at the top of the page, I should not see the button
   Given the database has been setup with similarshows.xml
   Then I should not see "Back to Top"
 
-@javascript
 Scenario: When I am at the bottom of the page, I should see the button
-  Given the database has been setup with similarshows.xml
+  Given the database has been setup with backtotop.xml
   And I scroll to the bottom of the page
-  Then I should not see "Back to Top"
+  Then I should see "Back to Top"
