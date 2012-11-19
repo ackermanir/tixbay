@@ -53,8 +53,8 @@
   <hr/>
 <% end %>
 
-- if @noShows
-  <div class="show">
-    <h2>None were found</h2>
+<% if @noShows == true %>
+  <div id="no_shows">
+    <h2>No Similar Shows Found</h2>
   </div>
-
+<% end %>

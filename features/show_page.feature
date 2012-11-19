@@ -36,3 +36,7 @@ Scenario: Being on a show page, I should still be able to purchase tickets
   Given that I am on the show page with id "2"
   When I follow "Purchase Tickets"
   Then I should be redirected to Goldstar
+
+Scenario: Being on a show page that has no similar shows, I None should be displayed
+  Given that I am on the show page with id "3"
+  Then I should see "No Similar Shows Found"
