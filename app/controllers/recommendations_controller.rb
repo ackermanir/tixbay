@@ -52,10 +52,17 @@ class RecommendationsController < ApplicationController
       args["dates"] = [DateTime.now, nil]
     end
 
-    keywords = []
+    keywords = {}
     params["recommendation"]["keyword"].each do |word, value|
       if value == "1"
-        keywords << word
+        decompose = word.split
+        title = decompose[0]
+        keyword = decompose[1]
+        if keywords[title]
+          keywords[title] << keyword
+        else
+          keywords[title] = [keyword]
+        end
       end
     end
     args["keywords"] = keywords

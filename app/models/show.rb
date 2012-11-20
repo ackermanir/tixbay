@@ -148,6 +148,7 @@ How it chooses similarity:
     pairings.sort! do |a,b|
       b[0] <=> a[0]
     end
+    return pairings
     shows = []
     pairings.each {|pair| shows << pair[1] }
     return shows
@@ -168,10 +169,14 @@ How it chooses similarity:
     end
 
     category = []
-    categories.each {|c| category << c.name.downcase}
+    categories.each {|c| category << c.name}
     keyword = []
     keywords.each do |key, value|
-      if category.include?(key.downcase)
+      #See if show's category intersect with keyword title's categories
+      title = key.downcase
+      title = "all culture" if title == "all"
+      matching = Category.categories_by_title(key.downcase)
+      if matching & category != []
         value.each {|wrd| keyword << wrd.downcase}
       end
     end
