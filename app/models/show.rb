@@ -148,7 +148,6 @@ How it chooses similarity:
     pairings.sort! do |a,b|
       b[0] <=> a[0]
     end
-    return pairings
     shows = []
     pairings.each {|pair| shows << pair[1] }
     return shows
