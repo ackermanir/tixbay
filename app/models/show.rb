@@ -168,10 +168,14 @@ How it chooses similarity:
     end
 
     category = []
-    categories.each {|c| category << c.name.downcase}
+    categories.each {|c| category << c.name}
     keyword = []
     keywords.each do |key, value|
-      if category.include?(key.downcase)
+      #See if show's category intersect with keyword title's categories
+      title = key.downcase
+      title = "all culture" if title == "all"
+      matching = Category.categories_by_title(key.downcase)
+      if matching & category != []
         value.each {|wrd| keyword << wrd.downcase}
       end
     end

@@ -11,7 +11,7 @@ describe RecommendationsController do
       params = {
         "recommendation" => {
           "keyword" => {
-            "Film" => "1",
+            "Film Silent" => "1",
             "Comedy" => "0"
           },
           "location" => {
@@ -48,7 +48,7 @@ describe RecommendationsController do
                                                   "zip_code" => "94704"
                                                 },
                                                 distance = 25,
-                                                keywords = ["Film"]
+                                                 keywords = {"Film" => ['Silent']}
                                                  ).and_return(list_shows)
       list_shows.stub(:paginate)
       list_shows.should_receive(:length).and_return(15)

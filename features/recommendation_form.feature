@@ -11,7 +11,9 @@ Scenario: link to recommendations form
 
 Scenario: get recommendations by one category
     Given I am on the recommendations form page
-    When I check "recommendation_category_film"
+    When I uncheck "recommendation_category_theater"
+    When I uncheck "recommendation_category_popularmusic"
+    When I uncheck "recommendation_category_classical"
     When I fill in "recommendation_startdate_month" with "10"
     And I fill in "recommendation_startdate_day" with "10"
     And I fill in "recommendation_startdate_year" with "2010"

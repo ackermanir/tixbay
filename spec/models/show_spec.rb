@@ -108,23 +108,23 @@ describe Show do
     it "extract the list of words relevant to show categories" do
       s = Show.new
       c1 = mock('category')
-      c1.stub(:name).and_return('music')
+      c1.stub(:name).and_return("Jazz")
       s.stub(:categories).and_return([c1])
       s.stub(:headline).and_return('Come see blues')
       s.stub(:summary).and_return('It is new and classical jazz')
-      s.keyword_search({'music' => ['blues', 'jazz'],
-                         'theater' => ['classical', 'new']}).
+      s.keyword_search({'Music' => ['blues', 'jazz'],
+                         'Theater' => ['classical', 'new']}).
         should == 3
     end
     it "get the weighting for both headline and summary" do
       s = Show.new
       c1 = mock('category')
-      c1.stub(:name).and_return('music')
+      c1.stub(:name).and_return('Classical')
       s.stub(:categories).and_return([c1])
       s.stub(:headline).and_return('Come see new Blues')
       s.stub(:summary).and_return('It is Classical Jazz and blues')
-      s.keyword_search({'music' => ['blues', 'jazz'],
-                         'theater' => ['classical', 'new']}).
+      s.keyword_search({'Music' => ['blues', 'jazz'],
+                         'Theater' => ['classical', 'new']}).
         should == 4
     end
   end
