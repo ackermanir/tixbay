@@ -36,21 +36,20 @@ describe Show do
     @new_showtime.show.should == @show
   end
 
+  it 'test that Show has many users through interests' do
+    @show = FactoryGirl.build(:show)
+    @show.save
+
+    @show.users.create(:email => 'a')
+    @show.users.first.email.should == 'a'
+  end
+
   it 'test that User has many shows through interests' do
     @user = FactoryGirl.build(:user)
     @user.save
 
     @user.shows.create(:title => 'Looper')
     @user.shows.first.title.should == 'Looper'
-  end
-
-  it 'test that Show has many users through interests' do
-    @show = FactoryGirl.build(:show)
-    @show.save
-
-    @show.users.create(:username => 'TestPerson1', :email => 'a')
-    @show.users.first.username.should == 'TestPerson1'
-    @show.users.first.email.should == 'a'
   end
 
   it 'test that User has many interests' do
