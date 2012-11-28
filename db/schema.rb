@@ -41,13 +41,6 @@ ActiveRecord::Schema.define(:version => 20121128011651) do
     t.integer  "user_id"
   end
 
-  create_table "interests_users", :id => false, :force => true do |t|
-    t.integer "interest_id"
-    t.integer "user_id"
-  end
-
-  add_index "interests_users", ["interest_id", "user_id"], :name => "index_interests_users_on_interest_id_and_user_id"
-
   create_table "shows", :force => true do |t|
     t.string   "title"
     t.integer  "event_id"
@@ -64,13 +57,6 @@ ActiveRecord::Schema.define(:version => 20121128011651) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  create_table "shows_users", :id => false, :force => true do |t|
-    t.integer "show_id"
-    t.integer "user_id"
-  end
-
-  add_index "shows_users", ["show_id", "user_id"], :name => "index_shows_users_on_show_id_and_user_id"
 
   create_table "showtimes", :force => true do |t|
     t.integer  "show_id"

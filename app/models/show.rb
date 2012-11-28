@@ -10,7 +10,7 @@ class Show < ActiveRecord::Base
   belongs_to :venue
   has_many :interests
   has_many :showtimes, :dependent => :destroy
-  has_and_belongs_to_many :users
+  has_many :users, :through => :interests
 
   #Scopes used for recommendation filtering
   scope :price_greater, lambda { |price|
