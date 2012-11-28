@@ -1,4 +1,3 @@
-@wip
 Feature: Favorite shows from show page
 
   As a frequent visitor to the site,
