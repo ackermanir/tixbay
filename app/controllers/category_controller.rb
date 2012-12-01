@@ -43,7 +43,7 @@ class CategoryController < ApplicationController
 	    @location["zip_code"] = params[:zip_code]
 	end
     shows = Show.all
-	@shows = Show.get_closest_shows(shows, @location, 25)
+	@shows = Show.get_closest_shows(shows, @location)
 	render :body
   end
 end
