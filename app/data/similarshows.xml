@@ -43,20 +43,20 @@
   </event>
   <event id="62608">
     <full_price_range>$40.00 - $105.00</full_price_range>
-    <summary_as_text>"Cirque du Soleil"</summary_as_text>
+    <summary_as_text>"Cirque du Soleil" presents "Saltimbanco", an exploration of the urban experience in all its forms. This high-energy acrobatic spectacle is inspired by the pulsing energy of the metropolis and its colorful inhabitants. With its baroque visual vocabulary and eclectic cast of characters, "Cirque du Soleil" draws spectators into a fanciful, dreamlike world to visit an imaginary city where diversity is a cause for hope. In pure "Cirque" style, "Saltimbanco" takes the hustle and bustle of city streets, the towering skyscrapers and the whirlwind of activity that propels inhabitants through the city and transforms them into an acrobatic journey filled with dazzling visuals and thrilling displays of a variety of circus arts.</summary_as_text>
     <image>https://i.goldstar.com/gse_media/112/9/saltimbanco-101812.jpg</image>
     <venue>
       <capacity>6150</capacity>
-      <geocode_longitude>-71.117785</geocode_longitude>
+      <geocode_longitude>-122.433704</geocode_longitude>
       <image>https://i.goldstar.com/gse_media/108/7/agganis.jpg</image>
-      <geocode_latitude>42.351789</geocode_latitude>
+      <geocode_latitude>37.805033</geocode_latitude>
       <link>http://www.goldstar.com/venues/boston-ma/agganis-arena</link>
       <address>
-        <locality>Boston</locality>
+        <locality>San Francisco</locality>
         <country_name>United States</country_name>
-        <postal_code>02215</postal_code>
-        <street_address>925 Commonwealth Ave.</street_address>
-        <region>MA</region>
+        <postal_code>94103</postal_code>
+        <street_address>1663 Mission St</street_address>
+        <region>CA</region>
         <extended_address/>
       </address>
       <phone>617-353-4628</phone>
@@ -86,7 +86,7 @@
   </event>
   <event id="62414">
     <full_price_range>$79.50 - $109.50</full_price_range>
-    <summary_as_text>When it comes to singing</summary_as_text>
+    <summary_as_text>When it comes to singing, there's nothing Kristin Chenoweth can't do. Pop, country, classical and, of course, musical theater -- she can sing them all. Her dazzling talent and beautiful voice make her one of the most popular concert singers around, which makes her appearance at Segerstrom Concert Hall all the more special. The original Glinda in the hit musical "Wicked", Chenoweth won an Emmy Award for her work in "Pushing Daisies" and has earned two Emmy nominations for "Glee". She most recently starred as Carlene Cockburn in "GCB", and will soon play a recurring role on "The Good Wife".</summary_as_text>
     <image>https://i.goldstar.com/gse_media/112/9/kristenchen-101412.jpg</image>
     <venue>
       <capacity>1704</capacity>
@@ -131,7 +131,7 @@
   </event>
   <event id="62214">
     <full_price_range>$25.00</full_price_range>
-    <summary_as_text>Balagan Theatre presents</summary_as_text>
+    <summary_as_text>Balagan Theatre presents the regional premiere of "Avenue Q", the laugh-out-loud musical that is part flesh, part felt, and full of heart. This immensely popular adult puppet musical was a smash hit in its Broadway run, winning Tony Awards for Best Musical, Best Score and Best Book. The show tells the comical coming-of-age story of a recent college grad named Princeton who moves into a shabby New York apartment way out on Avenue Q. He soon discovers that he's not living in an ordinary neighborhood. Together, Princeton and his colorful new friends struggle to find jobs, dates and their purpose in life. While the show draws inspiration from "Sesame Street", you'll want to leave the kids at home for this one -- these puppets have quite the mouths on them, and there's some "full puppet nudity" involved.</summary_as_text>
     <image>https://i.goldstar.com/gse_media/112/9/avenue-q-100812.jpg</image>
     <venue>
       <capacity>100</capacity>
@@ -251,4 +251,64 @@
     </badges>
     <summary_as_html>Inspired by actual events, rocking musical &lt;em&gt;Memphis&lt;/em&gt; immortalizes '50s DJ Huey Calhoun, the man who first spun the music of black and white musicians together on American radio. Calhoun (a white man) falls in love with a black club singer at a time when racial tensions are high. He then sets out on a mission to unite the country through music -- an endeavor captured perfectly by a Tony-winning original score, with music by Bon Jovi founding member David Bryan. This nationally touring hit is directed by Tony nominee Christopher Ashley (&lt;em&gt;Xanadu&lt;/em&gt;) and written by Joe DiPietro, author of &lt;em&gt;I Love You, ,You're Perfect, Now Change&lt;/em&gt; and &lt;em&gt;Over the River and Through the Woods&lt;/em&gt;.</summary_as_html>
     </event>
+  <event id="60276">
+    <deal_of_the_day/>
+    <full_price_range>$25.00 - $55.00</full_price_range>
+    <summary_as_text>"The Wrathskellar" returns for 2012, eschewing the Boston Babydolls' usual light-hearted retro burlesque for another haunting evening of dark-themed cabaret, both sinister and sensual. From chanteuses singing of lost love, to sultry dancers out for revenge, this show creates a moody noir-like atmosphere that's more than suitable for the season. The soundtrack for "The Wrathskellar" puts aside the usual upbeat jazz, instead opting for more evocative works from artists like Lotte Lenya, Dead Can Dance, Tom Waits and Gogol Bordello. See the description for more information and details on the special Halloween after-party.</summary_as_text>
+    <image>https://i.goldstar.com/gse_media/112/7/wrathskellar-081412.jpg</image>
+    <venue>
+      <capacity>164</capacity>
+      <geocode_longitude>-122.433704</geocode_longitude>
+      <image>https://i.goldstar.com/gse_media/111/1/somerville-town-pages-015-resized-600.jpg</image>
+      <geocode_latitude>37.805033</geocode_latitude>
+      <link>http://www.goldstar.com/venues/somerville-ma/davis-square-theatre</link>
+      <address>
+        <locality>San Francisco</locality>
+        <country_name>United States</country_name>
+        <postal_code>94103</postal_code>
+        <street_address>1663 Mission St</street_address>
+        <region>CA</region>
+        <extended_address/>
+      </address>
+      <phone/>
+      <name>Davis Square Theatre</name>
+    </venue>
+    <headline_as_text>Boston Babydolls Burlesque Troupe Goes Dark in "The Wrathskellar"</headline_as_text>
+    <link>http://tracking.goldstar.com/aff_c?offer_id=6&amp;aff_id=1654&amp;aff_sub=60276</link>
+    <upcoming_dates>
+      <event_date id="601110">
+        <time_note>8:00pm (Doors at 7:00pm)</time_note>
+        <date>2012-10-21</date>
+      </event_date>
+      <event_date id="601111">
+        <time_note>8:00pm (Doors at 7:00pm)</time_note>
+        <date>2012-10-25</date>
+      </event_date>
+      <event_date id="625842">
+        <time_note>8:00pm (Doors at 7:00pm)</time_note>
+        <date>2012-10-26</date>
+      </event_date>
+      <event_date id="624975">
+        <time_note>8:00pm (Doors at 7:00pm)</time_note>
+        <date>2012-10-31</date>
+      </event_date>
+    </upcoming_dates>
+    <title_as_html>The Boston Babydolls: &lt;em&gt;The Wrathskellar&lt;/em&gt;</title_as_html>
+    <title_as_text>The Boston Babydolls: "The Wrathskellar"</title_as_text>
+    <browsable_series>
+      <series id="178">
+        <name>Halloween Events</name>
+      </series>
+    </browsable_series>
+    <sold_out>false</sold_out>
+    <headline_as_html>Boston Babydolls Burlesque Troupe Goes Dark in &lt;em&gt;The Wrathskellar&lt;/em&gt;</headline_as_html>
+    <category_list>
+      <category id="2">
+        <name>Performing Arts</name>
+      </category>
+    </category_list>
+    <our_price_range>$12.50 - $27.50</our_price_range>
+    <badges/>
+    <summary_as_html>&lt;em&gt;The Wrathskellar&lt;/em&gt; returns for 2012, eschewing the Boston Babydolls' usual light-hearted retro burlesque for another haunting evening of dark-themed cabaret, both sinister and sensual. From chanteuses singing of lost love, to sultry dancers out for revenge, this show creates a moody noir-like atmosphere that's more than suitable for the season. The soundtrack for &lt;em&gt;The Wrathskellar&lt;/em&gt; puts aside the usual upbeat jazz, instead opting for more evocative works from artists like Lotte Lenya, Dead Can Dance, Tom Waits and Gogol Bordello. See the description for more information and details on the special Halloween after-party.</summary_as_html>
+  </event>
 </listings>

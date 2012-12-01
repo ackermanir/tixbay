@@ -7,6 +7,7 @@ Feature: Basic Front Page
 Background: shows have been added to database
 
   Given the database has been setup from xml
+  And the date is set to 2012
   And I am on the home page
 
 Scenario: view new possible shows
@@ -27,7 +28,7 @@ Scenario: press "Theatre Bay Area" redirect
 
 Scenario: filter "theater" shows
   And I press the "theater" tab
-  Then I should be on the home page
+  Then I should be on the theater page
   And I should see "theater" shows
 
 Scenario: filter "music" shows

@@ -1,55 +1,87 @@
+require 'will_paginate/array'
+
 class RecommendationsController < ApplicationController
 
+  #FIX-ME: don't add filter if we have a non-logged in version as well  
+  before_filter :authenticate_user!
+
   def index
-    @title = "Recommended Shows"
-    @shows = []
+    @title = "recommended"
 
-    #filter by category
+    args = {}
+
+    if params["recommendation"]
+      session[:recommendation] = params["recommendation"]
+    elsif session[:recommendation]
+      params["recommendation"] = session[:recommendation]
+    end
+
+    price_range = params["recommendation"]["maxprice"]
+    if price_range == ""
+      args["price_range"] = [0, -1]
+    else
+      args["price_range"] = [0, price_range.to_i]
+    end
+
+    location = params["recommendation"]["location"]
+    if location["zip_code"] == ""
+      args["location"] = nil
+    else
+      args["location"] = location
+    end
+
+    args["distance"] = params["recommendation"]["distance"].to_i
+
     categories = []
-    params["recommendation"]["category"].each_pair do |k,v|
-      if v == "1"
-        categories << k
+    params["recommendation"]["category"].each do |category, value|
+      if value == "1"
+        categories << category
       end
     end
-    Category.where(:name => categories).each do |c|
-      @shows += c.shows.to_a
+    if categories.length == 0
+      args["categories"] = Category.all_categories
+    else
+      args["categories"] = categories
     end
 
-    #filter by date (only if user put a date)
-    filterbydate = true
-    params["recommendation"]["startdate"].each_pair do |k,v|
-      if v == ""
-        filterbydate = false
+    startdate = params["recommendation"]["startdate"]
+    enddate = params["recommendation"]["enddate"]
+    if startdate["month"] != "" && startdate["day"] != "" && startdate["year"] != "" && enddate["month"] != "" && enddate["day"] != "" && enddate["year"]
+      args["dates"] = [DateTime.new(startdate["year"].to_i, startdate["month"].to_i, startdate["day"].to_i), DateTime.new(enddate["year"].to_i, enddate["month"].to_i, enddate["day"].to_i)]
+    else
+      args["dates"] = [DateTime.now, nil]
+    end
+
+    keywords = {}
+    params["recommendation"]["keyword"].each do |word, value|
+      if value == "1"
+        decompose = word.split
+        title = decompose[0]
+        keyword = decompose[1]
+        if keywords[title]
+          keywords[title] << keyword
+        else
+          keywords[title] = [keyword]
+        end
       end
     end
-    params["recommendation"]["enddate"].each_pair do |k,v|
-      if v == ""
-        filterbydate = false
-      end
-    end
-    if filterbydate == true
-      start_date = DateTime.new(params["recommendation"]["startdate"]["year"].to_i, params["recommendation"]["startdate"]["month"].to_i, params["recommendation"]["startdate"]["day"].to_i)
-      end_date = DateTime.new(params["recommendation"]["enddate"]["year"].to_i, params["recommendation"]["enddate"]["month"].to_i, params["recommendation"]["enddate"]["day"].to_i)
+    args["keywords"] = keywords
+
+    @shows = Show.recommend_shows(price_range=args["price_range"], categories=args["categories"], dates=args["dates"], location=args["location"], distance=args["distance"], keywords=args["keywords"])
+
+    if @shows.length == 0
+      @noresults = "No results were found. Please broaden your criteria and search again."
     end
 
-    #filter by location
-    filterbylocation = false
-    params["recommendation"]["location"].each do |k,v|
-      if v != ""
-        filterbylocation = true
-      end
-    end
-    if filterbylocation == true
-      @shows = Show.get_closest_shows(@shows, params["recommendation"]["location"],params["recommendation"]["distance"].to_i)
-    end
+    params["recommendation"] = nil
 
-    #if logged in
-    # save answers/shows
+    @shows = @shows.paginate(:page => params[:page], :per_page => 15)
+    
+    render "category/body"
 
-    render "body"
   end
 
-  def custom
+  def recommended
     #if not logged in
     # redirect_to :actions=>"login"
     #elsif no saved answers
@@ -62,7 +94,7 @@ class RecommendationsController < ApplicationController
   end
 
   def form
-    @title = "Recommendation Form"
+    @title = "recommended"
   end
 
   def login

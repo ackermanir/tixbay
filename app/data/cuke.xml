@@ -21,7 +21,7 @@
       <name>Bayfront Theater</name>
     </venue>
     <headline_as_text>BATS Improv: SF's Longest-Running Improv Comedy Theater</headline_as_text>
-    <link>http://tracking.goldstar.com/aff_c?offer_id=6&amp;aff_id=1654&amp;aff_sub=46404</link>
+    <link>http://tracking.goldstar.com</link>
     <upcoming_dates>
       <event_date id="619189">
         <time_note>8:00pm (Improvised Horror Musical)</time_note>
@@ -52,11 +52,11 @@
       <geocode_latitude>42.351789</geocode_latitude>
       <link>http://www.goldstar.com/venues/boston-ma/agganis-arena</link>
       <address>
-        <locality>Boston</locality>
+        <locality>Berkeley</locality>
         <country_name>United States</country_name>
         <postal_code>02215</postal_code>
         <street_address>925 Commonwealth Ave.</street_address>
-        <region>MA</region>
+        <region>CA</region>
         <extended_address/>
       </address>
       <phone>617-353-4628</phone>
@@ -95,7 +95,7 @@
       <geocode_latitude>33.692323</geocode_latitude>
       <link>http://www.goldstar.com/venues/costa-mesa-ca/rene-and-henry-segerstrom-concert-hall-at-the-segerstrom-center-for-the-arts</link>
       <address>
-        <locality>Costa Mesa</locality>
+        <locality>San Francisco</locality>
         <country_name>United States</country_name>
         <postal_code>92626</postal_code>
         <street_address>600 Town Center Drive</street_address>
@@ -106,7 +106,7 @@
       <name>Renée Hall</name>
     </venue>
     <headline_as_text>Broadway and TV Star Kristin Chenoweth ("Glee", "Wicked") in Concert</headline_as_text>
-    <link>http://tracking.goldstar.com/aff_c?offer_id=6&amp;aff_id=1654&amp;aff_sub=62414</link>
+    <link>http://tracking.goldstar.com</link>
     <upcoming_dates>
       <event_date id="623866">
         <time_note>7:30pm</time_note>
@@ -140,36 +140,32 @@
       <geocode_latitude>47.614804</geocode_latitude>
       <link>http://www.goldstar.com/venues/seattle-wa/the-erickson-theatre-off-broadway</link>
       <address>
-        <locality>Seattle</locality>
+        <locality>Oakland</locality>
         <country_name>United States</country_name>
         <postal_code>98122</postal_code>
         <street_address>1524 Harvard Ave.</street_address>
-        <region>WA</region>
+        <region>CA</region>
         <extended_address/>
       </address>
       <phone/>
       <name>The Erickson Theatre Off Broadway</name>
     </venue>
     <headline_as_text>"Avenue Q": The Tony-Winning Adult Puppet Musical</headline_as_text>
-    <link>http://tracking.goldstar.com/aff_c?offer_id=6&amp;aff_id=1654&amp;aff_sub=62214</link>
+    <link>http://tracking.goldstar.com</link>
     <upcoming_dates>
       <event_date id="621912">
         <time_note>2:00pm</time_note>
-        <date>2012-11-18</date>
-      </event_date>
-      <event_date id="624474">
-        <time_note>8:00pm</time_note>
-        <date>2012-11-23</date>
+        <date>2012-12-18</date>
       </event_date>
     </upcoming_dates>
     <title_as_text>"Avenue Q"</title_as_text>
     <browsable_series/>
-    <sold_out>true</sold_out>
+    <sold_out>false</sold_out>
     <category_list>
       <category id="9">
         <name>Theater</name>
       </category>
     </category_list>
-    <our_price_range>SOLD OUT</our_price_range>
+    <our_price_range>$39.75 - $54.75</our_price_range>
   </event>
 </listings>

@@ -1,4 +1,4 @@
-// Place all the styles related to the tixbay controller here.
+// Place all the styles related to the category controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
@@ -13,7 +13,7 @@
 }
 
 body {
-  background-color: #C5000E;
+  background-color: #C00000;
   margin-top: 2%;
 }
 
@@ -23,6 +23,37 @@ body {
 
 #navbar, #aboutme_header {
   margin-bottom: 15px;
+}
+
+#sign_in {
+  float: right;
+  background-color: white;
+  border: none;
+
+  a {
+    color: #C5000E;
+    font-weight: bold;
+  }
+}
+
+#login_links {
+  a {
+    color: #C5000E;
+    display: inline-block;
+    margin-right: 2%;
+  }
+}
+
+.notice, .alert {
+  padding: 8px 35px 8px 14px;
+  margin-bottom: 20px;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 500/1000);
+  background-color: #fcf8e3;
+  border: 1px solid #fbeed5;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  border-radius: 0px;
+  color: #c09853;
 }
 
 #navbar {
@@ -55,6 +86,24 @@ body {
     font-size: 24px;
     font-weight: bold;
     color: #C00000;
+
+    a {
+      font-size: 24px;
+      font-weight: bold;
+      color: #C00000;
+    }
+  }
+
+  .linkTitle {
+    font-size: 24px;
+    font-weight: bold;
+    color: #084976;
+
+    a {
+      font-size: 24px;
+      font-weight: bold;
+      color: #084976;
+    }
   }
 
   .venue_link {
@@ -87,6 +136,10 @@ body {
   hr {
     border-bottom: 1px solid #CCC;
     border-top: none;
+  }
+  .morelink {
+    font-weight: bold;
+    color: #C00000;
   }
 }
 
@@ -330,6 +383,87 @@ body {
   background-image: none;
 }
 
+.row-fluid .span2 {
+  width: 10%;
+}
+
 .row-fluid .span3 {
   width: 23%;
+}
+
+.row-fluid .span9 {
+  width: 74.468%;
+}
+
+.pagination a, .pagination span, .pagination em {
+  float: left;
+  padding: 0 10px;
+  line-height: 38px;
+  text-decoration: none;
+  background-color: white;
+  border: 1px solid #DDD;
+  border-left-width: 0;
+  min-width: 12px;
+}
+
+.pagination {
+  height: 40px;
+  border-left: 1px solid #DDD;
+}
+
+.well {
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  border-radius: 0px;
+}
+
+//Add stuff for hiding and showing more text for the summary
+.morecontent span{
+  opacity: 10;
+  filter: alpha(opacity=10);
+  display: none;
+}
+
+a.morelink {
+  text-decoration:none;
+  outline: none;
+}
+
+.summary {
+  margin-bottom: 3%;
+}
+
+//Telling the user there are no similar shows
+#no_shows h2{
+  padding-left: 10px;
+}
+
+//Back to top scroll
+#back_top {
+  bottom: 100px;
+  cursor: pointer;
+  display: none;
+  position: fixed;
+  //left: 50%;
+  //margin-left: 306px;
+  text-align: center;
+  padding: 5px 10px;
+  width: 29px;
+  z-index: 999;
+  background-color: #f1faff;
+  border: 1px solid #ddd;
+  border-left: none;
+  box-shadow: 2px 0 4px #d7d7d7;
+}
+
+#back_top span {
+  border-width: 4px;
+  border-style: dashed dashed solid dashed;
+  border-color:transparent transparent #f00 transparent;
+  width: 0;
+  height: 0;
+  display: block;
+  font-size: 0;
+  line-height: 0;
+  margin-left: 8px;
 }

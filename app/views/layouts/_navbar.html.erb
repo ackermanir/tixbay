@@ -1,0 +1,45 @@
+<% color_map = {'theater'=> '#FFFFFF', 'music'=> '#FFFFFF','film'=> '#FFFFFF','all culture'=>'#FFFFFF', 'recommended'=> '#FFFFFF'} %>
+<% color_map.each do |key, value| %>
+    <% if key == @title %>
+    <% color_map[key] = '#000000' %>
+    <% end %>
+<% end %>
+
+<% buttons_map = {'theater'=> 'buttons', 'music'=> 'buttons','film'=> 'buttons','all culture'=>'buttons', 'recommended'=> 'buttons'} %>
+<% buttons_map.each do |key, value| %>
+<% if key == @title %>
+<% buttons_map[key] = 'buttons_on' %>
+<% end %>
+<% end %>
+
+      <div class="row-fluid" id="navbar">
+          <table width="100%" border="0" cellpadding="0" cellspacing="8" bordercolor="#FFFFFF" bgcolor="#C5000E">
+            <tr>
+              <td width="25%" bgcolor="<%= color_map['theater'] %>">
+                <div align="center" class="<%= buttons_map['theater'] %>">
+              <%= link_to "theater & dance", category_path("theater")%>
+                </div>
+              </td>
+              <td width="14%" bgcolor="<%= color_map['music'] %>">
+                <div align="center" class="<%= buttons_map['music'] %>">
+              <%= link_to "music", category_path("music") %>
+                </div>
+              </td>
+              <td width="12%" bgcolor="<%= color_map['film'] %>">
+                <div align="center" class="<%= buttons_map['film'] %>">
+              <%= link_to "film", category_path("film")%>
+                </div>
+              </td>
+              <td width="20%" bgcolor="<%= color_map['all culture'] %>">
+                <div align="center" class="<%= buttons_map['all culture'] %>">
+              <%= link_to "all culture", category_path("all_culture") %>
+                </div>
+              </td>
+              <td width="20%" bgcolor="<%= color_map['recommended'] %>">
+                <div align="center" class="<%= buttons_map['recommended'] %>">
+              <%= link_to "recommended", "/recommendations/login" %>
+                </div>
+              </td>
+            </tr>
+          </table>
+      </div>

@@ -1,6 +1,10 @@
+#recommendation_container {
+  display: inline-block;
+}
+
 #recommendation_welcome {
-  padding-top: 20px;
-  padding-bottom: 30px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .recommendation_input {
@@ -17,7 +21,10 @@
 
 #recommendation_submit {
   clear:both;
-  padding-top: 45px;
+}
+
+input[type="submit"] {
+  background-image: none;
 }
 
 .recommendation_location{
@@ -65,11 +72,25 @@
 }
 
 .recommendation_keyword_options{
-  padding-left: 20px;
+  padding-left: 5px;
   padding-bottom: 20px;
   padding-top: 5px;
 }
 
 .recommendation_select_options{
+  padding-bottom: 20px;
+}
+
+.recommendation_column{
+  float: left;
+  width: 25%;
+}
+
+#recommendation_keyword_select{
+  clear:both;
+}
+
+#flash_notice{
+  padding-top: 20px;
   padding-bottom: 20px;
 }

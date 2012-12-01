@@ -3,6 +3,10 @@ source 'http://rubygems.org'
 gem 'rails', '3.1.0'
 gem 'rb-readline' #needed for Ian's machine
 gem 'nokogiri' #needed for xml parsing
+gem 'will_paginate', '~> 3.0'
+gem 'timecop' #used to set time for cucumber
+gem 'omniauth'
+gem 'omniauth-facebook'
 
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
@@ -29,7 +33,7 @@ end
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails', "  ~> 3.1.0"
+  gem 'sass-rails', "3.1.6"
   gem 'coffee-rails', "~> 3.1.0"
   gem 'uglifier'
   gem 'therubyracer'
@@ -48,5 +52,6 @@ gem 'jquery-rails'
 
 gem "rspec-rails", "~> 2.0"
 gem 'haml'
-gem 'sass'
+gem 'sass', '3.1.10'
 gem 'bootstrap-sass', '~> 2.1.0.1'
+gem 'devise'
