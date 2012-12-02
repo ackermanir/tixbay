@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121115002124) do
+ActiveRecord::Schema.define(:version => 20121128011651) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -38,14 +38,8 @@ ActiveRecord::Schema.define(:version => 20121115002124) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "show_id"
+    t.integer  "user_id"
   end
-
-  create_table "interests_users", :id => false, :force => true do |t|
-    t.integer "interest_id"
-    t.integer "user_id"
-  end
-
-  add_index "interests_users", ["interest_id", "user_id"], :name => "index_interests_users_on_interest_id_and_user_id"
 
   create_table "shows", :force => true do |t|
     t.string   "title"
@@ -64,13 +58,6 @@ ActiveRecord::Schema.define(:version => 20121115002124) do
     t.datetime "updated_at"
   end
 
-  create_table "shows_users", :id => false, :force => true do |t|
-    t.integer "show_id"
-    t.integer "user_id"
-  end
-
-  add_index "shows_users", ["show_id", "user_id"], :name => "index_shows_users_on_show_id_and_user_id"
-
   create_table "showtimes", :force => true do |t|
     t.integer  "show_id"
     t.integer  "date_id"
@@ -81,7 +68,6 @@ ActiveRecord::Schema.define(:version => 20121115002124) do
 
   create_table "users", :force => true do |t|
     t.string   "username"
-    t.string   "password"
     t.string   "first_name"
     t.string   "last_name"
     t.string   "street_address"

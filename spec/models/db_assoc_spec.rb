@@ -36,7 +36,15 @@ describe Show do
     @new_showtime.show.should == @show
   end
 
-  it 'test that User has and belongs to many shows' do
+  it 'test that Show has many users through interests' do
+    @show = FactoryGirl.build(:show)
+    @show.save
+
+    @show.users.create(:email => 'a')
+    @show.users.first.email.should == 'a'
+  end
+
+  it 'test that User has many shows through interests' do
     @user = FactoryGirl.build(:user)
     @user.save
 
@@ -44,12 +52,20 @@ describe Show do
     @user.shows.first.title.should == 'Looper'
   end
 
-  it 'test that User has and belongs to many interests' do
+  it 'test that User has many interests' do
     @user = FactoryGirl.build(:user)
     @user.save
 
     @user.interests.create(:click => 2)
     @user.interests.first.click.should == 2
+  end
+
+  it 'test that Show has many interests' do
+    @show = FactoryGirl.build(:show)
+    @show.save
+
+    @show.interests.create(:click => 4)
+    @show.interests.first.click.should == 4
   end
 
   it 'test that User has and belongs to many categories' do
@@ -64,10 +80,19 @@ describe Show do
     @show = FactoryGirl.build(:show)
     @show.save
 
-    @new_interest= @show.interests.create(:click => 1)
+    @new_interest = @show.interests.create(:click => 1)
     @show.interests.first.click.should == 1
 
     @new_interest.show.should == @show
   end
 
+  it 'test that Interest belongs_to a User and a User has many Interests' do
+    @user = FactoryGirl.build(:user)
+    @user.save
+
+    @new_interest= @user.interests.create(:click => 3)
+    @user.interests.first.click.should == 3
+
+    @new_interest.user.should == @user
+  end
 end

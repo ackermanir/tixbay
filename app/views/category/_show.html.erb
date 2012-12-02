@@ -3,7 +3,7 @@
       <%= image_tag s.image_url, "width"=>"35%" %>
       <p><a class="linkTitle" href="<%= url_for(:controller => 'show', :action => 'show', :id => s.id) %>"><%= s.title %></a>
       <p><%= s.headline %>
-      <p><b>Availible Dates:</b><%= s.date_string %>
+      <p><b>Available Dates:</b><%= s.date_string %>
       <p><a class="venue_link" href="<%= s.venue.link %>"><%= s.venue.name %></a><br>
         <span class ="venue_address"><%= s.venue.full_address %>
       <p><div class="summary more"><%=s.summary %></div>

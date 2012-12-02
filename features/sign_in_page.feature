@@ -30,7 +30,6 @@ Scenario: login with an existing tixbay account
     And I press "Log In"
     Then I should be on the recommendations form page 
 
-@wip
 Scenario: login directs to logged in dashboard if form filled out before
    Given I already signed up
    And I already filled out the recommendations form

@@ -1,4 +1,3 @@
-@wip
 Feature: Dashboard and Recommendations for Signed in User
 
   As a tix bay area user
