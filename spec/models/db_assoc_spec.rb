@@ -8,8 +8,8 @@ describe Show do
     @show.save
     @category.save
 
-    @show.categories.create(:name => 'Theater')
-    @show.categories.first.name.should == 'Theater'
+    @show.categories.create(:name => 'Theatre')
+    @show.categories.first.name.should == 'Theatre'
 
     @category.shows.create(:title => 'Inception')
     @category.shows.first.title.should == 'Inception'

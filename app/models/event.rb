@@ -49,7 +49,7 @@ class Event
   
   #return true if show has at least one category we want
   def category_whitelist
-    valid = ['Theater', 'Performing Arts', 'Popular Music', 'Jazz',
+    valid = ['Theatre', 'Performing Arts', 'Popular Music', 'Jazz',
              'Classical', 'Classic Rock', 'Film']
     create = false
     @event.xpath('category_list').xpath('category').each do |category|

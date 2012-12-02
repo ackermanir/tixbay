@@ -1,11 +1,11 @@
-<% color_map = {'theater'=> '#FFFFFF', 'music'=> '#FFFFFF','film'=> '#FFFFFF','all culture'=>'#FFFFFF', 'recommended'=> '#FFFFFF'} %>
+<% color_map = {'theatre'=> '#FFFFFF', 'music'=> '#FFFFFF','film'=> '#FFFFFF','all culture'=>'#FFFFFF', 'recommended'=> '#FFFFFF'} %>
 <% color_map.each do |key, value| %>
     <% if key == @title %>
     <% color_map[key] = '#000000' %>
     <% end %>
 <% end %>
 
-<% buttons_map = {'theater'=> 'buttons', 'music'=> 'buttons','film'=> 'buttons','all culture'=>'buttons', 'recommended'=> 'buttons'} %>
+<% buttons_map = {'theatre'=> 'buttons', 'music'=> 'buttons','film'=> 'buttons','all culture'=>'buttons', 'recommended'=> 'buttons'} %>
 <% buttons_map.each do |key, value| %>
 <% if key == @title %>
 <% buttons_map[key] = 'buttons_on' %>
@@ -15,9 +15,9 @@
       <div class="row-fluid" id="navbar">
           <table width="100%" border="0" cellpadding="0" cellspacing="8" bordercolor="#FFFFFF" bgcolor="#C5000E">
             <tr>
-              <td width="25%" bgcolor="<%= color_map['theater'] %>">
-                <div align="center" class="<%= buttons_map['theater'] %>">
-              <%= link_to "theater & dance", category_path("theater")%>
+              <td width="25%" bgcolor="<%= color_map['theatre'] %>">
+                <div align="center" class="<%= buttons_map['theatre'] %>">
+              <%= link_to "theatre & dance", category_path("theatre")%>
                 </div>
               </td>
               <td width="14%" bgcolor="<%= color_map['music'] %>">

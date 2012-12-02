@@ -15,8 +15,8 @@ module NavigationHelpers
 
     when /^the home\s?page$/
       '/'
-    when /^the theater page$/
-      '/category/theater'
+    when /^the theatre page$/
+      '/category/theatre'
     when /^the film page$/
       '/category/film'
     when /^the music page$/

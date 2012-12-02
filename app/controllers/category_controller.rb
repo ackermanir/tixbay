@@ -2,11 +2,11 @@ require 'will_paginate/array'
 
 class CategoryController < ApplicationController
   def index
-    redirect_to :action => :theater
+    redirect_to :action => :theatre
   end
-  def theater 
-    theater_category = ['Theater', 'Performing Arts']
-    @title = "theater"
+  def theatre 
+    theatre_category = ['Theatre', 'Performing Arts']
+    @title = "theatre"
     @shows = Show.category_shows(@title)
     @shows = @shows.paginate(:page => params[:page], :per_page => 15)
     render :body
@@ -25,7 +25,7 @@ class CategoryController < ApplicationController
     render :body 
   end
   def all_culture
-    all_category = ['Theater', 'Performing Arts', 'Popular Music', 'Jazz',
+    all_category = ['Theatre', 'Performing Arts', 'Popular Music', 'Jazz',
                     'Classical', 'Classic Rock', 'Film']
     @title = "all culture"
     @shows = Show.category_shows(@title)

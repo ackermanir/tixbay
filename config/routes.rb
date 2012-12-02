@@ -1,5 +1,5 @@
 Tixbay::Application.routes.draw do
-  root :to => 'category#theater'
+  root :to => 'category#theatre'
 
   #sign out path didn't work, so this is a fix
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
@@ -16,7 +16,7 @@ Tixbay::Application.routes.draw do
   #resources :tixbay
   #  resources :similarshows
   #end
-  #match 'tixbay/' => 'tixbay/theater'
+  #match 'tixbay/' => 'tixbay/theatre'
 
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'

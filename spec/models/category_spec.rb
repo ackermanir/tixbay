@@ -8,8 +8,8 @@ describe Category do
       sh = mock('showtimes')
       sh.stub(:shows).and_return(["l"])
       Category.should_receive(:where).
-        with(:name => ['Theater', 'Performing Arts']).and_return([sh])
-      Category.shows_from_category('theater')
+        with(:name => ['Theatre', 'Performing Arts']).and_return([sh])
+      Category.shows_from_category('theatre')
     end
   end
 end
