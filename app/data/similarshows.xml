@@ -18,9 +18,9 @@
         <region>CA</region>
         <extended_address>Fort Mason Center Building</extended_address>
       </address>
-      <name>Bayfront Theater</name>
+      <name>Bayfront Theatre</name>
     </venue>
-    <headline_as_text>BATS Improv: SF's Longest-Running Improv Comedy Theater</headline_as_text>
+    <headline_as_text>BATS Improv: SF's Longest-Running Improv Comedy Theatre</headline_as_text>
     <link>http://tracking.goldstar.com/aff_c?offer_id=6&amp;aff_id=1654&amp;aff_sub=46404</link>
     <upcoming_dates>
       <event_date id="619189">
@@ -86,7 +86,7 @@
   </event>
   <event id="62414">
     <full_price_range>$79.50 - $109.50</full_price_range>
-    <summary_as_text>When it comes to singing, there's nothing Kristin Chenoweth can't do. Pop, country, classical and, of course, musical theater -- she can sing them all. Her dazzling talent and beautiful voice make her one of the most popular concert singers around, which makes her appearance at Segerstrom Concert Hall all the more special. The original Glinda in the hit musical "Wicked", Chenoweth won an Emmy Award for her work in "Pushing Daisies" and has earned two Emmy nominations for "Glee". She most recently starred as Carlene Cockburn in "GCB", and will soon play a recurring role on "The Good Wife".</summary_as_text>
+    <summary_as_text>When it comes to singing, there's nothing Kristin Chenoweth can't do. Pop, country, classical and, of course, musical theatre -- she can sing them all. Her dazzling talent and beautiful voice make her one of the most popular concert singers around, which makes her appearance at Segerstrom Concert Hall all the more special. The original Glinda in the hit musical "Wicked", Chenoweth won an Emmy Award for her work in "Pushing Daisies" and has earned two Emmy nominations for "Glee". She most recently starred as Carlene Cockburn in "GCB", and will soon play a recurring role on "The Good Wife".</summary_as_text>
     <image>https://i.goldstar.com/gse_media/112/9/kristenchen-101412.jpg</image>
     <venue>
       <capacity>1704</capacity>
@@ -124,7 +124,7 @@
         <name>Classical</name>
       </category>
       <category id="9">
-        <name>Theater</name>
+        <name>Theatre</name>
       </category>
     </category_list>
     <our_price_range>$39.75 - $54.75</our_price_range>
@@ -167,7 +167,7 @@
     <sold_out>true</sold_out>
     <category_list>
       <category id="9">
-        <name>Theater</name>
+        <name>Theatre</name>
       </category>
     </category_list>
     <our_price_range>SOLD OUT</our_price_range>
@@ -237,7 +237,7 @@
     <headline_as_html>&lt;em&gt;Memphis&lt;/em&gt;: Tony-Winning Touring Musical Inspired by Real Events</headline_as_html>
     <category_list>
       <category id="9">
-        <name>Theater</name>
+        <name>Theatre</name>
       </category>
     </category_list>
     <our_price_range>$27.00 - $42.50</our_price_range>
