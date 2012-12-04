@@ -1,7 +1,7 @@
   <% @shows.each do |s| %>
     <div class="show">
       <%= image_tag s.image_url, "width"=>"35%" %>
-      <p><a class="linkTitle" href="<%= url_for(:controller => 'show', :action => 'show', :id => s.id) %>"><%= s.title %></a>
+      <p class="evTitle"><%= s.title %>
       <p><%= s.headline %>
       <p><b>Available Dates:</b><%= s.date_string %>
       <p><a class="venue_link" href="<%= s.venue.link %>"><%= s.venue.name %></a><br>
@@ -9,7 +9,10 @@
       <p><div class="summary more"><%=s.summary %></div>
       <p class="pricing">Full Price: <span class ="prices"><%= s.price_format('full') %>
       <p class="pricing">Goldstar Price: <span class ="prices"><%= s.price_format('ours') %>
-      <p><%= link_to "Purchase Tickets", {:controller => :show, :action => :add_click_and_redirect, :id => s.id, :link => s.link, :num => 1}, :id => s.id, :class => 'buytickets btn btn-danger' %>
+      <div id="wrapper">
+        <div id="showinfo"><p><a class="moreinfo btn btn-danger" id="<%= s.id.to_s + "_more_info"%>" href="<%= url_for(:controller => 'show', :action => 'show', :id => s.id) %>">More information</a></div>
+        <p><%= link_to "Purchase Tickets", {:controller => :show, :action => :add_click_and_redirect, :id => s.id, :link => s.link, :num => 1}, :id => s.id.to_s + "_buy", :class => 'buytickets btn btn-danger' %>
+      </div>
     </div>
     <hr/>
   <% end %>
