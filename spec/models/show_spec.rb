@@ -22,6 +22,7 @@ describe Show do
   describe "get_closest_shows" do
     it "should go through a list of shows and call get_distances" do
       fake_show = mock('show')
+      fake_show.should_receive(:[]=).exactly(2).times
       fake_show.should_receive(:get_distance).exactly(2).times.and_return(23.0)
       fake_shows = [fake_show, fake_show]
 
