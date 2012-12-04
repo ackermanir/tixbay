@@ -8,17 +8,6 @@
      <td width="100%" bgcolor="#000000"><div align="center" class="buttons_on" id="pagetitle"><%=  @title %></div>
      </td></tr></table>
 
-  <% if @location %>
-  <br/>
-  <form action="/category/preference" method="get" class="form-inline well">
-  <input type="text" name="street_address" value="<%= @location['street_address'] %>"/>
-  <input class="input-small" type="text" name="city" value="<%= @location['city'] %>"/>
-  <input class="input-small" type="text" name="region" value="<%= @location['region'] %>"/>
-  <input class="input-small" type="text" name="zip_code" value="<%= @location['zip_code'] %>"/>
-  <input type="submit" />
-  </form>
-  <% end %>
-
   <% if @noresults %>
     <div id="flash_notice">
       <%= @noresults  %>

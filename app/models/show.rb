@@ -55,6 +55,7 @@ class Show < ActiveRecord::Base
     shows.each do |s|
         show_distance = s.get_distance(myLat, myLong)
         if show_distance < distance
+            s[distance] = show_distance.to_i
             result << s
         end
     end
