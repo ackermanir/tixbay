@@ -58,49 +58,39 @@ class User < ActiveRecord::Base
     return shows.all
   end
 
+  def weight_show_from_past(weighted_shows)
+    features = past_shows_features
+    reweighted = []
+    weighted_shows.each do |pair|
+      show = pair[0]
+      weight = pair[1]
+      #pricing
+      low_price = (show.our_price_range_low / 100).floor
+      high_price = (show.our_price_range_high / 100).floor
+      price_weight = features['prices'].slice(low_price .. high_price).max
+      weight += 2 * price_weight
+      #locality
+      locality = show.venue.locality
+      locality_weight = features['locality'][locality]
+      weight += 5 * locality_weight unless not locality_weight
+      #categories
+      cats = show.categories
+      category_weight = 0
+      for cat in cats
+        cat_feature = features['categories'][cat]
+        category_weight += cat_feature unless not cat_feature
+      end
+      weight += 4 * category_weight
+      reweighted << [show, weight]
+    end
+    return reweighted
+  end
+
   def past_shows_features
     shows = Show.joins(:interests).where('interests.user_id' => self.id)
-    all_features = {}
-    all_features['prices'] = []
-    all_features['categories'] = {}
-    for show in shows.all
-      features = show.features
-      price_range = features['price_range']
-      price_low = price_range[0].floor
-      price_low = 0 if (price_low < 0)
-      price_high = price_range[1].floor
-      prices = all_features['prices']
-      while (prices.length < price_high)
-        prices << 0
-      end
-      for index in (price_low .. price_high)
-        prices[index] += 1
-      end
-      all_features['prices'] = prices
-      cats = features['category']
-      for cat in cats
-        if cats[cat] != nil
-          all_features['categories'][cat] += 1
-        else
-          all_features['categories'][cat] = 1
-        end
-      end
-    end
-
-    #normalize
-    max_price = prices.max
-    for index in (0 .. all_features['prices'].length - 1)
-      all_features[index] /= max_price
-    end
-    max_category = all_features.keys.max |a, b| do
-      all_features[a] <=> all_features[b]
-    end
-    for key in all_features.keys
-      all_features[key] /= max_category
-    end
-    return all_features
+    fav_shows = get_favorite_shows
+    Show.merge_features(shows, fav_shows)
   end
-        
 
   def get_preferred_categories
     return self.categories
