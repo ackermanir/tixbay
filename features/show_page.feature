@@ -10,18 +10,12 @@ Background: Set the testing database with values
   And the date is set to 2012
 
 Scenario: Click on a show to redirect to the show page for Cirque de Soleil
-  # Update to pick link under theatre & dance for Cirque de Soleil
-  #This link hasn't been set up yet
   When I follow ""Cirque du Soleil: Saltimbanco""
-  #for "Cirque de Soleil"
   Then I should be on the show page with id "2"
 
-  #After clicking the similar shows page link, I should see the show itself and more information
   Then I should see "Cirque du Soleil: Saltimbanco"
-  #Random sentence from the summary
   And I should see ""Cirque du Soleil" presents "Saltimbanco", an exploration of the urban experience in all its forms"
 
-  #A similar Show
   And I should see "The Boston Babydolls: "The Wrathskellar""
   And I should see "The Wrathskellar" returns for 2012, eschewing the Boston Babydolls' usual"
  

@@ -202,12 +202,27 @@ body {
 }
 
 .buytickets {
-  margin-left: 70%;
+  //margin-left: 50%;
+  margin-right: 2%;
+  float: right;
   font-size: 1.4em;
   font-style: normal;
   text-decoration: none;
   padding: 10px 20px;
+  position: relative;
+  display: inline block;
 }
+
+.moreinfo{
+  position: relative;
+  font-size: 1.4em;
+  font-style: normal;
+  text-decoration: none;
+  padding: 10px 20px;
+  float: left;
+  display: inline block;
+}
+
 
 .booth_title {
   font-size: 50px;
@@ -388,6 +403,11 @@ body {
   background-image: none;
 }
 
+#showinfo .btn-danger {
+  background-color: #E03838;
+  background-image: none;
+}
+
 .btn {
   background-image: none;
 }
@@ -484,7 +504,7 @@ a.morelink {
   font-weight: bold;
 	padding: 2px 6px;
 	margin-bottom: 10px;
-	margin-left: 600px;
+	margin-left: 80%;
 }
 
 #favorited {
@@ -495,5 +515,12 @@ a.morelink {
 	width: 44px;
   font-weight: bold;
 	margin-bottom: 10px;
-	margin-left: 600px;
+	margin-left: 82%;
+}
+
+//Place two elements next to each other
+#wrapper {
+  width: 100%;
+  overflow: hidden;
+  padding-top: 10px;
 }

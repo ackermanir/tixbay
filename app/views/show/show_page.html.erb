@@ -27,7 +27,9 @@
 		<% if @favorite %>
 		  <div id="favorited">Favorited</div>
 		<% end %>
-    <p><%= link_to "Purchase Tickets", {:controller => :show, :action => :add_click_and_redirect, :id => @current_show.id, :link => @current_show.link, :num => 1}, :id => @current_show.id, :class => 'buytickets btn btn-danger' %>
+    <div id="wrapper">
+      <p><%= link_to "Purchase Tickets", {:controller => :show, :action => :add_click_and_redirect, :id => @current_show.id, :link => @current_show.link, :num => 1}, :id => @current_show.id.to_s + "_buy", :class => 'buytickets btn btn-danger' %>
+    </div>
   </div>
 </div>
 
@@ -51,7 +53,9 @@
     <p><div class="summary more"><%=s.summary %></div>
     <p class="pricing">Full Price: <span class ="prices"><%= s.price_format('full') %>
     <p class="pricing">Goldstar Price: <span class ="prices"><%= s.price_format('ours') %>
-    <p><%= link_to "Purchase Tickets", {:controller => :show, :action => :add_click_and_redirect, :id => s.id, :link => s.link, :num => 1}, :id => s.id, :class => 'buytickets btn btn-danger' %>
+    <div id="wrapper">
+      <p><%= link_to "Purchase Tickets", {:controller => :show, :action => :add_click_and_redirect, :id => s.id, :link => s.link, :num => 1}, :id => s.id.to_s + "_buy", :class => 'buytickets btn btn-danger' %>
+    </div>
   </div>
   <hr/>
 <% end %>
