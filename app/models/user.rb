@@ -15,19 +15,28 @@ class User < ActiveRecord::Base
   #validates :zip_code, :length => {:is => 5} #make sure the zip code given is 5 digits
 
   #Favorite a show for a user
-  def favorite_a_show(show)
-    fav = Interest.new(:show_id => show.id, :user_id => self.id, :click => 2)
-    fav.save
+  def favorite_a_show(show_id)
+    previous_clicks = Interest.where('user_id' => self.id,
+                                     'show_id' => show_id).all
+    #Favoriting a show is most important, so update old connection
+    if (previous_clicks != [])
+      for elt in previous_clicks
+        elt.click = 2
+        elt.save
+      end
+    else
+      fav = Interest.new(:show_id => show_id, :user_id => self.id, :click => 2)
+      fav.save
+    end
   end
 
   #List of all shows that the users has favorited, but not those otherwise related
   def get_favorite_shows
     shows = Show.joins(:interests).where('interests.user_id' => self.id,
                                          'interests.click' => 2)
-    return shows
+    return shows.all
   end
 
-  #This is wrong, Cong copy above method
   def get_liked_shows
     return self.shows
   end

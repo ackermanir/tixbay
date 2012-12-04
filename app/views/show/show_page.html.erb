@@ -24,6 +24,9 @@
     <p><div class="summary more"><%=@current_show.summary %></div>
     <p class="pricing">Full Price: <span class ="prices"><%= @current_show.price_format('full') %>
     <p class="pricing" id="pricing_end">Goldstar Price: <span class ="prices"><%= @current_show.price_format('ours') %>
+		<% if @favorite %>
+		  <div id="favorited">Favorited</div>
+		<% end %>
     <p><a class="buytickets btn btn-danger" id="<%=@current_show.id %>" href="<%= @current_show.link %>">Purchase Tickets</a>
   </div>
 </div>
