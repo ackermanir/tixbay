@@ -18,9 +18,9 @@
         <region>CA</region>
         <extended_address>Fort Mason Center Building</extended_address>
       </address>
-      <name>Bayfront Theater</name>
+      <name>Bayfront Theatre</name>
     </venue>
-    <headline_as_text>BATS Improv: SF's Longest-Running Improv Comedy Theater</headline_as_text>
+    <headline_as_text>BATS Improv: SF's Longest-Running Improv Comedy Theatre</headline_as_text>
     <link>http://tracking.goldstar.com</link>
     <upcoming_dates>
       <event_date id="619189">
@@ -124,7 +124,7 @@
         <name>Classical</name>
       </category>
       <category id="9">
-        <name>Theater</name>
+        <name>Theatre</name>
       </category>
     </category_list>
     <our_price_range>$39.75 - $54.75</our_price_range>
@@ -163,7 +163,7 @@
     <sold_out>false</sold_out>
     <category_list>
       <category id="9">
-        <name>Theater</name>
+        <name>Theatre</name>
       </category>
     </category_list>
     <our_price_range>$39.75 - $54.75</our_price_range>

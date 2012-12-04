@@ -10,7 +10,7 @@ Background: Set the testing database with values
   And the date is set to 2012
 
 Scenario: Click on a show to redirect to the show page for Cirque de Soleil
-  # Update to pick link under theater & dance for Cirque de Soleil
+  # Update to pick link under theatre & dance for Cirque de Soleil
   #This link hasn't been set up yet
   When I follow ""Cirque du Soleil: Saltimbanco""
   #for "Cirque de Soleil"

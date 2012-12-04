@@ -7,10 +7,28 @@ Feature: Favorite shows from show page
 Background: shows have been added to database
 
   Given the database has been setup from xml
-  And I am on the home page
   And the date is set to 2012
- 
-Scenario: Option fo favorite show from show page
-  Given I am signed in as musicaluser
-	And I follow "BATS Improv Comedy"
-  Then I should see "Like this show"
+	And I am already logged in
+	And I am on the home page 
+
+@javascript
+Scenario: No option to favorite if not logged in
+	And I follow "log out"
+	And I am on the home page 
+	And I follow "Cirque du Soleil"
+	And I should not see "Favorite"
+
+@javascript
+Scenario: Option to favorite show from show page, Remembers if navigate away
+	And I follow "Cirque du Soleil"
+  Then I should see "Favorite"
+	And I should not see "Favorited"
+	And I press "Favorite"
+	Then I should see "Favorited"
+	And I am on the home page
+ 	And I follow "Cirque du Soleil"
+	Then I should see "Favorited"
+
+
+
+	

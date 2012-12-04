@@ -21,13 +21,13 @@ FactoryGirl.define do
 
   factory :category do
     id 1
-    name "Theater"
+    name "Theatre"
     created_at "2012-10-08 01:09:57"
     updated_at "2012-10-08 01:29:57"
   end
 
   factory :venue do
-    name "Greek Theater"
+    name "Greek Theatre"
     link "http://facilities.calperfs.berkeley.edu/greek/"
     postal_code 94704
     country_name "United States"

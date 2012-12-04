@@ -114,7 +114,7 @@ describe Show do
       s.stub(:headline).and_return('Come see blues')
       s.stub(:summary).and_return('It is new and classical jazz')
       s.keyword_search({'Music' => ['blues', 'jazz'],
-                         'Theater' => ['classical', 'new']}).
+                         'Theatre' => ['classical', 'new']}).
         should == 3
     end
     it "get the weighting for both headline and summary" do
@@ -125,7 +125,7 @@ describe Show do
       s.stub(:headline).and_return('Come see new Blues')
       s.stub(:summary).and_return('It is Classical Jazz and blues')
       s.keyword_search({'Music' => ['blues', 'jazz'],
-                         'Theater' => ['classical', 'new']}).
+                         'Theatre' => ['classical', 'new']}).
         should == 4
     end
   end

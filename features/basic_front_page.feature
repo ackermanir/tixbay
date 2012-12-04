@@ -26,10 +26,10 @@ Scenario: press "Theatre Bay Area" redirect
   And I follow "Theatre Bay Area"
   Then I should be redirected to the Theatre Bay Area page
 
-Scenario: filter "theater" shows
-  And I press the "theater" tab
-  Then I should be on the theater page
-  And I should see "theater" shows
+Scenario: filter "theatre" shows
+  And I press the "theatre" tab
+  Then I should be on the theatre page
+  And I should see "theatre" shows
 
 Scenario: filter "music" shows
   And I press the "music" tab
@@ -46,4 +46,4 @@ Scenario: filter "all culture" shows
   Then I should be on the all culture page
   And I should see "film" shows
   And I should see "music" shows
-  And I should see "theater" shows
+  And I should see "theatre" shows

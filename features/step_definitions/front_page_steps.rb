@@ -44,7 +44,7 @@ When /^I press the tix logo$/ do
     click_link("Redtopper")
 end
 
-Then /^I should see "theater" shows$/ do
+Then /^I should see "theatre" shows$/ do
     step 'I should see "Avenue Q"'
     step 'I should see "Erickson Theatre"'
 end

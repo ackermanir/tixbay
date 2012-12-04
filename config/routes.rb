@@ -1,5 +1,5 @@
 Tixbay::Application.routes.draw do
-  root :to => 'category#theater'
+  root :to => 'category#theatre'
 
   #sign out path didn't work, so this is a fix
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
@@ -10,13 +10,16 @@ Tixbay::Application.routes.draw do
   # The priority is based upon order of creation:
   # first created -> highest priority.
   #match ':controller/:id'
-  resources :show
+  resources :show do
+    get 'add_click_and_redirect', :on => :member
+  end
+  match 'show/:show_id/favorite' => 'show#favorite'
   match ':controller/:action/'
   resources :category
   #resources :tixbay
   #  resources :similarshows
   #end
-  #match 'tixbay/' => 'tixbay/theater'
+  #match 'tixbay/' => 'tixbay/theatre'
 
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'

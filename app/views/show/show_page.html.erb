@@ -15,7 +15,7 @@
   </td></tr></table>
 
   <div class="show">
-    <%= image_tag @current_show.image_url, "width"=>"35%" %>
+    <%= image_tag @current_show.image_url, "width"=> "35%" %>
     <p class="evTitle"><%= @current_show.title %>
     <p><%= @current_show.headline %>
     <p><b>Available Dates:</b><%= @current_show.date_string %>
@@ -23,8 +23,11 @@
       <span class ="venue_address"><%= @current_show.venue.full_address %>
     <p><div class="summary more"><%=@current_show.summary %></div>
     <p class="pricing">Full Price: <span class ="prices"><%= @current_show.price_format('full') %>
-    <p class="pricing">Goldstar Price: <span class ="prices"><%= @current_show.price_format('ours') %>
-    <p><a class="buytickets btn btn-danger" id="<%=@current_show.id %>" href="<%= @current_show.link %>">Purchase Tickets</a>
+    <p class="pricing" id="pricing_end">Goldstar Price: <span class ="prices"><%= @current_show.price_format('ours') %>
+		<% if @favorite %>
+		  <div id="favorited">Favorited</div>
+		<% end %>
+    <p><%= link_to "Purchase Tickets", {:controller => :show, :action => :add_click_and_redirect, :id => @current_show.id, :link => @current_show.link, :num => 1}, :id => @current_show.id, :class => 'buytickets btn btn-danger' %>
   </div>
 </div>
 
@@ -48,7 +51,7 @@
     <p><div class="summary more"><%=s.summary %></div>
     <p class="pricing">Full Price: <span class ="prices"><%= s.price_format('full') %>
     <p class="pricing">Goldstar Price: <span class ="prices"><%= s.price_format('ours') %>
-    <p><a class="buytickets btn btn-danger" id="<%=s.id %>" href="<%= s.link %>">Purchase Tickets</a>
+    <p><%= link_to "Purchase Tickets", {:controller => :show, :action => :add_click_and_redirect, :id => s.id, :link => s.link, :num => 1}, :id => s.id, :class => 'buytickets btn btn-danger' %>
   </div>
   <hr/>
 <% end %>

@@ -11,7 +11,7 @@ Scenario: link to recommendations form
 
 Scenario: get recommendations by one category
     Given I am on the recommendations form page
-    When I uncheck "recommendation_category_theater"
+    When I uncheck "recommendation_category_theatre"
     When I uncheck "recommendation_category_popularmusic"
     When I uncheck "recommendation_category_classical"
     When I fill in "recommendation_startdate_month" with "10"
@@ -27,7 +27,7 @@ Scenario: get recommendations by one category
 Scenario: get recommendations by multiple categories
    Given I am on the recommendations form page
    When I check "recommendation_category_film"
-   And I check "recommendation_category_theater"
+   And I check "recommendation_category_theatre"
    When I fill in "recommendation_startdate_month" with "10"
    And I fill in "recommendation_startdate_day" with "10"
    And I fill in "recommendation_startdate_year" with "2010"
@@ -40,7 +40,7 @@ Scenario: get recommendations by multiple categories
 
 Scenario: get recommendations by location and distance
   Given I am on the recommendations form page
-  When I check "recommendation_category_theater"
+  When I check "recommendation_category_theatre"
   When I check "recommendation_category_film"
   When I fill in "recommendation_startdate_month" with "10"
   And I fill in "recommendation_startdate_day" with "10"
@@ -56,7 +56,7 @@ Scenario: get recommendations by location and distance
 
 Scenario: get recommendations by date
   Given I am on the recommendations form page
-  And I check "recommendation_category_theater"
+  And I check "recommendation_category_theatre"
   And I check "recommendation_category_film"
   And I check "recommendation_category_classical"
   When I fill in "recommendation_startdate_month" with "10"
