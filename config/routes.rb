@@ -10,7 +10,10 @@ Tixbay::Application.routes.draw do
   # The priority is based upon order of creation:
   # first created -> highest priority.
   #match ':controller/:id'
-  resources :show
+  resources :show do
+    get 'add_click_and_redirect', :on => :member
+  end
+  match 'show/:show_id/favorite' => 'show#favorite'
   match ':controller/:action/'
   resources :category
   #resources :tixbay

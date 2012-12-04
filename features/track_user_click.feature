@@ -1,4 +1,4 @@
-Feature: Track user clicks so give better recommendations in the future
+Feature: Track user clicks to give better recommendations in the future
 
   As a theatre-goer and frequent visitor to the site,
   So that I can discover new shows,
@@ -6,11 +6,11 @@ Feature: Track user clicks so give better recommendations in the future
 
 Background: shows have been added
 
-  Given the database has been setup from xml
+  Given the database has been setup with similarshows.xml
   And I am on the home page
   And the date is set to 2012
 
-Scenario: I buy a ticket for a music show, then I should see similar shows to music
+Scenario: I buy a ticket for a music show, then I should see an interest for in the db
   Given I am signed in as frequentUser
   And I follow "music"
   And I follow "Yoshi's Jazz Club Oakland"
