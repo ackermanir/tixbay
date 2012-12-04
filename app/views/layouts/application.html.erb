@@ -60,10 +60,10 @@
         </div>
         <% if user_signed_in? %>
           <div class="well">
-            <%= yield :viewed %>
+            <%= yield @viewed %>
           </div>
           <div class="well">
-            <%= yield :favorited %>
+            <%= yield @favorited %>
           </div>
         <% end %>
         <div class="well">
