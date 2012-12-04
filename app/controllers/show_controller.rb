@@ -6,6 +6,13 @@ class ShowController < ApplicationController
     render :show_page
   end
 
+  def favorite
+    show_id = params['show_id']
+    user_id = params['user_id']
+    #post if success
+    render :fav_resp
+  end
+
   def show
     @current_show = Show.find(params['id'])
     @current_show_id = params['id']

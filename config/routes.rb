@@ -11,6 +11,7 @@ Tixbay::Application.routes.draw do
   # first created -> highest priority.
   #match ':controller/:id'
   resources :show
+  match 'show/:show_id/favorite/:user_id' => 'show#favorite'
   match ':controller/:action/'
   resources :category
   #resources :tixbay
