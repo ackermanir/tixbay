@@ -95,6 +95,7 @@ Defaults to recommending all shows
     shows = shows.joins(:categories).in_categories(categories)
     shows = shows.all.uniq
 
+    #filter by distance and weights
     shows = Show.get_closest_shows(shows, location, distance) unless not location
     shows = Show.rank_keyword(shows, keywords) unless not keywords
     return shows
@@ -182,6 +183,20 @@ How it chooses similarity:
     weight = 2 * weight_in_string(self.headline, keyword)
     weight += weight_in_string(self.summary, keyword)
     return weight
+  end
+
+  #Features of a show for recommendations based on previous shows
+  def features
+    hash = {}
+    hash['price_range'] = [our_price_range_low, our_price_range_high]
+    """
+    categories = []
+    for cat in categories
+      categories << cat.name
+    end
+    """
+    hash['category'] = categories
+    return hash
   end
 
   #returns formated string of prices specified by whose
