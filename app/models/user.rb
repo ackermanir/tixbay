@@ -14,6 +14,20 @@ class User < ActiveRecord::Base
 
   #validates :zip_code, :length => {:is => 5} #make sure the zip code given is 5 digits
 
+  #Update click for a user for a given show_id
+  def add_click_to_interest(show_id, num)
+    user_interests = self.interests.where(:show_id => show_id)
+    if user_interests.any?
+      user_interest = user_interests.first
+      if Integer(user_interest.click) < Integer(num)
+        user_interest.click = num
+        user_interest.save
+      end
+    else
+      self.interests.create(:show_id => show_id, :click => num)
+    end
+  end
+
   #Favorite a show for a user
   def favorite_a_show(show_id)
     previous_clicks = Interest.where('user_id' => self.id,

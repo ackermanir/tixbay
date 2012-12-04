@@ -36,15 +36,7 @@ class ShowController < ApplicationController
   
   def add_click_and_redirect
     if user_signed_in?
-      user_interests = User.find(current_user.id).interests.where(:show_id => params['id'])
-      if user_interests.any?
-        user_interest = user_interests.first
-        user_interest.show_id = params['id']
-        user_interest.click = params['num']
-        user_interest.save
-      else
-        User.find(current_user.id).interests.create(:show_id => params['id'], :click => params['num'])
-      end
+      User.find(current_user.id).add_click_to_interest(params['id'], params['num'])
       redirect_to params['link']
     else
       redirect_to params['link']
