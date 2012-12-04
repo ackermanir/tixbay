@@ -7,9 +7,9 @@
 @charset "utf-8";
 
 .container {
-  margin-right: 10%;
-  margin-left: 10%;
-  width: 80%;
+  margin-right: 9%;
+  margin-left: 9%;
+  width: 82.7%;
 }
 
 body {
@@ -397,11 +397,13 @@ body {
 }
 
 .row-fluid .span3 {
-  width: 23%;
+  width: 302px;
+  margin-left: 11px;
 }
 
 .row-fluid .span9 {
-  width: 74.468%;
+  width: 728px;
+  margin-left: 0px;
 }
 
 .pagination a, .pagination span, .pagination em {
@@ -424,6 +426,7 @@ body {
   -webkit-border-radius: 0px;
   -moz-border-radius: 0px;
   border-radius: 0px;
+  margin-bottom: 10px;
 }
 
 //Add stuff for hiding and showing more text for the summary
@@ -468,7 +471,7 @@ a.morelink {
 #back_top span {
   border-width: 4px;
   border-style: dashed dashed solid dashed;
-  border-color:transparent transparent #f00 transparent;
+  border-color: transparent transparent #f00 transparent;
   width: 0;
   height: 0;
   display: block;
