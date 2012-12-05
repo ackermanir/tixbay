@@ -11,7 +11,7 @@ TB = {
 				var sign_in_text = $('#log_out').text();
 				if(/Log Out/.test(sign_in_text)) {
 						$('<button id="favorite_this" class="btn">Favorite</button>').
-								insertAfter($('#pricing_end'));
+								insertAfter($('#back'));
 						$('#favorite_this').click(TB.favorite_show);
 				}
 		},

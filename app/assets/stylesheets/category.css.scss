@@ -528,7 +528,7 @@ a.morelink {
   color: #C00000;
   font-weight: bold;
 	padding: 2px 6px;
-	margin-left: 10%;
+	float: right;
 }
 
 #favorited {
@@ -536,11 +536,12 @@ a.morelink {
   color: #C00000;
 	padding: 2px 6px;
   font-weight: bold;
-	margin-left: 10%;
+  float: right;
 }
 
 #hidden_favorited {
 	display: none;
+  float: right;
 }
 
 #recent, #favorites {
