@@ -31,6 +31,8 @@ module NavigationHelpers
       '/users/sign_in'
     when /^the sign up page$/
       '/users/sign_up'
+    when /^the recommendation page$/
+      '/recommendations/index'
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #

@@ -53,14 +53,26 @@ class User < ActiveRecord::Base
     end
   end
 
-  #Shows that the users has clicked purchase ticket
+  #Shows that the users has clicked purchase ticket or more information
+  def get_recent_view
+    shows = Show.joins(:interests).where('interests.user_id' => self.id,
+                                         'interests.click' => [0,1]).order('interests.created_at DESC').limit(5)
+    return shows.all
+  end
+
   def get_viewed_shows
     shows = Show.joins(:interests).where('interests.user_id' => self.id,
-                                         'interests.click' => 1)
+                                         'interests.click' => [0,1])
     return shows.all
   end
 
   #List of all shows that the users has favorited, but not those otherwise related
+  def get_recent_fav
+    shows = Show.joins(:interests).where('interests.user_id' => self.id,
+                                         'interests.click' => 2).order('interests.created_at DESC').limit(5)
+    return shows.all
+  end
+
   def get_favorite_shows
     shows = Show.joins(:interests).where('interests.user_id' => self.id,
                                          'interests.click' => 2)

@@ -7,12 +7,18 @@
      <td width="100%" bgcolor="#000000"><div align="center" class="buttons_on" id="pagetitle"><%=  @title %></div>
      </td></tr></table-->
 <div id="recommendation_container">
-<h3 id="recommendation_header">Custom Recommendations Form</h3>
+  <% if @is_new%>
+    <h3 id="recommendation_header">Custom Recommendations Form</h3>
+  <% else %>
+    <h3 id="recommendation_header">Update Your Preferences</h3>
+  <% end %>
 
-<div id="recommendation_welcome">
-<h4>Welcome<%= @user %>!<br>
-Please fill out this form so we can help you find shows.
-</h4></div>
+  <div id="recommendation_welcome">
+    <% if @is_new%>
+      <h4>Welcome <%= @first_name %>!<br></h4>
+      Please fill out this form so we can help you find shows.
+    <% end %>
+  </div>
 
 <%= form_tag :action => "index" do %>
 

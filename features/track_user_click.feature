@@ -6,7 +6,7 @@ Feature: Track user clicks to give better recommendations in the future
 
 Background: shows have been added
 
-  Given the database has been setup with singleentry.xml
+  Given the database has been setup with smalltable.xml
   And I am on the home page
   And the date is set to 2012
   And I am already logged in

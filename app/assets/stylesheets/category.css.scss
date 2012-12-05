@@ -7,8 +7,7 @@
 @charset "utf-8";
 
 .container {
-  margin-right: 9%;
-  margin-left: 9%;
+  margin: auto;
   width: 1045px;
 }
 
@@ -23,6 +22,18 @@ body {
 
 #navbar, #aboutme_header {
   margin-bottom: 15px;
+}
+
+#aboutme {
+  a, a:hover {
+    color: #C5000E;
+  }
+}
+
+#error_explanation {
+  h2 {
+    font-size: 1em;
+  }
 }
 
 #sign_in {
@@ -83,6 +94,12 @@ body {
   padding-left: 10px;
   text-align: left;
   font-size: 2.5em;
+}
+
+#sidetitle {
+  padding-left: 10px;
+  text-align: left;
+  font-weight: bold;
 }
 
 #listings {
@@ -203,7 +220,7 @@ body {
 
 .buytickets {
   //margin-left: 50%;
-  margin-right: 2%;
+  margin-right: 1.5%;
   float: right;
   font-size: 1.4em;
   font-style: normal;
@@ -399,11 +416,15 @@ body {
 .btn-danger {
   background-color: #C00000;
   background-image: none;
+  border: none;
 }
 
-#showinfo .btn-danger {
-  background-color: #7D0000;
-  background-image: none;
+#showinfo {
+  .btn-danger {
+    background-color: #7D0000;
+    background-image: none;
+    border: #7D0000;
+  }
 }
 
 .btn {
@@ -438,6 +459,7 @@ body {
 }
 
 .pagination a, .pagination span, .pagination em {
+  color: #C5000E;
   float: left;
   padding: 0 10px;
   line-height: 38px;
@@ -492,10 +514,14 @@ a.morelink {
   width: 30px;
   z-index: 999;
   background-color: #f1faff;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  border: 1px lightgray solid;
 }
 
 #back_top span {
-  border-width: 4px;
+  border-width: 5px;
   border-style: dashed dashed solid dashed;
   border-color: transparent transparent #f00 transparent;
   width: 0;
@@ -503,28 +529,44 @@ a.morelink {
   display: block;
   font-size: 0;
   line-height: 0;
-  margin-left: 8px;
+  margin-left: 10px;
 }
 
 //Css used for favoriting a show
 #favorite_this {
 	font-size: 12px;
+  margin-top: -10px;
+  margin-bottom: 10px;
   color: #C00000;
+  text-shadow: none;
   font-weight: bold;
 	padding: 2px 6px;
-	margin-left: 10%;
+	float: right;
 }
 
 #favorited {
 	font-size: 12px;
+  margin-top: -10px;
+  margin-bottom: 10px;
+  background-color: #e6e6e6;
   color: #C00000;
+  text-shadow: none;
 	padding: 2px 6px;
   font-weight: bold;
-	margin-left: 10%;
+  float: right;
 }
 
 #hidden_favorited {
 	display: none;
+  margin-top: -10px;
+  margin-bottom: 10px;
+  float: right;
+}
+
+#recent, #favorites {
+  p {
+    margin-bottom: 0;
+  }
 }
 
 //Place two elements next to each other

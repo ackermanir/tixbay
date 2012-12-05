@@ -172,6 +172,8 @@ class RecommendationsController < ApplicationController
     
     if user_signed_in?
       user = current_user
+      @favorited = user.get_recent_fav
+      @viewed = user.get_recent_view
     else
       user = nil
     end
@@ -203,8 +205,15 @@ class RecommendationsController < ApplicationController
 
   def form
     @title = "recommended"
-    if user_signed_in? && current_user.first_name
-      @user = " " + current_user.first_name
+    @first_name = current_user.first_name if current_user
+    @is_new = true
+
+    if user_signed_in?
+      if params['edit']
+        @is_new = false
+        user = current_user
+
+      end
     end
   end
 
