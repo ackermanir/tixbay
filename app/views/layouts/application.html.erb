@@ -24,18 +24,19 @@
         <% if current_user.first_name %>
           <span class="login_border">
             <%= current_user.first_name %>
-            <%= current_user.last_name%>
+            <%= current_user.last_name %>
           </span>
-          <span class ="login_border"> | </span>
+          <span class="login_border"> | </span>
         <% end %>
-        <%= link_to "Log Out", destroy_user_session_path, :method=>:delete %>
+        <%= link_to "Log Out", destroy_user_session_path, :method=>:delete, :id=>"log_out" %>
       </div>
    <% else %>
       <div class="user_button">
-            <%= link_to "Log In", new_user_session_path %> <span class="login_border"> | </span>
+            <%= link_to "Log In", new_user_session_path %> <span class="login_border">
+           <span class="login_border"> | </span>
            <%= link_to "Sign Up", new_user_registration_path %>
-        <% end %>
-    </div>
+      </div>
+    <% end %>
     <div class="row-fluid">
     <%= link_to image_tag("redtopper2.png", "height"=>"229", "width"=>"900", "id"=>"tixlogo", "align"=>"center", "style"=>"margin-left: 5%"), "/" %>
     </div>
