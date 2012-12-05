@@ -25,6 +25,12 @@ body {
   margin-bottom: 15px;
 }
 
+#aboutme {
+  a, a:hover {
+    color: #C5000E;
+  }
+}
+
 #sign_in {
   float: right;
   background-color: white;
@@ -83,6 +89,12 @@ body {
   padding-left: 10px;
   text-align: left;
   font-size: 2.5em;
+}
+
+#sidetitle {
+  padding-left: 10px;
+  text-align: left;
+  font-weight: bold;
 }
 
 #listings {
@@ -429,6 +441,7 @@ body {
 }
 
 .pagination a, .pagination span, .pagination em {
+  color: #C5000E;
   float: left;
   padding: 0 10px;
   line-height: 38px;
@@ -516,6 +529,12 @@ a.morelink {
   font-weight: bold;
 	margin-bottom: 10px;
 	margin-left: 82%;
+}
+
+#recent, #favorites {
+  p {
+    margin-bottom: 0;
+  }
 }
 
 //Place two elements next to each other

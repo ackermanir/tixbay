@@ -47,7 +47,7 @@ class User < ActiveRecord::Base
   #Shows that the users has clicked purchase ticket
   def get_viewed_shows
     shows = Show.joins(:interests).where('interests.user_id' => self.id,
-                                         'interests.click' => 1)
+                                         'interests.click' => [0,1])
     return shows.all
   end
 
