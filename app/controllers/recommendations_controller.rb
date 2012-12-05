@@ -51,6 +51,12 @@ class RecommendationsController < ApplicationController
 
   def index
 
+    if params[:recommendation][:location]["zip_code"] == "" || params[:recommendation][:location]["zip_code"].length != 5
+      flash[:notice] = "You must enter a valid zip code to get recommendations."
+      redirect_to :action => :form
+      return
+    end
+
     @title = "recommended"
 
     args = {}
