@@ -11,10 +11,9 @@ Background: shows have been added to database
   And the date is set to 2012
  
 Scenario: personal recommendations page
-  Given I am signed in as musicaluser
-  And I am on the recommendation page
-  Then I should see "Foodies! The Musical"
-  And I should see "Avenue Q"
+  Given I am on the logged in dashboard
+  Then I should see "recently viewed"
+  And I should see "favorites"
 
 Scenario: recently viewed sidebar
   Given I am signed in as musicaluser

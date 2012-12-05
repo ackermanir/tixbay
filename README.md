@@ -22,6 +22,8 @@
 
 	$ heroku pg:reset HEROKU_POSTGRESQL_YELLOW --confirm tixbay 
 
+(note: it is a good idea to drop db first, and then push new changes)
+
 # Rails
 
 Rails is a web-application framework that includes everything needed to create

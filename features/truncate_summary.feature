@@ -6,11 +6,11 @@ Feature: When displaying the summaries to shows, I want the text to be truncated
 
 @javascript
 Scenario: By clicking more, I should be able to see more text
-  Given the database has been setup with similarshows.xml
-  And that I am on the show page with id "5"
+  Given the database has been setup with singleentry.xml
+  And I am on the home page
   And the date is set to 2012
-  Then I should see "Inspired by actual events, rocking musical "Memphis" immortalizes '50s DJ Huey Calhoun"
+  Then I should see "So it's only fitting that when San Francisco Ballet Artistic Director and Principal Choreographer Helgi Tomasson set out"
 
   #After clicking the similar shows page link, I should see the show itself and more information
   When I follow "more"
-  Then I should see "This nationally touring hit is directed by Tony nominee Christopher Ashley"
+  Then I should see "of course Tchaikovsky's beautiful score performed live by the world-class San Francisco Ballet Orchestra"

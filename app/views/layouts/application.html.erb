@@ -45,13 +45,16 @@
 
     <div class="row-fluid">
     <div class="span9">
-        <table width="728" border="0" align="center" cellpadding="0" cellspacing="0">
-            <tr>
-            <td><iframe src="https://servedbyadbutler.com/adserve/;ID=153389;size=728x90;setID=107856;type=iframe" width="728" marginwidth="0" height="90" marginheight="0" scrolling="No" frameborder="0" class="ad" style="margin: 0px; padding: 0px" allowtransparency="true" background-color="transparent">
-            </iframe>
-            <a href="http://www.theatrebayarea.org/advertise" target="_blank" class="eventheadline"><span class="eventheadline">Advertise with us</span></a></td>
-            </tr>
-        </table>
+        <% if user_signed_in? %>
+        <% else %>
+          <table width="728" border="0" align="center" cellpadding="0" cellspacing="0">
+              <tr>
+              <td><iframe src="https://servedbyadbutler.com/adserve/;ID=153389;size=728x90;setID=107856;type=iframe" width="728" marginwidth="0" height="90" marginheight="0" scrolling="No" frameborder="0" class="ad" style="margin: 0px; padding: 0px" allowtransparency="true" background-color="transparent">
+              </iframe>
+              <a href="http://www.theatrebayarea.org/advertise" target="_blank" class="eventheadline"><span class="eventheadline">Advertise with us</span></a></td>
+              </tr>
+          </table>
+        <% end %>
 
         <!-- for alert and notice messages -->
         <p class="notice"><%= notice %></p>
@@ -70,22 +73,51 @@
           </span>
           Back to Top
         </div>
-        <% if user_signed_in? %>
-          <div class="well">
-            <%= yield :viewed %>
+        <% if user_signed_in? and current_page?(:controller => 'recommendations') %>
+          <div class="well" id="edit">
+            <p>These shows are recommended for you based on your stated preferences, recently viewed shows, and shows you've marked as favorites.</p>
+            <a href="<%= url_for(:controller => 'recommendations', :action => 'form', :edit => true) %>" class="btn">Edit Recommendation Preferences</a>
           </div>
-          <div class="well">
-            <%= yield :favorited %>
+          <div class="well" id="recent">
+            <table width="100%" border="0" cellpadding="0" cellspacing="8" bgcolor="C00000" id="aboutme_header">
+              <tr>
+              <td width="100%" bgcolor="000000"><div align="center" class="buttons_on" id="sidetitle">recently viewed</div></td></tr></table>
+            <% if @viewed.length != 0 %>
+              <% @viewed.each do |v| %>
+                <p><b><a href="/show/<%= v.id %>"><%= v.title %></a></b></p>
+                <p><%= v.headline %>
+                <p><b><%= v.date_string %></b>, <%= v.price_format('ours') %></p>
+                </br>
+              <% end %>
+            <% else %>
+              <p> You haven't viewed any shows recently. </p>
+            <% end %>
           </div>
-        <% end %>
-        <div class="well">
-        <table width="100%" border="0" cellpadding="0" cellspacing="8" bgcolor="C00000" id="aboutme_header">
-               <tr>
-               <td width="100%" bgcolor="000000"><div align="center" class="buttons_on">did you know?</div></td></tr></table>
-        <b>For every Goldstar ticket purchased through TIX, a substantial portion of the service charge you pay goes to the nonprofit charitable organization <%= link_to "Theatre Bay Area", 'http://www.theatrebayarea.org/' %> to support things like classes, grants, auditions, and health support for Bay Area artists and arts professionals.</b><br><br>
-        </div>
+          <div class="well" id="favorites">
+            <table width="100%" border="0" cellpadding="0" cellspacing="8" bgcolor="C00000" id="aboutme_header">
+              <tr>
+              <td width="100%" bgcolor="000000"><div align="center" class="buttons_on" id="sidetitle">favorites</div></td></tr></table>
+            <% if @favorited.length != 0 %>
+              <% @favorited.each do |f| %>
+                <p><b><a href="/show/<%= f.id %>"><%= f.title %></a></b></p>
+                <p><%= f.headline %>
+                <p><b><%= f.date_string %></b>, <%= f.price_format('ours') %></p>
+                </br>
+              <% end %>
+            <% else %>
+              <p> You haven't favorited any shows yet. </p>
+            <% end %>
+          </div>
+        <% else %>
+          <div class="well">
+          <table width="100%" border="0" cellpadding="0" cellspacing="8" bgcolor="C00000" id="aboutme_header">
+                 <tr>
+                 <td width="100%" bgcolor="000000"><div align="center" class="buttons_on" id="sidetitle">did you know?</div></td></tr></table>
+          <b>For every Goldstar ticket purchased through TIX, a substantial portion of the service charge you pay goes to the nonprofit charitable organization <%= link_to "Theatre Bay Area", 'http://www.theatrebayarea.org/' %> to support things like classes, grants, auditions, and health support for Bay Area artists and arts professionals.</b><br><br>
+          </div>
 
-        <iframe src="http://ab153389.adbutler-kaon.com/adserve/;ID=153389;size=300x250;setID=139818;type=iframe" width="300" marginwidth="0" height="250" marginheight="0" scrolling="No" frameborder="0" class="ad" style="margin: 0px; padding: 0px" allowtransparency="true" background-color="transparent">
+          <iframe src="http://ab153389.adbutler-kaon.com/adserve/;ID=153389;size=300x250;setID=139818;type=iframe" width="300" marginwidth="0" height="250" marginheight="0" scrolling="No" frameborder="0" class="ad" style="margin: 0px; padding: 0px" allowtransparency="true" background-color="transparent">
+        <% end %>
       </div>
     </div> <!-- end row fluid -->
   </div> <!-- end container -->
