@@ -155,7 +155,7 @@ class RecommendationsController < ApplicationController
         end
 
         keywords = keyword_hash_from_params(params)
-        args["keywords"] = keywords
+        args["keyword"] = keywords
 
     end # end non signed-in user processing 
     
@@ -165,7 +165,7 @@ class RecommendationsController < ApplicationController
       user = nil
     end
 
-    @shows = Show.recommend_shows(price_range=args["price_range"], categories=args["categories"], dates=args["dates"], location=args["location"], distance=args["distance"], user=user, keywords=args["keywords"])
+    @shows = Show.recommend_shows(price_range=args["price_range"], categories=args["categories"], dates=args["dates"], location=args["location"], distance=args["distance"], user=user, keywords=args["keyword"])
 
     if @shows.length == 0
       @noresults = "No results were found. Please broaden your criteria and search again."
