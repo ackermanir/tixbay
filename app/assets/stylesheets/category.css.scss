@@ -526,6 +526,7 @@ a.morelink {
 #favorite_this {
 	font-size: 12px;
   color: #C00000;
+  text-shadow: none;
   font-weight: bold;
 	padding: 2px 6px;
 	float: right;
@@ -533,7 +534,9 @@ a.morelink {
 
 #favorited {
 	font-size: 12px;
+  background-color: #e6e6e6;
   color: #C00000;
+  text-shadow: none;
 	padding: 2px 6px;
   font-weight: bold;
   float: right;

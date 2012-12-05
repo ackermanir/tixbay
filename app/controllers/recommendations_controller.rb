@@ -150,24 +150,4 @@ class RecommendationsController < ApplicationController
       redirect_to "/users/sign_in"
     end
   end
-
-  def favorite_shows
-    if user_signed_in?
-      user = current_user
-      @favorited << user.get_favorite_shows
-      if @favorited.length == 0
-        @nofav = "You have not favorited any shows yet"
-      end
-    end
-  end
-
-  def viewed_shows
-    if user_signed_in?
-      user = current_user
-      @viewed << user.get_viewed_shows
-      if @viewed.length == 0
-        @noview = "You have not viewed any shows recently"
-      end
-    end
-  end
 end
