@@ -42,4 +42,16 @@ class ShowController < ApplicationController
       redirect_to params['link']
     end
   end
+
+  def favorite_shows
+    if user_signed_in?
+      @favorited = User.find(current_user.id).get_favorite_shows
+    end
+  end
+
+  def viewed_shows
+    if user_signed_in?
+      @viewed = User.find(current_user.id).get_viewed_shows
+    end
+  end
 end

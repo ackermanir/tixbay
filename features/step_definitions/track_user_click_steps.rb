@@ -1,6 +1,6 @@
 require 'timecop'
 
-Then /^(?:|I )should have a click value of (.+) for show_id of (.+)$/ do |num, show_id|
+Then /^(?:|I )should have a click value of (.+) for show_id (.+)$/ do |num, show_id|
   assert User.all.first.interests.where(:show_id => show_id).first.click == Integer(num)
 end
 
