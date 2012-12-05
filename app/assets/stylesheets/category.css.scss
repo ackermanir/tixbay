@@ -410,6 +410,19 @@ body {
   background-image: none;
 }
 
+.user_button {
+  color: #FFFFFF;
+  float: right;
+  font-weight: bold;
+}
+.login_border{
+  font-weight:normal;
+}
+
+.user_button a {
+  color: #FFFFFF;
+}
+
 .row-fluid .span2 {
   width: 10%;
 }
