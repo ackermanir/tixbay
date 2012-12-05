@@ -199,6 +199,74 @@ class RecommendationsController < ApplicationController
 
   end
 
+  #Helper method that sets the appropriate variables given the value passed in from the db
+  def set_keyword_variables(val)
+    if val == "Comedy"
+      @comedy = true
+    elsif val == "Drama"
+      @drama = true
+    elsif val == "Tragedy"
+      @tragedy = true
+    elsif val == "Musical"
+      @musical = true
+    elsif val == "Solo"
+      @solo = true
+    elsif val == "Jazz"
+      @jazz = true
+    elsif val == "Cabaret"
+      @cabaret = true
+    elsif val == "Classical"
+      @classical = true
+    elsif val == "Indie-Rock"
+      @indie_rock = true
+    elsif val == "Animated"
+      @animated = true
+    elsif val == "Documentary"
+      @documentary = true
+    elsif val == "Silent"
+      @silent = true
+    elsif val == "Festival"
+      @festival = true
+    elsif val == "Short"
+      @short = true
+    elsif val == "Drive-In"
+      @drive_in = true
+    elsif val == "Classic"
+      @classic = true
+    elsif val == "Sci-Fi"
+      @scifi = true
+    elsif val == "Premiere"
+      @premiere = true
+    elsif val == "Family"
+      @family = true
+    end
+  end
+
+  #Helper method that sets the appropriate variables for categories given the value passed in from the db
+  def set_categories_variables(val)
+    if val == "Theater"
+      @theatre_cat = true
+    elsif val == "Performing Arts"
+      @performing_cat = true
+    elsif val == "Popular Music"
+      @pop_music_cat = true
+    elsif val == "Jazz"
+      @jazz_cat = true
+    elsif val == "Classical"
+      @classical_cat = true
+    elsif val == "Classic Rock"
+      @classic_rock_cat = true
+    elsif val == "Film"
+      @film_cat == true
+    elsif val == "Comedy"
+      @comedy_cat == true
+    elsif val == "Family"
+      @family_cat = true
+    elsif val == "Food & Social"
+      @food_social_cat = true
+    end
+  end
+
   def recommended
     #if not logged in
     # redirect_to :actions=>"login"
@@ -213,15 +281,66 @@ class RecommendationsController < ApplicationController
 
   def form
     @title = "recommended"
-    @first_name = current_user.first_name if current_user
-    @is_new = true
 
     if user_signed_in?
       if params['edit']
         @is_new = false
         user = current_user
+        @first_name = user.first_name
 
+        keyword_hash = keyword_string_to_hash(user.keyword)
+
+        keyword_hash.each do |k,v|
+          v.each do |ele|
+            set_keyword_variables(ele) 
+          end
+        end
+
+        @street_address = user.street_address
+        @city = user.city
+        @state = user.state
+        @zip_code = user.zip_code
+
+        @dist = user.travel_radius.to_i
+
+        if user.max_tix_price.to_i >= 0
+          @maxprice = user.max_tix_price.to_i / 100
+        else
+          @maxprice = 0
+        end
+
+        categories = user.categories
+
+        categories.each do |val|
+          set_categories_variables(val.name)
+        end
+      else
+        @first_name = current_user.first_name if current_user
+        @is_new = true
+        @theatre_cat = true
+        @performing_cat = true
+        @pop_music_cat = true
+        @jazz_cat = true
+        @classical_cat = true
+        @classic_rock_cat = true
+        @film_cat = true
+        @comedy_cat = true
+        @family_cat = true
+        @food_social_cat = true
       end
+    else
+      @first_name = current_user.first_name if current_user
+      @is_new = true
+      @theatre_cat = true
+      @performing_cat = true
+      @pop_music_cat = true
+      @jazz_cat = true
+      @classical_cat = true
+      @classic_rock_cat = true
+      @film_cat = true
+      @comedy_cat = true
+      @family_cat = true
+      @food_social_cat = true
     end
   end
 
