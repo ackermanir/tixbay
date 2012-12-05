@@ -135,18 +135,24 @@ describe Show do
       s.our_price_range_low = 1000
       s.our_price_range_high = 9000
       s.venue = Venue.new
-      s.venue.locatlity = "oka"
+      s.venue.locality = "oka"
       s.stub(:categories).and_return(['film'])
+      s.features.should == {'price_range' => [10, 90], 
+        'locality' => "oka", 'category' => ['film']}
     end
   end
 
-  def features
-    hash = {}
-    hash['price_range'] = [(our_price_range_low / 100).floor, 
-                           (our_price_range_high / 100).floor]
-    hash['locality'] = venue.locality
-    hash['category'] = categories
-    return hash
+  describe "self.merge_features" do
+    it "adds together shows" do
+      s1 = Show.new
+      s2 = Show.new
+      s1.stub(:features).and_return({'price_range' => [1, 5], 
+                                     'locality' => "okra", 'category' => ['film']})
+      s2.stub(:features).and_return({'price_range' => [2, 3], 
+                                     'locality' => "lisbon", 'category' => ['film']})
+      Show.merge_features([s1, s2], []).should == 
+        {"prices"=>[0.0, 0.5, 1.0, 1.0, 0.5, 0.5], "categories"=>{"film"=>1.0}, "locality"=>{"okra"=>1.0, "lisbon"=>1.0}}
+    end
   end
 
   describe "price_format" do
