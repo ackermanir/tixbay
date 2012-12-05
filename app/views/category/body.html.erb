@@ -10,7 +10,8 @@
 
   <% if @noresults %>
     <div id="flash_notice">
-      <%= @noresults  %>
+      <%= @noresults %>
+      <%= link_to "Go back to Recommendation Form", "/recommendations/form?edit=true" %>
     </div>
   <% end %>
 
