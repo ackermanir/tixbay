@@ -2,9 +2,6 @@ require 'will_paginate/array'
 
 class RecommendationsController < ApplicationController
 
-  #FIX-ME: don't add filter if we have a non-logged in version as well
-  before_filter :authenticate_user!
-
   #Helper methods for keyword
   def keyword_hash_from_params(params)
     keywords = {}
