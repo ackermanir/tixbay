@@ -24,8 +24,10 @@ class RecommendationsController < ApplicationController
     end
 
     location = params["recommendation"]["location"]
-    if location["zip_code"] == ""
-      args["location"] = nil
+    if location["zip_code"] == "" || location["zip_code"].length != 5
+      flash[:notice] = "You must enter a valid zip code to get recommendations."
+      redirect_to :action => :form
+      return
     else
       args["location"] = location
     end
