@@ -13,10 +13,10 @@ Background: shows have been added to database
 
 @javascript
 Scenario: No option to favorite if not logged in
-	And I follow "log out"
+	And I follow "Log Out"
 	And I am on the home page 
 	And I follow "2_more_info"
-	And I should not see "Favorite"
+	Then I should not see "Favorite"
 
 @javascript
 Scenario: Option to favorite show from show page, Remembers if navigate away
@@ -29,6 +29,11 @@ Scenario: Option to favorite show from show page, Remembers if navigate away
  	And I follow "2_more_info"
 	Then I should see "Favorited"
 
-
-
-	
+@javascript
+Scenario: Able to unfavorite a show
+	And I follow "2_more_info"
+	Then I should not see "Favorited"
+	And I press "Favorite"
+	Then I should see "Favorited"
+	And I press "Favorited"
+	Then I should not see "Favorited"

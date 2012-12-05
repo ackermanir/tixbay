@@ -25,7 +25,7 @@
     <p class="pricing">Full Price: <span class ="prices"><%= @current_show.price_format('full') %>
     <p class="pricing" id="pricing_end">Goldstar Price: <span class ="prices"><%= @current_show.price_format('ours') %>
 		<% if @favorite %>
-		  <div id="favorited">Favorited</div>
+		  <div id="hidden_favorite">Favorited</div>
 		<% end %>
     <div id="wrapper">
       <%= link_to "Purchase Tickets", {:controller => :show, :action => :add_click_and_redirect, :id => @current_show.id, :link => @current_show.link, :num => 1}, :id => @current_show.id.to_s + "_buy", :class => 'buytickets btn btn-danger' %>
