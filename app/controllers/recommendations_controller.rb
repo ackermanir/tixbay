@@ -145,8 +145,8 @@ class RecommendationsController < ApplicationController
     
     if user_signed_in?
       user = current_user
-      @favorited = user.get_favorite_shows
-      @viewed = user.get_viewed_shows
+      @favorited = user.get_recent_fav
+      @viewed = user.get_recent_view
     else
       user = nil
     end
