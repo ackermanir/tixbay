@@ -48,3 +48,8 @@ Scenario: logout
     When I follow "recommended"
     Then I should be on the sign in page 
     And I should not see "Log Out" 
+
+Scenario: not logged in
+    Given I am on the sign in page 
+    And I follow "no_sign_up"
+    Then I should be on the recommendations form page
