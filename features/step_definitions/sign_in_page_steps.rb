@@ -17,3 +17,20 @@ Given /I am already logged in/ do
     step 'I press "Log In"'
     step 'I go to the home page'
 end
+
+Given /I already filled out the recommendations form/ do
+  step 'I am already logged in'
+  step 'I am on the recommendations form page'
+  step 'I uncheck "recommendation_category_theatre"'
+  step 'I uncheck "recommendation_category_popularmusic"'
+  step 'I uncheck "recommendation_category_classical"'
+  step 'I fill in "recommendation_startdate_month" with "10"'
+  step 'I fill in "recommendation_startdate_day" with "10"'
+  step 'I fill in "recommendation_startdate_year" with "2010"'
+  step 'I fill in "recommendation_enddate_month" with "10"'
+  step 'I fill in "recommendation_enddate_day" with "30"'
+  step 'I fill in "recommendation_enddate_year" with "2014"'
+  step 'I press "Submit"'
+  step 'Show me the page'
+  step 'I follow "Log Out"'
+end
