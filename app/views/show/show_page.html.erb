@@ -21,7 +21,7 @@
     <p><b>Available Dates:</b><%= @current_show.date_string %>
     <p><a class="venue_link" href="<%= @current_show.venue.link %>"><%= @current_show.venue.name %></a><br>
       <span class ="venue_address"><%= @current_show.venue.full_address %>
-    <p><div class="summary more"><%=@current_show.summary %></div>
+    <p><div class="summary"><%=@current_show.summary %></div>
     <p class="pricing">Full Price: <span class ="prices"><%= @current_show.price_format('full') %>
     <p class="pricing" id="pricing_end">Goldstar Price: <span class ="prices"><%= @current_show.price_format('ours') %>
 		<% if @favorite %>
