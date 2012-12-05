@@ -101,4 +101,26 @@ class RecommendationsController < ApplicationController
     #if logged in:
     redirect_to :action=>"form"
   end
+
+  def favorite_shows
+    if user_signed_in?
+      user = current_user
+      @favorite_shows = user.get_favorite_shows
+      @favorited = {}
+      @favorite_shows.each do |f|
+        @favorited << f.title
+      end
+    end
+  end
+
+  def viewed_shows
+    if user_signed_in?
+      user = current_user
+      @viewed_shows = user.get_viewed_shows
+      @viewed = {}
+      @viewed_shows.each do |v|
+        @viewed << v.title
+      end
+    end
+  end
 end

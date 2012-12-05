@@ -58,22 +58,25 @@
           </span>
           Back to Top
         </div>
-        <% if user_signed_in? %>
+        <% if user_signed_in? and current_page?(:controller => 'recommendations') %>
           <div class="well">
+            Shows You've Viewed Recently
             <%= yield @viewed %>
           </div>
           <div class="well">
+            Shows You've Favorited Recently
             <%= yield @favorited %>
           </div>
-        <% end %>
-        <div class="well">
-        <table width="100%" border="0" cellpadding="0" cellspacing="8" bgcolor="C00000" id="aboutme_header">
-               <tr>
-               <td width="100%" bgcolor="000000"><div align="center" class="buttons_on">did you know?</div></td></tr></table>
-        <b>For every Goldstar ticket purchased through TIX, a substantial portion of the service charge you pay goes to the nonprofit charitable organization <%= link_to "Theatre Bay Area", 'http://www.theatrebayarea.org/' %> to support things like classes, grants, auditions, and health support for Bay Area artists and arts professionals.</b><br><br>
-        </div>
+        <% else %>
+          <div class="well">
+          <table width="100%" border="0" cellpadding="0" cellspacing="8" bgcolor="C00000" id="aboutme_header">
+                 <tr>
+                 <td width="100%" bgcolor="000000"><div align="center" class="buttons_on">did you know?</div></td></tr></table>
+          <b>For every Goldstar ticket purchased through TIX, a substantial portion of the service charge you pay goes to the nonprofit charitable organization <%= link_to "Theatre Bay Area", 'http://www.theatrebayarea.org/' %> to support things like classes, grants, auditions, and health support for Bay Area artists and arts professionals.</b><br><br>
+          </div>
 
-        <iframe src="http://ab153389.adbutler-kaon.com/adserve/;ID=153389;size=300x250;setID=139818;type=iframe" width="300" marginwidth="0" height="250" marginheight="0" scrolling="No" frameborder="0" class="ad" style="margin: 0px; padding: 0px" allowtransparency="true" background-color="transparent">
+          <iframe src="http://ab153389.adbutler-kaon.com/adserve/;ID=153389;size=300x250;setID=139818;type=iframe" width="300" marginwidth="0" height="250" marginheight="0" scrolling="No" frameborder="0" class="ad" style="margin: 0px; padding: 0px" allowtransparency="true" background-color="transparent">
+        <% end %>
       </div>
     </div> <!-- end row fluid -->
   </div> <!-- end container -->
