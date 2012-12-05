@@ -22,9 +22,8 @@ describe Show do
   describe "get_closest_shows" do
     it "should go through a list of shows and call get_distances" do
       fake_show = mock('show')
-      fake_show.should_receive(:[]=).exactly(2).times
       fake_show.should_receive(:get_distance).exactly(2).times.and_return(23.0)
-      fake_shows = [fake_show, fake_show]
+      fake_shows = [[fake_show, 0], [fake_show, 0]]
 
       location = {}
       location['street_address'] = "2111 Bancroft Way"
@@ -90,7 +89,7 @@ describe Show do
         with([80.0, 240.0],
              ['Film', 'Food'],
              [DateTime.now, nil],
-             "loc", 20, nil).and_return([])
+             "loc", 20, nil, nil).and_return([])
       s.similar_shows
     end
   end
@@ -101,7 +100,7 @@ describe Show do
       s2 = Show.new
       s1.stub(:keyword_search).and_return(1)
       s2.stub(:keyword_search).and_return(2)
-      Show.rank_keyword([s1, s2], "").should == [s2, s1]
+      Show.rank_keyword([[s1, 0], [s2, 0]], "").should == [[s1, 1.5], [s2, 3]]
     end
   end
 
