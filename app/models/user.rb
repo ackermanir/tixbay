@@ -44,6 +44,15 @@ class User < ActiveRecord::Base
     end
   end
 
+  #unfavorite a show, deleting all user relation to it
+  def unfavorite_a_show(show_id)
+    previous_clicks = Interest.where('user_id' => self.id,
+                                     'show_id' => show_id).all
+    for elt in previous_clicks
+      elt.destroy
+    end
+  end
+
   #Shows that the users has clicked purchase ticket
   def get_viewed_shows
     shows = Show.joins(:interests).where('interests.user_id' => self.id,
