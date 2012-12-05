@@ -3,14 +3,14 @@ TB = {
 				var already_favorited = /Favorited/.test($('#hidden_favorite').text());
 				if (already_favorited) {
 						$('#hidden_favorite').
-								replaceWith('<button id="favorited" class="btn">Favorited</button>')
+								replaceWith('<button id="favorited" class="btn"> &#9733; Favorited</button>')
 						$('#favorited').click(TB.unfavorite_show);
 						return(false);
 				}
 				//If not logged in, don't place button
 				var sign_in_text = $('#log_out').text();
 				if(/Log Out/.test(sign_in_text)) {
-						$('<button id="favorite_this" class="btn">Favorite</button>').
+						$('<button id="favorite_this" class="btn"> &#9733; Favorite</button>').
 								insertAfter($('#back'));
 						$('#favorite_this').click(TB.favorite_show);
 				}
@@ -38,12 +38,12 @@ TB = {
 				return(false);
 		},
 		confirm_favorite: function(data) {
-				$('#favorite_this').replaceWith('<button id="favorited" class="btn">Favorited</button>')
+				$('#favorite_this').replaceWith('<button id="favorited" class="btn"> &#9733; Favorited</button>')
 				$('#favorited').click(TB.unfavorite_show);
 				return(false);
 		},
 		confirm_unfavorite: function(data) {
-				$('#favorited').replaceWith('<button id="favorite_this" class="btn">Favorite</button>')
+				$('#favorited').replaceWith('<button id="favorite_this" class="btn"> &#9733; Favorite</button>')
 				$('#favorite_this').click(TB.favorite_show);
 				return(false);
 		},
