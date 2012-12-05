@@ -58,7 +58,12 @@ class RecommendationsController < ApplicationController
     if user_signed_in?
         if params.has_key? :recommendation
             #save data in database here
-            current_user.update_attribute(:max_tix_price,params[:recommendation]["maxprice"].to_i)
+            price_range = params[:recommendation]["maxprice"]
+            if price_range == ""
+                current_user.update_attribute(:max_tix_price,-1)
+            else
+                current_user.update_attribute(:max_tix_price,price_range.to_i)
+            end
             current_user.update_attribute(:street_address,params[:recommendation][:location]["street_address"])
             current_user.update_attribute(:city, params[:recommendation][:location]["city"])
             current_user.update_attribute(:state, params[:recommendation][:location]["region"])
@@ -66,7 +71,11 @@ class RecommendationsController < ApplicationController
             current_user.update_attribute(:travel_radius, params["recommendation"]["distance"].to_i)
             current_user.update_attribute(:keyword, keyword_hash_to_string(keyword_hash_from_params(params)))
 
-            # FIX-ME: need to add others too... 
+            params["recommendation"]["category"].each do |category, value|
+                if value == "1"
+                    current_user.categories << Category.find_by_name(category)
+                end
+            end
             current_user.save
         end
         if current_user.zip_code.nil?
@@ -88,8 +97,15 @@ class RecommendationsController < ApplicationController
             else
               args["keyword"] = nil
             end
-            #FIX-ME: need to add other functions after schema is set up
-            args["categories"] = Category.all_categories
+            if current_user.categories.length == 0
+              args["categories"] = Category.all_categories
+            else
+              args["categories"] = []
+              current_user.categories.each do |c|
+                args["categories"] << c.name
+              end
+            end
+            #FIX-ME: need to add time to session
             args["dates"] = [DateTime.now, nil]
         end
     else #non-signed in users
@@ -148,8 +164,6 @@ class RecommendationsController < ApplicationController
     else
       user = nil
     end
-
-    puts args
 
     @shows = Show.recommend_shows(price_range=args["price_range"], categories=args["categories"], dates=args["dates"], location=args["location"], distance=args["distance"], user=user, keywords=args["keywords"])
 
