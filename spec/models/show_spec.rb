@@ -100,7 +100,7 @@ describe Show do
       s2 = Show.new
       s1.stub(:keyword_search).and_return(1)
       s2.stub(:keyword_search).and_return(2)
-      Show.rank_keyword([[s1, 0], [s2, 0]], "").should == [[s1, 0.5], [s2, 1]]
+      Show.rank_keyword([[s1, 0], [s2, 0]], "").should == [[s1, 1.5], [s2, 3]]
     end
   end
 

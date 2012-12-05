@@ -161,7 +161,7 @@ How it chooses similarity:
     shows.each do |pair|
       show = pair[0]
       weight = pair[1]
-      weight += 0.5 * show.keyword_search(keywords)
+      weight += 1.5 * show.keyword_search(keywords)
       pairings << [show, weight]
     end
     return pairings

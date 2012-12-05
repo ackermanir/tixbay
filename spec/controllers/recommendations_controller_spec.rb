@@ -48,6 +48,7 @@ describe RecommendationsController do
                                                   "zip_code" => "94704"
                                                 },
                                                 distance = 25,
+                                                 user = user,
                                                  keywords = {"Film" => ['Silent']}
                                                  ).and_return(list_shows)
       list_shows.stub(:paginate)

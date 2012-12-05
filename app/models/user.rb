@@ -60,6 +60,9 @@ class User < ActiveRecord::Base
 
   def weight_show_from_past(weighted_shows)
     features = past_shows_features
+    if features['categories'] = {}
+      return weighted_shows
+    end
     reweighted = []
     weighted_shows.each do |pair|
       show = pair[0]
@@ -89,7 +92,7 @@ class User < ActiveRecord::Base
   def past_shows_features
     shows = Show.joins(:interests).where('interests.user_id' => self.id)
     fav_shows = get_favorite_shows
-    Show.merge_features(shows, fav_shows)
+    return Show.merge_features(shows, fav_shows)
   end
 
   def get_preferred_categories
