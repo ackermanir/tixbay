@@ -12,7 +12,7 @@ Background: shows have been added to database
  
 Scenario: personal recommendations page
   Given I am already logged in
-  And I already filled out the recommendations form
+  And I previously filled out the recommendations form
   And I am on the recommendation page
   Then I should see "recently viewed"
   And I should only see 5 recents
