@@ -8,8 +8,8 @@ TB = {
 						return(false);
 				}
 				//If not logged in, don't place button
-				var sign_in_text = $('#sign_in').text();
-				if(/log out/.test(sign_in_text)) {
+				var sign_in_text = $('#log_out').text();
+				if(/Log Out/.test(sign_in_text)) {
 						$('<button id="favorite_this" class="btn">Favorite</button>').
 								insertAfter($('#pricing_end'));
 						$('#favorite_this').click(TB.favorite_show);
