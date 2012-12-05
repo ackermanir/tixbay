@@ -179,7 +179,7 @@ class RecommendationsController < ApplicationController
 
   def form
     @title = "recommended"
-    @first_name = current_user.first_name
+    @first_name = current_user.first_name if current_user
     @is_new = true
 
     if user_signed_in?
