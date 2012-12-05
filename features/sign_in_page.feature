@@ -45,7 +45,7 @@ Scenario: logout
     Then I go to the home page
     Then I follow "Log Out"
     Then I should be on the home page
-    Then I should see "log in"
+    Then I should see "Log In"
     When I follow "recommended"
     Then I should be on the sign in page 
-    And I should not see "log out" 
+    And I should not see "Log Out" 

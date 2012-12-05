@@ -14,6 +14,6 @@ Given /I am already logged in/ do
     step 'I go to the sign in page'
     step 'I fill in "user_email" with "congchen@gg.com"'
     step 'I fill in "user_password" with "congchen"'
-    step 'I press "Log In"'  
+    step 'I press "Log In"'
     step 'I go to the home page'
 end
