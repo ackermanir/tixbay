@@ -3,10 +3,10 @@ class Category < ActiveRecord::Base
   has_and_belongs_to_many :users
 
   @@category_types = {
-    "theatre" => ['Theatre', 'Performing Arts'],
+    "theatre" => ['Theater', 'Performing Arts'],
     "music" => ['Popular Music', 'Jazz', 'Classical', 'Classic Rock'],
     "film" => ['Film'],
-    "all culture" => ['Theatre', 'Performing Arts', 'Popular Music', 'Jazz',
+    "all culture" => ['Theater', 'Performing Arts', 'Popular Music', 'Jazz',
                       'Classical', 'Classic Rock', 'Film']
   }
 

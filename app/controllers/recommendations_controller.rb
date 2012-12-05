@@ -60,9 +60,9 @@ class RecommendationsController < ApplicationController
             #save data in database here
             maxprice = -1
             if params[:recommendation]["maxprice"] != ""
-              maxprice = params[:recommendation]["maxprice"].to_i
+              maxprice = (params[:recommendation]["maxprice"].to_f * 100).to_i
             end
-              
+
             current_user.update_attribute(:max_tix_price, maxprice)
             current_user.update_attribute(:street_address,params[:recommendation][:location]["street_address"])
             current_user.update_attribute(:city, params[:recommendation][:location]["city"])
@@ -72,7 +72,6 @@ class RecommendationsController < ApplicationController
             current_user.update_attribute(:keyword, keyword_hash_to_string(keyword_hash_from_params(params)))
 
             current_user.categories.delete_all
-            #current_user.save
 
             params["recommendation"]["category"].each do |category, value|
                 if value == "1"
@@ -80,8 +79,9 @@ class RecommendationsController < ApplicationController
                         category = "Theater"
                     end
                     a = Category.find_by_name(category)
-                    puts a.name
-                    current_user.categories << Category.find_by_name(category)
+                    if a != nil
+                      current_user.categories << Category.find_by_name(category)
+                    end
                 end
             end
             current_user.save
@@ -130,7 +130,7 @@ class RecommendationsController < ApplicationController
         if price_range == ""
           args["price_range"] = [0, -1]
         else
-          args["price_range"] = [0, price_range.to_i]
+          args["price_range"] = [0, (price_range.to_f * 100).to_i]
         end
 
         location = params["recommendation"]["location"]
@@ -153,7 +153,6 @@ class RecommendationsController < ApplicationController
         else
           args["categories"] = categories
         end
-
         startdate = params["recommendation"]["startdate"]
         enddate = params["recommendation"]["enddate"]
         if startdate["month"] != "" && startdate["day"] != "" && startdate["year"] != "" && enddate["month"] != "" && enddate["day"] != "" && enddate["year"]
@@ -172,7 +171,7 @@ class RecommendationsController < ApplicationController
     else
       user = nil
     end
-
+    breakpoint
     @shows = Show.recommend_shows(price_range=args["price_range"], categories=args["categories"], dates=args["dates"], location=args["location"], distance=args["distance"], user=user, keywords=args["keyword"])
 
     if @shows.length == 0
