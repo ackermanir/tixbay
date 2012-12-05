@@ -129,6 +129,26 @@ describe Show do
     end
   end
 
+  describe "features" do
+    it "returns hash from features" do
+      s = Show.new
+      s.our_price_range_low = 1000
+      s.our_price_range_high = 9000
+      s.venue = Venue.new
+      s.venue.locatlity = "oka"
+      s.stub(:categories).and_return(['film'])
+    end
+  end
+
+  def features
+    hash = {}
+    hash['price_range'] = [(our_price_range_low / 100).floor, 
+                           (our_price_range_high / 100).floor]
+    hash['locality'] = venue.locality
+    hash['category'] = categories
+    return hash
+  end
+
   describe "price_format" do
     it "Handles sold out shows" do
       s = Show.new

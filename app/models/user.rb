@@ -90,6 +90,8 @@ class User < ActiveRecord::Base
       weight = pair[1]
       #pricing
       low_price = (show.our_price_range_low / 100).floor
+      upper_bound = features['prices'].length - 1
+      low_price = upper_bound if upper_bound < low_price
       high_price = (show.our_price_range_high / 100).floor
       price_weight = features['prices'].slice(low_price .. high_price).max
       weight += 2 * price_weight
