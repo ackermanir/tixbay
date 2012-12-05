@@ -42,9 +42,9 @@ Scenario: login directs to logged in dashboard if form filled out before
 Scenario: logout
     Given I am already logged in
     Then I go to the home page
-    Then I follow "log out"
+    Then I follow "Log Out"
     Then I should be on the home page
-    Then I should see "log in"
+    Then I should see "Log In"
     When I follow "recommended"
     Then I should be on the sign in page 
-    And I should not see "log out" 
+    And I should not see "Log Out" 
