@@ -2,6 +2,7 @@ require 'will_paginate/array'
 
 class RecommendationsController < ApplicationController
 
+<<<<<<< HEAD
   #Helper methods for keyword
   def keyword_hash_from_params(params)
     keywords = {}
@@ -187,7 +188,7 @@ class RecommendationsController < ApplicationController
     params["recommendation"] = nil
 
     @shows = @shows.paginate(:page => params[:page], :per_page => 15)
-    
+
     render "category/body"
 
   end
@@ -206,6 +207,9 @@ class RecommendationsController < ApplicationController
 
   def form
     @title = "recommended"
+    if user_signed_in? && current_user.first_name
+      @user = " " + current_user.first_name
+    end
   end
 
   def login
