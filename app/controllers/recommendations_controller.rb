@@ -50,11 +50,12 @@ class RecommendationsController < ApplicationController
   #before_filter :authenticate_user!
 
   def index
-
-    if params[:recommendation][:location]["zip_code"] == "" || params[:recommendation][:location]["zip_code"].length != 5
-      flash[:notice] = "You must enter a valid zip code to get recommendations."
-      redirect_to :action => :form
-      return
+    if params.has_key? :recommendation
+      if params[:recommendation][:location]["zip_code"] == "" || params[:recommendation][:location]["zip_code"].length != 5
+        flash[:notice] = "You must enter a valid zip code to get recommendations."
+        redirect_to :action => :form
+        return
+      end
     end
 
     @title = "recommended"
