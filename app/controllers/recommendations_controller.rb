@@ -72,16 +72,16 @@ class RecommendationsController < ApplicationController
             current_user.update_attribute(:keyword, keyword_hash_to_string(keyword_hash_from_params(params)))
 
             current_user.categories.delete_all
-            #current_user.save
+            current_user.save
 
             params["recommendation"]["category"].each do |category, value|
                 if value == "1"
                     if category == "Theatre"
                         category = "Theater"
                     end
-                    a = Category.find_by_name(category)
-                    puts a.name
-                    current_user.categories << Category.find_by_name(category)
+                    if not Category.find_by_name(category).nil?
+                        current_user.categories << Category.find_by_name(category)
+                    end
                 end
             end
             current_user.save
@@ -110,7 +110,12 @@ class RecommendationsController < ApplicationController
             else
               args["categories"] = []
               current_user.categories.each do |c|
-                args["categories"] << c.name
+                if c.name == "Theater"
+                   args["categories"] << "Theatre"
+                else
+                   args["categories"] << c.name
+                end
+
               end
             end
             #FIX-ME: need to add time to session
