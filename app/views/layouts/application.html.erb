@@ -61,11 +61,15 @@
         <% if user_signed_in? and current_page?(:controller => 'recommendations') %>
           <div class="well">
             Shows You've Viewed Recently
-            <%= yield @viewed %>
+            <% @viewed.each do |v| %>
+              <p><%= v.title %></p>
+            <% end %>
           </div>
           <div class="well">
             Shows You've Favorited Recently
-            <%= yield @favorited %>
+            <% @favorited.each do |f| %>
+              <p><%= f.title %></p>
+            <% end %>
           </div>
         <% else %>
           <div class="well">

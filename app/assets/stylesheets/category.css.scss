@@ -203,7 +203,7 @@ body {
 
 .buytickets {
   //margin-left: 50%;
-  margin-right: 2%;
+  margin-right: 1.5%;
   float: right;
   font-size: 1.4em;
   font-style: normal;
@@ -399,12 +399,15 @@ body {
 .btn-danger {
   background-color: #C00000;
   background-image: none;
+  border: none;
 }
 
-#showinfo .btn-danger {
-  background-color: #7D0000;
-  background-image: none;
-  border: #7D0000;
+#showinfo {
+  .btn-danger {
+    background-color: #7D0000;
+    background-image: none;
+    border: #7D0000;
+  }
 }
 
 .btn {
