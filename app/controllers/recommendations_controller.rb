@@ -2,6 +2,51 @@ require 'will_paginate/array'
 
 class RecommendationsController < ApplicationController
 
+  #Helper methods for keyword
+  def keyword_hash_from_params(params)
+    keywords = {}
+    params["recommendation"]["keyword"].each do |word, value|
+      if value == "1"
+        decompose = word.split
+        title = decompose[0]
+        keyword = decompose[1]
+        if keywords[title]
+          keywords[title] << keyword
+        else
+          keywords[title] = [keyword]
+        end
+      end
+    end
+    return keywords
+  end
+  def keyword_hash_to_string(hash)
+    output = ""
+    hash.each do |key, value|
+      output += key.to_s + ": "
+      value.each do |wrd|
+        output += wrd.to_s + " "
+      end
+    end
+    output = output[0 .. -2]
+    return output
+  end
+  def keyword_string_to_hash(str)
+    output = {}
+    ary = str.split
+    cur_cat = nil
+    ary.each do |wrd|
+      cat = /(.*):$/.match(wrd)
+      if cat != nil
+        cur_cat = cat[1]
+        output[cur_cat] = []
+      else
+        output[cur_cat] << wrd
+      end
+    end
+    return output
+  end
+
+
   #before_filter :authenticate_user!
 
   def index
@@ -19,6 +64,8 @@ class RecommendationsController < ApplicationController
             current_user.update_attribute(:state, params[:recommendation][:location]["region"])
             current_user.update_attribute(:zip_code,params[:recommendation][:location]["zip_code"])
             current_user.update_attribute(:travel_radius, params["recommendation"]["distance"].to_i)
+            current_user.update_attribute(:keyword, keyword_hash_to_string(keyword_hash_from_params(params)))
+
             # FIX-ME: need to add others too... 
             current_user.save
         end
@@ -36,10 +83,14 @@ class RecommendationsController < ApplicationController
             args["location"]["region"] = current_user.state
             args["location"]["zip_code"] = current_user.zip_code
             args["distance"] = current_user.travel_radius
+            if current_user.keyword
+              args["keyword"] = keyword_string_to_hash(current_user.keyword)
+            else
+              args["keyword"] = nil
+            end
             #FIX-ME: need to add other functions after schema is set up
             args["categories"] = Category.all_categories
             args["dates"] = [DateTime.now, nil]
-            args["keywords"] = {}
         end
     else #non-signed in users
         if params["recommendation"]
@@ -87,19 +138,7 @@ class RecommendationsController < ApplicationController
           args["dates"] = [DateTime.now, nil]
         end
 
-        keywords = {}
-        params["recommendation"]["keyword"].each do |word, value|
-          if value == "1"
-            decompose = word.split
-            title = decompose[0]
-            keyword = decompose[1]
-            if keywords[title]
-              keywords[title] << keyword
-            else
-              keywords[title] = [keyword]
-            end
-          end
-        end
+        keywords = keyword_hash_from_params(params)
         args["keywords"] = keywords
 
     end # end non signed-in user processing 
