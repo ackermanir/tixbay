@@ -13,7 +13,7 @@ Tixbay::Application.routes.draw do
   resources :show do
     get 'add_click_and_redirect', :on => :member
   end
-  match 'show/:show_id/favorite' => 'show#favorite'
+  match 'show/:show_id/favorite/:update/' => 'show#favorite'
   match ':controller/:action/'
   resources :category
   #resources :tixbay
