@@ -19,6 +19,7 @@ group :development, :test do
   gem 'capybara'
   gem 'launchy'
   gem 'factory_girl', '~> 2.2'
+	gem 'railroady'
 end
 group :test do
   gem 'cucumber-rails', :require => false

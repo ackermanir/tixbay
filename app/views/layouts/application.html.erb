@@ -11,6 +11,7 @@
   javascript_include_tag "application.js" -->
 
   <%= javascript_include_tag "recommendations.js" %>
+  <%= javascript_include_tag "show.js" %>
   <%= javascript_include_tag "category.js" %>
   <%= javascript_include_tag "global.js" %>
 
@@ -36,12 +37,20 @@
         <% end %>
     </div>
     <div class="row-fluid">
-    <%= link_to image_tag("redtopper.jpeg", "height"=>"229", "width"=>"900", "id"=>"tixlogo", "align"=>"center", "style"=>"margin-left: 5%"), "/" %>
+    <%= link_to image_tag("redtopper2.png", "height"=>"229", "width"=>"900", "id"=>"tixlogo", "align"=>"center", "style"=>"margin-left: 5%"), "/" %>
     </div>
     <%= yield :navbar %>
 
     <div class="row-fluid">
-      <div class="span9">
+    <div class="span9">
+        <table width="728" border="0" align="center" cellpadding="0" cellspacing="0">
+            <tr>
+            <td><iframe src="https://servedbyadbutler.com/adserve/;ID=153389;size=728x90;setID=107856;type=iframe" width="728" marginwidth="0" height="90" marginheight="0" scrolling="No" frameborder="0" class="ad" style="margin: 0px; padding: 0px" allowtransparency="true" background-color="transparent">
+            </iframe>
+            <a href="http://www.theatrebayarea.org/advertise" target="_blank" class="eventheadline"><span class="eventheadline">Advertise with us</span></a></td>
+            </tr>
+        </table>
+
         <!-- for alert and notice messages -->
         <p class="notice"><%= notice %></p>
         <p class="alert"><%= alert %></p>
@@ -59,15 +68,22 @@
           </span>
           Back to Top
         </div>
+        <% if user_signed_in? %>
+          <div class="well">
+            <%= yield :viewed %>
+          </div>
+          <div class="well">
+            <%= yield :favorited %>
+          </div>
+        <% end %>
         <div class="well">
         <table width="100%" border="0" cellpadding="0" cellspacing="8" bgcolor="C00000" id="aboutme_header">
                <tr>
                <td width="100%" bgcolor="000000"><div align="center" class="buttons_on">did you know?</div></td></tr></table>
         <b>For every Goldstar ticket purchased through TIX, a substantial portion of the service charge you pay goes to the nonprofit charitable organization <%= link_to "Theatre Bay Area", 'http://www.theatrebayarea.org/' %> to support things like classes, grants, auditions, and health support for Bay Area artists and arts professionals.</b><br><br>
         </div>
-        <div class="well">
-        Advertisement Here
-        </div>
+
+        <iframe src="http://ab153389.adbutler-kaon.com/adserve/;ID=153389;size=300x250;setID=139818;type=iframe" width="300" marginwidth="0" height="250" marginheight="0" scrolling="No" frameborder="0" class="ad" style="margin: 0px; padding: 0px" allowtransparency="true" background-color="transparent">
       </div>
     </div> <!-- end row fluid -->
   </div> <!-- end container -->

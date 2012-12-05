@@ -4,6 +4,8 @@
 
 <h2>Log In</h2>
 
+<p>Log in or sign up to receive a recommended listing of shows based on your preferences and activity. </p>
+
 <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
   <div><%= f.label :email %>
   <%= f.email_field :email %></div>
@@ -28,5 +30,5 @@
 
 <br/>
 <p><b>Don't want to sign up?</b>
-<br/>We won't be able to save your preferences and improve our recommendations if you choose this option.</p>
-<a href="/" class="btn">I do not wish to sign up</a>
+<br/>You can still fill out a form for one-time show recommendations, but we won't be able to save your preferences and improve our recommendations if you choose this option.</p>
+<a href="/recommendations/form" class="btn">Recommend without sign up</a>

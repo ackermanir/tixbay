@@ -15,16 +15,21 @@
   </td></tr></table>
 
   <div class="show">
-    <%= image_tag @current_show.image_url, "width"=>"35%" %>
+    <%= image_tag @current_show.image_url, "width"=> "35%" %>
     <p class="evTitle"><%= @current_show.title %>
     <p><%= @current_show.headline %>
     <p><b>Available Dates:</b><%= @current_show.date_string %>
     <p><a class="venue_link" href="<%= @current_show.venue.link %>"><%= @current_show.venue.name %></a><br>
       <span class ="venue_address"><%= @current_show.venue.full_address %>
-    <p><div class="summary more"><%=@current_show.summary %></div>
+    <p><div class="summary"><%=@current_show.summary %></div>
     <p class="pricing">Full Price: <span class ="prices"><%= @current_show.price_format('full') %>
-    <p class="pricing">Goldstar Price: <span class ="prices"><%= @current_show.price_format('ours') %>
-    <p><a class="buytickets btn btn-danger" id="<%=@current_show.id %>" href="<%= @current_show.link %>">Purchase Tickets</a>
+    <p class="pricing" id="pricing_end">Goldstar Price: <span class ="prices"><%= @current_show.price_format('ours') %>
+		<% if @favorite %>
+		  <div id="favorited">Favorited</div>
+		<% end %>
+    <div id="wrapper">
+      <p><%= link_to "Purchase Tickets", {:controller => :show, :action => :add_click_and_redirect, :id => @current_show.id, :link => @current_show.link, :num => 1}, :id => @current_show.id.to_s + "_buy", :class => 'buytickets btn btn-danger' %>
+    </div>
   </div>
 </div>
 
@@ -40,7 +45,7 @@
 <% @shows.each do |s| %>
   <div class="show">
     <%= image_tag s.image_url, "width"=>"35%" %>
-    <p><a class="linkTitle" href="<%= url_for(:controller => 'show', :action => 'show', :id => s.id) %>"><%= s.title %></a>
+    <p class="evTitle"><%= s.title %>
     <p><%= s.headline %>
     <p><b>Available Dates:</b><%= s.date_string %>
     <p><a class="venue_link" href="<%= s.venue.link %>"><%= s.venue.name %></a><br>
@@ -48,7 +53,10 @@
     <p><div class="summary more"><%=s.summary %></div>
     <p class="pricing">Full Price: <span class ="prices"><%= s.price_format('full') %>
     <p class="pricing">Goldstar Price: <span class ="prices"><%= s.price_format('ours') %>
-    <p><a class="buytickets btn btn-danger" id="<%=s.id %>" href="<%= s.link %>">Purchase Tickets</a>
+    <div id="wrapper">
+      <div id="showinfo"><p><a class="btn btn-danger moreinfo" id="<%= s.id.to_s + "_more_info"%>" href="<%= url_for(:controller => 'show', :action => 'show', :id => s.id) %>">More information</a></div>
+      <p><%= link_to "Purchase Tickets", {:controller => :show, :action => :add_click_and_redirect, :id => s.id, :link => s.link, :num => 1}, :id => s.id.to_s + "_buy", :class => 'buytickets btn btn-danger' %>
+    </div>
   </div>
   <hr/>
 <% end %>

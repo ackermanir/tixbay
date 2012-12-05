@@ -156,7 +156,10 @@ class Event
     store_fields(@event, hash_show, show_sym)
 
     #store the correct link, the second one
-    hash_show[:link] = @event.xpath('link').inner_html
+    url = @event.xpath('link').inner_html
+    url = url.gsub('&amp;', '&')
+    url = url.gsub('id=6', 'id=12')
+    hash_show[:link] = url
 
     hash_show[:image_url] = @event.xpath('image').inner_html
     hash_show[:sold_out] = @event.xpath('sold_out').inner_html.eql?('true')

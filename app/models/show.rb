@@ -38,7 +38,7 @@ class Show < ActiveRecord::Base
     end
   end
 
-  def self.get_closest_shows(shows, location, distance)
+  def self.get_closest_shows(weighted_shows, location, distance)
     url = "http://maps.googleapis.com/maps/api/geocode/xml?address="
     url += (location["street_address"].gsub /\s+/, '+')  + ","
     url += (location["city"].gsub /\s+/, '+')  + ","
@@ -52,13 +52,16 @@ class Show < ActiveRecord::Base
     myLong = location.xpath("lng").inner_html.to_f
 
     result = []
-    shows.each do |s|
-        show_distance = s.get_distance(myLat, myLong)
-        if show_distance < distance
-            result << s
-        end
+    weighted_shows.each do |pair|
+      s = pair[0]
+      w = pair[1]
+      show_distance = s.get_distance(myLat, myLong)
+      if show_distance < distance
+        w -= 15 * (show_distance.to_f / distance)
+        result << [s, w]
+      end
     end
-    result
+    return result
   end
 
   def get_distance(myLat,myLong)
@@ -74,9 +77,10 @@ Filters and order of application:
     Category ID - Filtering removes non-matching, default to all categories
     Dates - Shows between date range, defaults starting from today
   Done on array of shows:
-    Address - hash with 'street_address', 'city', 'region', and 'zip_code',
+    location - hash with 'street_address', 'city', 'region', and 'zip_code',
               zip code the only thing necessary
     Distance - miles, default to 10
+    user - utilized past show clicked to weight shows
     Keyword - category => [keywords]
 
 Defaults to recommending all shows
@@ -86,7 +90,9 @@ Defaults to recommending all shows
                            dates = [DateTime.now, nil],
                            location = nil,
                            distance = 10,
-                           keywords = nil)
+                           user = nil,
+                           keywords = nil
+                           )
     #Filter based on price and categories
     shows = Show.price_greater(price_range[0]).
       joins(:showtimes).date_later(dates[0])
@@ -95,8 +101,20 @@ Defaults to recommending all shows
     shows = shows.joins(:categories).in_categories(categories)
     shows = shows.all.uniq
 
-    shows = Show.get_closest_shows(shows, location, distance) unless not location
-    shows = Show.rank_keyword(shows, keywords) unless not keywords
+    weighted_shows = []
+    shows.each {|s| weighted_shows << [s, 0]}
+
+    #weight based on user past, distance, and keywords
+    weighted_shows = Show.get_closest_shows(weighted_shows, location, distance) unless not location
+    weighted_shows = user.weight_show_from_past(weighted_shows) unless not user
+    weighted_shows = Show.rank_keyword(weighted_shows, keywords) unless not keywords
+
+    #sort weighted shows to return largest first
+    weighted_shows.sort! do |a,b|
+      b[1] <=> a[1]
+    end
+    shows = []
+    weighted_shows.each {|pair| shows << pair[0] }
     return shows
   end
 
@@ -134,23 +152,19 @@ How it chooses similarity:
     location = venue.location_hash
     shows = Show.recommend_shows(price_range, category,
                                  [DateTime.now, nil],
-                                 location, 20, nil)
+                                 location, 20, nil, nil)
     return (shows.uniq - [self])
   end
 
   def self.rank_keyword(shows, keywords)
     pairings = []
-    shows.each do |show|
-      weight = show.keyword_search(keywords)
-      pairings << [weight, show]
+    shows.each do |pair|
+      show = pair[0]
+      weight = pair[1]
+      weight += 1.5 * show.keyword_search(keywords)
+      pairings << [show, weight]
     end
-    #b first to sort in reverse order (largest weight first)
-    pairings.sort! do |a,b|
-      b[0] <=> a[0]
-    end
-    shows = []
-    pairings.each {|pair| shows << pair[1] }
-    return shows
+    return pairings
   end
 
 
@@ -182,6 +196,78 @@ How it chooses similarity:
     weight = 2 * weight_in_string(self.headline, keyword)
     weight += weight_in_string(self.summary, keyword)
     return weight
+  end
+
+  #Features of a show for recommendations based on previous shows
+  def features
+    hash = {}
+    hash['price_range'] = [(our_price_range_low / 100).floor, 
+                           (our_price_range_high / 100).floor]
+    hash['locality'] = venue.locality
+    hash['category'] = categories
+    return hash
+  end
+
+  def self.merge_features(shows, favorite_shows)
+    all_features = {}
+    all_features['prices'] = []
+    all_features['categories'] = {}
+    all_features['locality'] = {}
+    for show in shows
+      features = show.features
+      weight = 1
+      if favorite_shows.include?(show)
+        weight = 2
+      end
+      price_range = features['price_range']
+      price_low = price_range[0].floor
+      price_low = 0 if (price_low < 0)
+      price_high = price_range[1].floor
+      prices = all_features['prices']
+      while (prices.length < price_high + 1)
+        prices << 0
+      end
+      for index in (price_low .. price_high)
+        prices[index] += weight
+      end
+      all_features['prices'] = prices
+
+      cats = features['category']
+      for cat in cats
+        if all_features['categories'][cat] != nil
+          all_features['categories'][cat] += weight
+        else
+          all_features['categories'][cat] = weight
+        end
+      end
+      city = features['locality']
+      if all_features['locality'][city] != nil
+        all_features['locality'][city] += weight
+      else
+        all_features['locality'][city] = weight
+      end
+    end
+
+    def self.normalize_hash(hash)
+      max_hash = hash.keys.max {|a, b| hash[a] <=> hash[b]}
+      max_val = hash[max_hash]
+      for key in hash.keys
+        hash[key] = hash[key].to_f / max_val
+      end
+      return hash
+    end
+    def self.normalize_array(ary)
+      max_ary = ary.max
+      for index in (0 .. ary.length - 1)
+        ary[index] = ary[index].to_f / max_ary
+      end
+      return ary
+    end
+    #normalize
+    all_features['prices'] = normalize_array(all_features['prices'])
+    all_features['categories'] = normalize_hash(all_features['categories'])
+    all_features['locality'] = normalize_hash(all_features['locality'])
+    return all_features
   end
 
   #returns formated string of prices specified by whose
