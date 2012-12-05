@@ -81,7 +81,7 @@ class User < ActiveRecord::Base
 
   def weight_show_from_past(weighted_shows)
     features = past_shows_features
-    if features['categories'] = {}
+    if features['categories'] == {}
       return weighted_shows
     end
     reweighted = []
