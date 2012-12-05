@@ -71,8 +71,16 @@ class RecommendationsController < ApplicationController
             current_user.update_attribute(:travel_radius, params["recommendation"]["distance"].to_i)
             current_user.update_attribute(:keyword, keyword_hash_to_string(keyword_hash_from_params(params)))
 
+            current_user.categories.delete_all
+            #current_user.save
+
             params["recommendation"]["category"].each do |category, value|
                 if value == "1"
+                    if category == "Theatre"
+                        category = "Theater"
+                    end
+                    a = Category.find_by_name(category)
+                    puts a.name
                     current_user.categories << Category.find_by_name(category)
                 end
             end
