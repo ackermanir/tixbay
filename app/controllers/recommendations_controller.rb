@@ -165,6 +165,49 @@ class RecommendationsController < ApplicationController
 
   end
 
+  #Helper method that sets the appropriate variables given the value passed in from the db
+  def set_keyword_variables(val)
+    if val == "Comedy"
+      @comedy = true
+    elsif val == "Drama"
+      @drama = true
+    elsif val == "Tragedy"
+      @tragedy = true
+    elsif val == "Musical"
+      @musical = true
+    elsif val == "Solo"
+      @solo = true
+    elsif val == "Jazz"
+      @jazz = true
+    elsif val == "Cabaret"
+      @cabaret = true
+    elsif val == "Classical"
+      @classical = true
+    elsif val == "Indie-Rock"
+      @indie_rock = true
+    elsif val == "Animated"
+      @animated = true
+    elsif val == "Documentary"
+      @documentary = true
+    elsif val == "Silent"
+      @silent = true
+    elsif val == "Festival"
+      @festival = true
+    elsif val == "Short"
+      @short = true
+    elsif val == "Drive-In"
+      @drive_in = true
+    elsif val == "Classic"
+      @classic = true
+    elsif val == "Sci-Fi"
+      @scifi = true
+    elsif val == "Premiere"
+      @premiere = true
+    elsif val == "Family"
+      @family = true
+    end
+  end
+
   def recommended
     #if not logged in
     # redirect_to :actions=>"login"
@@ -206,13 +249,21 @@ class RecommendationsController < ApplicationController
         #    args["location"]["region"] = current_user.state
         #    args["location"]["zip_code"] = current_user.zip_code
         #    args["distance"] = current_user.travel_radius
-        
+        #
+        keyword_hash = keyword_string_to_hash(user.keyword)
+
+        keyword_hash.each do |k,v|
+          v.each do |ele|
+            set_keyword_variables(ele) 
+          end
+        end
+
         @street_address = user.street_address
         @city = user.city
         @state = user.state
         @zip_code = user.zip_code
 
-        @from_month = user.
+        @dist = user.travel_radius.to_i
 
         @maxprice = user.max_tix_price.to_i / 100
 
