@@ -2,18 +2,32 @@ require 'will_paginate/array'
 
 class RecommendationsController < ApplicationController
 
-  #FIX-ME: don't add filter if we have a non-logged in version as well  
-  before_filter :authenticate_user!
+  #before_filter :authenticate_user!
 
   def index
-    @title = "recommended"
+    if not user_signed_in?
+        redirect_to "/users/sign_in"
+        return
+    end
 
+    @title = "recommended"
+    
     args = {}
 
     if params["recommendation"]
       session[:recommendation] = params["recommendation"]
     elsif session[:recommendation]
       params["recommendation"] = session[:recommendation]
+    end
+
+    # if params[] is empty and there is no data stored 
+    if current_user.zip_code.nil? and not params["recommendation"]
+        redirect_to :action=>"form"
+        return
+    elsif not params["recommendation"]
+        #get data from database
+        #FIX-ME: need a get the whole list of preferences...
+        params[:recommendation]["zip_code"] = current_user.zip_code
     end
 
     price_range = params["recommendation"]["maxprice"]
@@ -99,6 +113,10 @@ class RecommendationsController < ApplicationController
 
   def login
     #if logged in:
-    redirect_to :action=>"form"
+    if user_signed_in?
+      redirect_to :action=>"index"
+    else
+      redirect_to "/users/sign_in"
+    end
   end
 end
