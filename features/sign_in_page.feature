@@ -14,10 +14,11 @@ Scenario: sign up for a new account
     Then I should be on the sign in page
     And I follow "Sign up"
     Then I should be on the sign up page
+    When I fill in "user_first_name" with "Obama"
+    When I fill in "user_last_name" with "Llama"
     When I fill in "user_email" with "congchen@gg.com"
     And I fill in "user_password" with "congchen"
     And I fill in "user_password_confirmation" with "congchen"
-    And I fill in "user_zip_code" with "94709"
     And I press "Sign Up"
     Then I should be on the recommendations form page
 
