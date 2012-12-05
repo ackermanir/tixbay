@@ -68,6 +68,8 @@ class RecommendationsController < ApplicationController
     args["keywords"] = keywords
     if user_signed_in?
       user = current_user
+      @favorited = user.get_favorite_shows
+      @viewed = user.get_viewed_shows
     else
       user = nil
     end
@@ -110,14 +112,20 @@ class RecommendationsController < ApplicationController
   def favorite_shows
     if user_signed_in?
       user = current_user
-      @favorited = user.get_favorite_shows
+      @favorited << user.get_favorite_shows
+      if @favorited.length == 0
+        @nofav = "You have not favorited any shows yet"
+      end
     end
   end
 
   def viewed_shows
     if user_signed_in?
       user = current_user
-      @viewed = user.get_viewed_shows
+      @viewed << user.get_viewed_shows
+      if @viewed.length == 0
+        @noview = "You have not viewed any shows recently"
+      end
     end
   end
 end

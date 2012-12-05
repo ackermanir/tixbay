@@ -60,15 +60,23 @@
         </div>
         <% if user_signed_in? and current_page?(:controller => 'recommendations') %>
           <div class="well">
-            Shows You've Viewed Recently
-            <% @viewed.each do |v| %>
-              <p><%= v.title %></p>
+            <table width="100%" border="0" cellpadding="0" cellspacing="8" bgcolor="C00000" id="aboutme_header">
+              <tr>
+              <td width="100%" bgcolor="000000"><div align="center" class="buttons_on">recently viewed</div></td></tr></table>
+            <% if @viewed %>
+              <% @viewed.each do |v| %>
+                <p><%= v.title %></p>
+              <% end %>
             <% end %>
           </div>
           <div class="well">
-            Shows You've Favorited Recently
-            <% @favorited.each do |f| %>
-              <p><%= f.title %></p>
+            <table width="100%" border="0" cellpadding="0" cellspacing="8" bgcolor="C00000" id="aboutme_header">
+              <tr>
+              <td width="100%" bgcolor="000000"><div align="center" class="buttons_on">favorites</div></td></tr></table>
+            <% if @favorited %>
+              <% @favorited.each do |f| %>
+                <p><%= f.title %></p>
+              <% end %>
             <% end %>
           </div>
         <% else %>
