@@ -15,4 +15,6 @@ Scenario: personal recommendations page
   And I already filled out the recommendations form
   And I am on the recommendation page
   Then I should see "recently viewed"
+  And I should only see 5 recents
   And I should see "favorites"
+  And I should only see 5 favorites
