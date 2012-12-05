@@ -65,8 +65,13 @@
               <td width="100%" bgcolor="000000"><div align="center" class="buttons_on">recently viewed</div></td></tr></table>
             <% if @viewed %>
               <% @viewed.each do |v| %>
-                <p><%= v.title %></p>
+                <p><b><%= v.title %></b></p>
+                <p><%= v.headline %>
+                </br>
+                </br>
               <% end %>
+            <% else %>
+              <p> You haven't viewed any shows recently. </p>
             <% end %>
           </div>
           <div class="well">
@@ -75,8 +80,13 @@
               <td width="100%" bgcolor="000000"><div align="center" class="buttons_on">favorites</div></td></tr></table>
             <% if @favorited %>
               <% @favorited.each do |f| %>
-                <p><%= f.title %></p>
+                <p><b><%= f.title %></b></p>
+                <p><%= f.headline %>
+                </br>
+                </br>
               <% end %>
+            <% else %>
+              <p> You haven't favorited any shows yet. </p>
             <% end %>
           </div>
         <% else %>
