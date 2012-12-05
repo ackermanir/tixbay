@@ -13,7 +13,7 @@ Background: shows have been added to database
 
 @javascript
 Scenario: No option to favorite if not logged in
-	And I follow "log out"
+	And I follow "Log Out"
 	And I am on the home page 
 	And I follow "2_more_info"
 	Then I should not see "Favorite"
