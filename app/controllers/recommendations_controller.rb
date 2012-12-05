@@ -2,7 +2,6 @@ require 'will_paginate/array'
 
 class RecommendationsController < ApplicationController
 
-<<<<<<< HEAD
   #Helper methods for keyword
   def keyword_hash_from_params(params)
     keywords = {}
