@@ -1,66 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <listings>
-  <event id="62299">
-    <our_price_range>$25.00 - $59.50</our_price_range>
-    <headline_as_text>"Could It Be Magic" - Barry Manilow Performs at HP Pavilion</headline_as_text>
-    <full_price_range>$39.50 - $99.50</full_price_range>
+  <event id="63676">
+    <headline_as_text>San Francisco Ballet's "Nutcracker", Set in the City by the Bay</headline_as_text>
+    <sold_out>false</sold_out>
+    <image>https://i.goldstar.com/gse_media/112/11/sfballet-nutcracker-120312.jpg</image>
+    <summary_as_html>On Christmas Eve 1944, &lt;em&gt;Nutcracker&lt;/em&gt; made its American debut in San Francisco. So it's only fitting that when San Francisco Ballet Artistic Director and Principal Choreographer Helgi Tomasson set out to stage a new production of the beloved family favorite more than 60 years later, he chose the City by the Bay as the backdrop. Set in San Francisco during the 1915 World's Fair, Clara's dreamlike journey is an ode to the city's historical grandeur -- set amidst colorful, larger-than-life scenery, more than 200 dazzling costumed characters, and of course Tchaikovsky's beautiful score performed live by the world-class San Francisco Ballet Orchestra. Please see the full event description for information on special Family Performances.</summary_as_html>
     <badges>
       <badge>
         <name>hot_seller</name>
       </badge>
-      <badge>
-        <name>featured</name>
-      </badge>
     </badges>
-    <deal_of_the_day/>
-    <category_list>
-      <category id="6">
-        <name>Popular Music</name>
-      </category>
-    </category_list>
-    <image>https://i.goldstar.com/gse_media/112/9/barry-manilow-101112.jpg</image>
-    <headline_as_html>"Could It Be Magic" - Barry Manilow Performs at HP Pavilion</headline_as_html>
     <venue>
-      <capacity>18000</capacity>
-      <geocode_longitude>-121.901186</geocode_longitude>
-      <image>https://i.goldstar.com/gse_media/104/7/2318262hp.jpg</image>
-      <link>http://www.goldstar.com/venues/san-jose-ca/hp-pavilion-at-san-jose</link>
+      <image>https://i.goldstar.com/gse_media/104/9/1401425warmemoutside.jpg</image>
+      <link>http://www.goldstar.com/venues/san-francisco-ca/war-memorial-opera-house</link>
       <address>
-        <street_address>525 W. Santa Clara St.</street_address>
+        <street_address>301 Van Ness Ave.</street_address>
         <extended_address/>
-        <locality>San Jose</locality>
-        <postal_code>95113</postal_code>
-        <country_name>United States</country_name>
+        <locality>San Francisco</locality>
         <region>CA</region>
+        <postal_code>94102</postal_code>
+        <country_name>United States</country_name>
       </address>
-      <geocode_latitude>37.332512</geocode_latitude>
-      <name>HP Pavilion at San Jose</name>
-      <phone>408-287-9200</phone>
+      <phone>415-865-2000</phone>
+      <geocode_longitude>-122.419949</geocode_longitude>
+      <name>War Memorial Opera House</name>
+      <capacity>3148</capacity>
+      <geocode_latitude>37.778281</geocode_latitude>
     </venue>
-    <link>http://tracking.goldstar.com</link>
-    <summary_as_text>Returning to San Jose, silky pop crooner Barry Manilow performs in concert at HP Pavilion. The evening will be highlighted by the legendary entertainer's hits including "Mandy," "I Write the Songs" and "Copacabana (At the Copa)." Manilow's storied career includes Grammy, Tony and Emmy wins, sales of more than 80 million records, 25 consecutive Top 40 hits, and induction into the Songwriter's Hall of Fame. Manilow has hit the road once again after ending his Las Vegas residency in December 2011, and this will be his only Northern California appearance on this latest tour.</summary_as_text>
-    <title_as_html>Barry Manilow</title_as_html>
-    <summary_as_html>Returning to San Jose, silky pop crooner Barry Manilow performs in concert at HP Pavilion. The evening will be highlighted by the legendary entertainer's hits including "Mandy," "I Write the Songs" and "Copacabana (At the Copa)." Manilow's storied career includes Grammy, Tony and Emmy wins, sales of more than 80 million records, 25 consecutive Top 40 hits, and induction into the Songwriter's Hall of Fame. Manilow has hit the road once again after ending his Las Vegas residency in December 2011, and this will be his only Northern California appearance on this latest tour.</summary_as_html>
-    <title_as_text>Barry Manilow</title_as_text>
-    <browsable_series>
-      <series id="202">
-        <name>Cyber Monday 2012</name>
-      </series>
-    </browsable_series>
-    <sold_out>false</sold_out>
+    <our_price_range>$49.00 - $56.00</our_price_range>
     <upcoming_dates>
-      <event_date id="623047">
-        <time_note>7:30pm</time_note>
-        <date>2012-12-06</date>
+      <event_date id="643061">
+        <time_note>7:00pm (Family Performance)</time_note>
+        <date>2012-12-13</date>
       </event_date>
     </upcoming_dates>
-  </event>
-  <event id="63734">
-    <our_price_range>$26.00 - $48.00</our_price_range>
-    <headline_as_text>Mark Morris' "The Hard Nut": Beloved Retro-Modern Take on "The Nutcracker"</headline_as_text>
-    <full_price_range>$52.00 - $96.00</full_price_range>
-    <badges/>
-    <deal_of_the_day/>
+    <title_as_text>"Nutcracker"</title_as_text>
+    <link>http://tracking.goldstar.com/aff_c?offer_id=6&amp;aff_id=1654&amp;aff_sub=63676</link>
+    <title_as_html>&lt;em&gt;Nutcracker&lt;/em&gt;</title_as_html>
     <category_list>
       <category id="2">
         <name>Performing Arts</name>
@@ -69,88 +45,9 @@
         <name>Family</name>
       </category>
     </category_list>
-    <image>https://i.goldstar.com/gse_media/112/10/the-hard-nut.jpg</image>
-    <headline_as_html>Mark Morris' &lt;em&gt;The Hard Nut&lt;/em&gt;: Beloved Retro-Modern Take on &lt;em&gt;The Nutcracker&lt;/em&gt;</headline_as_html>
-    <venue>
-      <capacity>2000</capacity>
-      <geocode_longitude>-122.25916</geocode_longitude>
-      <image>https://i.goldstar.com/gse_media/105/8/9221125front_2.jpg</image>
-      <link>http://www.goldstar.com/venues/berkeley-ca/cal-performances-zellerbach-hall</link>
-      <address>
-        <street_address>Bancroft Way and Telegraph Avenue</street_address>
-        <extended_address/>
-        <locality>Berkeley</locality>
-        <postal_code>94720</postal_code>
-        <country_name>United States</country_name>
-        <region>CA</region>
-      </address>
-      <geocode_latitude>37.868729</geocode_latitude>
-      <name>Cal Performances' Zellerbach Hall</name>
-      <phone>510-642-9988</phone>
-    </venue>
-    <link>http://tracking.goldstar.com/</link>
-    <summary_as_text>A Bay Area holiday favorite, Mark Morris' "The Hard Nut" is back with its retro-modern take on the beloved "Nutcracker" tale, complete with dancing snowflakes, waltzing flowers and a hilariously skewed family holiday party. Voted Best "Nutcracker" three years in a row in Ovation TV's "Battle of the Nutcrackers", this energetic and delightful production has been called a "sublime marriage of wit, music, and movement" ("San Francisco Chronicle"), and "something approaching a miracle" ("The Washington Post"). Enchanting audiences for more than 20 years, this seasonal favorite features Tchaikovsky's "Nutcracker" score performed by the Piedmont East Bay Children's Choir and Berkeley Symphony Orchestra..</summary_as_text>
-    <title_as_html>&lt;em&gt;The Hard Nut&lt;/em&gt;</title_as_html>
-    <summary_as_html>A Bay Area holiday favorite, Mark Morris' &lt;em&gt;The Hard Nut&lt;/em&gt; is back with its retro-modern take on the beloved &lt;em&gt;Nutcracker&lt;/em&gt; tale, complete with dancing snowflakes, waltzing flowers and a hilariously skewed family holiday party. Voted Best &lt;em&gt;Nutcracker&lt;/em&gt; three years in a row in Ovation TV's &lt;em&gt;Battle of the Nutcrackers&lt;/em&gt;, this energetic and delightful production has been called a "sublime marriage of wit, music, and movement" (&lt;em&gt;San Francisco Chronicle&lt;/em&gt;), and "something approaching a miracle" (&lt;em&gt;The Washington Post&lt;/em&gt;). Enchanting audiences for more than 20 years, this seasonal favorite features Tchaikovsky's &lt;em&gt;Nutcracker&lt;/em&gt; score performed by the Piedmont East Bay Children's Choir and Berkeley Symphony Orchestra..</summary_as_html>
-    <title_as_text>"The Hard Nut"</title_as_text>
-    <browsable_series>
-      <series id="205">
-        <name>Nutcracker 2012</name>
-      </series>
-      <series id="205">
-        <name>Nutcracker 2012</name>
-      </series>
-      <series id="185">
-        <name>Holiday Events 2012</name>
-      </series>
-    </browsable_series>
-    <sold_out>false</sold_out>
-    <upcoming_dates>
-      <event_date id="635962">
-        <time_note>2:00pm</time_note>
-        <date>2012-12-15</date>
-      </event_date>
-      <event_date id="635963">
-        <time_note>7:30pm</time_note>
-        <date>2012-12-20</date>
-      </event_date>
-    </upcoming_dates>
-  </event>
-  <event id="50919">
-    <our_price_range>$14.00</our_price_range>
-    <headline_as_text>Alameda Civic Ballet's "The Nutcracker", a Holiday Family Favorite</headline_as_text>
-    <full_price_range>$28.00</full_price_range>
-    <badges/>
+    <full_price_range>$98.00 - $112.00</full_price_range>
+    <summary_as_text>On Christmas Eve 1944, "Nutcracker" made its American debut in San Francisco. So it's only fitting that when San Francisco Ballet Artistic Director and Principal Choreographer Helgi Tomasson set out to stage a new production of the beloved family favorite more than 60 years later, he chose the City by the Bay as the backdrop. Set in San Francisco during the 1915 World's Fair, Clara's dreamlike journey is an ode to the city's historical grandeur -- set amidst colorful, larger-than-life scenery, more than 200 dazzling costumed characters, and of course Tchaikovsky's beautiful score performed live by the world-class San Francisco Ballet Orchestra. Please see the full event description for information on special Family Performances.</summary_as_text>
     <deal_of_the_day/>
-    <category_list>
-      <category id="2">
-        <name>Performing Arts</name>
-      </category>
-    </category_list>
-    <image>https://i.goldstar.com/gse_media/111/11/acb-nutcracker.jpg</image>
-    <headline_as_html>Alameda Civic Ballet's &lt;em&gt;The Nutcracker&lt;/em&gt;, a Holiday Family Favorite</headline_as_html>
-    <venue>
-      <capacity>1500</capacity>
-      <geocode_longitude>-122.246783</geocode_longitude>
-      <image/>
-      <link>http://www.goldstar.com/venues/alameda-ca/kofman-theatre</link>
-      <address>
-        <street_address>2200 Central Avenue</street_address>
-        <extended_address/>
-        <locality>Alameda</locality>
-        <postal_code>94501</postal_code>
-        <country_name>United States</country_name>
-        <region>CA</region>
-      </address>
-      <geocode_latitude>37.765728</geocode_latitude>
-      <name>Kofman Theatre</name>
-      <phone>510-522-7101</phone>
-    </venue>
-    <link>http://tracking.goldstar.com</link>
-    <summary_as_text>This year, special guest stars Ethan and Nikki White, finalists in Paula Abdul's "Live to Dance" join a cast of more than 100 dancers -- ranging in age from 3 to 60 to bring "The Nutcracker" to life. The Whites will play the Snow King and Queen as well as the Arabian dancers in Alameda Civic Ballet's eighth annual production of the magical holiday ballet. Set to Tchaikovsky's timeless score, the audience follows young Clara and her Nutcracker prince on a Christmas night journey that begins with an epic battle against the Mouse King, through the Land of the Snowflakes to the Kingdom of Sweets, ruled by the enchanting Sugar Plum Fairy.</summary_as_text>
-    <title_as_html>&lt;em&gt;The Nutcracker&lt;/em&gt;</title_as_html>
-    <summary_as_html>This year, special guest stars Ethan and Nikki White, finalists in Paula Abdul's &lt;em&gt;Live to Dance&lt;/em&gt; join a cast of more than 100 dancers -- ranging in age from 3 to 60 to bring &lt;em&gt;The Nutcracker&lt;/em&gt; to life. The Whites will play the Snow King and Queen as well as the Arabian dancers in Alameda Civic Ballet's eighth annual production of the magical holiday ballet. Set to Tchaikovsky's timeless score, the audience follows young Clara and her Nutcracker prince on a Christmas night journey that begins with an epic battle against the Mouse King, through the Land of the Snowflakes to the Kingdom of Sweets, ruled by the enchanting Sugar Plum Fairy.</summary_as_html>
-    <title_as_text>"The Nutcracker"</title_as_text>
     <browsable_series>
       <series id="205">
         <name>Nutcracker 2012</name>
@@ -158,20 +55,7 @@
       <series id="185">
         <name>Holiday Events 2012</name>
       </series>
-      <series id="185">
-        <name>Holiday Events 2012</name>
-      </series>
     </browsable_series>
-    <sold_out>false</sold_out>
-    <upcoming_dates>
-      <event_date id="634825">
-        <time_note>2:00pm</time_note>
-        <date>2012-12-15</date>
-      </event_date>
-      <event_date id="634826">
-        <time_note>2:00pm</time_note>
-        <date>2012-12-16</date>
-      </event_date>
-    </upcoming_dates>
+    <headline_as_html>San Francisco Ballet's &lt;em&gt;Nutcracker&lt;/em&gt;, Set in the City by the Bay</headline_as_html>
   </event>
 </listings>

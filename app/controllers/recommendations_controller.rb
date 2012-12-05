@@ -179,6 +179,16 @@ class RecommendationsController < ApplicationController
 
   def form
     @title = "recommended"
+    @first_name = current_user.first_name
+    @is_new = true
+
+    if user_signed_in?
+      if params['edit']
+        @is_new = false
+        user = current_user
+
+      end
+    end
   end
 
   def login
