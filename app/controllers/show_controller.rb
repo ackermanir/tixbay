@@ -8,6 +8,20 @@ class ShowController < ApplicationController
 
   def favorite
     show_id = params['show_id']
+    favorite = params['update']
+    if user_signed_in?
+      user = current_user
+      if favorite == 'undo'
+        user.unfavorite_a_show(show_id)        
+      else
+        user.favorite_a_show(show_id)
+      end
+    end
+    render :fav_resp
+  end
+
+  def unfavorite
+    show_id = params['show_id']
     user = current_user
     user.favorite_a_show(show_id)
     render :fav_resp

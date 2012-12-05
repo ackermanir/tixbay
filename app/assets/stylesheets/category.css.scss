@@ -512,19 +512,19 @@ a.morelink {
   color: #C00000;
   font-weight: bold;
 	padding: 2px 6px;
-	margin-bottom: 10px;
-	margin-left: 80%;
+	margin-left: 10%;
 }
 
 #favorited {
 	font-size: 12px;
   color: #C00000;
 	padding: 2px 6px;
-	height: 17px;
-	width: 44px;
   font-weight: bold;
-	margin-bottom: 10px;
-	margin-left: 82%;
+	margin-left: 10%;
+}
+
+#hidden_favorited {
+	display: none;
 }
 
 //Place two elements next to each other
