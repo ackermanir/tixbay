@@ -237,13 +237,7 @@ class RecommendationsController < ApplicationController
 
   #Helper method that sets the appropriate variables for categories given the value passed in from the db
   def set_categories_variables(val)
-    if val == "Theater"
-      @theatre_cat = true
-    elsif val == "Film"
-      @film_cat == true
-    elsif val == "Comedy"
-      @comedy_cat == true
-    elsif val == "Performing Arts"
+    if val == "Performing Arts"
       @performing_cat = true
     elsif val == "Popular Music"
       @pop_music_cat = true
@@ -274,6 +268,7 @@ class RecommendationsController < ApplicationController
 
   def form
     @title = "recommended"
+    @is_new = true
 
     if user_signed_in?
       if params['edit']
@@ -306,7 +301,9 @@ class RecommendationsController < ApplicationController
 
         categories.each do |val|
           set_categories_variables(val.name)
-          if val.name == "Comedy"
+          if val.name == "Theater"
+            @theatre_cat = true
+          elsif val.name == "Comedy"
             @comedy_cat = true
           elsif val.name == "Film"
             @film_cat = true
