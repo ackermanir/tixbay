@@ -44,7 +44,7 @@ class User < ActiveRecord::Base
     end
   end
 
-  #List of all shows that the users has gone to Goldstar for, assuming for purchasing tickets
+  #Shows that the users has clicked purchase ticket
   def get_viewed_shows
     shows = Show.joins(:interests).where('interests.user_id' => self.id,
                                          'interests.click' => 1)
@@ -56,6 +56,43 @@ class User < ActiveRecord::Base
     shows = Show.joins(:interests).where('interests.user_id' => self.id,
                                          'interests.click' => 2)
     return shows.all
+  end
+
+  def weight_show_from_past(weighted_shows)
+    features = past_shows_features
+    if features['categories'] = {}
+      return weighted_shows
+    end
+    reweighted = []
+    weighted_shows.each do |pair|
+      show = pair[0]
+      weight = pair[1]
+      #pricing
+      low_price = (show.our_price_range_low / 100).floor
+      high_price = (show.our_price_range_high / 100).floor
+      price_weight = features['prices'].slice(low_price .. high_price).max
+      weight += 2 * price_weight
+      #locality
+      locality = show.venue.locality
+      locality_weight = features['locality'][locality]
+      weight += 5 * locality_weight unless not locality_weight
+      #categories
+      cats = show.categories
+      category_weight = 0
+      for cat in cats
+        cat_feature = features['categories'][cat]
+        category_weight += cat_feature unless not cat_feature
+      end
+      weight += 4 * category_weight
+      reweighted << [show, weight]
+    end
+    return reweighted
+  end
+
+  def past_shows_features
+    shows = Show.joins(:interests).where('interests.user_id' => self.id)
+    fav_shows = get_favorite_shows
+    return Show.merge_features(shows, fav_shows)
   end
 
   def get_preferred_categories
