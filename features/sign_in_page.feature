@@ -32,8 +32,7 @@ Scenario: login with an existing tixbay account
     Then I should be on the recommendations form page 
 
 Scenario: login directs to logged in dashboard if form filled out before
-   Given I already signed up
-   And I already filled out the recommendations form
+   Given I already filled out the recommendations form
    Then I follow "recommended"
    When I fill in "user_email" with "congchen@gg.com"
    And I fill in "user_password" with "congchen"
