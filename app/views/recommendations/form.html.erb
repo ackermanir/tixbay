@@ -138,19 +138,19 @@
     <div class="recommendation_header">Where do you live?</div>
     <div class="recommendation_location_label recommendation_location">Street Address</div>
     <div class="recommendation_location_input recommendation_location">
-      <%= text_field 'recommendation[location]', 'street_address' %>
+      <%= text_field 'recommendation[location]', 'street_address', :value => @street_address %>
     </div>
     <div class="recommendation_location_label recommendation_location">City</div>
     <div class="recommendation_location_input recommendation_location">
-      <%= text_field 'recommendation[location]', 'city' %>
+      <%= text_field 'recommendation[location]', 'city', :value => @city%>
     </div>
     <div class="recommendation_location_label recommendation_location">State/Region</div>
     <div class="recommendation_location_input recommendation_location">
-      <%= text_field 'recommendation[location]', 'region' %>
+      <%= text_field 'recommendation[location]', 'region', :value => @state %>
     </div>
     <div class="recommendation_location_label recommendation_location">Zip Code*</div>
     <div class="recommendation_location_input recommendation_location">
-      <%= text_field 'recommendation[location]', 'zip_code' %>
+      <%= text_field 'recommendation[location]', 'zip_code', :value => @zip_code %>
     </div>
   </div>
 
@@ -160,17 +160,17 @@
       <span id="date_format">(MM/DD/YYYY)</span>
     </div>
     <span>From&nbsp;</span>
-    <%= text_field 'recommendation[startdate]', 'month', :class => 'two_input', :maxlength => 2 %>
+    <%= text_field 'recommendation[startdate]', 'month', :class => 'two_input', :maxlength => 2, :value => @from_month %>
     <span>/</span>
-    <%= text_field 'recommendation[startdate]', 'day', :class => 'two_input', :maxlength => 2 %>
+    <%= text_field 'recommendation[startdate]', 'day', :class => 'two_input', :maxlength => 2, :value => @from_day %>
     <span>/</span>
-    <%= text_field 'recommendation[startdate]', 'year', :class => 'four_input', :maxlength => 4 %>
+    <%= text_field 'recommendation[startdate]', 'year', :class => 'four_input', :maxlength => 4, :value => @from_year %>
     <span>&nbsp;To&nbsp;</span>
-    <%= text_field 'recommendation[enddate]', 'month', :class => 'two_input', :maxlength => 2 %>
+    <%= text_field 'recommendation[enddate]', 'month', :class => 'two_input', :maxlength => 2, :value => @to_month %>
     <span>/</span>
-    <%= text_field 'recommendation[enddate]', 'day', :class => 'two_input', :maxlength => 2 %>
+    <%= text_field 'recommendation[enddate]', 'day', :class => 'two_input', :maxlength => 2, :value => @to_day %>
     <span>/</span>
-    <%= text_field 'recommendation[enddate]', 'year', :class => 'four_input', :maxlength => 4 %>
+    <%= text_field 'recommendation[enddate]', 'year', :class => 'four_input', :maxlength => 4, :vaue => @to_year %>
   </div>
 
   <div class="recommendation_input">
@@ -182,7 +182,7 @@
   <div class="recommendation_input">
     <div class="recommendation_header">How much are you willing to spend per ticket?<span id="max">&nbsp&nbsp(Maximum)</div>
     <span>$</span>
-    <%= text_field 'recommendation', 'maxprice', :id => 'recommendation_maxprice' %>
+    <%= text_field 'recommendation', 'maxprice', :id => 'recommendation_maxprice', :value => @maxprice %>
   </div>
 
   <div class="recommendation_input">
@@ -191,43 +191,43 @@
 		</div>
     <div>
       <label for="recommendation_category_theatre">
-        <%= check_box 'recommendation[category]', 'Theatre', :id => 'recommendation_category_theatre', :checked => true %>
+        <%= check_box 'recommendation[category]', 'Theatre', :id => 'recommendation_category_theatre', :checked => @theatre_cat%>
         Theatre
       </label>
       <label for="recommendation_category_performingarts">
-        <%= check_box 'recommendation[category]', 'Performing Arts', :id => 'recommendation_category_performingarts', :checked => true %>
+        <%= check_box 'recommendation[category]', 'Performing Arts', :id => 'recommendation_category_performingarts', :checked => @performing_cat %>
         Performing Arts
       </label>
       <label for="recommendation_category_popularmusic">
-        <%= check_box 'recommendation[category]', 'Popular Music', :id => 'recommendation_category_popularmusic', :checked => true %>
+        <%= check_box 'recommendation[category]', 'Popular Music', :id => 'recommendation_category_popularmusic', :checked => @pop_music_cat%>
         Popular Music
       </label>
       <label for="recommendation_category_jazz">
-        <%= check_box 'recommendation[category]', 'Jazz', :id => 'recommendation_category_jazz', :checked => true %>
+        <%= check_box 'recommendation[category]', 'Jazz', :id => 'recommendation_category_jazz', :checked => @jazz_cat %>
         Jazz
       </label>
       <label for="recommendation_category_classical">
-        <%= check_box 'recommendation[category]', 'Classical', :id => 'recommendation_category_classical', :checked => true %>
+        <%= check_box 'recommendation[category]', 'Classical', :id => 'recommendation_category_classical', :checked => @classical_cat %>
         Classical
       </label>
       <label for="recommendation_category_classicrock">
-        <%= check_box 'recommendation[category]', 'Classic Rock', :id => 'recommendation_category_classicrock', :checked => true %>
+        <%= check_box 'recommendation[category]', 'Classic Rock', :id => 'recommendation_category_classicrock', :checked => @classic_rock_cat %>
         Classic Rock
       </label>
       <label for="recommendation_category_film">
-        <%= check_box 'recommendation[category]', 'Film', :id => 'recommendation_category_film', :checked => true %>
+        <%= check_box 'recommendation[category]', 'Film', :id => 'recommendation_category_film', :checked => @film_cat %>
         Film
       </label>
       <label for="recommendation_category_comedy">
-        <%= check_box 'recommendation[category]', 'Comedy', :id => 'recommendation_category_comedy', :checked => true %>
+        <%= check_box 'recommendation[category]', 'Comedy', :id => 'recommendation_category_comedy', :checked => @comedy_cat %>
         Comedy
       </label>
       <label for="recommendation_category_family">
-        <%= check_box 'recommendation[category]', 'Family', :id => 'recommendation_category_family', :checked => true %>
+        <%= check_box 'recommendation[category]', 'Family', :id => 'recommendation_category_family', :checked => @family_cat %>
         Family
       </label>
       <label for="recommendation_category_foodsocial">
-        <%= check_box 'recommendation[category]', 'Food & Social', :id => 'recommendation_category_foodsocial', :checked => true %>
+        <%= check_box 'recommendation[category]', 'Food & Social', :id => 'recommendation_category_foodsocial', :checked => @food_social_cat %>
         Food & Social
       </label>
     </div>

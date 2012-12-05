@@ -179,14 +179,53 @@ class RecommendationsController < ApplicationController
 
   def form
     @title = "recommended"
-    @first_name = current_user.first_name
     @is_new = true
+
+    @theatre_cat = true
+    @performing_cat = true
+    @pop_music_cat = true
+    @jazz_cat = true
+    @classical_cat = true
+    @classic_rock_cat = true
+    @film_cat = true
+    @comedy_cat = true
+    @family_cat = true
+    @food_social_cat = true
 
     if user_signed_in?
       if params['edit']
         @is_new = false
         user = current_user
+        @first_name = user.first_name
 
+        #    args["price_range"] = [0, current_user.max_tix_price]
+        #    args["zip_code"] = current_user.zip_code
+        #    args["location"] = {}
+        #    args["location"]["street_address"] = current_user.street_address
+        #    args["location"]["city"] = current_user.city
+        #    args["location"]["region"] = current_user.state
+        #    args["location"]["zip_code"] = current_user.zip_code
+        #    args["distance"] = current_user.travel_radius
+        
+        @street_address = user.street_address
+        @city = user.city
+        @state = user.state
+        @zip_code = user.zip_code
+
+        @from_month = user.
+
+        @maxprice = user.max_tix_price.to_i / 100
+
+        @theatre_cat = true
+        @performing_cat = true
+        @pop_music_cat = true
+        @jazz_cat = true
+        @classical_cat = true
+        @classic_rock_cat = true
+        @film_cat = true
+        @comedy_cat = true
+        @family_cat = true
+        @food_social_cat = true
       end
     end
   end
