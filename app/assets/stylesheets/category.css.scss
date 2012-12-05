@@ -30,6 +30,12 @@ body {
   }
 }
 
+#error_explanation {
+  h2 {
+    font-size: 1em;
+  }
+}
+
 #sign_in {
   float: right;
   background-color: white;
@@ -525,6 +531,8 @@ a.morelink {
 //Css used for favoriting a show
 #favorite_this {
 	font-size: 12px;
+  margin-top: -10px;
+  margin-bottom: 10px;
   color: #C00000;
   text-shadow: none;
   font-weight: bold;
@@ -534,6 +542,8 @@ a.morelink {
 
 #favorited {
 	font-size: 12px;
+  margin-top: -10px;
+  margin-bottom: 10px;
   background-color: #e6e6e6;
   color: #C00000;
   text-shadow: none;
@@ -544,6 +554,8 @@ a.morelink {
 
 #hidden_favorited {
 	display: none;
+  margin-top: -10px;
+  margin-bottom: 10px;
   float: right;
 }
 

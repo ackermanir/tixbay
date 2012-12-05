@@ -160,7 +160,7 @@ class RecommendationsController < ApplicationController
     params["recommendation"] = nil
 
     @shows = @shows.paginate(:page => params[:page], :per_page => 15)
-    
+
     render "category/body"
 
   end
