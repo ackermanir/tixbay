@@ -167,7 +167,6 @@ How it chooses similarity:
     return pairings
   end
 
-
 """
   Weights this show based on the keywords, using each occurence in a
   description as two points and one point in the summary.
