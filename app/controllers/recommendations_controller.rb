@@ -2,7 +2,7 @@ require 'will_paginate/array'
 
 class RecommendationsController < ApplicationController
 
-  #FIX-ME: don't add filter if we have a non-logged in version as well  
+  #FIX-ME: don't add filter if we have a non-logged in version as well
   before_filter :authenticate_user!
 
   def index
@@ -24,8 +24,10 @@ class RecommendationsController < ApplicationController
     end
 
     location = params["recommendation"]["location"]
-    if location["zip_code"] == ""
-      args["location"] = nil
+    if location["zip_code"] == "" || location["zip_code"].length != 5
+      flash[:notice] = "You must enter a valid zip code to get recommendations."
+      redirect_to :action => :form
+      return
     else
       args["location"] = location
     end
@@ -81,7 +83,7 @@ class RecommendationsController < ApplicationController
     params["recommendation"] = nil
 
     @shows = @shows.paginate(:page => params[:page], :per_page => 15)
-    
+
     render "category/body"
 
   end
@@ -100,6 +102,9 @@ class RecommendationsController < ApplicationController
 
   def form
     @title = "recommended"
+    if user_signed_in? && current_user.first_name
+      @user = " " + current_user.first_name
+    end
   end
 
   def login
