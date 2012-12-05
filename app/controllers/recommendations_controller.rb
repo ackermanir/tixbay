@@ -58,7 +58,12 @@ class RecommendationsController < ApplicationController
     if user_signed_in?
         if params.has_key? :recommendation
             #save data in database here
-            current_user.update_attribute(:max_tix_price,params[:recommendation]["maxprice"].to_i)
+            maxprice = -1
+            if params[:recommendation]["maxprice"] != ""
+              maxprice = params[:recommendation]["maxprice"].to_i
+            end
+              
+            current_user.update_attribute(:max_tix_price, maxprice)
             current_user.update_attribute(:street_address,params[:recommendation][:location]["street_address"])
             current_user.update_attribute(:city, params[:recommendation][:location]["city"])
             current_user.update_attribute(:state, params[:recommendation][:location]["region"])
@@ -102,7 +107,7 @@ class RecommendationsController < ApplicationController
         end
         #FIX-ME: need to destroy the session if the users exit the forms
 
-        price_range = params[:recommendation]["maxprice"].to_i
+        price_range = params[:recommendation]["maxprice"]
         if price_range == ""
           args["price_range"] = [0, -1]
         else
