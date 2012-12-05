@@ -235,6 +235,31 @@ class RecommendationsController < ApplicationController
     end
   end
 
+  #Helper method that sets the appropriate variables for categories given the value passed in from the db
+  def set_categories_variables(val)
+    if val == "Theater"
+      @theatre_cat = true
+    elsif val == "Performing Arts"
+      @performing_cat = true
+    elsif val == "Popular Music"
+      @pop_music_cat = true
+    elsif val == "Jazz"
+      @jazz_cat = true
+    elsif val == "Classical"
+      @classical_cat = true
+    elsif val == "Classic Rock"
+      @classic_rock_cat = true
+    elsif val == "Film"
+      @film_cat == true
+    elsif val == "Comedy"
+      @comedy_cat == true
+    elsif val == "Family"
+      @family_cat = true
+    elsif val == "Food & Social"
+      @food_social_cat = true
+    end
+  end
+
   def recommended
     #if not logged in
     # redirect_to :actions=>"login"
@@ -249,19 +274,6 @@ class RecommendationsController < ApplicationController
 
   def form
     @title = "recommended"
-    @first_name = current_user.first_name if current_user
-    @is_new = true
-
-    @theatre_cat = true
-    @performing_cat = true
-    @pop_music_cat = true
-    @jazz_cat = true
-    @classical_cat = true
-    @classic_rock_cat = true
-    @film_cat = true
-    @comedy_cat = true
-    @family_cat = true
-    @food_social_cat = true
 
     if user_signed_in?
       if params['edit']
@@ -269,15 +281,6 @@ class RecommendationsController < ApplicationController
         user = current_user
         @first_name = user.first_name
 
-        #    args["price_range"] = [0, current_user.max_tix_price]
-        #    args["zip_code"] = current_user.zip_code
-        #    args["location"] = {}
-        #    args["location"]["street_address"] = current_user.street_address
-        #    args["location"]["city"] = current_user.city
-        #    args["location"]["region"] = current_user.state
-        #    args["location"]["zip_code"] = current_user.zip_code
-        #    args["distance"] = current_user.travel_radius
-        #
         keyword_hash = keyword_string_to_hash(user.keyword)
 
         keyword_hash.each do |k,v|
@@ -293,8 +296,20 @@ class RecommendationsController < ApplicationController
 
         @dist = user.travel_radius.to_i
 
-        @maxprice = user.max_tix_price.to_i / 100
+        if user.max_tix_price.to_i >= 0
+          @maxprice = user.max_tix_price.to_i / 100
+        else
+          @maxprice = 0
+        end
 
+        categories = user.categories
+
+        categories.each do |val|
+          set_categories_variables(val.name)
+        end
+      else
+        @first_name = current_user.first_name if current_user
+        @is_new = true
         @theatre_cat = true
         @performing_cat = true
         @pop_music_cat = true
@@ -306,6 +321,19 @@ class RecommendationsController < ApplicationController
         @family_cat = true
         @food_social_cat = true
       end
+    else
+      @first_name = current_user.first_name if current_user
+      @is_new = true
+      @theatre_cat = true
+      @performing_cat = true
+      @pop_music_cat = true
+      @jazz_cat = true
+      @classical_cat = true
+      @classic_rock_cat = true
+      @film_cat = true
+      @comedy_cat = true
+      @family_cat = true
+      @food_social_cat = true
     end
   end
 
