@@ -110,6 +110,8 @@ class RecommendationsController < ApplicationController
       user = nil
     end
 
+    puts args
+
     @shows = Show.recommend_shows(price_range=args["price_range"], categories=args["categories"], dates=args["dates"], location=args["location"], distance=args["distance"], user=user, keywords=args["keywords"])
 
     if @shows.length == 0
