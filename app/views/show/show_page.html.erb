@@ -18,7 +18,7 @@
     <%= image_tag @current_show.image_url, "width"=> "35%" %>
     <p class="evTitle"><%= @current_show.title %>
     <p><%= @current_show.headline %>
-    <p><b>Available Dates:</b><%= @current_show.date_string %>
+    <p><b>Available Dates: </b><%= @current_show.date_string %>
     <p><a class="venue_link" href="<%= @current_show.venue.link %>"><%= @current_show.venue.name %></a><br>
       <span class ="venue_address"><%= @current_show.venue.full_address %>
     <p><div class="summary"><%=@current_show.summary %></div>
@@ -47,7 +47,7 @@
     <%= image_tag s.image_url, "width"=>"35%" %>
     <p class="evTitle"><%= s.title %>
     <p><%= s.headline %>
-    <p><b>Available Dates:</b><%= s.date_string %>
+    <p><b>Available Dates: </b><%= s.date_string %>
     <p><a class="venue_link" href="<%= s.venue.link %>"><%= s.venue.name %></a><br>
       <span class ="venue_address"><%= s.venue.full_address %>
     <p><div class="summary more"><%=s.summary %></div>

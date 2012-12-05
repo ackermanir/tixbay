@@ -65,9 +65,9 @@
               <td width="100%" bgcolor="000000"><div align="center" class="buttons_on" id="sidetitle">recently viewed</div></td></tr></table>
             <% if @viewed.length != 0 %>
               <% @viewed.each do |v| %>
-                <p><a href="/show/<%= v.id %>"><%= v.title %></a></p>
+                <p><b><a href="/show/<%= v.id %>"><%= v.title %></a></b></p>
                 <p><%= v.headline %>
-                </br>
+                <p><b><%= v.date_string %></b>, <%= v.price_format('ours') %></p>
                 </br>
               <% end %>
             <% else %>
@@ -80,9 +80,9 @@
               <td width="100%" bgcolor="000000"><div align="center" class="buttons_on" id="sidetitle">favorites</div></td></tr></table>
             <% if @favorited.length != 0 %>
               <% @favorited.each do |f| %>
-                <p><a href="/show/<%= f.id %>"><%= f.title %></a></p>
+                <p><b><a href="/show/<%= f.id %>"><%= f.title %></a></b></p>
                 <p><%= f.headline %>
-                </br>
+                <p><b><%= f.date_string %></b>, <%= f.price_format('ours') %></p>
                 </br>
               <% end %>
             <% else %>
