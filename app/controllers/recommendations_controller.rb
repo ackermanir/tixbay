@@ -239,6 +239,10 @@ class RecommendationsController < ApplicationController
   def set_categories_variables(val)
     if val == "Theater"
       @theatre_cat = true
+    elsif val == "Film"
+      @film_cat == true
+    elsif val == "Comedy"
+      @comedy_cat == true
     elsif val == "Performing Arts"
       @performing_cat = true
     elsif val == "Popular Music"
@@ -249,10 +253,6 @@ class RecommendationsController < ApplicationController
       @classical_cat = true
     elsif val == "Classic Rock"
       @classic_rock_cat = true
-    elsif val == "Film"
-      @film_cat == true
-    elsif val == "Comedy"
-      @comedy_cat == true
     elsif val == "Family"
       @family_cat = true
     elsif val == "Food & Social"
@@ -306,6 +306,11 @@ class RecommendationsController < ApplicationController
 
         categories.each do |val|
           set_categories_variables(val.name)
+          if val.name == "Comedy"
+            @comedy_cat = true
+          elsif val.name == "Film"
+            @film_cat = true
+          end
         end
       else
         @first_name = current_user.first_name if current_user
