@@ -28,7 +28,7 @@
           </span>
           <span class="login_border"> | </span>
         <% end %>
-        <%= link_to "Log Out", destroy_user_session_path, :method=>:delete %>
+        <%= link_to "Log Out", destroy_user_session_path, :method=>:delete, :id=>"log_out" %>
       </div>
    <% else %>
       <div class="user_button">
