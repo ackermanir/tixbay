@@ -78,9 +78,8 @@ class RecommendationsController < ApplicationController
                     if category == "Theatre"
                         category = "Theater"
                     end
-                    a = Category.find_by_name(category)
-                    if a != nil
-                      current_user.categories << Category.find_by_name(category)
+                    if not Category.find_by_name(category).nil?
+                        current_user.categories << Category.find_by_name(category)
                     end
                 end
             end
@@ -110,7 +109,12 @@ class RecommendationsController < ApplicationController
             else
               args["categories"] = []
               current_user.categories.each do |c|
-                args["categories"] << c.name
+                if c.name == "Theater"
+                   args["categories"] << "Theatre"
+                else
+                   args["categories"] << c.name
+                end
+
               end
             end
             #FIX-ME: need to add time to session
@@ -171,7 +175,6 @@ class RecommendationsController < ApplicationController
     else
       user = nil
     end
-    breakpoint
     @shows = Show.recommend_shows(price_range=args["price_range"], categories=args["categories"], dates=args["dates"], location=args["location"], distance=args["distance"], user=user, keywords=args["keyword"])
 
     if @shows.length == 0
@@ -181,7 +184,7 @@ class RecommendationsController < ApplicationController
     params["recommendation"] = nil
 
     @shows = @shows.paginate(:page => params[:page], :per_page => 15)
-    
+
     render "category/body"
 
   end
@@ -200,6 +203,9 @@ class RecommendationsController < ApplicationController
 
   def form
     @title = "recommended"
+    if user_signed_in? && current_user.first_name
+      @user = " " + current_user.first_name
+    end
   end
 
   def login
