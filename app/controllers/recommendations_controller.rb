@@ -33,7 +33,7 @@ class RecommendationsController < ApplicationController
   def keyword_string_to_hash(str)
     output = {}
     ary = {}
-    if not str.nil?:
+    if not str.nil?
         ary = str.split
     end
     cur_cat = nil
