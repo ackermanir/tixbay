@@ -32,7 +32,10 @@ class RecommendationsController < ApplicationController
   end
   def keyword_string_to_hash(str)
     output = {}
-    ary = str.split
+    ary = {}
+    if not str.nil?:
+        ary = str.split
+    end
     cur_cat = nil
     ary.each do |wrd|
       cat = /(.*):$/.match(wrd)
