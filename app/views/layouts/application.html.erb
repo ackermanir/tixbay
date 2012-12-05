@@ -65,7 +65,7 @@
               <td width="100%" bgcolor="000000"><div align="center" class="buttons_on" id="sidetitle">recently viewed</div></td></tr></table>
             <% if @viewed.length != 0 %>
               <% @viewed.each do |v| %>
-                <p><b><%= v.title %></b></p>
+                <p><a href="/show/<%= v.id %>"><%= v.title %></a></p>
                 <p><%= v.headline %>
                 </br>
                 </br>
@@ -80,7 +80,7 @@
               <td width="100%" bgcolor="000000"><div align="center" class="buttons_on" id="sidetitle">favorites</div></td></tr></table>
             <% if @favorited.length != 0 %>
               <% @favorited.each do |f| %>
-                <p><b><%= f.title %></b></p>
+                <p><a href="/show/<%= f.id %>"><%= f.title %></a></p>
                 <p><%= f.headline %>
                 </br>
                 </br>
