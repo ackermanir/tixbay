@@ -31,6 +31,8 @@ module NavigationHelpers
       '/users/sign_in'
     when /^the sign up page$/
       '/users/sign_up'
+    when /^the recommendation page$/
+      '/recommendations/index'
     when /^the logged in dashboard$/
       '/recommendations/index'
     # Add more mappings here.

@@ -17,3 +17,11 @@ Given /I am already logged in/ do
     step 'I press "Log In"'
     step 'I go to the home page'
 end
+
+Given /I already filled out the recommendations form/ do
+  step 'I am already logged in'
+  step 'I am on the recommendations form page'
+  step 'I fill in "recommendation_location_zip_code" with "94123"'
+  step 'I press "Submit"'
+  step 'I follow "log_out"'
+end

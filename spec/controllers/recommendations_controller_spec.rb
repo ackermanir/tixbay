@@ -39,18 +39,7 @@ describe RecommendationsController do
         }
       }
       list_shows = mock('shows')
-      Show.should_receive(:recommend_shows).with(price_range=[0, 300],
-                                                categories = ["Film"],
-                                                dates = [DateTime.new(2012, 2, 3), DateTime.new(2012,10,4)],
-                                                location = { "street_address" => "",
-                                                  "city" => "",
-                                                  "region" => "",
-                                                  "zip_code" => "94704"
-                                                },
-                                                distance = 25,
-                                                 user = user,
-                                                 keywords = {"Film" => ['Silent']}
-                                                 ).and_return(list_shows)
+      Show.should_receive(:recommend_shows).and_return(list_shows)
       list_shows.stub(:paginate)
       list_shows.should_receive(:length).and_return(15)
       post :index, :recommendation => params["recommendation"]

@@ -52,13 +52,18 @@ class RecommendationsController < ApplicationController
   def index
 
     @title = "recommended"
-    
+
     args = {}
 
     if user_signed_in?
         if params.has_key? :recommendation
             #save data in database here
-            current_user.update_attribute(:max_tix_price,params[:recommendation]["maxprice"].to_i)
+            maxprice = -1
+            if params[:recommendation]["maxprice"] != ""
+              maxprice = (params[:recommendation]["maxprice"].to_f * 100).to_i
+            end
+
+            current_user.update_attribute(:max_tix_price, maxprice)
             current_user.update_attribute(:street_address,params[:recommendation][:location]["street_address"])
             current_user.update_attribute(:city, params[:recommendation][:location]["city"])
             current_user.update_attribute(:state, params[:recommendation][:location]["region"])
@@ -66,7 +71,19 @@ class RecommendationsController < ApplicationController
             current_user.update_attribute(:travel_radius, params["recommendation"]["distance"].to_i)
             current_user.update_attribute(:keyword, keyword_hash_to_string(keyword_hash_from_params(params)))
 
-            # FIX-ME: need to add others too... 
+
+            current_user.categories.delete_all
+
+            params["recommendation"]["category"].each do |category, value|
+                if value == "1"
+                    if category == "Theatre"
+                        category = "Theater"
+                    end
+                    if not Category.find_by_name(category).nil?
+                        current_user.categories << Category.find_by_name(category)
+                    end
+                end
+            end
             current_user.save
         end
         if current_user.zip_code.nil?
@@ -88,8 +105,20 @@ class RecommendationsController < ApplicationController
             else
               args["keyword"] = nil
             end
-            #FIX-ME: need to add other functions after schema is set up
-            args["categories"] = Category.all_categories
+            if current_user.categories.length == 0
+              args["categories"] = Category.all_categories
+            else
+              args["categories"] = []
+              current_user.categories.each do |c|
+                if c.name == "Theater"
+                   args["categories"] << "Theatre"
+                else
+                   args["categories"] << c.name
+                end
+
+              end
+            end
+            #FIX-ME: need to add time to session
             args["dates"] = [DateTime.now, nil]
         end
     else #non-signed in users
@@ -102,11 +131,11 @@ class RecommendationsController < ApplicationController
         end
         #FIX-ME: need to destroy the session if the users exit the forms
 
-        price_range = params[:recommendation]["maxprice"].to_i
+        price_range = params[:recommendation]["maxprice"]
         if price_range == ""
           args["price_range"] = [0, -1]
         else
-          args["price_range"] = [0, price_range.to_i]
+          args["price_range"] = [0, (price_range.to_f * 100).to_i]
         end
 
         location = params["recommendation"]["location"]
@@ -129,7 +158,6 @@ class RecommendationsController < ApplicationController
         else
           args["categories"] = categories
         end
-
         startdate = params["recommendation"]["startdate"]
         enddate = params["recommendation"]["enddate"]
         if startdate["month"] != "" && startdate["day"] != "" && startdate["year"] != "" && enddate["month"] != "" && enddate["day"] != "" && enddate["year"]
@@ -139,10 +167,10 @@ class RecommendationsController < ApplicationController
         end
 
         keywords = keyword_hash_from_params(params)
-        args["keywords"] = keywords
+        args["keyword"] = keywords
 
-    end # end non signed-in user processing 
-    
+    end # end non signed-in user processing
+
     if user_signed_in?
       user = current_user
       @favorited = user.get_recent_fav
@@ -150,8 +178,7 @@ class RecommendationsController < ApplicationController
     else
       user = nil
     end
-
-    @shows = Show.recommend_shows(price_range=args["price_range"], categories=args["categories"], dates=args["dates"], location=args["location"], distance=args["distance"], user=user, keywords=args["keywords"])
+    @shows = Show.recommend_shows(price_range=args["price_range"], categories=args["categories"], dates=args["dates"], location=args["location"], distance=args["distance"], user=user, keywords=args["keyword"])
 
     if @shows.length == 0
       @noresults = "No results were found. Please broaden your criteria and search again."
@@ -160,7 +187,7 @@ class RecommendationsController < ApplicationController
     params["recommendation"] = nil
 
     @shows = @shows.paginate(:page => params[:page], :per_page => 15)
-    
+
     render "category/body"
 
   end
@@ -222,6 +249,7 @@ class RecommendationsController < ApplicationController
 
   def form
     @title = "recommended"
+    @first_name = current_user.first_name if current_user
     @is_new = true
 
     @theatre_cat = true
